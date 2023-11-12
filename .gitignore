@@ -1,0 +1,5 @@
+*.jpg
+cgi-bin
+blog
+webfonts
+svg/*.svg
