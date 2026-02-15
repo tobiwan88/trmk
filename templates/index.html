@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if no_posts %}
+  <div class="w3-panel w3-pale-yellow w3-border w3-round-large w3-padding-32">
+    <h2><i class="fa fa-info-circle" aria-hidden="true"></i> <span data-i18n="blog.noPosts">No posts yet!</span></h2>
+    <p data-i18n="blog.checkBack">Check back later for new content.</p>
+  </div>
+{% else %}
+  <header class="w3-container w3-margin-bottom">
+    <h1 class="w3-xxxlarge" data-i18n="blog.latestPost">Latest Post</h1>
+    <p class="w3-right">
+      <a href="archive.html" class="w3-button w3-teal w3-round">
+        <i class="fa fa-archive" aria-hidden="true"></i>
+        <span data-i18n="blog.viewArchive">View Archive</span>
+      </a>
+    </p>
+  </header>
+
+  <article class="blog-post">
+    <header class="blog-post-header">
+      <h2 class="w3-xxlarge">{{ post.title }}</h2>
+      <p class="blog-post-meta">
+        <i class="fa fa-calendar w3-margin-right" aria-hidden="true"></i>
+        <time datetime="{{ post.date }}">
+          <span data-i18n="blog.publishedOn">Published on</span> {{ post.date }}
+        </time>
+      </p>
+    </header>
+
+    <div class="blog-post-content w3-padding-16">
+      {{ post.content | safe }}
+    </div>
+
+    <div class="w3-padding-16">
+      <a href="{{ post.slug }}.html" class="w3-button w3-black w3-round">
+        <span data-i18n="blog.readMore">Read More</span>
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </article>
+
+  <nav class="blog-post-nav w3-padding-32">
+    <div class="w3-row">
+      <div class="w3-col m6 s12">
+        {% if post.previous_post %}
+          <a href="{{ post.previous_post.slug }}.html" class="w3-button w3-black w3-round">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            <span data-i18n="blog.olderPost">Older Post</span>
+          </a>
+        {% else %}
+          <span></span>
+        {% endif %}
+      </div>
+
+      <div class="w3-col m6 s12 w3-right-align">
+        <a href="archive.html" class="w3-button w3-teal w3-round">
+          <i class="fa fa-archive" aria-hidden="true"></i>
+          <span data-i18n="blog.viewAllPosts">View All Posts</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+{% endif %}
+{% endblock %}

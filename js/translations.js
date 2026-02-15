@@ -92,6 +92,22 @@ const translations = {
       contactHeading: "Contact Me",
       contactText: "Ready to elevate your embedded systems? Let's discuss how I can contribute to your success.",
       copyright: "All rights reserved."
+    },
+    blog: {
+      home: "Home",
+      archive: "Archive",
+      olderPost: "Older Post",
+      newerPost: "Newer Post",
+      publishedOn: "Published on",
+      readMore: "Read More",
+      latestPost: "Latest Post",
+      viewArchive: "View Archive",
+      viewAllPosts: "View All Posts",
+      backToHome: "Back to Blog Home",
+      archiveTitle: "Post Archive",
+      archiveSubtitle: "All blog posts in chronological order",
+      noPosts: "No posts yet!",
+      checkBack: "Check back later for new content."
     }
   },
   de: {
@@ -187,6 +203,22 @@ const translations = {
       contactHeading: "Kontaktieren Sie mich",
       contactText: "Bereit, Ihre eingebetteten Systeme auf die nächste Stufe zu heben? Lassen Sie uns besprechen, wie ich zu Ihrem Erfolg beitragen kann.",
       copyright: "Alle Rechte vorbehalten."
+    },
+    blog: {
+      home: "Startseite",
+      archive: "Archiv",
+      olderPost: "Älterer Beitrag",
+      newerPost: "Neuerer Beitrag",
+      publishedOn: "Veröffentlicht am",
+      readMore: "Weiterlesen",
+      latestPost: "Neuester Beitrag",
+      viewArchive: "Archiv ansehen",
+      viewAllPosts: "Alle Beiträge ansehen",
+      backToHome: "Zurück zur Blog-Startseite",
+      archiveTitle: "Beitrags-Archiv",
+      archiveSubtitle: "Alle Blog-Beiträge in chronologischer Reihenfolge",
+      noPosts: "Noch keine Beiträge!",
+      checkBack: "Schauen Sie später wieder vorbei für neue Inhalte."
     }
   }
 };

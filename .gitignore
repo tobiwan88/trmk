@@ -3,3 +3,7 @@ cgi-bin
 blog
 webfonts
 svg/*.svg
+*.webp
+*.jpeg
+*.png
+.DS_Store

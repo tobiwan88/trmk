@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="blog-post">
+  <header class="blog-post-header">
+    <h1 class="w3-xxxlarge" data-i18n-key="title">{{ post.title }}</h1>
+    <p class="blog-post-meta">
+      <i class="fa fa-calendar w3-margin-right" aria-hidden="true"></i>
+      <time datetime="{{ post.date }}">
+        <span data-i18n="blog.publishedOn">Published on</span> {{ post.date }}
+      </time>
+    </p>
+
+    {% if post.translations %}
+    <div class="blog-language-switcher w3-padding-16">
+      <i class="fa fa-language w3-margin-right" aria-hidden="true"></i>
+      <span class="w3-text-grey">Available in: </span>
+      <span class="language-badge current">{{ post.lang.upper() }}</span>
+      {% for lang, translation in post.translations.items() %}
+        <a href="{{ translation.slug }}.html" class="language-badge">{{ lang.upper() }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="blog-post-content w3-padding-16">
+    {{ post.content | safe }}
+  </div>
+
+  <nav class="blog-post-nav w3-padding-32">
+    <div class="w3-row">
+      <div class="w3-col m4 s12">
+        {% if post.previous_post %}
+          <a href="{{ post.previous_post.slug }}.html" class="w3-button w3-black w3-round">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            <span data-i18n="blog.olderPost">Older Post</span>
+          </a>
+        {% else %}
+          <span></span>
+        {% endif %}
+      </div>
+
+      <div class="w3-col m4 s12 w3-center">
+        <a href="index.html" class="w3-button w3-teal w3-round">
+          <i class="fa fa-home" aria-hidden="true"></i>
+          <span data-i18n="blog.home">Home</span>
+        </a>
+      </div>
+
+      <div class="w3-col m4 s12 w3-right-align">
+        {% if post.next_post %}
+          <a href="{{ post.next_post.slug }}.html" class="w3-button w3-black w3-round">
+            <span data-i18n="blog.newerPost">Newer Post</span>
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        {% else %}
+          <span></span>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</article>
+{% endblock %}

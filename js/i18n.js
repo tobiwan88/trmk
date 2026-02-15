@@ -97,10 +97,20 @@ class I18n {
   }
 
   setupLanguageSelector() {
+    // Setup desktop language selector
     const selector = document.getElementById('language-selector');
     if (selector) {
       selector.value = this.currentLang;
       selector.addEventListener('change', (e) => {
+        this.switchLanguage(e.target.value);
+      });
+    }
+
+    // Setup mobile language selector
+    const mobileSelector = document.getElementById('language-selector-mobile');
+    if (mobileSelector) {
+      mobileSelector.value = this.currentLang;
+      mobileSelector.addEventListener('change', (e) => {
         this.switchLanguage(e.target.value);
       });
     }
@@ -115,10 +125,15 @@ class I18n {
     this.updateHtmlLang();
     this.updateMetaTags();
 
-    // Update language selector value
+    // Update both desktop and mobile language selector values
     const selector = document.getElementById('language-selector');
     if (selector) {
       selector.value = lang;
+    }
+
+    const mobileSelector = document.getElementById('language-selector-mobile');
+    if (mobileSelector) {
+      mobileSelector.value = lang;
     }
 
     // Announce to screen readers

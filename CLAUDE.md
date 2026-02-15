@@ -4,184 +4,364 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **static personal portfolio website** for Tobias R.M.K. Meyer - an Engineering Manager and embedded systems developer. The site is built with vanilla HTML, CSS, and JavaScript with no build process or bundler.
+**Static personal portfolio website** for Tobias R.M.K. Meyer - Engineering Manager and embedded systems developer. Built with vanilla HTML, CSS, and JavaScript. **No build process, no backend, no database.**
 
 ## Architecture
 
-### Core Technology Stack
-- **HTML5**: Semantic markup with accessibility features (ARIA attributes, skip links)
-- **W3.CSS Framework**: Lightweight CSS framework for responsive design
-- **Custom CSS**: `modern-enhancements.css` for modern web features
-- **Vanilla JavaScript**: ES6+ without frameworks
-- **FontAwesome**: Icon library (self-hosted)
-- **Lato Font**: Self-hosted web fonts
+### Technology Stack
+- **HTML5** - Semantic markup with ARIA accessibility
+- **W3.CSS** - Lightweight responsive framework
+- **Vanilla JavaScript (ES6+)** - No frameworks
+- **Python 3** - Static blog generator (runs locally, not on server)
+- **Jinja2** - Blog templating
+- **Markdown** - Blog post format
 
-### Site Structure
+### Project Structure
 
 ```
-Root Pages (all interlinked):
-├── index.html         - Main homepage with parallax design, about sections, photo gallery
-├── cv.html           - Curriculum vitae with work experience and skills
-└── freelancing.html  - Consulting services page
+trmk/
+├── index.html              # Homepage (parallax, about, portfolio, contact)
+├── cv.html                 # CV (modern single-column card design)
+├── freelancing.html        # Consulting services
+├── blog/                   # Generated static blog (output)
+│   ├── index.html          # Blog homepage
+│   ├── archive.html        # All posts
+│   └── *-en.html, *-de.html # Individual posts
+├── blog_entries/           # Blog source (Markdown)
+│   ├── en/                 # English posts
+│   │   └── YYYY-MM-DD-slug.md
+│   └── de/                 # German posts
+│       └── YYYY-MM-DD-slug.md
+├── templates/              # Blog templates (Jinja2)
+│   ├── base.html           # Base layout with navigation
+│   ├── post.html           # Individual post
+│   ├── index.html          # Blog home
+│   └── archive.html        # Post archive
+├── js/
+│   ├── i18n.js             # Internationalization engine
+│   └── translations.js     # EN/DE translations
+├── css/
+│   ├── w3.css              # Framework
+│   ├── lato.css            # Font definitions
+│   └── modern-enhancements.css # Custom styles, CV, blog
+├── pictures/               # Images
+├── fonts/                  # Self-hosted Lato font
+├── generate.py             # Blog generator script
+└── requirements.txt        # Python dependencies (Jinja2, Markdown, PyYAML)
 ```
 
-### CSS Architecture
+## CSS Architecture
 
-**Layered approach:**
-1. `w3.css` - Base framework (grid, utilities, components)
-2. `lato.css` - Font definitions
+**Layered CSS:**
+1. `w3.css` - Grid, utilities, components
+2. `lato.css` - Font-face declarations with `font-display: swap`
 3. `css/all.css` - FontAwesome icons
-4. `modern-enhancements.css` - Modern features layer
+4. `modern-enhancements.css` - Custom features, CV styles, blog styles
 
-**modern-enhancements.css includes:**
-- CSS custom properties (variables) for theming
-- Accessibility features (reduced motion, high contrast support)
-- Performance optimizations (hardware acceleration)
-- Responsive breakpoints (480px, 768px, 1024px)
-- Print styles
-- Modern animations and transitions
-
-### JavaScript Patterns
-
-All JavaScript is inline in HTML files with these patterns:
-- **Modal system**: Click-to-expand image gallery with keyboard support
-- **Navbar scroll effect**: Changes on scroll with `requestAnimationFrame` throttling
-- **Mobile navigation**: Toggle menu with ARIA state management
-- **Lazy loading fallback**: IntersectionObserver for older browsers
-
-## Key Implementation Details
-
-### Parallax Effect
-The homepage uses CSS-based parallax scrolling with three background images:
-- `.bgimg-1` - Hero section with personal photo
-- `.bgimg-2` - Portfolio section transition
-- `.bgimg-3` - Contact section background
-
-Parallax is disabled on mobile devices (max-width: 1024px) for performance.
-
-### Accessibility Features
-- Skip links for keyboard navigation
-- ARIA labels and roles throughout
-- Semantic HTML5 elements
-- Focus management for modals
-- Reduced motion support via CSS media query
-- High contrast mode support
-
-### Image Strategy
-- **Eager loading**: Hero images and above-fold content
-- **Lazy loading**: Portfolio images and below-fold content
-- **Responsive images**: All images have `width` attributes and use CSS for responsive sizing
-
-### Navigation Consistency
-All three pages share the same navigation structure with active page highlighted using `w3-teal` class.
-
-## Development Workflow
-
-### Making Changes
-
-**To update content:**
-- Edit HTML files directly - no build step needed
-- Changes are immediately visible on page refresh
-
-**To modify styles:**
-- Global changes: Edit `modern-enhancements.css` or `w3.css`
-- Page-specific styles: Add to `<style>` block in individual HTML files
-- Use CSS custom properties defined in `:root` for consistent theming
-
-**To add images:**
-- Place images in appropriate directory (`pictures/` for portfolio, `pictures/me/` for personal)
-- Update HTML with proper `alt` text for accessibility
-- Use `loading="lazy"` for non-critical images
-
-### Testing
-
-**Cross-browser testing:**
-```bash
-# Serve locally with any static server
-python3 -m http.server 8000
-# or
-npx serve .
-```
-
-**Accessibility testing:**
-- Test keyboard navigation (Tab, Enter, Escape keys)
-- Test with screen reader
-- Validate HTML at validator.w3.org
-- Check color contrast
-
-**Responsive testing:**
-- Test breakpoints: 480px, 768px, 1024px, 1600px
-- Verify parallax disables properly on mobile
-- Check mobile navigation toggle
-
-## Deployment
-
-This is a static site requiring no server-side processing (except WordPress blog if integrated separately).
-
-**Deployment options:**
-- Any static hosting (Netlify, Vercel, GitHub Pages, AWS S3)
-- Traditional web hosting
-- CDN with origin server
-
-**Required files for deployment:**
-- All HTML files at root
-- All CSS files and directories
-- All image directories (`pictures/`, fonts, etc.)
-- All font files
-- SVG/icon assets
-
-**Not required:**
-- `.git/` directory
-- `fastTest/` directory (appears to be development/testing)
-- `.gitignore`
-
-## Important Conventions
-
-### Personal Information
-The Impressum (legal disclosure) contains personal address information. Update in:
-- `index.html` footer section (lines ~369-401)
-
-### External Links
-Always use `target="_blank" rel="noopener noreferrer"` for external links for security.
-
-### Icon Usage
-Icons use FontAwesome with `aria-hidden="true"` and accompanying ARIA labels on parent elements.
-
-### CSS Custom Properties
-Defined in `modern-enhancements.css`:
+**Custom Properties (`:root`):**
 ```css
 --primary-color: #000
 --secondary-color: #777
 --accent-color: #333
---spacing-[xs|sm|md|lg]
---border-radius
---box-shadow
---transition
+--spacing-xs/sm/md/lg
+--border-radius: 0.5rem
+--box-shadow: 0 2px 10px rgba(0,0,0,0.1)
+--transition: all 0.3s ease
 ```
 
-Use these for consistency when adding new features.
+**Key Sections in modern-enhancements.css:**
+- Core utilities (skip links, focus states, accessibility)
+- Mobile navigation (lines ~38-153)
+- CV styles (lines ~422-695) - Single-column design
+- Blog styles (lines ~696+) - Post content, navigation, archive
+
+## Internationalization (i18n)
+
+### Language System
+- Automatic browser language detection (EN/DE)
+- User preference stored in `localStorage`
+- Language selector in navigation (desktop + mobile)
+
+### Translation Files
+**`js/translations.js`** - All UI text in EN/DE:
+```javascript
+const translations = {
+  en: { nav: {...}, blog: {...}, cv: {...} },
+  de: { nav: {...}, blog: {...}, cv: {...} }
+}
+```
+
+**`js/i18n.js`** - Translation engine that:
+- Detects browser language (`navigator.language`)
+- Updates `<html lang="...">` attribute
+- Applies translations via `data-i18n` attributes
+- Syncs desktop and mobile language selectors
+
+### Adding Translations
+1. Add key to `translations.js` (both en and de)
+2. Add `data-i18n="section.key"` to HTML element
+3. For placeholders: `data-i18n-placeholder="section.key"`
+4. For aria-labels: `data-i18n-aria="section.key"`
+
+## Blog System
+
+### Overview
+**Static blog generator** - runs locally, generates HTML files. No server-side processing in production.
+
+### Creating Blog Posts
+
+**1. Write Markdown file:**
+```bash
+# English post
+blog_entries/en/2026-03-15-my-post.md
+
+# German translation (same filename)
+blog_entries/de/2026-03-15-my-post.md
+```
+
+**2. Add frontmatter:**
+```yaml
+---
+title: "My Blog Post Title"
+date: "2026-03-15"
+---
+
+Post content in Markdown format...
+```
+
+**3. Generate static blog:**
+```bash
+source "$(pyenv root)/versions/misc/bin/activate"
+python3 generate.py
+```
+
+### Blog Generator Logic (`generate.py`)
+
+1. Scans `blog_entries/en/` and `blog_entries/de/`
+2. Parses YAML frontmatter + Markdown content
+3. Extracts slug from filename: `2026-03-15-my-post.md` → `my-post`
+4. Creates language-specific URLs: `my-post-en.html`, `my-post-de.html`
+5. Links translations together (same slug in different languages)
+6. Generates prev/next navigation (within same language)
+7. Renders templates with Jinja2
+8. Outputs to `blog/` directory
+
+**Output:**
+- `blog/*.html` - Individual posts
+- `blog/index.html` - Newest post
+- `blog/archive.html` - All posts with language badges
+
+### Blog Features
+- ✅ Multilingual (EN/DE with auto-linking)
+- ✅ Language switcher on posts with translations
+- ✅ Language badges in archive
+- ✅ Markdown support (headings, lists, code blocks, images)
+- ✅ Prev/Next navigation (within language)
+- ✅ Same navigation as main site
+- ✅ Full i18n support
+
+## Key Implementation Details
+
+### CV Design (cv.html)
+**Modern single-column layout** (redesigned Feb 2026):
+- Header with photo, name, contact info
+- Skill tags (color-coded: advanced/intermediate/beginner)
+- Experience cards with date badges
+- Education section with thesis titles
+- Responsive with dark mode support
+- Print-friendly styles
+
+**NO percentage bars** - uses semantic skill tags instead.
+
+### Mobile Navigation
+**Simplified approach:**
+- Top bar shows ONLY hamburger button on mobile
+- All navigation items in dropdown menu
+- Language selector in mobile dropdown
+- Icons for all menu items
+
+**Hero section on index.html:**
+- Desktop: 60vh height (allows seeing About section)
+- Mobile: Hidden completely (users see About immediately)
+
+### Parallax Effect (index.html)
+- `.bgimg-1` - Hero (60vh on desktop, hidden on mobile)
+- `.bgimg-2` - Portfolio transition (50vh)
+- `.bgimg-3` - Contact background (50vh)
+- Disabled on mobile (<1024px) for performance
+
+### Image Strategy
+- **WebP with fallback** - `<picture>` elements for modern formats
+- **Lazy loading** - `loading="lazy"` for below-fold images
+- **Explicit dimensions** - `width` and `height` attributes to prevent CLS
+
+## Development Workflow
+
+### Local Development
+```bash
+# Serve site
+python3 -m http.server 8000
+
+# Generate blog
+source "$(pyenv root)/versions/misc/bin/activate"
+python3 generate.py
+
+# Visit http://localhost:8000
+```
+
+### Blog Workflow
+1. Create/edit `.md` files in `blog_entries/en/` and `blog_entries/de/`
+2. Run `python3 generate.py`
+3. Preview at `http://localhost:8000/blog/`
+4. Commit and deploy `blog/` directory
+
+### Making Changes
+
+**HTML content:**
+- Edit HTML files directly (no build step)
+- Changes visible on page refresh
+
+**Styles:**
+- Global: `modern-enhancements.css`
+- Page-specific: `<style>` blocks in HTML
+- Use CSS custom properties for consistency
+
+**Translations:**
+- Add to `js/translations.js` (both en and de)
+- Add `data-i18n` attributes to HTML
+
+**Blog:**
+- Edit Markdown in `blog_entries/`
+- Re-run `generate.py`
+
+## Important Conventions
+
+### Navigation Links
+- Main site pages: `./index.html`, `./cv.html`, `./freelancing.html`
+- Blog links: `./blog/index.html` (explicit index.html)
+- Blog internal: relative paths (`welcome-en.html`)
+- External: Always `target="_blank" rel="noopener noreferrer"`
+
+### File Naming
+- Blog posts: `YYYY-MM-DD-slug-name.md`
+- Generated posts: `slug-name-en.html`, `slug-name-de.html`
+- Images: lowercase with hyphens (`my-image.webp`)
+
+### CSS Classes
+- Active navigation: `w3-teal` class
+- Language badges: `.language-badge`, `.language-badge-small`
+- Skill tags: `.skill-tag.advanced/intermediate/beginner`
+- Blog content: `.blog-post-content` (has specific typography)
+
+### Meta Tags
+All pages have:
+- Open Graph tags
+- Twitter Cards
+- Canonical URLs
+- Favicons (all sizes)
+- Language alternates (hreflang)
+- Color scheme support
+
+## Testing
+
+**Cross-browser:**
+- Chrome, Firefox, Safari (latest)
+- Mobile: Safari iOS, Chrome Android
+
+**Responsive breakpoints:**
+- 480px, 600px, 768px, 1024px
+
+**Accessibility:**
+- Keyboard navigation (Tab, Enter, Escape)
+- Screen reader (NVDA/VoiceOver)
+- Color contrast (WCAG AA)
+- Reduced motion support
+
+**Blog generation:**
+- Verify translations link correctly
+- Check prev/next navigation
+- Test language switcher
+- Validate generated HTML
+
+## Deployment
+
+**Static hosting only** - no server-side processing required.
+
+**Deploy:**
+1. Generate blog: `python3 generate.py`
+2. Upload entire directory to server/CDN
+3. Configure HTTPS (via hosting provider)
+
+**Options:**
+- GitHub Pages (free)
+- Netlify/Vercel (free tier)
+- AWS S3 + CloudFront
+- Traditional web hosting
+
+**Required files:**
+- All `.html` files
+- `blog/` directory
+- `css/`, `js/`, `pictures/`, `fonts/`
+- Favicon files, `manifest.webmanifest`
+
+**NOT required:**
+- `blog_entries/` (source files)
+- `templates/` (Jinja2 templates)
+- `generate.py`, `requirements.txt`
+- `.git/`, `fastTest/`
+
+## Security
+
+**Why this site is secure:**
+- ✅ No backend code (PHP, Node.js, etc.)
+- ✅ No database (no SQL injection)
+- ✅ No user input processing
+- ✅ Static HTML only
+- ✅ Blog generated locally (not on server)
+- ✅ No runtime markdown parsing
+- ✅ All dependencies self-hosted
 
 ## Content Update Checklist
 
-When updating CV/professional information:
-- [ ] Update `cv.html` work experience section
-- [ ] Update skills percentages in left sidebar
-- [ ] Update job title in header
-- [ ] Update meta description
-- [ ] Update address in Impressum if moved
-- [ ] Keep CV and index.html about section in sync
+**Updating CV:**
+- [ ] Edit `cv.html` experience/education sections
+- [ ] Update meta description if job changes
+- [ ] Keep index.html about section in sync
 
-When adding portfolio photos:
-- [ ] Optimize images (compress for web)
+**Adding blog post:**
+- [ ] Create `.md` in `blog_entries/en/` (and `de/` for translation)
+- [ ] Add frontmatter (title, date)
+- [ ] Run `python3 generate.py`
+- [ ] Preview locally
+- [ ] Commit `blog/` directory
+
+**Adding photos:**
+- [ ] Optimize images (compress, convert to WebP)
 - [ ] Add to `pictures/` directory
-- [ ] Update `index.html` photo grid section
-- [ ] Include descriptive alt text
-- [ ] Use `loading="lazy"` attribute
+- [ ] Update `index.html` photo grid
+- [ ] Include descriptive `alt` text
+- [ ] Use `loading="lazy"` for below-fold images
 
-## WordPress Blog Integration
+## Quick Reference
 
-The site links to `./blog` for WordPress integration. If setting up the blog:
-- Install WordPress in `blog/` directory
-- Configure database connection
-- Ensure theme matches main site design
-- Update navigation links across all pages
+**Start local server:**
+```bash
+python3 -m http.server 8000
+```
+
+**Generate blog:**
+```bash
+source "$(pyenv root)/versions/misc/bin/activate"
+python3 generate.py
+```
+
+**Key files to edit:**
+- Content: `index.html`, `cv.html`, `freelancing.html`
+- Styles: `modern-enhancements.css`
+- Translations: `js/translations.js`
+- Blog posts: `blog_entries/en/*.md`, `blog_entries/de/*.md`
+
+**Do NOT edit:**
+- `blog/*.html` (auto-generated, will be overwritten)
+- `w3.css` (framework file)
+- Font files in `fonts/`
