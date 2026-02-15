@@ -1,107 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tobias Meyer - engineering consultanting</title>
-  <link rel="stylesheet" href="./w3.css">
-  
-  <link rel="stylesheet" href="./lato.css">
-  
-  <link rel="stylesheet" href="./css/all.css">
-  <style>
-    /* Add your custom styles here */
-    body {
-      font-family: "Arial", sans-serif;
-    }
+  <title data-i18n="meta.titleConsulting">Tobias Meyer - Engineering Consulting</title>
+  <meta name="description" content="Professional engineering consulting services by Tobias R.M.K. Meyer - Embedded systems, firmware development, and software architecture." data-i18n-content="meta.descriptionConsulting">
+  <meta name="robots" content="index,follow">
 
-    /* Customize the look and feel according to your preferences */
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.trmk.de/freelancing.html">
+  <meta property="og:title" content="Tobias Meyer - Engineering Consulting">
+  <meta property="og:description" content="Expert consulting services in embedded systems, firmware development, and software architecture. IoT, sensor development, and team leadership.">
+  <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tobias Meyer - Engineering Consulting">
+  <meta name="twitter:description" content="Expert consulting services in embedded systems, firmware development, and software architecture. IoT, sensor development, and team leadership.">
+  <meta name="twitter:image" content="https://www.trmk.de/avatar.jpg">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.trmk.de/freelancing.html">
+
+  <!-- Color scheme support -->
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Favicons & PWA -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  <!-- Language metadata -->
+  <link rel="alternate" hreflang="en" href="https://www.trmk.de/freelancing.html">
+  <link rel="alternate" hreflang="de" href="https://www.trmk.de/freelancing.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.trmk.de/freelancing.html">
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="./fonts/lato.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./w3.css">
+  <link rel="stylesheet" href="./lato.css">
+  <link rel="stylesheet" href="./css/all.css">
+  <link rel="stylesheet" href="./modern-enhancements.css">
+
+  <!-- i18n Scripts -->
+  <script src="./js/translations.js" defer></script>
+  <script src="./js/i18n.js" defer></script>
+
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
   </style>
 </head>
 
 <body>
-<div class="w3-top">
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <div class="w3-bar" id="myNavbar">
+  <!-- Navigation -->
+  <nav class="w3-top" role="navigation" aria-label="Main navigation">
+    <div class="w3-bar" id="myNavbar">
+      <button class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
+              onclick="toggleFunction()"
+              aria-label="Toggle Navigation Menu"
+              aria-expanded="false"
+              aria-controls="navDemo">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+      <a href="./index.html" class="w3-bar-item w3-button"><span data-i18n="nav.home">HOME</span></a>
+      <a href="./index.html#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user" aria-hidden="true"></i> <span data-i18n="nav.about">ABOUT</span></a>
+      <a href="./freelancing.html" class="w3-bar-item w3-button w3-hide-small w3-teal"><i class="fa fa-briefcase" aria-hidden="true"></i> <span data-i18n="nav.consulting">CONSULTING</span></a>
+      <a href="./cv.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-file-text" aria-hidden="true"></i> <span data-i18n="nav.cv">CV</span></a>
+      <a href="./blog" class="w3-bar-item w3-button w3-hide-small"><i class="fa-brands fa-wordpress" aria-hidden="true"></i> <span data-i18n="nav.blog">BLOG</span></a>
+      <a href="./index.html#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
+      <a href="./index.html#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope" aria-hidden="true"></i> <span data-i18n="nav.contact">CONTACT</span></a>
+      <select id="language-selector"
+              class="w3-select w3-bar-item"
+              style="width:auto; background:transparent; color:inherit; border:1px solid currentColor; padding:6px;"
+              aria-label="Select language">
+        <option value="en">EN</option>
+        <option value="de">DE</option>
+      </select>
+    </div>
 
-    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);"
-      onclick="toggleFunction()" title="Toggle Navigation Menu">
+    <!-- Mobile navigation -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium" role="menu">
+      <a href="./index.html#about" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.about">ABOUT</span></a>
+      <a href="./index.html#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
+      <a href="./index.html#contact" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.contact">CONTACT</span></a>
+      <a href="./freelancing.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.consulting">CONSULTING</span></a>
+      <a href="./cv.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.cv">CV</span></a>
+      <a href="./blog" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.blog">BLOG</span></a>
+    </div>
+  </nav>
 
-      <i class="fa fa-bars"></i>
-
-    </a>
-
-    <a href="#home" class="w3-bar-item w3-button">HOME</a>
-
-    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-    <a href="./freelancing.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-list"></i> CONSULTING</a>
-    <a href="./cv.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-list"></i> CV</a>
-
-    <a href="./blog" class="w3-bar-item w3-button w3-hide-small"><i class="fa-brands fa-wordpress"></i> BLOG</a>
-
-    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> PHOTOGRAPY</a>
-
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
-
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-
-      <i class="fa fa-search"></i>
-
-    </a>
-
-  </div>
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="./index.html#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-    <a href="./index.html#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
-    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
-  </div>
-</div>
 <div class="w3-content  w3-padding-64" style="max-width:1400px;">
   <!-- Header -->
   <header class="w3-container w3-teal">
-    <h1>Tobias Meyer - Engineering Consulting</h1>
-    <p>Your Gateway to Embedded Systems Excellence</p>
+    <h1 data-i18n="consulting.title">Tobias Meyer - Engineering Consulting</h1>
+    <p data-i18n="consulting.subtitle">Your Gateway to Embedded Systems Excellence</p>
   </header>
 
 
   <!-- Services Section -->
   <section id="services" class="w3-container">
-    <h2>Services</h2>
+    <h2 data-i18n="consulting.services">Services</h2>
     <p>
-      Additionally to my main Job (<a href="./cv.html"> CV</a> ) I offer a range of services to meet your embedded systems needs, including firmware development for different platforms and systems, consulting on
-      best practices like repeatable builds, unit testing, hardware in the loop and more.
+      <span data-i18n="consulting.servicesIntro">Additionally to my main Job</span> (<a href="./cv.html"> CV</a> ) <span data-i18n="consulting.servicesText">I offer a range of services to meet your embedded systems needs, including firmware development for different platforms and systems, consulting on best practices like repeatable builds, unit testing, hardware in the loop and more.</span>
     </p>
     <p>
-      My main expertise are in developing firmware for constrainted IoT devices, energy harvesting or battery powered. I can offer to provide a development using either 
+      <span data-i18n="consulting.expertiseIntro">My main expertise are in developing firmware for constrained IoT devices, energy harvesting or battery powered. I can offer to provide a development using either</span>
       <ul>
-        <li>Shor range radio protocols like: Zigbee,Thread,BLE or enocean</li>
-        <li>Long range: Lora</li>
-        <li>Cellular: LTE-M / NB-IoT</li>
+        <li data-i18n="consulting.shortRange">Short range radio protocols like: Zigbee, Thread, BLE or enocean</li>
+        <li data-i18n="consulting.longRange">Long range: Lora</li>
+        <li data-i18n="consulting.cellular">Cellular: LTE-M / NB-IoT</li>
       </ul>
-      Additionally i can support in setting up in either technologies to gather the generated data or on the device processing of the data using Tiny-ML technologies.
+      <span data-i18n="consulting.additionalSupport">Additionally I can support in setting up in either technologies to gather the generated data or on the device processing of the data using Tiny-ML technologies.</span>
     </p>
   </section>
 
 
   <!-- Contact Section -->
   <section id="contact" class="w3-container">
-    <h2>Contact Me</h2>
-    <p>
-      Ready to elevate your embedded systems? Let's discuss how I can contribute to your success. 
-      <a href="mailto:tobias.meyer@trmk.de"><i class="fa fa-at w3-hover-opacity"></i> tobias.meyer@trmk.de</a>
-      <a href="https://github.com/tobiwan88"><i class="fa-brands fa-github w3-hover-opacity"></i></a>
-      <a href="https://de.linkedin.com/in/tobias-meyer-07413656"><i class="fa-brands fa-linkedin w3-hover-opacity"></i></a>
-    </p>
-    <!-- Add a contact form or provide contact information as needed -->
+    <div id="main-content"></div>
+    <h2 data-i18n="consulting.contactHeading">Contact Me</h2>
+    <p data-i18n="consulting.contactText">Ready to elevate your embedded systems? Let's discuss how I can contribute to your success.</p>
+    <div class="contact-links w3-margin">
+      <a href="mailto:tobias.meyer@trmk.de" aria-label="Send email">
+        <i class="fa fa-envelope w3-hover-opacity" aria-hidden="true"></i> tobias.meyer@trmk.de
+      </a>
+      <a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">
+        <i class="fa-brands fa-github w3-hover-opacity" aria-hidden="true"></i>
+      </a>
+      <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
+        <i class="fa-brands fa-linkedin w3-hover-opacity" aria-hidden="true"></i>
+      </a>
+    </div>
   </section>
 </div>
-  <!-- Footer -->
-  <footer class="w3-container w3-teal">
-    <p>&copy; 2023 Tobias Meyer. All rights reserved.</p>
-  </footer>
+
+<!-- Footer -->
+<footer class="w3-container w3-teal">
+  <p>&copy; 2026 Tobias Meyer. All rights reserved.</p>
+</footer>
+
+<script>
+// Mobile navigation toggle
+function toggleFunction() {
+  const navDemo = document.getElementById("navDemo");
+  const button = document.querySelector('[aria-controls="navDemo"]');
+  const isExpanded = navDemo.classList.contains("w3-show");
+
+  if (isExpanded) {
+    navDemo.classList.remove("w3-show");
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    navDemo.classList.add("w3-show");
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+</script>
 
 </body>
-
 </html>

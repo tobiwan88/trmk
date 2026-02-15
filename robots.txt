@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.trmk.de/sitemap.xml
+
+Disallow: /.git/
+Disallow: /fastTest/

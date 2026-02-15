@@ -1,89 +1,136 @@
 <!DOCTYPE html>
-<html>
-<title>TRMK CV</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" conent="CV of Tobias R.M.K. Meyer , Embedded Firmware & Software Developer. Expertise in Low Level development and different Low Power Network protocols">
- <meta name="robots" content="index,follow">
- <link rel="stylesheet" href="./w3.css">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="meta.titleCV">Tobias R.M.K. Meyer - CV</title>
+  <meta name="description" content="CV of Tobias R.M.K. Meyer, Engineering Manager & Senior Firmware Developer. Expertise in embedded systems, IoT, team leadership, and industrial sensor development for railway infrastructure." data-i18n-content="meta.descriptionCV">
+  <meta name="robots" content="index,follow">
 
-<link rel="stylesheet" href="./lato.css">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://www.trmk.de/cv.html">
+  <meta property="og:title" content="Tobias R.M.K. Meyer - CV">
+  <meta property="og:description" content="Engineering Manager & Senior Firmware Developer with 10+ years of expertise in embedded systems, IoT, and team leadership.">
+  <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
 
-<link rel="stylesheet" href="./css/all.css">
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-</style>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tobias R.M.K. Meyer - CV">
+  <meta name="twitter:description" content="Engineering Manager & Senior Firmware Developer with 10+ years of expertise in embedded systems, IoT, and team leadership.">
+  <meta name="twitter:image" content="https://www.trmk.de/avatar.jpg">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.trmk.de/cv.html">
+
+  <!-- Color scheme support -->
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Favicons & PWA -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  <!-- Language metadata -->
+  <link rel="alternate" hreflang="en" href="https://www.trmk.de/cv.html">
+  <link rel="alternate" hreflang="de" href="https://www.trmk.de/cv.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.trmk.de/cv.html">
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="./fonts/lato.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./w3.css">
+  <link rel="stylesheet" href="./lato.css">
+  <link rel="stylesheet" href="./css/all.css">
+  <link rel="stylesheet" href="./modern-enhancements.css">
+
+  <!-- i18n Scripts -->
+  <script src="./js/translations.js" defer></script>
+  <script src="./js/i18n.js" defer></script>
+
+  <style>
+    html,body,h1,h2,h3,h4,h5,h6 {
+      font-family: "Lato", sans-serif;
+    }
+  </style>
+</head>
 <body class="w3-light-grey">
-<!-- Navbar (sit on top) Todo include magic-->
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<div class="w3-top">
+  <!-- Navigation -->
+  <nav class="w3-top" role="navigation" aria-label="Main navigation">
+    <div class="w3-bar" id="myNavbar">
+      <button class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
+              onclick="toggleFunction()"
+              aria-label="Toggle Navigation Menu"
+              aria-expanded="false"
+              aria-controls="navDemo">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+      <a href="./index.html" class="w3-bar-item w3-button"><span data-i18n="nav.home">HOME</span></a>
+      <a href="./index.html#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user" aria-hidden="true"></i> <span data-i18n="nav.about">ABOUT</span></a>
+      <a href="./freelancing.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-briefcase" aria-hidden="true"></i> <span data-i18n="nav.consulting">CONSULTING</span></a>
+      <a href="./cv.html" class="w3-bar-item w3-button w3-hide-small w3-teal"><i class="fa fa-file-text" aria-hidden="true"></i> <span data-i18n="nav.cv">CV</span></a>
+      <a href="./blog" class="w3-bar-item w3-button w3-hide-small"><i class="fa-brands fa-wordpress" aria-hidden="true"></i> <span data-i18n="nav.blog">BLOG</span></a>
+      <a href="./index.html#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
+      <a href="./index.html#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope" aria-hidden="true"></i> <span data-i18n="nav.contact">CONTACT</span></a>
+      <select id="language-selector"
+              class="w3-select w3-bar-item"
+              style="width:auto; background:transparent; color:inherit; border:1px solid currentColor; padding:6px;"
+              aria-label="Select language">
+        <option value="en">EN</option>
+        <option value="de">DE</option>
+      </select>
+    </div>
 
-  <div class="w3-bar" id="myNavbar">
+    <!-- Mobile navigation -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium" role="menu">
+      <a href="./index.html#about" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.about">ABOUT</span></a>
+      <a href="./index.html#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
+      <a href="./index.html#contact" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.contact">CONTACT</span></a>
+      <a href="./freelancing.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.consulting">CONSULTING</span></a>
+      <a href="./cv.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.cv">CV</span></a>
+      <a href="./blog" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.blog">BLOG</span></a>
+    </div>
+  </nav>
 
-    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);"
-      onclick="toggleFunction()" title="Toggle Navigation Menu">
-
-      <i class="fa fa-bars"></i>
-
-    </a>
-
-    <a href="#home" class="w3-bar-item w3-button">HOME</a>
-
-    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-    <a href="./freelancing.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-list"></i> CONSULTING</a>
-    <a href="./cv.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-list"></i> CV</a>
-
-    <a href="./blog" class="w3-bar-item w3-button w3-hide-small"><i class="fa-brands fa-wordpress"></i> BLOG</a>
-
-    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> PHOTOGRAPY</a>
-
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
-
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-
-      <i class="fa fa-search"></i>
-
-    </a>
-
-  </div>
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="./freelancing.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-list"></i> CONSULTING</a>
-    <a href="./index.html#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-    <a href="./index.html#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFOLIO</a>
-    <a href="./index.html#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
-    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
-  </div>
-</div>
 <!-- Page Container -->
-<div class="w3-content  w3-padding-64" style="max-width:1400px;">
+<div class="w3-content w3-padding-64" style="max-width:1400px;" id="main-content">
 
   <!-- The Grid -->
   <div class="w3-row-padding">
-  
+
     <!-- Left Column -->
     <div class="w3-third">
-    
+
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
-          <img src="./cv_avatar.jpg" style="width:100%" alt="Avatar">
+          <picture>
+      <source type="image/webp" srcset="./cv_avatar.webp">
+      <img src="./cv_avatar.jpg" alt="Avatar" style="width:100%">
+    </picture>
           <div class="w3-display-bottomleft w3-container w3-text-white " style="text-shadow:1px 1px 0 #444">
             <h2>Tobias R.M.K. Meyer</h2>
           </div>
         </div>
         <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>SW Developer</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Unterhaching, Germany</p>
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i><span data-i18n="cv.jobTitle">Engineering Manager</span></p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i><span data-i18n="cv.location">Munich, Germany</span></p>
           <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>tobias.meyer@trmk.de</p>
           <hr>
 
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
-          <p>Embedded Firmware</p>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i><span data-i18n="cv.skills">Skills</span></b></p>
+          <p data-i18n="cv.embeddedFirmware">Embedded Firmware</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
             <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
           </div>
-          <p>Protocols</p>
+          <p data-i18n="cv.protocols">Protocols</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
             <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">
               <div class="w3-center w3-text-white">90%</div>
@@ -101,9 +148,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <div class="w3-light-grey w3-round-xlarge w3-small">
             <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:60%">60%</div>
           </div>
-          <p>Project Leading</p>
+          <p data-i18n="cv.engineeringManagement">Engineering Management</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:60%">60%</div>
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:85%">85%</div>
+          </div>
+          <p data-i18n="cv.projectLeading">Project Leading</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
           </div>
           <p>C#</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
@@ -111,12 +162,12 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </div>
           <br>
 
-          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
-          <p>German</p>
+          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i><span data-i18n="cv.languages">Languages</span></b></p>
+          <p data-i18n="cv.german">German</p>
           <div class="w3-light-grey w3-round-xlarge">
             <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
           </div>
-          <p>English</p>
+          <p data-i18n="cv.english">English</p>
           <div class="w3-light-grey w3-round-xlarge">
             <div class="w3-round-xlarge w3-teal" style="height:24px;width:90%"></div>
           </div>
@@ -129,20 +180,40 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
     <!-- Right Column -->
     <div class="w3-twothird">
-      
+
       <div class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+
         <div class="w3-container">
-          <h5 class="w3-opacity"><b>Senior embedded firmware developer at <a href="https://www.konux.com">Konux</a></b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>September 2020 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-          <p>
+          <h5 class="w3-opacity"><b>Engineering Manager - Device Team at <a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a></b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>July 2025 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+          <p>As Engineering Manager of the Device Team at KONUX, I lead the development of embedded systems that power our industrial IoT solutions for the railway sector.</p>
           <ul class="w3-ul">
-            <li>Developing IoT Sensor for Railway Industry (C / C++ / Zephyr)</li>
-            <li>Architecture, Software design for sensor - gateway communication, and gateway - aws communication.</li>
-            <li>Prototyping for edge computing devices using Tiny-ML</li>
-            <li>Internal tools and scripts using python</li>
+            <li><strong>Technical Leadership:</strong> Defining and delivering firmware architecture, setting technical roadmap for embedded systems</li>
+            <li><strong>Strategic Planning:</strong> Translating business objectives into executable technical plans through quarterly OKR planning</li>
+            <li><strong>People Management:</strong> Fostering collaborative, ownership-driven culture while empowering team growth and problem-solving</li>
+            <li><strong>End-to-End Delivery:</strong> Overseeing architecture, implementation, team processes, and budget planning</li>
+            <li><strong>Engineering Excellence:</strong> Ensuring alignment with security, maintainability, and best practices</li>
+            <li><strong>Cross-functional Collaboration:</strong> Working with stakeholders and engineering leaders to align product vision with daily execution</li>
           </ul>
-          </p>
+          <hr>
+        </div>
+
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Senior Firmware Developer at <a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a></b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>September 2020 - July 2025</h6>
+          <p><strong>🔧 Accelerating Rail with Secure, Connected IIoT & Edge‑AI in Harsh Environments</strong></p>
+          <p>Developed rugged, intelligent sensor systems for predictive maintenance on rail infrastructure, bridging hardware, firmware, and connectivity.</p>
+          <ul class="w3-ul">
+            <li><strong>Bare‑metal C++ IIoT sensor development:</strong> Engineered compact, battery-powered C++-based sensors running directly on microcontrollers for field deployment</li>
+            <li><strong>New device architecture using Zephyr RTOS (C):</strong> Designed and launched multiple sensor generations leveraging Zephyr RTOS—building scalable, modular firmware for industrial IoT</li>
+            <li><strong>Cellular connectivity (LTE‑M):</strong> Integrated energy-efficient LTE‑M modems to reliably transmit sensor data from remote locations</li>
+            <li><strong>Bluetooth Low Energy (BLE):</strong> Researching BLE for alternative communication protocols</li>
+            <li><strong>Edge‑AI research & prototyping:</strong> Developed on-device ML models for anomaly detection and predictive maintenance, advancing real-time intelligence at the edge</li>
+            <li><strong>Diverse sensor and bus systems:</strong> Piloted subsystems including vibration, temperature, and pressure sensors; interfaced via SPI, I²C, UART, and more for robust data acquisition</li>
+            <li><strong>Electronic component review & selection:</strong> Curated PCB/electronic components to meet rugged industrial standards</li>
+            <li><strong>Standards & certifications research:</strong> Conducted compliance research for the EU's Cyber Resilience Act, ensuring alignment with CE marking and CRA essential requirements</li>
+          </ul>
           <hr>
         </div>
         <div class="w3-container">
@@ -193,18 +264,37 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
     <!-- End Right Column -->
     </div>
-    
+
   <!-- End Grid -->
   </div>
-  
+
   <!-- End Page Container -->
 </div>
 
 <footer class="w3-container w3-teal w3-center w3-margin-top">
   <p>Find me on social media.</p>
-    <a href="https://de.linkedin.com/in/tobias-meyer-07413656"><i class="fa-brands fa-linkedin w3-hover-opacity"></i></a>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
+    <i class="fa-brands fa-linkedin w3-hover-opacity" aria-hidden="true"></i>
+  </a>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" rel="noopener noreferrer">w3.css</a></p>
 </footer>
+
+<script>
+// Mobile navigation toggle
+function toggleFunction() {
+  const navDemo = document.getElementById("navDemo");
+  const button = document.querySelector('[aria-controls="navDemo"]');
+  const isExpanded = navDemo.classList.contains("w3-show");
+
+  if (isExpanded) {
+    navDemo.classList.remove("w3-show");
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    navDemo.classList.add("w3-show");
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+</script>
 
 </body>
 </html>

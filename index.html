@@ -1,534 +1,611 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="meta.title">Tobias R.M.K. Meyer - Embedded Software Developer</title>
+  <meta name="description" content="Private page of Tobias R.M.K. Meyer, Embedded Firmware & Software Developer. Posts about life as a developer and my climbing, cooking and other adventures." data-i18n-content="meta.description">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Tobias R.M.K. Meyer">
+  <meta name="theme-color" content="#000000">
 
-<html>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.trmk.de/">
+  <meta property="og:title" content="Tobias R.M.K. Meyer - Embedded Software Developer">
+  <meta property="og:description" content="Professional Software Developer specializing in embedded systems, IoT, and firmware development.">
+  <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
 
-<title>Tobias R.M.K. Meyer</title>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tobias R.M.K. Meyer - Embedded Software Developer">
+  <meta name="twitter:description" content="Professional Software Developer specializing in embedded systems, IoT, and firmware development.">
+  <meta name="twitter:image" content="https://www.trmk.de/avatar.jpg">
 
-<meta charset="UTF-8">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.trmk.de/">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" conent="Private page of Tobias R.M.K. Meyer , Embedded Firmware & Software Developer.
- Try post content about life as developer and my climbing, cooking and other adventures. ">
- <meta name="robots" content="index,follow">
-<link rel="stylesheet" href="./w3.css">
+  <!-- Color scheme support -->
+  <meta name="color-scheme" content="light dark">
 
-<link rel="stylesheet" href="./lato.css">
+  <!-- Favicons & PWA -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
 
-<link rel="stylesheet" href="./css/all.css">
+  <!-- Language metadata -->
+  <link rel="alternate" hreflang="en" href="https://www.trmk.de/index.html">
+  <link rel="alternate" hreflang="de" href="https://www.trmk.de/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.trmk.de/index.html">
 
-<style>
+  <!-- Preload critical resources -->
+  <link rel="preload" href="./fonts/lato.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./me.jpg" as="image">
 
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./w3.css">
+  <link rel="stylesheet" href="./lato.css">
+  <link rel="stylesheet" href="./css/all.css">
+  <link rel="stylesheet" href="./modern-enhancements.css">
 
-body, html {
+  <!-- i18n Scripts -->
+  <script src="./js/translations.js" defer></script>
+  <script src="./js/i18n.js" defer></script>
 
-  height: 100%;
+  <style>
+    /* Page-specific styles */
+    body, h1, h2, h3, h4, h5, h6 {
+      font-family: "Lato", sans-serif;
+    }
 
-  color: #777;
+    body, html {
+      height: 100%;
+      color: var(--text-dark);
+      line-height: 1.8;
+    }
 
-  line-height: 1.8;
+    /* Parallax background images */
+    .bgimg-1 {
+      background-image: url('./me.jpg');
+      min-height: 100vh;
+      position: relative;
+    }
 
-}
+    .bgimg-2 {
+      background-image: url("./meSideBW.jpg");
+      min-height: 50vh;
+    }
 
+    .bgimg-3 {
+      background-image: url("./meSideBW.jpg");
+      min-height: 50vh;
+    }
 
-
-/* Create a Parallax Effect */
-
-.bgimg-1, .bgimg-2, .bgimg-3 {
-
-  background-attachment: fixed;
-
-  background-position: center;
-
-  background-repeat: no-repeat;
-
-  background-size: cover;
-
-}
-
-
-
-/* First image (Logo. Full height) */
-
-.bgimg-1 {
-
-  background-image: url('./me.jpg');
-
-  min-height: 100%;
-
-}
-
-
-
-/* Second image (Portfolio) */
-
-.bgimg-2 {
-
-  background-image: url("./meSideBW.jpg");
-
-  min-height: 400px;
-
-}
-
-
-
-/* Third image (Contact) */
-
-.bgimg-3 {
-
-  background-image: url("./meSideBW.jpg");
-
-  min-height: 400px;
-
-}
-
-
-
-.w3-wide {letter-spacing: 10px;}
-
-.w3-hover-opacity {cursor: pointer;}
-
-
-
-/* Turn off parallax scrolling for tablets and phones */
-
-@media only screen and (max-device-width: 1600px) {
-
-  .bgimg-1, .bgimg-2, .bgimg-3 {
-
-    background-attachment: scroll;
-
-    min-height: 400px;
-
-  }
-
-}
-
-</style>
+    .w3-wide {
+      letter-spacing: 10px;
+    }
+  </style>
 
 <body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
 
 
-<!-- Navbar (sit on top) Todo include magic-->
-
-<div class="w3-top">
-
+<!-- Navigation -->
+<nav class="w3-top" role="navigation" aria-label="Main navigation">
   <div class="w3-bar" id="myNavbar">
-
-    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
-
-      <i class="fa fa-bars"></i>
-
-    </a>
-
-    <a href="#home" class="w3-bar-item w3-button">HOME</a>
-
-    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-    <a href="./freelancing.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-list"></i> CONSULTING</a>
-    <a href="./cv.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-list"></i> CV</a> 	
-
-    <a href="./blog" class="w3-bar-item w3-button w3-hide-small"><i class="fa-brands fa-wordpress"></i> BLOG</a>
-
-    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> PHOTOGRAPY</a>
-
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
-
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-
-      <i class="fa fa-search"></i>
-
-    </a>
-
+    <button class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
+            onclick="toggleFunction()"
+            aria-label="Toggle Navigation Menu"
+            aria-expanded="false"
+            aria-controls="navDemo">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <a href="./index.html" class="w3-bar-item w3-button"><span data-i18n="nav.home">HOME</span></a>
+    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user" aria-hidden="true"></i> <span data-i18n="nav.about">ABOUT</span></a>
+    <a href="./freelancing.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-briefcase" aria-hidden="true"></i> <span data-i18n="nav.consulting">CONSULTING</span></a>
+    <a href="./cv.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-file-text" aria-hidden="true"></i> <span data-i18n="nav.cv">CV</span></a>
+    <a href="./blog" class="w3-bar-item w3-button w3-hide-small"><i class="fa-brands fa-wordpress" aria-hidden="true"></i> <span data-i18n="nav.blog">BLOG</span></a>
+    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
+    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope" aria-hidden="true"></i> <span data-i18n="nav.contact">CONTACT</span></a>
+    <select id="language-selector"
+            class="w3-select w3-bar-item"
+            style="width:auto; background:transparent; color:inherit; border:1px solid currentColor; padding:6px;"
+            aria-label="Select language">
+      <option value="en">EN</option>
+      <option value="de">DE</option>
+    </select>
   </div>
 
-
-
-  <!-- Navbar on small screens -->
-
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-
-    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFOLIO</a>
-
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
-
-    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
-
+  <!-- Mobile navigation -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium" role="menu">
+    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.about">ABOUT</span></a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
+    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.contact">CONTACT</span></a>
+    <a href="./freelancing.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.consulting">CONSULTING</span></a>
+    <a href="./cv.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.cv">CV</span></a>
+    <a href="./blog" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><span data-i18n="nav.blog">BLOG</span></a>
   </div>
-
-</div>
-
+</nav>
 
 
-<!-- First Parallax Image with Logo Text -->
 
-<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
-
+<!-- Hero Section -->
+<header class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-topmiddle w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity" style="white-space:nowrap;">
-    <h1>T.R.M.K Meyer</h1>
+    <h1 data-i18n="hero.title">T.R.M.K Meyer</h1>
+    <p class="w3-medium" data-i18n="hero.subtitle">Embedded Software Developer</p>
   </div>
-
-</div>
-
+</header>
 
 
-<!-- Container (About Section) -->
 
-<div class="w3-content w3-container w3-padding-64" id="about">
+<!-- About Section -->
+<main class="w3-content w3-container w3-padding-64" id="about">
+  <div id="main-content"></div>
+  <h2 class="w3-center" data-i18n="about.heading">ABOUT ME</h2>
+  <p class="w3-center"><strong data-i18n="about.subtitle">Professional Software Developer (M.Sc.)</strong></p>
+  <p class="w3-center"><em data-i18n="about.hobbies">Hobbies: 🧗‍♀️🚴🎸📷👨‍🍳🎮🧑‍💻📖</em></p>
 
-  <h3 class="w3-center">ABOUT ME</h3>
-
-  <p class="w3-center"><b>Professional Software Developer (M. sc)</b></p>
-
-  <p class="w3-center"><em>Hobbies: 🧗‍♀️🚴🎸📷👨‍🍳🎮🧑‍💻📖</em></p>
-
- 
-
-  <p> </p>
-
-  <div class="w3-row">
-
+  <section class="w3-row">
     <div class="w3-col m6 w3-center w3-padding-large">
-
-
-      <img src="./pictures/me/professional.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500">
-
+      <picture>
+      <source type="image/webp" srcset="./pictures/me/professional.webp">
+      <img src="./pictures/me/professional.jpg" alt="Professional photo of Tobias Meyer" class="w3-round w3-image w3-opacity w3-hover-opacity-off" width="500"
+           loading="eager">
+    </picture>
     </div>
-    <!-- Hide this text on small devices -->
 
     <div class="w3-col m6 w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i>T.R.M.K Meyer</b></p>
-      <p>Hey there my name is <b>T</b>obias <b>R</b>aphael <b>M</b>aria <b>K</b>arl <b>M</b>eyer, a seasoned software developer with over a decade of expertise in crafting solutions for low-energy
-      systems. My journey in the realm of embedded systems has been characterized by a dynamic fusion of experiences, from
-      navigating, and designing various radio protocols to mastering Real-Time Operating Systems (RTOS) and bare-metal programming.
+      <p><strong><i class="fa fa-user w3-margin-right" aria-hidden="true"></i><span data-i18n="about.name">T.R.M.K Meyer</span></strong></p>
+      <p data-i18n="about.intro">Hey there my name is <strong>T</strong>obias <strong>R</strong>aphael <strong>M</strong>aria <strong>K</strong>arl <strong>M</strong>eyer, a seasoned software developer with over a decade of expertise in crafting solutions for low-energy systems. My journey in the realm of embedded systems has been characterized by a dynamic fusion of experiences, from navigating, and designing various radio protocols to mastering Real-Time Operating Systems (RTOS) and bare-metal programming.</p>
+
+      <p data-i18n="about.paragraph2">My love for the embedded world stems from the unique challenges it presents. Confronting the constraints of these systems, I find joy in devising creative solutions to address complex problems within the confines of a compact environment. My skill set extends beyond coding, encompassing a comprehensive understanding of agile methodologies, software architecture, and collaborative teamwork.</p>
+
+      <p><span data-i18n="about.paragraph3">Formally educated with a Bachelor's in Electrical Engineering and a Master's in Computer Science, I bring a robust academic foundation to complement my practical experience.</span> <a href="./cv.html"><em data-i18n="about.cvLink">( CV )</em></a></p>
+    </div>
+  </section>
+  <section class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+      <p><strong><i class="fa fa-mountain w3-margin-right" aria-hidden="true"></i><span data-i18n="about.climbingTitle">Climbing / Bouldering / Alpinist</span></strong></p>
+      <p data-i18n="about.climbingText1">Away from the keyboard, my heart finds solace in the majestic embrace of mountains and the exhilarating world of bouldering. The mountains, with their awe-inspiring landscapes and breathtaking views, offer me a sanctuary in nature. What captivates me most is the inherent challenge of ascending these peaks, requiring not just physical strength but a keen ability to assess risks judiciously. It's a thrilling dance with nature's forces, a pursuit that fuels my sense of adventure.</p>
+
+      <p data-i18n="about.climbingText2">In the realm of bouldering, I discover a different kind of challenge—one that's as much mental as it is physical. The joy lies in solving intricate "problems" posed by the boulders, where strength alone isn't the sole answer. It's a fascinating interplay of understanding my body type, leveraging my strengths, and embracing an iterative process to conquer each puzzle. Bouldering, for me, is a journey of self-discovery and perseverance, where the reward isn't just reaching the top but in the intricate problem-solving process that gets me there.</p>
+    </div>
+
+    <div class="w3-col m6 w3-padding-large">
+      <picture>
+      <source type="image/webp" srcset="./pictures/me/glacier.webp">
+      <img src="./pictures/me/glacier.jpg" alt="Glacier trail adventure" class="w3-round w3-image w3-opacity w3-hover-opacity-off" width="500"
+           loading="lazy">
+    </picture>
       <br><br>
-      My love for the embedded world stems from the unique challenges it presents. Confronting the constraints of these
-      systems, I find joy in devising creative solutions to address complex problems within the confines of a compact
-      environment. My skill set extends beyond coding, encompassing a comprehensive understanding of agile methodologies,
-      software architecture, and collaborative teamwork.
-      <br><br>
-      Formally educated with a Bachelor's in Electrical Engineering and a Master's in Computer Science, I bring a robust
-      academic foundation to complement my practical experience. <a href="./cv.html"><em>( CV )</em></a><div class=""></div> 
+      <picture>
+      <source type="image/webp" srcset="./pictures/me/climb.webp">
+      <img src="./pictures/me/climb.JPG" alt="Rock climbing adventure" class="w3-round w3-image w3-opacity w3-hover-opacity-off" width="500"
+           loading="lazy">
+    </picture>
     </div>
-
-  </div>
-  <div class="w3-row">
-  
-    <div class="w3-col m6 w3-center w3-padding-large">
-        <p><b><i class="fa fa-mountain w3-margin-right"></i>Climbing / Bouldering / Alpenist</b></p>
-        Away from the keyboard, my heart finds solace in the majestic embrace of mountains and the exhilarating world of
-        bouldering. The mountains, with their awe-inspiring landscapes and breathtaking views, offer me a sanctuary in nature.
-        What captivates me most is the inherent challenge of ascending these peaks, requiring not just physical strength but a
-        keen ability to assess risks judiciously. It's a thrilling dance with nature's forces, a pursuit that fuels my sense of
-        adventure.
-        <br><br>
-        In the realm of bouldering, I discover a different kind of challenge—one that's as much mental as it is physical. The
-        joy lies in solving intricate "problems" posed by the boulders, where strength alone isn't the sole answer. It's a
-        fascinating interplay of understanding my body type, leveraging my strengths, and embracing an iterative process to
-        conquer each puzzle. Bouldering, for me, is a journey of self-discovery and perseverance, where the reward isn't just
-        reaching the top but in the intricate problem-solving process that gets me there.
-    </div>
+  </section>
+  <section class="w3-row">
     <div class="w3-col m6 w3-padding-large">
-    <img src="./pictures/me/glacier.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Glacier trail"
-      width="500">
-      <br>
-      <img src="./pictures/me/climb.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Climbing"
-        width="500">
-    </div>
-  
-  </div>
-  <div class="w3-row">
-      <div class="w3-col m6 w3-padding-large">
-        <img src="./pictures/me/timmelsjoch.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="timmelsjoch"
-          width="500">
-      </div>
-    <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-bicycle w3-margin-right"></i>Cyling</b></p>
-    I find immense joy in the rhythmic cadence of road biking—a pursuit that encapsulates both local exploration and far-flung
-    adventures. Powered solely by the strength of my legs, each pedal stroke becomes a journey of discovery, unveiling
-    hidden gems in familiar surroundings and uncharted territories alike. There's a unique thrill in navigating the winding
-    roads, feeling the wind caress my face, and immersing myself in the landscapes that unfold with each passing mile.
-    See all my advenutres at <a href="https://www.strava.com/athletes/29812823">Strava</a>
+      <picture>
+      <source type="image/webp" srcset="./pictures/me/timmelsjoch.webp">
+      <img src="./pictures/me/timmelsjoch.jpg" alt="Cycling adventure at Timmelsjoch" class="w3-round w3-image w3-opacity w3-hover-opacity-off" width="500"
+           loading="lazy">
+    </picture>
     </div>
 
-  
-  </div><div class="w3-row">
     <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-carrot w3-margin-right"></i>Cooking & Backing (mostly vegan)</b></p>
-      In my culinary pursuits, I embark on a flavorful journey centered around cooking and baking, with a predominant focus on
-      crafting delicious and wholesome vegan fare. Motivated by a desire to create food that is not only a treat for the taste
-      buds but also nourishing for the body, my kitchen becomes a canvas for plant-based culinary experiments. The choice of a
-      vegan lifestyle stems from a broader commitment to minimizing harm and reducing suffering for all beings on our planet.
-      Each dish is a testament to the belief that cruelty-free living can be a delectable and fulfilling way of life. As I
-      delve into the world of vegan cooking, I discover the boundless creativity that comes with transforming simple,
-      plant-derived ingredients into culinary masterpieces that not only satisfy the palate but also contribute to a more
-      compassionate and sustainable existence. Follow the happy bunny at <a href="https://www.cafetobi.de">Cafe Tobi</a>
+      <p><strong><i class="fa fa-bicycle w3-margin-right" aria-hidden="true"></i><span data-i18n="about.cyclingTitle">Cycling</span></strong></p>
+      <p data-i18n="about.cyclingText">I find immense joy in the rhythmic cadence of road biking—a pursuit that encapsulates both local exploration and far-flung adventures. Powered solely by the strength of my legs, each pedal stroke becomes a journey of discovery, unveiling hidden gems in familiar surroundings and uncharted territories alike. There's a unique thrill in navigating the winding roads, feeling the wind caress my face, and immersing myself in the landscapes that unfold with each passing mile.</p>
+      <p><span data-i18n="about.cyclingLink">See all my adventures at</span> <a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava</a></p>
     </div>
+  </section>  <section class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+      <p><strong><i class="fa fa-carrot w3-margin-right" aria-hidden="true"></i><span data-i18n="about.cookingTitle">Cooking & Baking (mostly vegan)</span></strong></p>
+      <p data-i18n="about.cookingText1">In my culinary pursuits, I embark on a flavorful journey centered around cooking and baking, with a predominant focus on crafting delicious and wholesome vegan fare. Motivated by a desire to create food that is not only a treat for the taste buds but also nourishing for the body, my kitchen becomes a canvas for plant-based culinary experiments.</p>
+
+      <p data-i18n="about.cookingText2">The choice of a vegan lifestyle stems from a broader commitment to minimizing harm and reducing suffering for all beings on our planet. Each dish is a testament to the belief that cruelty-free living can be a delectable and fulfilling way of life. As I delve into the world of vegan cooking, I discover the boundless creativity that comes with transforming simple, plant-derived ingredients into culinary masterpieces that not only satisfy the palate but also contribute to a more compassionate and sustainable existence.</p>
+
+      <p><span data-i18n="about.cookingLink">Follow the happy bunny at</span> <a href="https://www.cafetobi.de" target="_blank" rel="noopener noreferrer">Cafe Tobi</a></p>
+    </div>
+
     <div class="w3-col m6 w3-padding-large">
-      <img src="./pictures/me/pizza.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Making pizza"
-        width="500">
+      <picture>
+      <source type="image/webp" srcset="./pictures/me/pizza.webp">
+      <img src="./pictures/me/pizza.jpg" alt="Making delicious vegan pizza" class="w3-round w3-image w3-opacity w3-hover-opacity-off" width="500"
+           loading="lazy">
+    </picture>
     </div>
-  
-  
+  </section>
+</main>
+
+
+
+<!-- Photography Portfolio Section -->
+<section class="w3-content w3-container w3-padding-64" id="portfolio">
+  <h2 class="w3-center">
+    <a href="https://www.instagram.com/the_tobi_wan88/" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram">
+      <i class="fa-brands fa-instagram w3-hover-opacity" aria-hidden="true"></i>
+    </a>
+    <span data-i18n="portfolio.heading">Photography & Travel</span>
+  </h2>
+  <p class="w3-center"><em data-i18n="portfolio.subtitle">Here are just some collections of pictures from my travels around the world</em></p>
+
+  <!-- Photo Gallery Grid -->
+  <div class="photo-grid w3-row-padding w3-center">
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p1.webp">
+      <img src="./pictures/p1.jpg" alt="Colorful parrot in natural habitat" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
+
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p2.webp">
+      <img src="./pictures/p2.jpg" alt="Monkey in the wild" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
+
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p3.webp">
+      <img src="./pictures/p3.jpg" alt="Mountain hut in scenic landscape" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
+
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p4.webp">
+      <img src="./pictures/p4.jpg" alt="Travel photography" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
+
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p5.webp">
+      <img src="./pictures/p5.jpg" alt="Travel photography" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
+
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p6.webp">
+      <img src="./pictures/p6.jpg" alt="Travel photography" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
+
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p7.webp">
+      <img src="./pictures/p7.jpg" alt="Travel photography" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
+
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p8.webp">
+      <img src="./pictures/p8.jpg" alt="Travel photography" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
+
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p9.webp">
+      <img src="./pictures/p9.JPG" alt="Travel photography" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
+
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p10.webp">
+      <img src="./pictures/p10.JPG" alt="Travel photography" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
+
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p11.webp">
+      <img src="./pictures/p11.JPG" alt="Travel photography" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
+
+    <div class="w3-col m3">
+      <picture>
+      <source type="image/webp" srcset="./pictures/p12.webp">
+      <img src="./pictures/p12.JPG" alt="Travel photography" style="width:100%"
+           onclick="onClick(this)"
+           class="w3-hover-opacity" loading="lazy">
+    </picture>
+    </div>
   </div>
-</div>
+</section>
 
 
 
-<!-- Container (Portfolio Section) -->
-
-<div class="w3-content w3-container w3-padding-64" id="portfolio">
-
-  <h3 class="w3-center"><a href="https://www.instagram.com/the_tobi_wan88/"><i class="fa-brands fa-instagram w3-hover-opacity"></i></a>Photography & Travel</h3>
-
-  <p class="w3-center"><em>Here are just some collections of pictures from my travels around the world<br></em></p><br>
-
-
-
-  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
-
-  <div class="w3-row-padding w3-center">
-
-    <div class="w3-col m3">
-
-      <img src="./pictures/p1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Perrot">
-
-    </div>
-
-
-
-    <div class="w3-col m3">
-
-      <img src="./pictures/p2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Monkey">
-
-    </div>
-
-
-
-    <div class="w3-col m3">
-
-      <img src="./pictures/p3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Montain Hut">
-
-    </div>
-
-
-
-    <div class="w3-col m3">
-
-      <img src="./pictures/p4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
-
-    </div>
-
-  </div>
-
-
-
-  <div class="w3-row-padding w3-center w3-section">
-
-    <div class="w3-col m3">
-
-      <img src="./pictures/p5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
-
-    </div>
-
-
-
-    <div class="w3-col m3">
-
-      <img src="./pictures/p6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
-
-    </div>
-
-
-
-    <div class="w3-col m3">
-
-      <img src="./pictures/p7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
-
-    </div>
-
-
-
-    <div class="w3-col m3">
-
-      <img src="./pictures/p8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
-
-    </div>
-
-
-  </div><div class="w3-row-padding w3-center w3-section">
-  
-    <div class="w3-col m3">
-  
-      <img src="./pictures/p9.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
-  
-    </div>
-  
-  
-  
-    <div class="w3-col m3">
-  
-      <img src="./pictures/p10.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
-  
-    </div>
-  
-  
-  
-    <div class="w3-col m3">
-  
-      <img src="./pictures/p11.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
-  
-    </div>
-  
-  
-  
-    <div class="w3-col m3">
-  
-      <img src="./pictures/p12.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
-  
-    </div>
-  
-  
-  </div>
-
-</div>
-
-
-
-<!-- Modal for full size images on click-->
-
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-
-  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-
+<!-- Modal for full size images -->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-caption">
+  <span class="w3-button w3-large w3-black w3-display-topright"
+        onclick="this.parentElement.style.display='none'"
+        aria-label="Close modal"
+        title="Close Modal Image">
+    <i class="fa fa-times" aria-hidden="true"></i>
+  </span>
   <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-
-    <img id="img01" class="w3-image">
-
+    <img id="img01" class="w3-image" alt="">
     <p id="caption" class="w3-opacity w3-large"></p>
-
   </div>
-
 </div>
 
-
-
-<!-- Third Parallax Image with Portfolio Text -->
-
-<div class="bgimg-3 w3-display-container w3-opacity-min" id="contact">
-
+<!-- Contact Section -->
+<section class="bgimg-3 w3-display-container w3-opacity-min" id="contact">
   <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-white w3-wide">CONTACT</span><br>
+    <span class="w3-xxlarge w3-text-white w3-wide" data-i18n="contact.heading">CONTACT</span>
   </div>
+</section>
 
-</div>
-<div class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <div class="w3-xlarge w3-section">
-    
-    <a href="tobias.meyer@trmk.de" class="w3-large w3-text-white"><i class="fa fa-at w3-hover-opacity"></i></a>
-    <a href="https://www.instagram.com/the_tobi_wan88/"><i class="fa-brands fa-instagram w3-hover-opacity"></i></a>
-    <a href="https://github.com/tobiwan88"><i class="fa-brands fa-github w3-hover-opacity"></i></a>
-    <a href="https://de.linkedin.com/in/tobias-meyer-07413656"><i class="fa-brands fa-linkedin w3-hover-opacity"></i></a>
+<section class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-button w3-light-grey" aria-label="Back to top">
+    <i class="fa fa-arrow-up w3-margin-right" aria-hidden="true"></i><span data-i18n="contact.backToTop">To the top</span>
+  </a>
+
+  <div class="w3-xlarge w3-section contact-links">
+    <a href="mailto:tobias.meyer@trmk.de"
+       class="w3-large w3-text-white"
+       aria-label="Send email to Tobias Meyer">
+      <i class="fa fa-envelope w3-hover-opacity" aria-hidden="true"></i>
+    </a>
+    <a href="https://www.instagram.com/the_tobi_wan88/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Visit Instagram profile">
+      <i class="fa-brands fa-instagram w3-hover-opacity" aria-hidden="true"></i>
+    </a>
+    <a href="https://github.com/tobiwan88"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Visit GitHub profile">
+      <i class="fa-brands fa-github w3-hover-opacity" aria-hidden="true"></i>
+    </a>
+    <a href="https://de.linkedin.com/in/tobias-meyer-07413656"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Visit LinkedIn profile">
+      <i class="fa-brands fa-linkedin w3-hover-opacity" aria-hidden="true"></i>
+    </a>
   </div>
-</div>
+</section>
 
 <!-- Footer -->
-
 <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <p class="w3-display-middle w3-small">
+  <div class="w3-content">
+    <h2>Impressum</h2>
 
-    <h1>Impressum</h1>
-    <p>Angaben gemäß § 5 TMG</p><p>Tobias Meyer<br> 
-      Waldstrasse 12<br> 
-      82008 Unterhaching <br> 
-      </p><p> <strong>Vertreten durch: </strong><br>
-      Tobias Meyer<br>
-      </p><p><strong>Kontakt:</strong> <br>
-      E-Mail: <a href="tobias.meyer@trmk.de">tobias.meyer@trmk.de</a><br></p>
-      <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
-      Tobias Meyer <br> 
-      Waldstrasse 12<br> 
-      82008 Unterhaching <br> </p> <p><strong>Haftungsausschluss: </strong><br><br><strong>Haftung für Inhalte</strong><br><br>
-      Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.<br><br><strong>Haftung für Links</strong><br><br>
-      Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.<br><br><strong>Urheberrecht</strong><br><br>
-      Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.<br><br><strong>Datenschutz</strong><br><br>
-      Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben. <br>
-      Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. <br>
-      Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.<br>
-      </p><br> 
-      Website Impressum erstellt durch <a href="https://www.impressum-generator.de">impressum-generator.de</a> von der <a href="https://www.kanzlei-hasselbach.de/">Kanzlei Hasselbach</a>
-     
+    <div class="w3-row">
+      <div class="w3-col m6">
+        <h3>Angaben gemäß § 5 TMG</h3>
+        <address>
+          Tobias Meyer<br>
+          Warngauer Str 58<br>
+          81539 München<br>
+        </address>
+
+        <p><strong>Vertreten durch:</strong><br>
+        Tobias Meyer</p>
+
+        <p><strong>Kontakt:</strong><br>
+        E-Mail: <a href="mailto:tobias.meyer@trmk.de">tobias.meyer@trmk.de</a></p>
+
+        <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
+        Tobias Meyer<br>
+        Warngauer Str 58<br>
+        81539 München</p>
+      </div>
+
+      <div class="w3-col m6">
+        <h3>Haftungsausschluss</h3>
+        <p><strong>Haftung für Inhalte:</strong><br>
+        Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
+
+        <p><strong>Haftung für Links:</strong><br>
+        Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.</p>
+
+        <p><strong>Datenschutz:</strong><br>
+        Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung wird hiermit ausdrücklich widersprochen.</p>
+      </div>
+    </div>
+
+    <hr class="w3-border-grey w3-margin-top">
+    <p class="w3-small">
+      Website Impressum erstellt durch
+      <a href="https://www.impressum-generator.de" target="_blank" rel="noopener noreferrer">impressum-generator.de</a>
+      von der
+      <a href="https://www.kanzlei-hasselbach.de/" target="_blank" rel="noopener noreferrer">Kanzlei Hasselbach</a>
     </p>
-    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+    <p class="w3-medium">
+      Powered by
+      <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" rel="noopener noreferrer" class="w3-hover-text-green">w3.css</a>
+    </p>
+  </div>
 </footer>
 
- 
+
 
 <script>
-
 // Modal Image Gallery
-
 function onClick(element) {
+  const modal = document.getElementById("modal01");
+  const modalImg = document.getElementById("img01");
+  const caption = document.getElementById("caption");
 
-  document.getElementById("img01").src = element.src;
+  modalImg.src = element.src;
+  modalImg.alt = element.alt;
+  caption.textContent = element.alt;
+  modal.style.display = "block";
 
-  document.getElementById("modal01").style.display = "block";
-
-  var captionText = document.getElementById("caption");
-
-  captionText.innerHTML = element.alt;
-
-}
-
-
-
-// Change style of navbar on scroll
-
-window.onscroll = function() {myFunction()};
-
-function myFunction() {
-
-    var navbar = document.getElementById("myNavbar");
-
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-
-        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
-
-    } else {
-
-        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
-
+  // Add keyboard support for modal
+  modal.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      modal.style.display = 'none';
     }
+  });
 
+  // Focus management for accessibility
+  modal.focus();
 }
 
+// Navbar scroll effect with throttling
+let lastScrollTop = 0;
+let ticking = false;
 
+function updateNavbar() {
+  const navbar = document.getElementById("myNavbar");
+  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
 
-// Used to toggle the menu on small screens when clicking on the menu button
+  if (scrollTop > 100) {
+    navbar.className = "w3-bar w3-card w3-animate-top w3-white";
+  } else {
+    navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+  }
 
+  lastScrollTop = scrollTop;
+  ticking = false;
+}
+
+window.addEventListener('scroll', function() {
+  if (!ticking) {
+    requestAnimationFrame(updateNavbar);
+    ticking = true;
+  }
+});
+
+// Mobile navigation toggle with improved accessibility
 function toggleFunction() {
+  const navDemo = document.getElementById("navDemo");
+  const button = document.querySelector('[aria-controls="navDemo"]');
+  const isExpanded = navDemo.classList.contains("w3-show");
 
-    var x = document.getElementById("navDemo");
-
-    if (x.className.indexOf("w3-show") == -1) {
-
-        x.className += " w3-show";
-
-    } else {
-
-        x.className = x.className.replace(" w3-show", "");
-
-    }
-
+  if (isExpanded) {
+    navDemo.classList.remove("w3-show");
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    navDemo.classList.add("w3-show");
+    button.setAttribute('aria-expanded', 'true');
+  }
 }
 
+// Smooth scrolling for anchor links (fallback for older browsers)
+document.addEventListener('DOMContentLoaded', function() {
+  const links = document.querySelectorAll('a[href^="#"]');
+
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement && targetId !== '#') {
+        e.preventDefault();
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Close mobile nav when clicking on a link
+  const mobileNavLinks = document.querySelectorAll('#navDemo a');
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const navDemo = document.getElementById("navDemo");
+      const button = document.querySelector('[aria-controls="navDemo"]');
+      navDemo.classList.remove("w3-show");
+      button.setAttribute('aria-expanded', 'false');
+    });
+  });
+});
+
+// Lazy loading fallback for older browsers
+if ('loading' in HTMLImageElement.prototype) {
+  // Native lazy loading is supported
+  console.log('Native lazy loading supported');
+} else {
+  // Fallback for older browsers
+  const images = document.querySelectorAll('img[loading="lazy"]');
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src || img.src;
+        img.classList.remove('lazy');
+        imageObserver.unobserve(img);
+      }
+    });
+  });
+
+  images.forEach(img => imageObserver.observe(img));
+}
 </script>
 
-
+<!-- Structured Data (Schema.org) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tobias Raphael Maria Karl Meyer",
+  "alternateName": "T.R.M.K. Meyer",
+  "url": "https://www.trmk.de",
+  "image": "https://www.trmk.de/avatar.jpg",
+  "jobTitle": "Engineering Manager & Senior Firmware Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "KONUX",
+    "url": "https://www.konux.com"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Munich",
+    "addressCountry": "DE"
+  },
+  "email": "tobias.meyer@trmk.de",
+  "sameAs": [
+    "https://www.instagram.com/the_tobi_wan88/",
+    "https://github.com/tobiwan88",
+    "https://de.linkedin.com/in/tobias-meyer-07413656",
+    "https://www.strava.com/athletes/29812823"
+  ],
+  "knowsAbout": ["Embedded Systems", "Firmware Development", "IoT", "C Programming", "C++", "Zephyr RTOS", "LTE-M", "BLE", "Edge AI"]
+}
+</script>
 
 </body>
 

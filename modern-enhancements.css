@@ -1,0 +1,401 @@
+/* Modern Enhancements for TRMK Website */
+/* CSS Custom Properties for consistent theming */
+:root {
+  --primary-color: #000;
+  --secondary-color: #777;
+  --accent-color: #333;
+  --text-light: #fff;
+  --text-dark: #777;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --border-radius: 0.5rem;
+  --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  --transition: all 0.3s ease;
+  --max-width: 1200px;
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Prevent horizontal overflow */
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.w3-row, .w3-row-padding {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Improved focus states for accessibility */
+a:focus,
+button:focus,
+[tabindex]:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+  border-radius: var(--border-radius);
+}
+
+/* Skip link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary-color);
+  color: var(--text-light);
+  padding: 8px;
+  z-index: 1000;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Enhanced navigation */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.w3-bar {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure navigation is visible on mobile */
+@media only screen and (max-width: 600px) {
+  .w3-bar {
+    background-color: #000 !important;
+    width: 100vw !important;
+    max-width: 100% !important;
+  }
+
+  /* Ensure hamburger menu button is visible */
+  .w3-bar .w3-button {
+    color: #fff !important;
+  }
+
+  /* Ensure mobile dropdown menu is visible */
+  #navDemo {
+    background-color: #fff !important;
+    width: 100vw !important;
+    max-width: 100% !important;
+  }
+
+  #navDemo a {
+    color: #000 !important;
+  }
+
+  /* Prevent any horizontal overflow */
+  body, html {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .w3-row-padding {
+    padding: 0 8px !important;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+    padding: 0 !important;
+  }
+
+  /* Ensure parallax images don't cause overflow */
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-position: center center;
+    background-size: cover;
+    width: 100vw;
+    max-width: 100%;
+  }
+}
+
+/* Modern image styling */
+.w3-image {
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  max-width: 100%;
+  height: auto;
+}
+
+.w3-image:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* Modern grid for images */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(512px, 100%), 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+  width: 100%;
+}
+
+/* Enhanced contact section */
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin: var(--spacing-md) 0;
+}
+
+.contact-links a {
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.contact-links a:hover {
+  background-color: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+/* Improved content width and readability */
+.w3-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Prevent all containers from overflowing */
+.w3-container, .w3-panel {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Better typography */
+p {
+  max-width: 65ch;
+  line-height: 1.7;
+}
+
+/* Section spacing */
+section {
+  margin: var(--spacing-lg) 0;
+}
+
+/* Modern parallax with better performance */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  will-change: transform;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Enhanced modal */
+.w3-modal {
+  backdrop-filter: blur(5px);
+}
+
+.w3-modal-content {
+  animation: modalZoom 0.3s ease;
+}
+
+@keyframes modalZoom {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Footer improvements */
+footer {
+  margin-top: var(--spacing-lg);
+}
+
+footer .w3-content {
+  text-align: left;
+}
+
+footer h2, footer h3 {
+  color: var(--text-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+footer address {
+  font-style: normal;
+  line-height: 1.5;
+}
+
+/* Responsive design improvements */
+@media only screen and (max-width: 1024px) {
+  :root {
+    --spacing-lg: 3rem;
+    --spacing-md: 1.5rem;
+  }
+
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+
+  .w3-wide {
+    letter-spacing: 5px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  :root {
+    --spacing-lg: 2rem;
+    --spacing-md: 1rem;
+  }
+
+  .contact-links {
+    gap: var(--spacing-sm);
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: var(--spacing-sm);
+  }
+
+  /* Ensure content doesn't overflow */
+  .w3-content {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+  .w3-wide {
+    letter-spacing: 2px;
+  }
+
+  .bgimg-1 h1 {
+    font-size: 2rem;
+  }
+
+  footer .w3-row .w3-col {
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .contact-links a {
+    min-width: 40px;
+    min-height: 40px;
+    padding: var(--spacing-xs);
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Print styles */
+@media print {
+  .w3-top,
+  .contact-links,
+  .w3-modal {
+    display: none !important;
+  }
+
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background: none !important;
+    color: var(--primary-color) !important;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --box-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  }
+
+  .w3-image {
+    border: 2px solid var(--primary-color);
+  }
+}
+
+/* i18n and Accessibility Utilities */
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Language selector styling */
+#language-selector {
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition);
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+
+#language-selector option {
+  background-color: #000;
+  color: #fff;
+}
+
+#language-selector:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#language-selector:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Responsive language selector */
+@media only screen and (max-width: 600px) {
+  #language-selector {
+    font-size: 0.9rem;
+    padding: 4px !important;
+    color: #fff;
+    border-color: #fff;
+  }
+}
