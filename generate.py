@@ -70,23 +70,23 @@ def main():
                         )
                         # Add a custom class to all <pre> tags for blog code blocks
                         html_content = re.sub(r'<pre>', '<pre class="blog-code-block">', html_content)
-                        
+
                         # Wrap images in figure tags with captions from alt text
                         def add_figure_captions(html):
                             # Match <img> tags and extract alt text and other attributes
                             img_pattern = r'<img\s+([^>]*?)alt="([^"]+)"([^>]*?)>'
-                            
+
                             def replace_img(match):
                                 before_alt = match.group(1)
                                 alt_text = match.group(2)
                                 after_alt = match.group(3)
                                 img_tag = f'<img {before_alt}alt="{alt_text}"{after_alt}>'
                                 return f'<figure class="blog-image-figure">\n  {img_tag}\n  <figcaption>{alt_text}</figcaption>\n</figure>'
-                            
+
                             return re.sub(img_pattern, replace_img, html)
-                        
+
                         html_content = add_figure_captions(html_content)
-                        
+
                         # Remove <p> tags around figures (MD wraps images in <p>, but figures shouldn't be in <p>)
                         html_content = re.sub(r'<p>(<figure class="blog-image-figure">.*?</figure>)</p>', r'\1', html_content, flags=re.DOTALL)
 

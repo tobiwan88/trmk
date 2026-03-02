@@ -63,7 +63,7 @@ Mehr Inhalt hier.""")
 
         with open("templates/archive.html", "w") as f:
             f.write('{% extends "base.html" %}{% block content %}<ul>{% for post in posts %}<li><a href="{{ post.slug }}.html">{{ post.title }}</a></li>{% endfor %}</ul>{% endblock %}')
-        
+
         with open("static/style.css", "w") as f:
             f.write("body { color: red; }")
 
@@ -124,7 +124,7 @@ Mehr Inhalt hier.""")
             code_section_start = content.find('<pre class="blog-code-block">')
             code_section_end = content.find('</pre>', code_section_start)
             code_section = content[code_section_start:code_section_end]
-            
+
             # Count newlines in the code section - there should be at least 3 (one after each line)
             newline_count = code_section.count('\n')
             self.assertGreater(newline_count, 2, "Code block should have multiple lines separated by newlines")

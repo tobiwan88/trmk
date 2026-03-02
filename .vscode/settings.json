@@ -1,0 +1,13 @@
+{
+	"chat.tools.terminal.autoApprove": {
+		"pyenv": true,
+		"/^source \"\\$\\(pyenv root\\)/versions/misc/bin/activate\" && python generate\\.py$/": {
+			"approve": true,
+			"matchCommandLine": true
+		},
+		"/^source \"\\$\\(pyenv root\\)/versions/misc/bin/activate\" && python -m pytest test_generate\\.py -v$/": {
+			"approve": true,
+			"matchCommandLine": true
+		}
+	}
+}
