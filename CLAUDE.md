@@ -47,7 +47,8 @@ trmk/
 ├── pictures/               # Images
 ├── fonts/                  # Self-hosted Lato font
 ├── generate.py             # Blog generator script
-└── requirements.txt        # Python dependencies (Jinja2, Markdown, PyYAML)
+├── pyproject.toml          # Python dependencies (uv)
+└── requirements.txt        # Legacy dependency list (pyproject.toml is source of truth)
 ```
 
 ## CSS Architecture
@@ -131,8 +132,7 @@ Post content in Markdown format...
 
 **3. Generate static blog:**
 ```bash
-source "$(pyenv root)/versions/misc/bin/activate"
-python3 generate.py
+uv run python3 generate.py
 ```
 
 ### Blog Generator Logic (`generate.py`)
@@ -203,15 +203,14 @@ python3 generate.py
 python3 -m http.server 8000
 
 # Generate blog
-source "$(pyenv root)/versions/misc/bin/activate"
-python3 generate.py
+uv run python3 generate.py
 
 # Visit http://localhost:8000
 ```
 
 ### Blog Workflow
 1. Create/edit `.md` files in `blog_entries/en/` and `blog_entries/de/`
-2. Run `python3 generate.py`
+2. Run `uv run python3 generate.py`
 3. Preview at `http://localhost:8000/blog/`
 4. Commit and deploy `blog/` directory
 
@@ -331,7 +330,7 @@ All pages have:
 **Adding blog post:**
 - [ ] Create `.md` in `blog_entries/en/` (and `de/` for translation)
 - [ ] Add frontmatter (title, date)
-- [ ] Run `python3 generate.py`
+- [ ] Run `uv run python3 generate.py`
 - [ ] Preview locally
 - [ ] Commit `blog/` directory
 
@@ -351,8 +350,7 @@ python3 -m http.server 8000
 
 **Generate blog:**
 ```bash
-source "$(pyenv root)/versions/misc/bin/activate"
-python3 generate.py
+uv run python3 generate.py
 ```
 
 **Key files to edit:**

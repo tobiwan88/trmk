@@ -43,101 +43,45 @@ def main():
         for filename in os.listdir(lang_dir):
             if filename.endswith(".md"):
                 filepath = os.path.join(lang_dir, filename)
-                try:
-                    with open(filepath, "r", encoding="utf-8") as f:
-                        content = f.read()
+                with open(filepath, "r", encoding="utf-8") as f:
+                    content = f.read()
 
-                        # --- Parse Frontmatter and Markdown ---
-                        if content.startswith("---"):
-                            parts = content.split("---", 2)
-                            frontmatter = yaml.safe_load(parts[1])
-                            md_content = parts[2]
-                        else:
-                            frontmatter = {}
-                            md_content = content
+                    # --- Parse Frontmatter and Markdown ---
+                    if content.startswith("---"):
+                        parts = content.split("---", 2)
+                        frontmatter = yaml.safe_load(parts[1])
+                        md_content = parts[2]
+                    else:
+                        frontmatter = {}
+                        md_content = content
 
-                        # --- Convert Markdown to HTML ---
-                        html_content = markdown.markdown(
-                            md_content,
-                            extensions=["fenced_code", "codehilite"],
-                            extension_configs={
-                                "codehilite": {
-                                    "guess_lang": False,
-                                    "noclasses": False,
-                                }
-                            },
-                            output_format="html5"
-                        )
-                        # Add a custom class to all <pre> tags for blog code blocks
-                        html_content = re.sub(r'<pre>', '<pre class="blog-code-block">', html_content)
+                    # --- Convert Markdown to HTML ---
+                    html_content = markdown.markdown(md_content, extensions=['fenced_code', 'tables'])
 
-                        # Wrap images in figure tags with captions from alt text
-                        def add_figure_captions(html):
-                            # Match <img> tags and extract alt text and other attributes
-                            img_pattern = r'<img\s+([^>]*?)alt="([^"]+)"([^>]*?)>'
+                    # --- Extract slug from filename ---
+                    # Format: YYYY-MM-DD-slug-name.md -> slug-name
+                    match = re.match(r'\d{4}-\d{2}-\d{2}-(.+)\.md', filename)
+                    if match:
+                        base_slug = match.group(1)
+                    else:
+                        # Fallback: use filename without extension
+                        base_slug = os.path.splitext(filename)[0]
 
-                            def replace_img(match):
-                                before_alt = match.group(1)
-                                alt_text = match.group(2)
-                                after_alt = match.group(3)
-                                img_tag = f'<img {before_alt}alt="{alt_text}"{after_alt}>'
-                                return f'<figure class="blog-image-figure">\n  {img_tag}\n  <figcaption>{alt_text}</figcaption>\n</figure>'
+                    # Create language-specific slug for URL
+                    url_slug = f"{base_slug}-{lang}"
 
-                            return re.sub(img_pattern, replace_img, html)
-
-                        html_content = add_figure_captions(html_content)
-
-                        # Remove <p> tags around figures (MD wraps images in <p>, but figures shouldn't be in <p>)
-                        html_content = re.sub(r'<p>(<figure class="blog-image-figure">.*?</figure>)</p>', r'\1', html_content, flags=re.DOTALL)
-
-                        # --- Extract slug from filename ---
-                        # Format: YYYY-MM-DD-slug-name.md -> slug-name
-                        match = re.match(r'\d{4}-\d{2}-\d{2}-(.+)\.md', filename)
-                        if match:
-                            base_slug = match.group(1)
-                        else:
-                            # Fallback: use filename without extension
-                            base_slug = os.path.splitext(filename)[0]
-
-                        # Create language-specific slug for URL
-                        url_slug = f"{base_slug}-{lang}"
-
-                        # --- Create Post Data ---
-                        post = {
-                            "title": frontmatter.get("title", "Untitled"),
-                            "date": frontmatter.get("date", "No Date"),
-                            "content": html_content,
-                            "slug": url_slug,  # URL slug with language suffix
-                            "base_slug": base_slug,  # Base slug for finding translations
-                            "lang": lang,
-                            "translations": {}  # Will be filled later
-                        }
-                        posts.append(post)
-                        posts_by_slug[base_slug][lang] = post
-                except Exception as e:
-                    # Try to get the line number if possible
-                    error_line = None
-                    if hasattr(e, 'problem_mark') and hasattr(e.problem_mark, 'line'):
-                        error_line = e.problem_mark.line + 1
-                    print(f"\n❌ [ERROR] Failed to parse '{filepath}'")
-                    if error_line:
-                        print(f"  Error at line {error_line}")
-                    print(f"  {type(e).__name__}: {e}")
-                    # Optionally, print a snippet of the file around the error
-                    if error_line:
-                        try:
-                            with open(filepath, "r", encoding="utf-8") as f2:
-                                lines = f2.readlines()
-                                start = max(0, error_line-3)
-                                end = min(len(lines), error_line+2)
-                                print("  Context:")
-                                for i in range(start, end):
-                                    pointer = "-->" if (i+1) == error_line else "   "
-                                    print(f"  {pointer} {i+1}: {lines[i].rstrip()}")
-                        except Exception:
-                            pass
-                    print("")
-                    continue
+                    # --- Create Post Data ---
+                    post = {
+                        "title": frontmatter.get("title", "Untitled"),
+                        "date": frontmatter.get("date", "No Date"),
+                        "content": html_content,
+                        "slug": url_slug,  # URL slug with language suffix
+                        "base_slug": base_slug,  # Base slug for finding translations
+                        "lang": lang,
+                        "translations": {}  # Will be filled later
+                    }
+                    posts.append(post)
+                    posts_by_slug[base_slug][lang] = post
 
     # Link translations together
     for base_slug, translations in posts_by_slug.items():
@@ -174,15 +118,17 @@ def main():
 
     # --- Generate Index Pages (one per language + unified) ---
     # Unified index (default English)
-    index_output_path = os.path.join(OUTPUT_DIR, "index.html")
     if posts:
         # Get newest post in English, fallback to any language
         en_posts = posts_by_lang.get("en", [])
         newest_post = en_posts[0] if en_posts else posts[0]
+
+        index_output_path = os.path.join(OUTPUT_DIR, "index.html")
         with open(index_output_path, "w", encoding="utf-8") as f:
             f.write(index_template.render(post=newest_post, title=newest_post['title']))
     else:
         # Handle case where there are no posts
+        index_output_path = os.path.join(OUTPUT_DIR, "index.html")
         with open(index_output_path, "w", encoding="utf-8") as f:
             f.write(index_template.render(title="No Posts Yet", no_posts=True))
 

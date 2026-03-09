@@ -875,28 +875,6 @@ footer address {
   margin: var(--spacing-md) 0;
 }
 
-/* Blog image figures with captions */
-.blog-post-content figure.blog-image-figure {
-  margin: var(--spacing-lg) 0;
-  text-align: center;
-}
-
-.blog-post-content figure.blog-image-figure img {
-  margin: 0;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.blog-post-content figure.blog-image-figure figcaption {
-  margin-top: var(--spacing-xs);
-  font-size: 0.9em;
-  color: var(--secondary-color);
-  font-style: italic;
-  text-align: center;
-  padding: 0 var(--spacing-sm);
-}
-
 .blog-post-content blockquote {
   border-left: 4px solid #009688;
   padding-left: var(--spacing-md);
@@ -924,70 +902,13 @@ footer address {
   border-radius: var(--border-radius);
   overflow-x: auto;
   margin: var(--spacing-md) 0;
-  white-space: pre;
-  word-wrap: normal;
-  word-break: normal;
 }
 
 .blog-post-content pre code {
   background: transparent;
   padding: 0;
   color: inherit;
-  white-space: pre;
 }
-
-/* Code blocks with syntax highlighting */
-.blog-post-content .codehilite {
-  margin: var(--spacing-md) 0;
-  border-radius: var(--border-radius);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  overflow: hidden;
-}
-
-.blog-post-content .codehilite pre {
-  margin: 0;
-  border-radius: 0;
-}
-
-.blog-post-content pre.blog-code-block {
-  background: #23272e;
-  color: #f8f8f2;
-  font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', 'Courier New', monospace;
-  font-size: 0.95em;
-  line-height: 1.6;
-  padding: 1.2em;
-  border-radius: var(--border-radius);
-  margin: var(--spacing-md) 0;
-  overflow-x: auto;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  white-space: pre;
-  word-break: normal;
-  word-wrap: normal;
-}
-
-.blog-post-content pre.blog-code-block code {
-  background: none;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  padding: 0;
-  border: none;
-  white-space: pre;
-}
-
-/* Syntax highlighting colors */
-.blog-post-content .codehilite .hll { background-color: #49483e }
-.blog-post-content .codehilite .c { color: #75715e } /* Comment */
-.blog-post-content .codehilite .cm { color: #75715e } /* Comment.Multiline */
-.blog-post-content .codehilite .k { color: #66d9ef } /* Keyword */
-.blog-post-content .codehilite .kt { color: #66d9ef } /* Keyword.Type */
-.blog-post-content .codehilite .n { color: #f8f8f2 } /* Name */
-.blog-post-content .codehilite .nc { color: #a6e22e } /* Name.Class */
-.blog-post-content .codehilite .nf { color: #a6e22e } /* Name.Function */
-.blog-post-content .codehilite .s { color: #e6db74 } /* Literal.String */
-.blog-post-content .codehilite .mi { color: #ae81ff } /* Literal.Number.Integer */
-.blog-post-content .codehilite .p { color: #f8f8f2 } /* Punctuation */
-.blog-post-content .codehilite .w { color: #f8f8f2 } /* Text.Whitespace */
 
 .blog-post-content table {
   width: 100%;
@@ -1159,10 +1080,6 @@ footer address {
 
   .blog-post-content table tr:nth-child(even) {
     background: #2a2a2a;
-  }
-
-  .blog-post-content figure.blog-image-figure figcaption {
-    color: #999;
   }
 
   .archive-item .date-badge {
