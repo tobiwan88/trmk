@@ -25,8 +25,8 @@ The setup follows a three-stage build to keep the final image lean:
 ```dockerfile
 # syntax=docker/dockerfile:1.7
 ARG DEBIAN_VERSION=trixie-slim
-ARG ZEPHYR_VERSION=v4.3.0
-ARG TOOLCHAIN_VERSION=0.17.4
+ARG ZEPHYR_VERSION=v4.4.0
+ARG TOOLCHAIN_VERSION=1.0.1
 ARG TOOLCHAINS=arm-zephyr-eabi
 
 # --- STAGE 1: BASE OS & GUI TOOLS ---
