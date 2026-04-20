@@ -4,14 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="meta.titleCV">Tobias R.M.K. Meyer - CV</title>
-  <meta name="description" content="CV of Tobias R.M.K. Meyer, Engineering Manager & Senior Firmware Developer. Expertise in embedded systems, IoT, team leadership, and industrial sensor development for railway infrastructure." data-i18n-content="meta.descriptionCV">
+  <meta name="description" content="CV of Tobias R.M.K. Meyer, Engineering Manager &amp; Senior Firmware Developer. Expertise in embedded systems, IoT, team leadership, and industrial sensor development for railway infrastructure." data-i18n-content="meta.descriptionCV">
   <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#1C2A38">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://www.trmk.de/cv.html">
   <meta property="og:title" content="Tobias R.M.K. Meyer - CV">
-  <meta property="og:description" content="Engineering Manager & Senior Firmware Developer with 10+ years of expertise in embedded systems, IoT, and team leadership.">
+  <meta property="og:description" content="Engineering Manager &amp; Senior Firmware Developer with 10+ years of expertise in embedded systems, IoT, and team leadership.">
   <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="de_DE">
@@ -19,14 +20,15 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tobias R.M.K. Meyer - CV">
-  <meta name="twitter:description" content="Engineering Manager & Senior Firmware Developer with 10+ years of expertise in embedded systems, IoT, and team leadership.">
+  <meta name="twitter:description" content="Engineering Manager &amp; Senior Firmware Developer with 10+ years of expertise in embedded systems, IoT, and team leadership.">
   <meta name="twitter:image" content="https://www.trmk.de/avatar.jpg">
 
-  <!-- Canonical URL -->
+  <!-- Canonical & language -->
   <link rel="canonical" href="https://www.trmk.de/cv.html">
-
-  <!-- Color scheme support -->
   <meta name="color-scheme" content="light dark">
+  <link rel="alternate" hreflang="en" href="https://www.trmk.de/cv.html">
+  <link rel="alternate" hreflang="de" href="https://www.trmk.de/cv.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.trmk.de/cv.html">
 
   <!-- Favicons & PWA -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -35,289 +37,294 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest">
 
-  <!-- Language metadata -->
-  <link rel="alternate" hreflang="en" href="https://www.trmk.de/cv.html">
-  <link rel="alternate" hreflang="de" href="https://www.trmk.de/cv.html">
-  <link rel="alternate" hreflang="x-default" href="https://www.trmk.de/cv.html">
-
-  <!-- Preload critical resources -->
-  <link rel="preload" href="./fonts/lato.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Preload primary font -->
+  <link rel="preload" href="./fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="./w3.css">
-  <link rel="stylesheet" href="./lato.css">
+  <link rel="stylesheet" href="./css/fonts.css">
+  <link rel="stylesheet" href="./css/site.css">
+  <link rel="stylesheet" href="./css/cv.css">
   <link rel="stylesheet" href="./css/all.css">
-  <link rel="stylesheet" href="./modern-enhancements.css">
 
-  <!-- i18n Scripts -->
+  <!-- i18n -->
   <script src="./js/translations.js" defer></script>
   <script src="./js/i18n.js" defer></script>
-
-  <style>
-    html,body,h1,h2,h3,h4,h5,h6 {
-      font-family: "Lato", sans-serif;
-    }
-  </style>
 </head>
-<body class="w3-light-grey">
-  <!-- Skip link for accessibility -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+<body>
 
-  <!-- Navigation -->
-  <nav class="w3-top" role="navigation" aria-label="Main navigation">
-    <div class="w3-bar" id="myNavbar">
-      <button class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
-              onclick="toggleFunction()"
-              aria-label="Toggle Navigation Menu"
-              aria-expanded="false"
-              aria-controls="navDemo">
-        <i class="fa fa-bars" aria-hidden="true"></i>
+<!-- Skip link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ============== NAV ============== -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap inner">
+    <a href="./index.html" class="nav-logo">
+      <span class="led" aria-hidden="true"></span>
+      <span>T.R.M.K / MEYER</span>
+    </a>
+
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="./index.html#about" data-i18n="nav.about">About</a></li>
+      <li><a href="./index.html#life" data-i18n="nav.outside">Outside</a></li>
+      <li><a href="./index.html#photo" data-i18n="nav.photography">Photography</a></li>
+      <li><a href="./cv.html" class="active" data-i18n="nav.cv">CV</a></li>
+      <li><a href="./freelancing.html" data-i18n="nav.consulting">Consulting</a></li>
+      <li><a href="./blog/index.html" data-i18n="nav.blog">Blog</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+        <span class="lang-opt active" id="lang-en">EN</span>
+        <span style="color: var(--rule);">/</span>
+        <span class="lang-opt" id="lang-de">DE</span>
       </button>
-      <a href="./index.html#about" class="w3-bar-item w3-button"><span data-i18n="nav.about">ABOUT</span></a>
-      <a href="./index.html#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
-      <a href="./freelancing.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-briefcase" aria-hidden="true"></i> <span data-i18n="nav.consulting">CONSULTING</span></a>
-      <a href="./cv.html" class="w3-bar-item w3-button w3-hide-small w3-teal"><i class="fa fa-file-text" aria-hidden="true"></i> <span data-i18n="nav.cv">CV</span></a>
-      <a href="./blog/index.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa-brands fa-wordpress" aria-hidden="true"></i> <span data-i18n="nav.blog">BLOG</span></a>
-      <a href="./index.html#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
-      <a href="./index.html#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope" aria-hidden="true"></i> <span data-i18n="nav.contact">CONTACT</span></a>
-      <select id="language-selector"
-              class="w3-select w3-bar-item"
-              style="width:auto; background:transparent; color:inherit; border:1px solid currentColor; padding:6px;"
-              aria-label="Select language">
-        <option value="en">EN</option>
-        <option value="de">DE</option>
-      </select>
+      <button class="nav-hamburger" id="nav-hamburger"
+              aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </div>
+</nav>
 
-    <!-- Mobile navigation -->
-    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium" role="menu">
-      <a href="./index.html#about" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-user" aria-hidden="true"></i> <span data-i18n="nav.about">ABOUT</span></a>
-      <a href="./index.html#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
-      <a href="./index.html#contact" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-envelope" aria-hidden="true"></i> <span data-i18n="nav.contact">CONTACT</span></a>
-      <a href="./freelancing.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-briefcase" aria-hidden="true"></i> <span data-i18n="nav.consulting">CONSULTING</span></a>
-      <a href="./cv.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-file-text" aria-hidden="true"></i> <span data-i18n="nav.cv">CV</span></a>
-      <a href="./blog/index.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa-brands fa-wordpress" aria-hidden="true"></i> <span data-i18n="nav.blog">BLOG</span></a>
-      <div class="w3-bar-item" style="padding: 8px 16px;">
-        <select id="language-selector-mobile"
-                class="w3-select"
-                style="width:100%; background:#f1f1f1; color:#000; border:1px solid #ccc; padding:8px;"
-                aria-label="Select language">
-          <option value="en">English</option>
-          <option value="de">Deutsch</option>
-        </select>
-      </div>
-    </div>
-  </nav>
+<!-- ============== CV CONTENT ============== -->
+<main id="main-content">
+  <div class="cv-wrap">
 
-<!-- Page Container -->
-<div class="w3-content w3-padding-64" style="max-width:1400px;" id="main-content">
-
-  <!-- CV Header -->
-  <header class="cv-header">
-    <div class="cv-photo-container">
+    <!-- CV Header -->
+    <header class="cv-header">
       <picture>
         <source type="image/webp" srcset="./cv_avatar.webp">
-        <picture>
-      <source type="image/webp" srcset="./cv_avatar.webp">
-      <img src="./cv_avatar.jpg" alt="Tobias R.M.K. Meyer" class="cv-photo" width="150" height="150" loading="eager">
-    </picture>
+        <img src="./cv_avatar.jpg" alt="Tobias R.M.K. Meyer" class="cv-photo" width="120" height="120" loading="eager">
       </picture>
+      <div class="cv-intro">
+        <h1>Tobias R.M.K. Meyer</h1>
+        <p class="cv-title" data-i18n="cv.jobTitle">Engineering Manager</p>
+        <div class="cv-contact">
+          <span><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:tobias.meyer@trmk.de">tobias.meyer@trmk.de</a></span>
+          <span><i class="fa fa-map-marker" aria-hidden="true"></i> <span data-i18n="cv.location">Munich, Germany</span></span>
+          <span><i class="fa-brands fa-linkedin" aria-hidden="true"></i> <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
+          <span><i class="fa-brands fa-github" aria-hidden="true"></i> <a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Skills -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">
+        <i class="fa fa-code" aria-hidden="true"></i>
+        <span data-i18n="cv.skills">Technical Skills</span>
+      </h2>
+      <div class="skill-categories">
+        <div class="skill-category">
+          <h3 data-i18n="cv.programmingLanguages">Programming Languages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag advanced">C</span>
+            <span class="skill-tag advanced">C++</span>
+            <span class="skill-tag intermediate">Python</span>
+            <span class="skill-tag intermediate">C#</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 data-i18n="cv.protocolsAndSystems">Protocols &amp; Systems</h3>
+          <div class="skill-tags">
+            <span class="skill-tag advanced">LTE-M</span>
+            <span class="skill-tag advanced">BLE</span>
+            <span class="skill-tag advanced">Zephyr RTOS</span>
+            <span class="skill-tag intermediate">Zigbee</span>
+            <span class="skill-tag intermediate">Thread</span>
+            <span class="skill-tag intermediate">LoRa</span>
+            <span class="skill-tag intermediate">EnOcean</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 data-i18n="cv.leadershipAndManagement">Leadership &amp; Management</h3>
+          <div class="skill-tags">
+            <span class="skill-tag advanced">Team Leadership</span>
+            <span class="skill-tag advanced">OKR Planning</span>
+            <span class="skill-tag advanced">Technical Strategy</span>
+            <span class="skill-tag advanced">Engineering Management</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 data-i18n="cv.languages">Languages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag advanced">German (Native)</span>
+            <span class="skill-tag advanced">English (Fluent)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">
+        <i class="fa fa-suitcase" aria-hidden="true"></i>
+        <span data-i18n="cv.workExperience">Work Experience</span>
+      </h2>
+
+      <article class="experience-card">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h3>Engineering Manager — Device Team</h3>
+            <p class="company"><a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a></p>
+          </div>
+          <div class="experience-date">
+            <span class="date-badge current">July 2025 – Present</span>
+          </div>
+        </div>
+        <div class="experience-content">
+          <p>As Engineering Manager of the Device Team at KONUX, I lead the development of embedded systems that power our industrial IoT solutions for the railway sector.</p>
+          <ul>
+            <li><strong>Technical Leadership:</strong> Defining and delivering firmware architecture, setting technical roadmap for embedded systems</li>
+            <li><strong>Strategic Planning:</strong> Translating business objectives into executable technical plans through quarterly OKR planning</li>
+            <li><strong>People Management:</strong> Fostering collaborative, ownership-driven culture while empowering team growth and problem-solving</li>
+            <li><strong>End-to-End Delivery:</strong> Overseeing architecture, implementation, team processes, and budget planning</li>
+            <li><strong>Engineering Excellence:</strong> Ensuring alignment with security, maintainability, and best practices</li>
+            <li><strong>Cross-functional Collaboration:</strong> Working with stakeholders and engineering leaders to align product vision with daily execution</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h3>Senior Firmware Developer</h3>
+            <p class="company"><a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a></p>
+          </div>
+          <div class="experience-date">
+            <span class="date-badge">Sept 2020 – July 2025</span>
+          </div>
+        </div>
+        <div class="experience-content">
+          <p>Developed rugged, intelligent sensor systems for predictive maintenance on rail infrastructure, bridging hardware, firmware, and connectivity.</p>
+          <ul>
+            <li><strong>Bare-metal C++ IIoT sensor development:</strong> Engineered compact, battery-powered C++-based sensors running directly on microcontrollers for field deployment</li>
+            <li><strong>Zephyr RTOS architecture:</strong> Designed and launched multiple sensor generations leveraging Zephyr RTOS — building scalable, modular firmware for industrial IoT</li>
+            <li><strong>Cellular connectivity (LTE-M):</strong> Integrated energy-efficient LTE-M modems to reliably transmit sensor data from remote locations</li>
+            <li><strong>BLE research:</strong> Researched BLE for alternative communication protocols</li>
+            <li><strong>Edge-AI research &amp; prototyping:</strong> Developed on-device ML models for anomaly detection and predictive maintenance</li>
+            <li><strong>Diverse sensor and bus systems:</strong> Vibration, temperature, and pressure sensors via SPI, I²C, UART</li>
+            <li><strong>Standards &amp; certifications:</strong> Compliance research for the EU's Cyber Resilience Act, CE marking</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h3>Software Engineer</h3>
+            <p class="company"><a href="https://www.enocean.com" target="_blank" rel="noopener noreferrer">EnOcean</a></p>
+          </div>
+          <div class="experience-date">
+            <span class="date-badge">April 2015 – Aug 2020</span>
+          </div>
+        </div>
+        <div class="experience-content">
+          <ul>
+            <li>Firmware development for energy harvesting devices and radio stacks (BLE / EnOcean / Zigbee) in C/C++</li>
+            <li>Architecture and software design</li>
+            <li>Specification of protocol stacks and work for the EnOcean Alliance</li>
+            <li>Continuous integration and testing systems based on pytest, Jenkins, and Raspberry Pis</li>
+            <li>Planning of projects and internal quality standards</li>
+            <li>PC tools: DolphinView and EnOcean Link</li>
+            <li>Supervising students</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h3>Intern — Software Department</h3>
+            <p class="company"><a href="https://www.enocean.com" target="_blank" rel="noopener noreferrer">EnOcean</a></p>
+          </div>
+          <div class="experience-date">
+            <span class="date-badge">Jan 2010 – March 2015</span>
+          </div>
+        </div>
+        <div class="experience-content">
+          <ul>
+            <li>Internal webpages development (PHP)</li>
+            <li>Statistics tool for production data (WPF/C#)</li>
+            <li>Automated testing for peripheral interfaces of the 8051-DolphinChip</li>
+            <li>Firmware for various µCs (MSP430 / PIC / DolphinChip) in assembly, C, and C++</li>
+            <li>Small PC tools in C#/.NET and C++</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- Education -->
+    <section class="cv-section">
+      <h2 class="cv-section-title">
+        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        <span data-i18n="cv.education">Education</span>
+      </h2>
+
+      <div class="education-item">
+        <h3>Master of Science in Computer Science</h3>
+        <p><i class="fa fa-university" aria-hidden="true"></i> University of Applied Science</p>
+        <p><i class="fa fa-calendar" aria-hidden="true"></i> 2013 – 2015</p>
+        <p><i class="fa fa-book" aria-hidden="true"></i> <strong>Master Thesis:</strong> "Firmware over the air updates with EnOcean energy harvested protocol"</p>
+      </div>
+
+      <div class="education-item">
+        <h3>Bachelor of Science in Electrical Engineering</h3>
+        <p><i class="fa fa-university" aria-hidden="true"></i> University of Applied Science</p>
+        <p><i class="fa fa-calendar" aria-hidden="true"></i> 2010 – 2013</p>
+        <p><i class="fa fa-book" aria-hidden="true"></i> <strong>Bachelor Thesis:</strong> "An energy harvesting ZigBee Switch"</p>
+      </div>
+    </section>
+
+  </div><!-- /cv-wrap -->
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap">
+    <div>
+      <h3>Get in touch</h3>
+      <h2>Happy to talk embedded systems or firmware.</h2>
+      <p style="margin-top: 16px;"><a href="mailto:tobias.meyer@trmk.de" style="font-size: 18px;">tobias.meyer@trmk.de</a></p>
     </div>
-    <div class="cv-intro">
-      <h1>Tobias R.M.K. Meyer</h1>
-      <p class="cv-title" data-i18n="cv.jobTitle">Engineering Manager</p>
-      <div class="cv-contact">
-        <span><i class="fa fa-envelope" aria-hidden="true"></i> tobias.meyer@trmk.de</span>
-        <span><i class="fa fa-home" aria-hidden="true"></i> <span data-i18n="cv.location">Munich, Germany</span></span>
-      </div>
+    <div>
+      <h3 data-i18n="footer.elsewhereHeading">Elsewhere</h3>
+      <ul>
+        <li><a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava</a></li>
+        <li><a href="./index.html" data-i18n="nav.about">Back to site</a></li>
+      </ul>
     </div>
-  </header>
-
-  <!-- Skills Section -->
-  <section class="cv-skills">
-    <h2 data-i18n="cv.skills">Technical Skills</h2>
-    <div class="skill-categories">
-      <div class="skill-category">
-        <h3 data-i18n="cv.programmingLanguages">Programming Languages</h3>
-        <div class="skill-tags">
-          <span class="skill-tag advanced">C</span>
-          <span class="skill-tag advanced">C++</span>
-          <span class="skill-tag intermediate">Python</span>
-          <span class="skill-tag intermediate">C#</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <h3 data-i18n="cv.protocolsAndSystems">Protocols & Systems</h3>
-        <div class="skill-tags">
-          <span class="skill-tag advanced">LTE-M</span>
-          <span class="skill-tag advanced">BLE</span>
-          <span class="skill-tag advanced">Zephyr RTOS</span>
-          <span class="skill-tag intermediate">Zigbee</span>
-          <span class="skill-tag intermediate">Thread</span>
-          <span class="skill-tag intermediate">LoRa</span>
-          <span class="skill-tag intermediate">EnOcean</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <h3 data-i18n="cv.leadershipAndManagement">Leadership & Management</h3>
-        <div class="skill-tags">
-          <span class="skill-tag advanced">Team Leadership</span>
-          <span class="skill-tag advanced">OKR Planning</span>
-          <span class="skill-tag advanced">Technical Strategy</span>
-          <span class="skill-tag advanced">Engineering Management</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <h3 data-i18n="cv.languages">Languages</h3>
-        <div class="skill-tags">
-          <span class="skill-tag advanced">German (Native)</span>
-          <span class="skill-tag advanced">English (Fluent)</span>
-        </div>
-      </div>
+    <div>
+      <h3 data-i18n="footer.basedHeading">Based</h3>
+      <ul>
+        <li><span class="lbl">City</span> Munich, DE</li>
+        <li><span class="lbl">Lang</span> EN · DE</li>
+      </ul>
     </div>
-  </section>
-
-  <!-- Work Experience Section -->
-  <section class="cv-experience">
-    <h2><i class="fa fa-suitcase fa-fw w3-margin-right w3-text-teal" aria-hidden="true"></i><span data-i18n="cv.workExperience">Work Experience</span></h2>
-
-    <article class="experience-card">
-      <div class="experience-header">
-        <div class="experience-title">
-          <h3>Engineering Manager - Device Team</h3>
-          <p class="company"><a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a></p>
-        </div>
-        <div class="experience-date">
-          <span class="date-badge current">July 2025 - Present</span>
-        </div>
-      </div>
-      <div class="experience-content">
-        <p>As Engineering Manager of the Device Team at KONUX, I lead the development of embedded systems that power our industrial IoT solutions for the railway sector.</p>
-        <ul>
-          <li><strong>Technical Leadership:</strong> Defining and delivering firmware architecture, setting technical roadmap for embedded systems</li>
-          <li><strong>Strategic Planning:</strong> Translating business objectives into executable technical plans through quarterly OKR planning</li>
-          <li><strong>People Management:</strong> Fostering collaborative, ownership-driven culture while empowering team growth and problem-solving</li>
-          <li><strong>End-to-End Delivery:</strong> Overseeing architecture, implementation, team processes, and budget planning</li>
-          <li><strong>Engineering Excellence:</strong> Ensuring alignment with security, maintainability, and best practices</li>
-          <li><strong>Cross-functional Collaboration:</strong> Working with stakeholders and engineering leaders to align product vision with daily execution</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="experience-card">
-      <div class="experience-header">
-        <div class="experience-title">
-          <h3>Senior Firmware Developer</h3>
-          <p class="company"><a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a></p>
-        </div>
-        <div class="experience-date">
-          <span class="date-badge">Sept 2020 - July 2025</span>
-        </div>
-      </div>
-      <div class="experience-content">
-        <p><strong>🔧 Accelerating Rail with Secure, Connected IIoT & Edge‑AI in Harsh Environments</strong></p>
-        <p>Developed rugged, intelligent sensor systems for predictive maintenance on rail infrastructure, bridging hardware, firmware, and connectivity.</p>
-        <ul>
-          <li><strong>Bare‑metal C++ IIoT sensor development:</strong> Engineered compact, battery-powered C++-based sensors running directly on microcontrollers for field deployment</li>
-          <li><strong>New device architecture using Zephyr RTOS (C):</strong> Designed and launched multiple sensor generations leveraging Zephyr RTOS—building scalable, modular firmware for industrial IoT</li>
-          <li><strong>Cellular connectivity (LTE‑M):</strong> Integrated energy-efficient LTE‑M modems to reliably transmit sensor data from remote locations</li>
-          <li><strong>Bluetooth Low Energy (BLE):</strong> Researching BLE for alternative communication protocols</li>
-          <li><strong>Edge‑AI research & prototyping:</strong> Developed on-device ML models for anomaly detection and predictive maintenance, advancing real-time intelligence at the edge</li>
-          <li><strong>Diverse sensor and bus systems:</strong> Piloted subsystems including vibration, temperature, and pressure sensors; interfaced via SPI, I²C, UART, and more for robust data acquisition</li>
-          <li><strong>Electronic component review & selection:</strong> Curated PCB/electronic components to meet rugged industrial standards</li>
-          <li><strong>Standards & certifications research:</strong> Conducted compliance research for the EU's Cyber Resilience Act, ensuring alignment with CE marking and CRA essential requirements</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="experience-card">
-      <div class="experience-header">
-        <div class="experience-title">
-          <h3>Software Engineer</h3>
-          <p class="company"><a href="https://www.enocean.com" target="_blank" rel="noopener noreferrer">EnOcean</a></p>
-        </div>
-        <div class="experience-date">
-          <span class="date-badge">April 2015 - Aug 2020</span>
-        </div>
-      </div>
-      <div class="experience-content">
-        <ul>
-          <li>Development of firmware for energy harvesting devices and used radio stacks (BLE/EnOcean/Zigbee and others) in C/C++</li>
-          <li>Architecture and Software design</li>
-          <li>Specification of parts of protocol stacks and work for the EnOcean Alliance</li>
-          <li>Introducing and setting up of continuous integration and testing systems based on pytest, Jenkins and Raspberry Pis</li>
-          <li>Planning of projects and internal quality standards</li>
-          <li>Developing and maintaining different PC tools like DolphinView and EnOcean Link</li>
-          <li>Supervising of students</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="experience-card">
-      <div class="experience-header">
-        <div class="experience-title">
-          <h3>Intern at Software Department</h3>
-          <p class="company"><a href="https://www.enocean.com" target="_blank" rel="noopener noreferrer">EnOcean</a></p>
-        </div>
-        <div class="experience-date">
-          <span class="date-badge">Jan 2010 - March 2015</span>
-        </div>
-      </div>
-      <div class="experience-content">
-        <ul>
-          <li>Internal webpages development (PHP)</li>
-          <li>Statistics tool for production data (WPF/C#)</li>
-          <li>Automated testing for peripheral interfaces of the 8051-DolphinChip</li>
-          <li>Developing firmware for different µcs (MSP430/PIC/DolphinChip) in assembly, C and C++</li>
-          <li>Small other PC tools in C#/.NET and C++</li>
-        </ul>
-      </div>
-    </article>
-  </section>
-
-  <!-- Education Section -->
-  <section class="cv-education">
-    <h2><i class="fa fa-certificate fa-fw w3-margin-right w3-text-teal" aria-hidden="true"></i><span data-i18n="cv.education">Education</span></h2>
-    <div class="education-item">
-      <h3>Master of Science in Computer Science</h3>
-      <p><i class="fa fa-university w3-margin-right w3-text-teal" aria-hidden="true"></i>University of Applied Science</p>
-      <p><i class="fa fa-calendar w3-margin-right w3-text-teal" aria-hidden="true"></i>2013 - 2015</p>
-      <p><i class="fa fa-book w3-margin-right w3-text-teal" aria-hidden="true"></i><strong>Master Thesis:</strong> "Firmware over the air updates with EnOcean energy harvested protocol"</p>
+    <div class="footer-bottom">
+      <span>© 2026 TOBIAS R.M.K. MEYER</span>
+      <span><a href="./index.html">Home</a> · <a href="./blog/index.html" data-i18n="nav.blog">Blog</a></span>
     </div>
-    <hr>
-    <div class="education-item">
-      <h3>Bachelor of Science in Electrical Engineering</h3>
-      <p><i class="fa fa-university w3-margin-right w3-text-teal" aria-hidden="true"></i>University of Applied Science</p>
-      <p><i class="fa fa-calendar w3-margin-right w3-text-teal" aria-hidden="true"></i>2010 - 2013</p>
-      <p><i class="fa fa-book w3-margin-right w3-text-teal" aria-hidden="true"></i><strong>Bachelor Thesis:</strong> "An energy harvesting ZigBee Switch"</p>
-    </div>
-  </section>
-
-</div>
-
-<footer class="w3-container w3-teal w3-center w3-margin-top">
-  <p>Find me on social media.</p>
-  <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
-    <i class="fa-brands fa-linkedin w3-hover-opacity" aria-hidden="true"></i>
-  </a>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" rel="noopener noreferrer">w3.css</a></p>
+  </div>
 </footer>
 
 <script>
-// Mobile navigation toggle
-function toggleFunction() {
-  const navDemo = document.getElementById("navDemo");
-  const button = document.querySelector('[aria-controls="navDemo"]');
-  const isExpanded = navDemo.classList.contains("w3-show");
+const hamburger = document.getElementById('nav-hamburger');
+const navLinks  = document.getElementById('nav-links');
 
-  if (isExpanded) {
-    navDemo.classList.remove("w3-show");
-    button.setAttribute('aria-expanded', 'false');
-  } else {
-    navDemo.classList.add("w3-show");
-    button.setAttribute('aria-expanded', 'true');
-  }
-}
+hamburger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', open);
+});
+
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
 </script>
 
 </body>

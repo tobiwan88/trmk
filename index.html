@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="meta.title">Tobias R.M.K. Meyer - Embedded Software Developer</title>
-  <meta name="description" content="Private page of Tobias R.M.K. Meyer, Embedded Firmware & Software Developer. Posts about life as a developer and my climbing, cooking and other adventures." data-i18n-content="meta.description">
+  <meta name="description" content="Private page of Tobias R.M.K. Meyer, Embedded Firmware &amp; Software Developer. Posts about life as a developer and my climbing, cooking and other adventures." data-i18n-content="meta.description">
   <meta name="robots" content="index,follow">
   <meta name="author" content="Tobias R.M.K. Meyer">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#1C2A38">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.trmk.de/">
   <meta property="og:title" content="Tobias R.M.K. Meyer - Embedded Software Developer">
-  <meta property="og:description" content="Professional Software Developer specializing in embedded systems, IoT, and firmware development.">
+  <meta property="og:description" content="Engineering Manager, embedded systems developer, alpinist, cyclist, and vegan cook based in Munich.">
   <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="de_DE">
@@ -21,14 +21,15 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tobias R.M.K. Meyer - Embedded Software Developer">
-  <meta name="twitter:description" content="Professional Software Developer specializing in embedded systems, IoT, and firmware development.">
+  <meta name="twitter:description" content="Engineering Manager, embedded systems developer, alpinist, cyclist, and vegan cook based in Munich.">
   <meta name="twitter:image" content="https://www.trmk.de/avatar.jpg">
 
-  <!-- Canonical URL -->
+  <!-- Canonical & language -->
   <link rel="canonical" href="https://www.trmk.de/">
-
-  <!-- Color scheme support -->
   <meta name="color-scheme" content="light dark">
+  <link rel="alternate" hreflang="en" href="https://www.trmk.de/index.html">
+  <link rel="alternate" hreflang="de" href="https://www.trmk.de/index.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.trmk.de/index.html">
 
   <!-- Favicons & PWA -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -37,640 +38,497 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest">
 
-  <!-- Language metadata -->
-  <link rel="alternate" hreflang="en" href="https://www.trmk.de/index.html">
-  <link rel="alternate" hreflang="de" href="https://www.trmk.de/index.html">
-  <link rel="alternate" hreflang="x-default" href="https://www.trmk.de/index.html">
-
-  <!-- Preload critical resources -->
-  <link rel="preload" href="./fonts/lato.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="./me.jpg" as="image">
+  <!-- Preload primary font -->
+  <link rel="preload" href="./fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="./w3.css">
-  <link rel="stylesheet" href="./lato.css">
+  <link rel="stylesheet" href="./css/fonts.css">
+  <link rel="stylesheet" href="./css/site.css">
+  <link rel="stylesheet" href="./css/homepage.css">
   <link rel="stylesheet" href="./css/all.css">
-  <link rel="stylesheet" href="./modern-enhancements.css">
 
-  <!-- i18n Scripts -->
+  <!-- i18n -->
   <script src="./js/translations.js" defer></script>
   <script src="./js/i18n.js" defer></script>
 
-  <style>
-    /* Page-specific styles */
-    body, h1, h2, h3, h4, h5, h6 {
-      font-family: "Lato", sans-serif;
-    }
-
-    body, html {
-      height: 100%;
-      color: var(--text-dark);
-      line-height: 1.8;
-    }
-
-    /* Parallax background images */
-    .bgimg-1 {
-      background-image: url('./me.webp');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      min-height: 60vh;
-      position: relative;
-    }
-
-    .bgimg-2 {
-      background-image: url("./meSideBW.jpg");
-      min-height: 50vh;
-    }
-
-    .bgimg-3 {
-      background-image: url("./meSideBW.jpg");
-      min-height: 50vh;
-    }
-
-    .w3-wide {
-      letter-spacing: 10px;
-    }
-  </style>
-
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tobias Raphael Maria Karl Meyer",
+    "alternateName": "T.R.M.K. Meyer",
+    "url": "https://www.trmk.de",
+    "image": "https://www.trmk.de/avatar.jpg",
+    "jobTitle": "Engineering Manager & Senior Firmware Developer",
+    "worksFor": { "@type": "Organization", "name": "KONUX", "url": "https://www.konux.com" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Munich", "addressCountry": "DE" },
+    "email": "tobias.meyer@trmk.de",
+    "sameAs": [
+      "https://www.instagram.com/the_tobi_wan88/",
+      "https://github.com/tobiwan88",
+      "https://de.linkedin.com/in/tobias-meyer-07413656",
+      "https://www.strava.com/athletes/29812823"
+    ],
+    "knowsAbout": ["Embedded Systems","Firmware Development","IoT","C Programming","C++","Zephyr RTOS","LTE-M","BLE"]
+  }
+  </script>
+</head>
 <body>
-  <!-- Skip link for accessibility -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
 
+<!-- Skip link -->
+<a href="#main-content" class="skip-link" data-i18n-aria="nav.skipToContent">Skip to main content</a>
 
+<!-- ============== NAV ============== -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap inner">
+    <a href="#home" class="nav-logo">
+      <span class="led" aria-hidden="true"></span>
+      <span>T.R.M.K / MEYER</span>
+    </a>
 
-<!-- Navigation -->
-<nav class="w3-top" role="navigation" aria-label="Main navigation">
-  <div class="w3-bar" id="myNavbar">
-    <button class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
-            onclick="toggleFunction()"
-            aria-label="Toggle Navigation Menu"
-            aria-expanded="false"
-            aria-controls="navDemo">
-      <i class="fa fa-bars" aria-hidden="true"></i>
-    </button>
-    <a href="#about" class="w3-bar-item w3-button"><span data-i18n="nav.about">ABOUT</span></a>
-    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
-    <a href="./freelancing.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-briefcase" aria-hidden="true"></i> <span data-i18n="nav.consulting">CONSULTING</span></a>
-    <a href="./cv.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-file-text" aria-hidden="true"></i> <span data-i18n="nav.cv">CV</span></a>
-    <a href="./blog/index.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa-brands fa-wordpress" aria-hidden="true"></i> <span data-i18n="nav.blog">BLOG</span></a>
-    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope" aria-hidden="true"></i> <span data-i18n="nav.contact">CONTACT</span></a>
-    <select id="language-selector"
-            class="w3-select w3-bar-item"
-            style="width:auto; background:transparent; color:inherit; border:1px solid currentColor; padding:6px;"
-            aria-label="Select language">
-      <option value="en">EN</option>
-      <option value="de">DE</option>
-    </select>
-  </div>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#life" data-i18n="nav.outside">Outside</a></li>
+      <li><a href="#photo" data-i18n="nav.photography">Photography</a></li>
+      <li><a href="./cv.html" data-i18n="nav.cv">CV</a></li>
+      <li><a href="./freelancing.html" data-i18n="nav.consulting">Consulting</a></li>
+      <li><a href="./blog/index.html" data-i18n="nav.blog">Blog</a></li>
+    </ul>
 
-  <!-- Mobile navigation -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium" role="menu">
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-user" aria-hidden="true"></i> <span data-i18n="nav.about">ABOUT</span></a>
-    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-envelope" aria-hidden="true"></i> <span data-i18n="nav.contact">CONTACT</span></a>
-    <a href="./freelancing.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-briefcase" aria-hidden="true"></i> <span data-i18n="nav.consulting">CONSULTING</span></a>
-    <a href="./cv.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-file-text" aria-hidden="true"></i> <span data-i18n="nav.cv">CV</span></a>
-    <a href="./blog/index.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa-brands fa-wordpress" aria-hidden="true"></i> <span data-i18n="nav.blog">BLOG</span></a>
-    <div class="w3-bar-item" style="padding: 8px 16px;">
-      <select id="language-selector-mobile"
-              class="w3-select"
-              style="width:100%; background:#f1f1f1; color:#000; border:1px solid #ccc; padding:8px;"
-              aria-label="Select language">
-        <option value="en">English</option>
-        <option value="de">Deutsch</option>
-      </select>
+    <div class="nav-controls">
+      <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+        <span class="lang-opt active" id="lang-en">EN</span>
+        <span style="color: var(--rule);">/</span>
+        <span class="lang-opt" id="lang-de">DE</span>
+      </button>
+      <button class="nav-hamburger" id="nav-hamburger"
+              aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
 
+<!-- ============== HERO ============== -->
+<header class="hero" id="home">
+  <div class="topo" aria-hidden="true"></div>
+  <div class="wrap">
+    <div id="main-content"></div>
+    <span class="hero-kicker">
+      <span class="dot" aria-hidden="true"></span>
+      <span data-i18n="hero.location">Munich · 48.1351° N, 11.5820° E</span>
+    </span>
 
+    <h1 data-i18n="hero.title">Embedded engineer, <em>alpinist</em>, slow cook.</h1>
 
-<!-- Hero Section -->
-<header class="bgimg-1 w3-display-container w3-opacity-min" id="home">
-  <div class="w3-display-topmiddle w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity" style="white-space:nowrap;">
-    <h1 data-i18n="hero.title">T.R.M.K Meyer</h1>
-    <p class="w3-medium" data-i18n="hero.subtitle">Embedded Software Developer</p>
+    <p class="sub" data-i18n="hero.subtitle">
+      I build low-power, radio-connected things — firmware, protocols, architectures that have to survive without supervision. Off the keyboard I'm usually on rock, on a bike, or at the stove.
+    </p>
+
+    <div class="route-card" aria-label="Quick facts">
+      <div class="cell">
+        <div class="k" data-i18n="hero.roleLabel">Role</div>
+        <div class="v">Engineering Manager · <b>Embedded / IIoT</b></div>
+      </div>
+      <div class="cell">
+        <div class="k" data-i18n="hero.stackLabel">Stack</div>
+        <div class="v">Zephyr · RTOS · bare-metal C</div>
+      </div>
+      <div class="cell">
+        <div class="k" data-i18n="hero.radioLabel">Radio</div>
+        <div class="v">BLE · LTE-M · NB-IoT · LoRa</div>
+      </div>
+      <div class="cell">
+        <div class="k" data-i18n="hero.basedLabel">Based</div>
+        <div class="v">Munich, DE</div>
+      </div>
+    </div>
   </div>
 </header>
 
-
-
-<!-- About Section -->
-<main class="w3-content w3-container w3-padding-64" id="about">
-  <div id="main-content"></div>
-  <h2 class="w3-center" data-i18n="about.heading">ABOUT ME</h2>
-  <p class="w3-center"><strong data-i18n="about.subtitle">Professional Software Developer (M.Sc.)</strong></p>
-  <p class="w3-center"><em data-i18n="about.hobbies">Hobbies: 🧗‍♀️🚴🎸📷👨‍🍳🎮🧑‍💻📖</em></p>
-
-  <section class="w3-row">
-    <div class="w3-col m6 w3-center w3-padding-large">
-      <picture>
-      <source type="image/webp" srcset="./pictures/me/professional.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/me/professional.webp">
-      <img src="./pictures/me/professional.jpg" alt="Professional photo of Tobias Meyer" class="w3-round w3-image w3-opacity w3-hover-opacity-off" width="500"
-           loading="eager">
-    </picture>
-    </picture>
+<!-- ============== ABOUT ============== -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="about.heading">About</h2>
+      <span class="mono coord">§ 01 / Profile</span>
     </div>
 
-    <div class="w3-col m6 w3-padding-large">
-      <p><strong><i class="fa fa-user w3-margin-right" aria-hidden="true"></i><span data-i18n="about.name">T.R.M.K Meyer</span></strong></p>
-      <p data-i18n="about.intro">Hey there my name is <strong>T</strong>obias <strong>R</strong>aphael <strong>M</strong>aria <strong>K</strong>arl <strong>M</strong>eyer, a seasoned software developer with over a decade of expertise in crafting solutions for low-energy systems. My journey in the realm of embedded systems has been characterized by a dynamic fusion of experiences, from navigating, and designing various radio protocols to mastering Real-Time Operating Systems (RTOS) and bare-metal programming.</p>
-
-      <p data-i18n="about.paragraph2">My love for the embedded world stems from the unique challenges it presents. Confronting the constraints of these systems, I find joy in devising creative solutions to address complex problems within the confines of a compact environment. My skill set extends beyond coding, encompassing a comprehensive understanding of agile methodologies, software architecture, and collaborative teamwork.</p>
-
-      <p><span data-i18n="about.paragraph3">Formally educated with a Bachelor's in Electrical Engineering and a Master's in Computer Science, I bring a robust academic foundation to complement my practical experience.</span> <a href="./cv.html"><em data-i18n="about.cvLink">( CV )</em></a></p>
-    </div>
-  </section>
-  <section class="w3-row">
-    <div class="w3-col m6 w3-center w3-padding-large">
-      <p><strong><i class="fa fa-mountain w3-margin-right" aria-hidden="true"></i><span data-i18n="about.climbingTitle">Climbing / Bouldering / Alpinist</span></strong></p>
-      <p data-i18n="about.climbingText1">Away from the keyboard, my heart finds solace in the majestic embrace of mountains and the exhilarating world of bouldering. The mountains, with their awe-inspiring landscapes and breathtaking views, offer me a sanctuary in nature. What captivates me most is the inherent challenge of ascending these peaks, requiring not just physical strength but a keen ability to assess risks judiciously. It's a thrilling dance with nature's forces, a pursuit that fuels my sense of adventure.</p>
-
-      <p data-i18n="about.climbingText2">In the realm of bouldering, I discover a different kind of challenge—one that's as much mental as it is physical. The joy lies in solving intricate "problems" posed by the boulders, where strength alone isn't the sole answer. It's a fascinating interplay of understanding my body type, leveraging my strengths, and embracing an iterative process to conquer each puzzle. Bouldering, for me, is a journey of self-discovery and perseverance, where the reward isn't just reaching the top but in the intricate problem-solving process that gets me there.</p>
-    </div>
-
-    <div class="w3-col m6 w3-padding-large">
-      <picture>
-      <source type="image/webp" srcset="./pictures/me/glacier.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/me/glacier.webp">
-      <img src="./pictures/me/glacier.jpg" alt="Glacier trail adventure" class="w3-round w3-image w3-opacity w3-hover-opacity-off" width="500"
-           loading="lazy">
-    </picture>
-    </picture>
-      <br><br>
-      <picture>
-      <source type="image/webp" srcset="./pictures/me/climb.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/me/climb.webp">
-      <img src="./pictures/me/climb.JPG" alt="Rock climbing adventure" class="w3-round w3-image w3-opacity w3-hover-opacity-off" width="500"
-           loading="lazy">
-    </picture>
-    </picture>
-    </div>
-  </section>
-  <section class="w3-row">
-    <div class="w3-col m6 w3-padding-large">
-      <picture>
-      <source type="image/webp" srcset="./pictures/me/timmelsjoch.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/me/timmelsjoch.webp">
-      <img src="./pictures/me/timmelsjoch.jpg" alt="Cycling adventure at Timmelsjoch" class="w3-round w3-image w3-opacity w3-hover-opacity-off" width="500"
-           loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m6 w3-center w3-padding-large">
-      <p><strong><i class="fa fa-bicycle w3-margin-right" aria-hidden="true"></i><span data-i18n="about.cyclingTitle">Cycling</span></strong></p>
-      <p data-i18n="about.cyclingText">I find immense joy in the rhythmic cadence of road biking—a pursuit that encapsulates both local exploration and far-flung adventures. Powered solely by the strength of my legs, each pedal stroke becomes a journey of discovery, unveiling hidden gems in familiar surroundings and uncharted territories alike. There's a unique thrill in navigating the winding roads, feeling the wind caress my face, and immersing myself in the landscapes that unfold with each passing mile.</p>
-      <p><span data-i18n="about.cyclingLink">See all my adventures at</span> <a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava</a></p>
-    </div>
-  </section>  <section class="w3-row">
-    <div class="w3-col m6 w3-center w3-padding-large">
-      <p><strong><i class="fa fa-carrot w3-margin-right" aria-hidden="true"></i><span data-i18n="about.cookingTitle">Cooking & Baking (mostly vegan)</span></strong></p>
-      <p data-i18n="about.cookingText1">In my culinary pursuits, I embark on a flavorful journey centered around cooking and baking, with a predominant focus on crafting delicious and wholesome vegan fare. Motivated by a desire to create food that is not only a treat for the taste buds but also nourishing for the body, my kitchen becomes a canvas for plant-based culinary experiments.</p>
-
-      <p data-i18n="about.cookingText2">The choice of a vegan lifestyle stems from a broader commitment to minimizing harm and reducing suffering for all beings on our planet. Each dish is a testament to the belief that cruelty-free living can be a delectable and fulfilling way of life. As I delve into the world of vegan cooking, I discover the boundless creativity that comes with transforming simple, plant-derived ingredients into culinary masterpieces that not only satisfy the palate but also contribute to a more compassionate and sustainable existence.</p>
-
-      <p><span data-i18n="about.cookingLink">Follow the happy bunny at</span> <a href="https://www.cafetobi.de" target="_blank" rel="noopener noreferrer">Cafe Tobi</a></p>
-    </div>
-
-    <div class="w3-col m6 w3-padding-large">
-      <picture>
-      <source type="image/webp" srcset="./pictures/me/pizza.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/me/pizza.webp">
-      <img src="./pictures/me/pizza.jpg" alt="Making delicious vegan pizza" class="w3-round w3-image w3-opacity w3-hover-opacity-off" width="500"
-           loading="lazy">
-    </picture>
-    </picture>
-    </div>
-  </section>
-</main>
-
-
-
-<!-- Photography Portfolio Section -->
-<section class="w3-content w3-container w3-padding-64" id="portfolio">
-  <h2 class="w3-center">
-    <a href="https://www.instagram.com/the_tobi_wan88/" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram">
-      <i class="fa-brands fa-instagram w3-hover-opacity" aria-hidden="true"></i>
-    </a>
-    <span data-i18n="portfolio.heading">Photography & Travel</span>
-  </h2>
-  <p class="w3-center"><em data-i18n="portfolio.subtitle">Here are just some collections of pictures from my travels around the world</em></p>
-
-  <!-- Photo Gallery Grid -->
-  <div class="photo-grid w3-row-padding w3-center">
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p1.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p1.webp">
-      <img src="./pictures/p1.jpg" alt="Colorful parrot in natural habitat" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p2.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p2.webp">
-      <img src="./pictures/p2.jpg" alt="Monkey in the wild" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p3.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p3.webp">
-      <img src="./pictures/p3.jpg" alt="Mountain hut in scenic landscape" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p4.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p4.webp">
-      <img src="./pictures/p4.jpg" alt="Travel photography" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p5.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p5.webp">
-      <img src="./pictures/p5.jpg" alt="Travel photography" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p6.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p6.webp">
-      <img src="./pictures/p6.jpg" alt="Travel photography" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p7.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p7.webp">
-      <img src="./pictures/p7.jpg" alt="Travel photography" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p8.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p8.webp">
-      <img src="./pictures/p8.jpg" alt="Travel photography" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p9.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p9.webp">
-      <img src="./pictures/p9.JPG" alt="Travel photography" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p10.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p10.webp">
-      <img src="./pictures/p10.JPG" alt="Travel photography" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p11.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p11.webp">
-      <img src="./pictures/p11.JPG" alt="Travel photography" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-
-    <div class="w3-col m3">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p12.webp">
-      <picture>
-      <source type="image/webp" srcset="./pictures/p12.webp">
-      <img src="./pictures/p12.JPG" alt="Travel photography" style="width:100%"
-           onclick="onClick(this)"
-           class="w3-hover-opacity" loading="lazy">
-    </picture>
-    </picture>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- Modal for full size images -->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-caption">
-  <span class="w3-button w3-large w3-black w3-display-topright"
-        onclick="this.parentElement.style.display='none'"
-        aria-label="Close modal"
-        title="Close Modal Image">
-    <i class="fa fa-times" aria-hidden="true"></i>
-  </span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image" alt="">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div>
-
-<!-- Contact Section -->
-<section class="bgimg-3 w3-display-container w3-opacity-min" id="contact">
-  <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide" data-i18n="contact.heading">CONTACT</span>
-  </div>
-</section>
-
-<section class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a href="#home" class="w3-button w3-light-grey" aria-label="Back to top">
-    <i class="fa fa-arrow-up w3-margin-right" aria-hidden="true"></i><span data-i18n="contact.backToTop">To the top</span>
-  </a>
-
-  <div class="w3-xlarge w3-section contact-links">
-    <a href="mailto:tobias.meyer@trmk.de"
-       class="w3-large w3-text-white"
-       aria-label="Send email to Tobias Meyer">
-      <i class="fa fa-envelope w3-hover-opacity" aria-hidden="true"></i>
-    </a>
-    <a href="https://www.instagram.com/the_tobi_wan88/"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Visit Instagram profile">
-      <i class="fa-brands fa-instagram w3-hover-opacity" aria-hidden="true"></i>
-    </a>
-    <a href="https://github.com/tobiwan88"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Visit GitHub profile">
-      <i class="fa-brands fa-github w3-hover-opacity" aria-hidden="true"></i>
-    </a>
-    <a href="https://de.linkedin.com/in/tobias-meyer-07413656"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Visit LinkedIn profile">
-      <i class="fa-brands fa-linkedin w3-hover-opacity" aria-hidden="true"></i>
-    </a>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <div class="w3-content">
-    <h2>Impressum</h2>
-
-    <div class="w3-row">
-      <div class="w3-col m6">
-        <h3>Angaben gemäß § 5 TMG</h3>
-        <address>
-          Tobias Meyer<br>
-          Warngauer Str 58<br>
-          81539 München<br>
-        </address>
-
-        <p><strong>Vertreten durch:</strong><br>
-        Tobias Meyer</p>
-
-        <p><strong>Kontakt:</strong><br>
-        E-Mail: <a href="mailto:tobias.meyer@trmk.de">tobias.meyer@trmk.de</a></p>
-
-        <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
-        Tobias Meyer<br>
-        Warngauer Str 58<br>
-        81539 München</p>
+    <div class="about-grid">
+      <div class="lede">
+        <p data-i18n="about.lede1">
+          I've spent a decade in the embedded world, designing software that has to be <em>small, lean, and never crash</em> — across radio protocols, Real-Time OS, bare-metal firmware, and the system architecture around them.
+        </p>
+        <p data-i18n="about.lede2">
+          These days I lead a team building IIoT products for hostile environments — cold stores, factory floors, remote sensors in the alps. I care about clear interfaces, durable systems, and engineers who own what they ship. Formally: B.Sc. Electrical Engineering, M.Sc. Computer Science. <a href="./cv.html" data-i18n="about.cvLink">( Full CV )</a>
+        </p>
+        <p class="hand" style="font-size: 20px; margin-top: 20px;" data-i18n="about.quote">
+          "Constraints are a gift — they make the good solutions obvious."
+        </p>
       </div>
 
-      <div class="w3-col m6">
-        <h3>Haftungsausschluss</h3>
-        <p><strong>Haftung für Inhalte:</strong><br>
-        Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
+      <div>
+        <div class="stack-card">
+          <h3 data-i18n="about.radioLabel">Radio &amp; Protocols</h3>
+          <div class="tags">
+            <span class="tag">BLE</span>
+            <span class="tag">LTE-M</span>
+            <span class="tag">NB-IoT</span>
+            <span class="tag">LoRa / LoRaWAN</span>
+            <span class="tag">Wi-Fi</span>
+            <span class="tag">Thread</span>
+            <span class="tag">MQTT</span>
+            <span class="tag">CoAP</span>
+          </div>
+          <h3 data-i18n="about.systemsLabel">Systems &amp; Firmware</h3>
+          <div class="tags">
+            <span class="tag">Zephyr RTOS</span>
+            <span class="tag">FreeRTOS</span>
+            <span class="tag">Bare-metal C</span>
+            <span class="tag">C++17</span>
+            <span class="tag">Rust (no_std)</span>
+            <span class="tag">ARM Cortex-M</span>
+            <span class="tag">nRF52 / nRF91</span>
+            <span class="tag">STM32</span>
+          </div>
+          <h3 data-i18n="about.practiceLabel">Practice</h3>
+          <div class="tags">
+            <span class="tag second" data-i18n="about.tag.management">Eng. management</span>
+            <span class="tag second" data-i18n="about.tag.architecture">Architecture</span>
+            <span class="tag second" data-i18n="about.tag.agile">Agile / XP</span>
+            <span class="tag second" data-i18n="about.tag.review">Code review</span>
+            <span class="tag second" data-i18n="about.tag.hiring">Hiring</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <p><strong>Haftung für Links:</strong><br>
-        Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.</p>
+<!-- ============== OUTSIDE / HOBBIES ============== -->
+<section id="life">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="outside.heading">Outside</h2>
+      <span class="mono coord">§ 02 / Field notes</span>
+    </div>
 
-        <p><strong>Datenschutz:</strong><br>
-        Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung wird hiermit ausdrücklich widersprochen.</p>
+    <div class="chapters">
+
+      <article class="chapter">
+        <div class="idx">Chapter<span class="n">01</span><span data-i18n="outside.climb.category">Alpine · Climb</span></div>
+        <div>
+          <h3 data-i18n="outside.climb.title">Rock, route-finding, risk.</h3>
+          <p data-i18n="outside.climb.text">
+            The mountains give me what the terminal can't: weather, gravity, and an opinion that doesn't negotiate. I climb trad and sport, boulder when I can't, and plan longer alpine routes in the Wetterstein and Karwendel ranges. Route-reading is the same skill as debugging — you observe, you hypothesise, you commit.
+          </p>
+          <p class="hand" style="font-size: 18px;" data-i18n="outside.climb.quote">&mdash; "The mountain doesn't care if you're tired."</p>
+        </div>
+        <div class="route-meta" aria-label="Recent route">
+          <div class="m"><div class="k" data-i18n="outside.climb.meta.route">Route</div><div class="v">Alpspitze Ferrata</div></div>
+          <div class="m"><div class="k" data-i18n="outside.climb.meta.grade">Grade</div><div class="v"><b>D / 6a</b></div></div>
+          <div class="m"><div class="k" data-i18n="outside.meta.elev">Elev. gain</div><div class="v">+ 1,380 m</div></div>
+          <div class="m"><div class="k" data-i18n="outside.climb.meta.partner">Partner</div><div class="v">solo / 2p</div></div>
+        </div>
+        <svg class="elev" viewBox="0 0 1200 52" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 48 L80 44 L160 40 L240 34 L320 26 L400 18 L480 10 L560 4 L640 2 L720 8 L800 18 L880 28 L960 36 L1040 42 L1120 46 L1200 50"
+                fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4" style="color: var(--accent);" />
+          <path d="M0 48 L80 44 L160 40 L240 34 L320 26 L400 18 L480 10 L560 4 L640 2 L720 8 L800 18 L880 28 L960 36 L1040 42 L1120 46 L1200 50 L1200 52 L0 52 Z"
+                fill="currentColor" opacity="0.08" style="color: var(--accent);" />
+        </svg>
+      </article>
+
+      <article class="chapter">
+        <div class="idx">Chapter<span class="n">02</span><span data-i18n="outside.cycle.category">Road · Cycle</span></div>
+        <div>
+          <h3 data-i18n="outside.cycle.title">Long days in the saddle.</h3>
+          <p data-i18n="outside.cycle.text">
+            Road biking is how I think. Local loops along the Isar for maintenance, bigger passes for the real meditation — Timmelsjoch, Stelvio, Grossglockner. Powered only by my own legs, navigating weather and terrain, pacing the effort: it turns out I can hold a problem in my head for eight hours if I'm pedalling through it.
+          </p>
+          <p><span data-i18n="outside.cycle.stravaLink">Follow along on</span> <a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava →</a></p>
+        </div>
+        <div class="route-meta">
+          <div class="m"><div class="k" data-i18n="outside.cycle.meta.lastRide">Last ride</div><div class="v">Sylvensteinsee</div></div>
+          <div class="m"><div class="k" data-i18n="outside.cycle.meta.distance">Distance</div><div class="v"><b>112 km</b></div></div>
+          <div class="m"><div class="k" data-i18n="outside.meta.elev">Elev. gain</div><div class="v">+ 1,240 m</div></div>
+          <div class="m"><div class="k" data-i18n="outside.cycle.meta.pace">Avg pace</div><div class="v">28.4 km/h</div></div>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="idx">Chapter<span class="n">03</span><span data-i18n="outside.cook.category">Kitchen · Vegan</span></div>
+        <div>
+          <h3 data-i18n="outside.cook.title">Plants, sourdough, and doing less harm.</h3>
+          <p data-i18n="outside.cook.text">
+            I cook and bake mostly vegan — from everyday bowls to obsessive pizza dough and bread experiments. The ethics matter (fewer beings hurt, lighter footprint), but honestly plant cooking is also the more interesting constraint: flavours have to be built, textures have to be earned.
+          </p>
+          <p><span data-i18n="outside.cook.cafeLink">Follow the happy bunny at</span> <a href="https://www.cafetobi.de" target="_blank" rel="noopener noreferrer">Café Tobi →</a></p>
+        </div>
+        <div class="route-meta">
+          <div class="m"><div class="k" data-i18n="outside.cook.meta.bench">On the bench</div><div class="v">Focaccia</div></div>
+          <div class="m"><div class="k" data-i18n="outside.cook.meta.hydration">Hydration</div><div class="v"><b>82 %</b></div></div>
+          <div class="m"><div class="k" data-i18n="outside.cook.meta.starter">Starter age</div><div class="v">4 yrs</div></div>
+          <div class="m"><div class="k" data-i18n="outside.cook.meta.signature">Signature</div><div class="v">Olive · rosemary</div></div>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="idx">Chapter<span class="n">04</span><span data-i18n="outside.photo.category">Viewfinder</span></div>
+        <div>
+          <h3 data-i18n="outside.photo.title">A camera as an excuse to stand still.</h3>
+          <p data-i18n="outside.photo.text">
+            The photography is mostly a side effect of the other hobbies — wildlife on travel, mountain huts, rides at dawn. I shoot to remember, and occasionally to share. The archive lives below.
+          </p>
+        </div>
+        <div class="route-meta">
+          <div class="m"><div class="k" data-i18n="outside.photo.meta.body">Body</div><div class="v">Sony α7 IV</div></div>
+          <div class="m"><div class="k" data-i18n="outside.photo.meta.lens">Favourite</div><div class="v"><b>35 mm prime</b></div></div>
+          <div class="m"><div class="k" data-i18n="outside.photo.meta.archive">Archive</div><div class="v">~ 14k frames</div></div>
+          <div class="m"><div class="k" data-i18n="outside.photo.meta.travels">Travels</div><div class="v">24 countries</div></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== PHOTOGRAPHY ============== -->
+<section id="photo">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="photography.heading">Photography</h2>
+      <span class="mono coord">§ 03 / Archive</span>
+    </div>
+
+    <div class="photo-head">
+      <p class="lead" data-i18n="photography.lead">A small selection from travels — from the cloud forests of Costa Rica to the north ridge of the Zugspitze. Full sets by region on request.</p>
+      <span class="mono">12 frames</span>
+    </div>
+
+    <div class="photo-grid" role="list">
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p1.webp">
+          <img src="./pictures/p1.webp" alt="Colorful parrot in natural habitat · Monteverde, Costa Rica 2024" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+        <span class="cap"><b>Parrot · Costa Rica</b>Monteverde · 2024</span>
+      </div>
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p2.webp">
+          <img src="./pictures/p2.webp" alt="Monkey in the wild · Sigiriya, Sri Lanka 2023" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+        <span class="cap"><b>Monkey · Sri Lanka</b>Sigiriya · 2023</span>
+      </div>
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p3.webp">
+          <img src="./pictures/p3.webp" alt="Mountain hut in Stubaital, Austria 2024" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+        <span class="cap"><b>Hut · Stubaital</b>AT · 2024</span>
+      </div>
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p4.webp">
+          <img src="./pictures/p4.webp" alt="Dolomites, Italy 2025" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+        <span class="cap"><b>Dolomites</b>IT · 2025</span>
+      </div>
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p5.webp">
+          <img src="./pictures/p5.webp" alt="Iceland landscape, Reykjanes 2024" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+        <span class="cap"><b>Iceland</b>Reykjanes · 2024</span>
+      </div>
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p6.webp">
+          <img src="./pictures/p6.webp" alt="Timmelsjoch mountain pass 2025" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+        <span class="cap"><b>Timmelsjoch</b>pass · 2025</span>
+      </div>
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p7.webp">
+          <img src="./pictures/p7.webp" alt="Lofoten islands, Norway 2023" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+        <span class="cap"><b>Lofoten</b>NO · 2023</span>
+      </div>
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p8.webp">
+          <img src="./pictures/p8.webp" alt="Atlas mountains, Morocco 2024" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+        <span class="cap"><b>Morocco</b>Atlas · 2024</span>
+      </div>
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p9.webp">
+          <img src="./pictures/p9.webp" alt="Glacier at Zugspitze 2025" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+        <span class="cap"><b>Glacier</b>Zugspitze · 2025</span>
+      </div>
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p10.webp">
+          <img src="./pictures/p10.webp" alt="Travel photography" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+      </div>
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p11.webp">
+          <img src="./pictures/p11.webp" alt="Travel photography" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+      </div>
+      <div class="ph" role="listitem">
+        <picture>
+          <source type="image/webp" srcset="./pictures/p12.webp">
+          <img src="./pictures/p12.webp" alt="Travel photography" loading="lazy" onclick="openLightbox(this)">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER / CONTACT ============== -->
+<footer class="site-footer" id="contact" role="contentinfo">
+  <div class="wrap">
+    <div>
+      <h3 data-i18n="footer.contactHeading">Get in touch</h3>
+      <h2 data-i18n="footer.contactTitle">Happy to talk embedded, alpine, or sourdough.</h2>
+      <p style="color: var(--muted-steel); max-width: 40ch; font-size: 14px;" data-i18n="footer.contactSub">Open to consulting, advisory, and speaking. Otherwise just say hi.</p>
+      <p style="margin-top: 18px;">
+        <a href="mailto:tobias.meyer@trmk.de" style="font-size: 18px;">tobias.meyer@trmk.de</a>
+      </p>
+    </div>
+
+    <div>
+      <h3 data-i18n="footer.elsewhereHeading">Elsewhere</h3>
+      <ul>
+        <li><a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava</a></li>
+        <li><a href="https://www.instagram.com/the_tobi_wan88/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://www.cafetobi.de" target="_blank" rel="noopener noreferrer">Café Tobi</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 data-i18n="footer.basedHeading">Based</h3>
+      <ul>
+        <li><span class="lbl">City</span> Munich, DE</li>
+        <li><span class="lbl" data-i18n="footer.timeLabel">Time</span> <span id="localtime">—</span> CET</li>
+        <li><span class="lbl">Lang</span> EN · DE</li>
+      </ul>
+      <div style="margin-top: 16px;">
+        <button class="impressum-toggle" id="impressum-toggle" aria-expanded="false" aria-controls="impressum-content" data-i18n="footer.impressumToggle">
+          Impressum ↓
+        </button>
+        <div class="impressum-content" id="impressum-content" aria-hidden="true">
+          <address>
+            Tobias Meyer<br>
+            Warngauer Str 58<br>
+            81539 München
+          </address>
+          <p><strong>Kontakt:</strong> <a href="mailto:tobias.meyer@trmk.de">tobias.meyer@trmk.de</a></p>
+          <p><strong>Haftung für Inhalte:</strong> Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität können wir keine Gewähr übernehmen.</p>
+          <p><strong>Haftung für Links:</strong> Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben.</p>
+          <p><strong>Datenschutz:</strong> Die Nutzung dieser Webseite ist ohne Angabe personenbezogener Daten möglich. Die Nutzung von Kontaktdaten durch Dritte zur Übersendung nicht angeforderter Werbung wird widersprochen.</p>
+        </div>
       </div>
     </div>
 
-    <hr class="w3-border-grey w3-margin-top">
-    <p class="w3-small">
-      Website Impressum erstellt durch
-      <a href="https://www.impressum-generator.de" target="_blank" rel="noopener noreferrer">impressum-generator.de</a>
-      von der
-      <a href="https://www.kanzlei-hasselbach.de/" target="_blank" rel="noopener noreferrer">Kanzlei Hasselbach</a>
-    </p>
-    <p class="w3-medium">
-      Powered by
-      <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" rel="noopener noreferrer" class="w3-hover-text-green">w3.css</a>
-    </p>
+    <div class="footer-bottom">
+      <span>© 2026 TOBIAS R.M.K. MEYER</span>
+      <span><a href="./freelancing.html" data-i18n="nav.consulting">Consulting</a> · <a href="./cv.html" data-i18n="nav.cv">CV</a> · <a href="./blog/index.html" data-i18n="nav.blog">Blog</a></span>
+    </div>
   </div>
 </footer>
 
-
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <script>
-// Modal Image Gallery
-function onClick(element) {
-  const modal = document.getElementById("modal01");
-  const modalImg = document.getElementById("img01");
-  const caption = document.getElementById("caption");
+// -------- Hamburger menu --------
+const hamburger = document.getElementById('nav-hamburger');
+const navLinks  = document.getElementById('nav-links');
 
-  modalImg.src = element.src;
-  modalImg.alt = element.alt;
-  caption.textContent = element.alt;
-  modal.style.display = "block";
+hamburger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', open);
+});
 
-  // Add keyboard support for modal
-  modal.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      modal.style.display = 'none';
+// Close mobile nav on link click
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// -------- Smooth scroll --------
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const id = link.getAttribute('href');
+    const el = document.querySelector(id);
+    if (el && id !== '#') {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
-
-  // Focus management for accessibility
-  modal.focus();
-}
-
-// Navbar scroll effect with throttling
-let lastScrollTop = 0;
-let ticking = false;
-
-function updateNavbar() {
-  const navbar = document.getElementById("myNavbar");
-  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-
-  if (scrollTop > 100) {
-    navbar.className = "w3-bar w3-card w3-animate-top w3-white";
-  } else {
-    navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
-  }
-
-  lastScrollTop = scrollTop;
-  ticking = false;
-}
-
-window.addEventListener('scroll', function() {
-  if (!ticking) {
-    requestAnimationFrame(updateNavbar);
-    ticking = true;
-  }
 });
 
-// Mobile navigation toggle with improved accessibility
-function toggleFunction() {
-  const navDemo = document.getElementById("navDemo");
-  const button = document.querySelector('[aria-controls="navDemo"]');
-  const isExpanded = navDemo.classList.contains("w3-show");
-
-  if (isExpanded) {
-    navDemo.classList.remove("w3-show");
-    button.setAttribute('aria-expanded', 'false');
-  } else {
-    navDemo.classList.add("w3-show");
-    button.setAttribute('aria-expanded', 'true');
-  }
+// -------- Lightbox --------
+function openLightbox(img) {
+  const lb  = document.getElementById('lightbox');
+  const lbi = document.getElementById('lightbox-img');
+  lbi.src = img.src;
+  lbi.alt = img.alt;
+  lb.classList.add('open');
+  document.getElementById('lightbox-close').focus();
 }
 
-// Smooth scrolling for anchor links (fallback for older browsers)
-document.addEventListener('DOMContentLoaded', function() {
-  const links = document.querySelectorAll('a[href^="#"]');
-
-  links.forEach(link => {
-    link.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-
-      if (targetElement && targetId !== '#') {
-        e.preventDefault();
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
-
-  // Close mobile nav when clicking on a link
-  const mobileNavLinks = document.querySelectorAll('#navDemo a');
-  mobileNavLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      const navDemo = document.getElementById("navDemo");
-      const button = document.querySelector('[aria-controls="navDemo"]');
-      navDemo.classList.remove("w3-show");
-      button.setAttribute('aria-expanded', 'false');
-    });
-  });
+document.getElementById('lightbox-close').addEventListener('click', () => {
+  document.getElementById('lightbox').classList.remove('open');
 });
 
-// Lazy loading fallback for older browsers
-if ('loading' in HTMLImageElement.prototype) {
-  // Native lazy loading is supported
-  console.log('Native lazy loading supported');
-} else {
-  // Fallback for older browsers
-  const images = document.querySelectorAll('img[loading="lazy"]');
-  const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src || img.src;
-        img.classList.remove('lazy');
-        imageObserver.unobserve(img);
-      }
-    });
-  });
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
+});
 
-  images.forEach(img => imageObserver.observe(img));
-}
-</script>
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+});
 
-<!-- Structured Data (Schema.org) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Tobias Raphael Maria Karl Meyer",
-  "alternateName": "T.R.M.K. Meyer",
-  "url": "https://www.trmk.de",
-  "image": "https://www.trmk.de/avatar.jpg",
-  "jobTitle": "Engineering Manager & Senior Firmware Developer",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "KONUX",
-    "url": "https://www.konux.com"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Munich",
-    "addressCountry": "DE"
-  },
-  "email": "tobias.meyer@trmk.de",
-  "sameAs": [
-    "https://www.instagram.com/the_tobi_wan88/",
-    "https://github.com/tobiwan88",
-    "https://de.linkedin.com/in/tobias-meyer-07413656",
-    "https://www.strava.com/athletes/29812823"
-  ],
-  "knowsAbout": ["Embedded Systems", "Firmware Development", "IoT", "C Programming", "C++", "Zephyr RTOS", "LTE-M", "BLE", "Edge AI"]
+// -------- Impressum toggle --------
+document.getElementById('impressum-toggle').addEventListener('click', function() {
+  const content = document.getElementById('impressum-content');
+  const open = content.classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+  content.setAttribute('aria-hidden', !open);
+  this.textContent = open
+    ? (this.getAttribute('data-i18n') ? '▲' : 'Impressum ↑')
+    : (this.getAttribute('data-i18n') ? '▼' : 'Impressum ↓');
+  // Re-apply translation if i18n changes it
+  this.textContent = open ? 'Impressum ↑' : 'Impressum ↓';
+});
+
+// -------- Local Munich time --------
+function updateTime() {
+  const muc = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
+  const h   = String(muc.getHours()).padStart(2, '0');
+  const m   = String(muc.getMinutes()).padStart(2, '0');
+  const el  = document.getElementById('localtime');
+  if (el) el.textContent = `${h}:${m}`;
 }
+updateTime();
+setInterval(updateTime, 30000);
 </script>
 
 </body>
-
 </html>
-

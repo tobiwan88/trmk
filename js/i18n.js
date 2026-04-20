@@ -97,7 +97,17 @@ class I18n {
   }
 
   setupLanguageSelector() {
-    // Setup desktop language selector
+    // Setup text-based lang toggle button (#lang-toggle with .lang-opt spans)
+    const langToggle = document.getElementById('lang-toggle');
+    if (langToggle) {
+      this.updateLangToggle(langToggle);
+      langToggle.addEventListener('click', () => {
+        const next = this.currentLang === 'en' ? 'de' : 'en';
+        this.switchLanguage(next);
+      });
+    }
+
+    // Setup legacy select-based desktop language selector
     const selector = document.getElementById('language-selector');
     if (selector) {
       selector.value = this.currentLang;
@@ -106,7 +116,7 @@ class I18n {
       });
     }
 
-    // Setup mobile language selector
+    // Setup legacy select-based mobile language selector
     const mobileSelector = document.getElementById('language-selector-mobile');
     if (mobileSelector) {
       mobileSelector.value = this.currentLang;
@@ -114,6 +124,13 @@ class I18n {
         this.switchLanguage(e.target.value);
       });
     }
+  }
+
+  updateLangToggle(btn) {
+    const enSpan = btn.querySelector('#lang-en');
+    const deSpan = btn.querySelector('#lang-de');
+    if (enSpan) enSpan.classList.toggle('active', this.currentLang === 'en');
+    if (deSpan) deSpan.classList.toggle('active', this.currentLang === 'de');
   }
 
   switchLanguage(lang) {
@@ -125,16 +142,16 @@ class I18n {
     this.updateHtmlLang();
     this.updateMetaTags();
 
-    // Update both desktop and mobile language selector values
+    // Update text-based lang toggle
+    const langToggle = document.getElementById('lang-toggle');
+    if (langToggle) this.updateLangToggle(langToggle);
+
+    // Update legacy select-based selectors
     const selector = document.getElementById('language-selector');
-    if (selector) {
-      selector.value = lang;
-    }
+    if (selector) selector.value = lang;
 
     const mobileSelector = document.getElementById('language-selector-mobile');
-    if (mobileSelector) {
-      mobileSelector.value = lang;
-    }
+    if (mobileSelector) mobileSelector.value = lang;
 
     // Announce to screen readers
     const announcement = document.createElement('div');

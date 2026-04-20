@@ -10,26 +10,46 @@ const translations = {
     },
     nav: {
       home: "HOME",
-      about: "ABOUT",
-      consulting: "CONSULTING",
+      about: "About",
+      consulting: "Consulting",
       cv: "CV",
-      blog: "BLOG",
-      photography: "PHOTOGRAPHY",
-      contact: "CONTACT"
+      blog: "Blog",
+      photography: "Photography",
+      contact: "Contact",
+      outside: "Outside",
+      skipToContent: "Skip to main content"
     },
     hero: {
-      title: "T.R.M.K Meyer",
-      subtitle: "Embedded Software Developer"
+      title: "Embedded engineer, alpinist, slow cook.",
+      subtitle: "I build low-power, radio-connected things — firmware, protocols, architectures that have to survive without supervision. Off the keyboard I'm usually on rock, on a bike, or at the stove.",
+      location: "Munich · 48.1351° N, 11.5820° E",
+      roleLabel: "Role",
+      stackLabel: "Stack",
+      radioLabel: "Radio",
+      basedLabel: "Based"
     },
     about: {
-      heading: "ABOUT ME",
+      heading: "About",
+      lede1: "I've spent a decade in the embedded world, designing software that has to be small, lean, and never crash — across radio protocols, Real-Time OS, bare-metal firmware, and the system architecture around them.",
+      lede2: "These days I lead a team building IIoT products for hostile environments — cold stores, factory floors, remote sensors in the alps. I care about clear interfaces, durable systems, and engineers who own what they ship. Formally: B.Sc. Electrical Engineering, M.Sc. Computer Science.",
+      cvLink: "( Full CV )",
+      quote: "\"Constraints are a gift — they make the good solutions obvious.\"",
+      radioLabel: "Radio & Protocols",
+      systemsLabel: "Systems & Firmware",
+      practiceLabel: "Practice",
+      tag: {
+        management: "Eng. management",
+        architecture: "Architecture",
+        agile: "Agile / XP",
+        review: "Code review",
+        hiring: "Hiring"
+      },
       subtitle: "Professional Software Developer (M.Sc.)",
       hobbies: "Hobbies: 🧗‍♀️🚴🎸📷👨‍🍳🎮🧑‍💻📖",
       name: "T.R.M.K Meyer",
       intro: "Hey there my name is Tobias Raphael Maria Karl Meyer, a seasoned software developer with over a decade of expertise in crafting solutions for low-energy systems. My journey in the realm of embedded systems has been characterized by a dynamic fusion of experiences, from navigating, and designing various radio protocols to mastering Real-Time Operating Systems (RTOS) and bare-metal programming.",
       paragraph2: "My love for the embedded world stems from the unique challenges it presents. Confronting the constraints of these systems, I find joy in devising creative solutions to address complex problems within the confines of a compact environment. My skill set extends beyond coding, encompassing a comprehensive understanding of agile methodologies, software architecture, and collaborative teamwork.",
       paragraph3: "Formally educated with a Bachelor's in Electrical Engineering and a Master's in Computer Science, I bring a robust academic foundation to complement my practical experience.",
-      cvLink: "( CV )",
       climbingTitle: "Climbing / Bouldering / Alpinist",
       climbingText1: "Away from the keyboard, my heart finds solace in the majestic embrace of mountains and the exhilarating world of bouldering. The mountains, with their awe-inspiring landscapes and breathtaking views, offer me a sanctuary in nature. What captivates me most is the inherent challenge of ascending these peaks, requiring not just physical strength but a keen ability to assess risks judiciously. It's a thrilling dance with nature's forces, a pursuit that fuels my sense of adventure.",
       climbingText2: "In the realm of bouldering, I discover a different kind of challenge—one that's as much mental as it is physical. The joy lies in solving intricate \"problems\" posed by the boulders, where strength alone isn't the sole answer. It's a fascinating interplay of understanding my body type, leveraging my strengths, and embracing an iterative process to conquer each puzzle. Bouldering, for me, is a journey of self-discovery and perseverance, where the reward isn't just reaching the top but in the intricate problem-solving process that gets me there.",
@@ -41,6 +61,41 @@ const translations = {
       cookingText2: "The choice of a vegan lifestyle stems from a broader commitment to minimizing harm and reducing suffering for all beings on our planet. Each dish is a testament to the belief that cruelty-free living can be a delectable and fulfilling way of life. As I delve into the world of vegan cooking, I discover the boundless creativity that comes with transforming simple, plant-derived ingredients into culinary masterpieces that not only satisfy the palate but also contribute to a more compassionate and sustainable existence.",
       cookingLink: "Follow the happy bunny at"
     },
+    outside: {
+      heading: "Outside",
+      meta: { elev: "Elev. gain" },
+      climb: {
+        category: "Alpine · Climb",
+        title: "Rock, route-finding, risk.",
+        text: "The mountains give me what the terminal can't: weather, gravity, and an opinion that doesn't negotiate. I climb trad and sport, boulder when I can't, and plan longer alpine routes in the Wetterstein and Karwendel ranges.",
+        quote: "\"The mountain doesn't care if you're tired.\"",
+        meta: { route: "Route", grade: "Grade", partner: "Partner" }
+      },
+      cycle: {
+        category: "Road · Cycle",
+        title: "Long days in the saddle.",
+        text: "Road biking is how I think. Local loops along the Isar for maintenance, bigger passes for the real meditation — Timmelsjoch, Stelvio, Grossglockner.",
+        stravaLink: "Follow along on",
+        meta: { lastRide: "Last ride", distance: "Distance", pace: "Avg pace" }
+      },
+      cook: {
+        category: "Kitchen · Vegan",
+        title: "Plants, sourdough, and doing less harm.",
+        text: "I cook and bake mostly vegan — from everyday bowls to obsessive pizza dough and bread experiments. The ethics matter, but plant cooking is also the more interesting constraint.",
+        cafeLink: "Follow the happy bunny at",
+        meta: { bench: "On the bench", hydration: "Hydration", starter: "Starter age", signature: "Signature" }
+      },
+      photo: {
+        category: "Viewfinder",
+        title: "A camera as an excuse to stand still.",
+        text: "The photography is mostly a side effect of the other hobbies — wildlife on travel, mountain huts, rides at dawn. I shoot to remember, and occasionally to share.",
+        meta: { body: "Body", lens: "Favourite", archive: "Archive", travels: "Travels" }
+      }
+    },
+    photography: {
+      heading: "Photography",
+      lead: "A small selection from travels — from the cloud forests of Costa Rica to the north ridge of the Zugspitze. Full sets by region on request."
+    },
     portfolio: {
       heading: "Photography & Travel",
       subtitle: "Here are just some collections of pictures from my travels around the world"
@@ -50,6 +105,13 @@ const translations = {
       backToTop: "To the top"
     },
     footer: {
+      contactHeading: "Get in touch",
+      contactTitle: "Happy to talk embedded, alpine, or sourdough.",
+      contactSub: "Open to consulting, advisory, and speaking. Otherwise just say hi.",
+      elsewhereHeading: "Elsewhere",
+      basedHeading: "Based",
+      timeLabel: "Time",
+      impressumToggle: "Impressum",
       impressum: "Legal Disclosure",
       angaben: "Information according to § 5 TMG",
       kontakt: "Contact:",
@@ -121,19 +183,40 @@ const translations = {
     },
     nav: {
       home: "STARTSEITE",
-      about: "ÜBER MICH",
-      consulting: "BERATUNG",
-      cv: "LEBENSLAUF",
-      blog: "BLOG",
-      photography: "FOTOGRAFIE",
-      contact: "KONTAKT"
+      about: "Über mich",
+      consulting: "Beratung",
+      cv: "Lebenslauf",
+      blog: "Blog",
+      photography: "Fotografie",
+      contact: "Kontakt",
+      outside: "Draußen",
+      skipToContent: "Zum Hauptinhalt springen"
     },
     hero: {
-      title: "T.R.M.K Meyer",
-      subtitle: "Embedded Software-Entwickler"
+      title: "Embedded-Ingenieur, Alpinist, Slow-Cook.",
+      subtitle: "Ich baue energiearme, funkvernetzte Systeme — Firmware, Protokolle, Architekturen, die ohne Aufsicht überleben müssen. Abseits der Tastatur bin ich meist auf Felsen, auf dem Rad oder am Herd.",
+      location: "München · 48.1351° N, 11.5820° E",
+      roleLabel: "Rolle",
+      stackLabel: "Stack",
+      radioLabel: "Funk",
+      basedLabel: "Standort"
     },
     about: {
-      heading: "ÜBER MICH",
+      heading: "Über mich",
+      lede1: "Ich habe ein Jahrzehnt in der Embedded-Welt verbracht und Software entwickelt, die klein, schlank und fehlerfrei sein muss — über Funkprotokolle, Echtzeit-Betriebssysteme, Bare-Metal-Firmware und die Systemarchitektur dahinter.",
+      lede2: "Heute leite ich ein Team, das IIoT-Produkte für anspruchsvolle Umgebungen baut — Kühlhäuser, Fabrikhallen, Fernsensoren in den Alpen. Ich setze auf klare Schnittstellen, robuste Systeme und Ingenieure, die Verantwortung für das übernehmen, was sie liefern. Formell: B.Sc. Elektrotechnik, M.Sc. Informatik.",
+      cvLink: "( Vollständiger Lebenslauf )",
+      quote: "\"Einschränkungen sind ein Geschenk — sie machen die guten Lösungen offensichtlich.\"",
+      radioLabel: "Funk & Protokolle",
+      systemsLabel: "Systeme & Firmware",
+      practiceLabel: "Praxis",
+      tag: {
+        management: "Eng. Management",
+        architecture: "Architektur",
+        agile: "Agile / XP",
+        review: "Code Review",
+        hiring: "Recruiting"
+      },
       subtitle: "Professioneller Software-Entwickler (M.Sc.)",
       hobbies: "Hobbys: 🧗‍♀️🚴🎸📷👨‍🍳🎮🧑‍💻📖",
       name: "T.R.M.K Meyer",
@@ -152,6 +235,41 @@ const translations = {
       cookingText2: "Die Wahl eines veganen Lebensstils entspringt einem breiteren Engagement zur Minimierung von Schaden und Reduzierung von Leid für alle Wesen auf unserem Planeten. Jedes Gericht ist ein Zeugnis des Glaubens, dass tierfreies Leben eine köstliche und erfüllende Lebensweise sein kann. Während ich in die Welt des veganen Kochens eintauche, entdecke ich die grenzenlose Kreativität, die mit der Transformation einfacher, pflanzlicher Zutaten in kulinarische Meisterwerke einhergeht, die nicht nur den Gaumen erfreuen, sondern auch zu einer mitfühlenderen und nachhaltigeren Existenz beitragen.",
       cookingLink: "Folgen Sie dem glücklichen Häschen auf"
     },
+    outside: {
+      heading: "Draußen",
+      meta: { elev: "Höhenmeter" },
+      climb: {
+        category: "Alpin · Klettern",
+        title: "Fels, Routenfindung, Risiko.",
+        text: "Die Berge geben mir, was das Terminal nicht kann: Wetter, Schwerkraft und eine Meinung, die nicht verhandelt. Ich klettere Trad und Sport, bouldere wenn ich kann, und plane längere Alpinrouten im Wetterstein und Karwendel.",
+        quote: "\"Der Berg kümmert sich nicht, ob du müde bist.\"",
+        meta: { route: "Route", grade: "Schwierigkeitsgrad", partner: "Partner" }
+      },
+      cycle: {
+        category: "Straße · Radfahren",
+        title: "Lange Tage im Sattel.",
+        text: "Rennradfahren ist meine Art zu denken. Lokale Runden entlang der Isar zur Pflege, größere Pässe für die echte Meditation — Timmelsjoch, Stilfser Joch, Großglockner.",
+        stravaLink: "Folge mir auf",
+        meta: { lastRide: "Letzte Fahrt", distance: "Distanz", pace: "Ø Tempo" }
+      },
+      cook: {
+        category: "Küche · Vegan",
+        title: "Pflanzen, Sauerteig und weniger Schaden anrichten.",
+        text: "Ich koche und backe meistens vegan — von Alltagsschüsseln bis zu obsessivem Pizzateig und Brotexperimenten. Die Ethik zählt, aber pflanzliches Kochen ist auch die interessantere Einschränkung.",
+        cafeLink: "Folge dem glücklichen Häschen auf",
+        meta: { bench: "Aktuell auf der Bank", hydration: "Hydration", starter: "Starter-Alter", signature: "Signature" }
+      },
+      photo: {
+        category: "Sucher",
+        title: "Eine Kamera als Ausrede, stillzustehen.",
+        text: "Die Fotografie ist meistens ein Nebeneffekt der anderen Hobbys — Wildtiere auf Reisen, Berghütten, Fahrten im Morgengrauen. Ich fotografiere um zu erinnern, und gelegentlich um zu teilen.",
+        meta: { body: "Kamera", lens: "Lieblingsobjektiv", archive: "Archiv", travels: "Reisen" }
+      }
+    },
+    photography: {
+      heading: "Fotografie",
+      lead: "Eine kleine Auswahl von Reisen — von den Nebelwäldern Costa Ricas bis zum Nordgrat der Zugspitze. Vollständige Sets nach Region auf Anfrage."
+    },
     portfolio: {
       heading: "Fotografie & Reisen",
       subtitle: "Hier sind nur einige Sammlungen von Bildern meiner Reisen rund um die Welt"
@@ -161,6 +279,13 @@ const translations = {
       backToTop: "Nach oben"
     },
     footer: {
+      contactHeading: "Kontakt aufnehmen",
+      contactTitle: "Gerne spreche ich über Embedded, Alpines oder Sauerteig.",
+      contactSub: "Offen für Beratung, Beiratsarbeit und Vorträge. Oder einfach hallo sagen.",
+      elsewhereHeading: "Anderswo",
+      basedHeading: "Standort",
+      timeLabel: "Ortszeit",
+      impressumToggle: "Impressum",
       impressum: "Impressum",
       angaben: "Angaben gemäß § 5 TMG",
       kontakt: "Kontakt:",
