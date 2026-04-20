@@ -43,6 +43,7 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/branding.css">
   <link rel="stylesheet" href="../css/site.css">
   <link rel="stylesheet" href="../css/blog.css">
   <link rel="stylesheet" href="../css/all.css">
@@ -50,6 +51,9 @@
   <!-- i18n -->
   <script src="../js/translations.js" defer></script>
   <script src="../js/i18n.js" defer></script>
+
+  <!-- Theme: set before render to prevent flash -->
+  <script>(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
 </head>
 <body>
 
@@ -78,6 +82,9 @@
         <span class="lang-opt active" id="lang-en">EN</span>
         <span style="color: var(--rule);">/</span>
         <span class="lang-opt" id="lang-de">DE</span>
+      </button>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+        <i class="fa fa-moon" aria-hidden="true"></i>
       </button>
       <button class="nav-hamburger" id="nav-hamburger"
               aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
@@ -125,6 +132,21 @@
 </footer>
 
 <script>
+// -------- Theme toggle --------
+const themeToggle = document.getElementById('theme-toggle');
+function applyThemeIcon(theme) {
+  const icon = themeToggle.querySelector('i');
+  icon.className = theme === 'dark' ? 'fa fa-sun' : 'fa fa-moon';
+  themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+}
+applyThemeIcon(document.documentElement.getAttribute('data-theme'));
+themeToggle.addEventListener('click', () => {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  applyThemeIcon(next);
+});
+
 const hamburger = document.getElementById('nav-hamburger');
 const navLinks  = document.getElementById('nav-links');
 

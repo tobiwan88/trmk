@@ -42,6 +42,7 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./css/fonts.css">
+  <link rel="stylesheet" href="./css/branding.css">
   <link rel="stylesheet" href="./css/site.css">
   <link rel="stylesheet" href="./css/cv.css">
   <link rel="stylesheet" href="./css/all.css">
@@ -49,6 +50,9 @@
   <!-- i18n -->
   <script src="./js/translations.js" defer></script>
   <script src="./js/i18n.js" defer></script>
+
+  <!-- Theme: set before render to prevent flash -->
+  <script>(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
 </head>
 <body>
 
@@ -77,6 +81,9 @@
         <span class="lang-opt active" id="lang-en">EN</span>
         <span style="color: var(--rule);">/</span>
         <span class="lang-opt" id="lang-de">DE</span>
+      </button>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+        <i class="fa fa-moon" aria-hidden="true"></i>
       </button>
       <button class="nav-hamburger" id="nav-hamburger"
               aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
@@ -109,40 +116,59 @@
     </header>
 
     <!-- Skills -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">
+    <section class="cv-section cv-collapsible">
+      <h2 class="cv-section-title" role="button" tabindex="0" aria-expanded="false">
         <i class="fa fa-code" aria-hidden="true"></i>
         <span data-i18n="cv.skills">Technical Skills</span>
+        <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
       </h2>
-      <div class="skill-categories">
+      <div class="skill-categories cv-collapsible-body">
         <div class="skill-category">
           <h3 data-i18n="cv.programmingLanguages">Programming Languages</h3>
           <div class="skill-tags">
             <span class="skill-tag advanced">C</span>
             <span class="skill-tag advanced">C++</span>
             <span class="skill-tag intermediate">Python</span>
-            <span class="skill-tag intermediate">C#</span>
           </div>
         </div>
         <div class="skill-category">
-          <h3 data-i18n="cv.protocolsAndSystems">Protocols &amp; Systems</h3>
+          <h3 data-i18n="cv.embeddedSystems">Embedded Systems</h3>
           <div class="skill-tags">
+            <span class="skill-tag advanced">Zephyr RTOS</span>
             <span class="skill-tag advanced">LTE-M</span>
             <span class="skill-tag advanced">BLE</span>
-            <span class="skill-tag advanced">Zephyr RTOS</span>
+            <span class="skill-tag intermediate">Signal Processing</span>
             <span class="skill-tag intermediate">Zigbee</span>
-            <span class="skill-tag intermediate">Thread</span>
-            <span class="skill-tag intermediate">LoRa</span>
             <span class="skill-tag intermediate">EnOcean</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 data-i18n="cv.engineeringAndDesign">Engineering &amp; Design</h3>
+          <div class="skill-tags">
+            <span class="skill-tag advanced">Firmware Architecture</span>
+            <span class="skill-tag advanced">System Design</span>
+            <span class="skill-tag intermediate">Hardware Review</span>
+            <span class="skill-tag intermediate">Electronics</span>
+            <span class="skill-tag intermediate">Standards &amp; Certification</span>
           </div>
         </div>
         <div class="skill-category">
           <h3 data-i18n="cv.leadershipAndManagement">Leadership &amp; Management</h3>
           <div class="skill-tags">
-            <span class="skill-tag advanced">Team Leadership</span>
-            <span class="skill-tag advanced">OKR Planning</span>
-            <span class="skill-tag advanced">Technical Strategy</span>
             <span class="skill-tag advanced">Engineering Management</span>
+            <span class="skill-tag advanced">Team Leadership</span>
+            <span class="skill-tag advanced">Technical Leadership</span>
+            <span class="skill-tag advanced">OKR Planning</span>
+            <span class="skill-tag advanced">Interdisciplinary Alignment</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 data-i18n="cv.aiAndData">AI &amp; Data</h3>
+          <div class="skill-tags">
+            <span class="skill-tag intermediate">Edge AI</span>
+            <span class="skill-tag intermediate">Machine Learning</span>
+            <span class="skill-tag beginner">Statistics</span>
+            <span class="skill-tag beginner">Language Models</span>
           </div>
         </div>
         <div class="skill-category">
@@ -162,17 +188,18 @@
         <span data-i18n="cv.workExperience">Work Experience</span>
       </h2>
 
-      <article class="experience-card">
-        <div class="experience-header">
+      <article class="experience-card cv-collapsible">
+        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
           <div class="experience-title">
             <h3>Engineering Manager — Device Team</h3>
             <p class="company"><a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a></p>
           </div>
           <div class="experience-date">
             <span class="date-badge current">July 2025 – Present</span>
+            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
           </div>
         </div>
-        <div class="experience-content">
+        <div class="experience-content cv-collapsible-body">
           <p>As Engineering Manager of the Device Team at KONUX, I lead the development of embedded systems that power our industrial IoT solutions for the railway sector.</p>
           <ul>
             <li><strong>Technical Leadership:</strong> Defining and delivering firmware architecture, setting technical roadmap for embedded systems</li>
@@ -185,17 +212,18 @@
         </div>
       </article>
 
-      <article class="experience-card">
-        <div class="experience-header">
+      <article class="experience-card cv-collapsible">
+        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
           <div class="experience-title">
             <h3>Senior Firmware Developer</h3>
             <p class="company"><a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a></p>
           </div>
           <div class="experience-date">
             <span class="date-badge">Sept 2020 – July 2025</span>
+            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
           </div>
         </div>
-        <div class="experience-content">
+        <div class="experience-content cv-collapsible-body">
           <p>Developed rugged, intelligent sensor systems for predictive maintenance on rail infrastructure, bridging hardware, firmware, and connectivity.</p>
           <ul>
             <li><strong>Bare-metal C++ IIoT sensor development:</strong> Engineered compact, battery-powered C++-based sensors running directly on microcontrollers for field deployment</li>
@@ -209,17 +237,18 @@
         </div>
       </article>
 
-      <article class="experience-card">
-        <div class="experience-header">
+      <article class="experience-card cv-collapsible">
+        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
           <div class="experience-title">
             <h3>Software Engineer</h3>
             <p class="company"><a href="https://www.enocean.com" target="_blank" rel="noopener noreferrer">EnOcean</a></p>
           </div>
           <div class="experience-date">
             <span class="date-badge">April 2015 – Aug 2020</span>
+            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
           </div>
         </div>
-        <div class="experience-content">
+        <div class="experience-content cv-collapsible-body">
           <ul>
             <li>Firmware development for energy harvesting devices and radio stacks (BLE / EnOcean / Zigbee) in C/C++</li>
             <li>Architecture and software design</li>
@@ -232,17 +261,18 @@
         </div>
       </article>
 
-      <article class="experience-card">
-        <div class="experience-header">
+      <article class="experience-card cv-collapsible">
+        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
           <div class="experience-title">
             <h3>Intern — Software Department</h3>
             <p class="company"><a href="https://www.enocean.com" target="_blank" rel="noopener noreferrer">EnOcean</a></p>
           </div>
           <div class="experience-date">
             <span class="date-badge">Jan 2010 – March 2015</span>
+            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
           </div>
         </div>
-        <div class="experience-content">
+        <div class="experience-content cv-collapsible-body">
           <ul>
             <li>Internal webpages development (PHP)</li>
             <li>Statistics tool for production data (WPF/C#)</li>
@@ -261,19 +291,37 @@
         <span data-i18n="cv.education">Education</span>
       </h2>
 
-      <div class="education-item">
-        <h3>Master of Science in Computer Science</h3>
-        <p><i class="fa fa-university" aria-hidden="true"></i> University of Applied Science</p>
-        <p><i class="fa fa-calendar" aria-hidden="true"></i> 2013 – 2015</p>
-        <p><i class="fa fa-book" aria-hidden="true"></i> <strong>Master Thesis:</strong> "Firmware over the air updates with EnOcean energy harvested protocol"</p>
-      </div>
+      <article class="experience-card cv-collapsible">
+        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
+          <div class="experience-title">
+            <h3>Master of Science in Computer Science</h3>
+            <p class="company">University of Applied Science</p>
+          </div>
+          <div class="experience-date">
+            <span class="date-badge">2013 – 2015</span>
+            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="experience-content cv-collapsible-body">
+          <p><i class="fa fa-book" aria-hidden="true" style="color:var(--accent);margin-right:6px;"></i><strong>Thesis:</strong> "Firmware over the air updates with EnOcean energy harvested protocol"</p>
+        </div>
+      </article>
 
-      <div class="education-item">
-        <h3>Bachelor of Science in Electrical Engineering</h3>
-        <p><i class="fa fa-university" aria-hidden="true"></i> University of Applied Science</p>
-        <p><i class="fa fa-calendar" aria-hidden="true"></i> 2010 – 2013</p>
-        <p><i class="fa fa-book" aria-hidden="true"></i> <strong>Bachelor Thesis:</strong> "An energy harvesting ZigBee Switch"</p>
-      </div>
+      <article class="experience-card cv-collapsible">
+        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
+          <div class="experience-title">
+            <h3>Bachelor of Science in Electrical Engineering</h3>
+            <p class="company">University of Applied Science</p>
+          </div>
+          <div class="experience-date">
+            <span class="date-badge">2010 – 2013</span>
+            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="experience-content cv-collapsible-body">
+          <p><i class="fa fa-book" aria-hidden="true" style="color:var(--accent);margin-right:6px;"></i><strong>Thesis:</strong> "An energy harvesting ZigBee Switch"</p>
+        </div>
+      </article>
     </section>
 
   </div><!-- /cv-wrap -->
@@ -323,6 +371,38 @@ navLinks.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => {
     navLinks.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// Theme toggle
+const themeToggle = document.getElementById('theme-toggle');
+function applyThemeIcon(theme) {
+  const icon = themeToggle.querySelector('i');
+  icon.className = theme === 'dark' ? 'fa fa-sun' : 'fa fa-moon';
+  themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+}
+applyThemeIcon(document.documentElement.getAttribute('data-theme'));
+themeToggle.addEventListener('click', () => {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  applyThemeIcon(next);
+});
+
+// Collapsible sections
+document.querySelectorAll('.cv-collapsible').forEach(el => {
+  const trigger = el.querySelector('.cv-section-title[role="button"], .experience-header[role="button"]');
+  if (!trigger) return;
+
+  function toggle() {
+    const opening = !el.classList.contains('open');
+    el.classList.toggle('open', opening);
+    trigger.setAttribute('aria-expanded', opening);
+  }
+
+  trigger.addEventListener('click', toggle);
+  trigger.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
   });
 });
 </script>

@@ -43,6 +43,7 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./css/fonts.css">
+  <link rel="stylesheet" href="./css/branding.css">
   <link rel="stylesheet" href="./css/site.css">
   <link rel="stylesheet" href="./css/homepage.css">
   <link rel="stylesheet" href="./css/all.css">
@@ -50,6 +51,9 @@
   <!-- i18n -->
   <script src="./js/translations.js" defer></script>
   <script src="./js/i18n.js" defer></script>
+
+  <!-- Theme: set before render to prevent flash -->
+  <script>(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -102,6 +106,9 @@
         <span style="color: var(--rule);">/</span>
         <span class="lang-opt" id="lang-de">DE</span>
       </button>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+        <i class="fa fa-moon" aria-hidden="true"></i>
+      </button>
       <button class="nav-hamburger" id="nav-hamburger"
               aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
@@ -115,33 +122,41 @@
   <div class="topo" aria-hidden="true"></div>
   <div class="wrap">
     <div id="main-content"></div>
-    <span class="hero-kicker">
-      <span class="dot" aria-hidden="true"></span>
-      <span data-i18n="hero.location">Munich · 48.1351° N, 11.5820° E</span>
-    </span>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-kicker">
+          <span class="dot" aria-hidden="true"></span>
+          <span data-i18n="hero.location">Munich · 48.1351° N, 11.5820° E</span>
+        </span>
 
-    <h1 data-i18n="hero.title">Embedded engineer, <em>alpinist</em>, slow cook.</h1>
+        <h1 data-i18n-html="hero.title">Debug the code, <em>read the rock</em>, fix the dish.</h1>
 
-    <p class="sub" data-i18n="hero.subtitle">
-      I build low-power, radio-connected things — firmware, protocols, architectures that have to survive without supervision. Off the keyboard I'm usually on rock, on a bike, or at the stove.
-    </p>
+        <p class="sub" data-i18n="hero.subtitle">
+          I build low-power, radio-connected things — firmware, protocols, architectures that have to survive without supervision. Off the keyboard I'm usually on rock, on a bike, or at the stove.
+        </p>
 
-    <div class="route-card" aria-label="Quick facts">
-      <div class="cell">
-        <div class="k" data-i18n="hero.roleLabel">Role</div>
-        <div class="v">Engineering Manager · <b>Embedded / IIoT</b></div>
+        <div class="route-card" aria-label="Quick facts">
+          <div class="cell">
+            <div class="k" data-i18n="hero.roleLabel">Role</div>
+            <div class="v">Engineering Manager · <b>Embedded / IIoT</b></div>
+          </div>
+          <div class="cell">
+            <div class="k" data-i18n="hero.stackLabel">Stack</div>
+            <div class="v">Embedded · IIoT · AI</div>
+          </div>
+          <div class="cell">
+            <div class="k" data-i18n="hero.offGridLabel">Off-grid</div>
+            <div class="v">Rock · Road · Kitchen</div>
+          </div>
+          <div class="cell">
+            <div class="k" data-i18n="hero.basedLabel">Based</div>
+            <div class="v">Munich, DE</div>
+          </div>
+        </div>
       </div>
-      <div class="cell">
-        <div class="k" data-i18n="hero.stackLabel">Stack</div>
-        <div class="v">Zephyr · RTOS · bare-metal C</div>
-      </div>
-      <div class="cell">
-        <div class="k" data-i18n="hero.radioLabel">Radio</div>
-        <div class="v">BLE · LTE-M · NB-IoT · LoRa</div>
-      </div>
-      <div class="cell">
-        <div class="k" data-i18n="hero.basedLabel">Based</div>
-        <div class="v">Munich, DE</div>
+
+      <div class="hero-photo">
+        <img src="./pictures/me/professional.webp" alt="Tobias Meyer" width="400" height="480" loading="eager">
       </div>
     </div>
   </div>
@@ -161,44 +176,51 @@
           I've spent a decade in the embedded world, designing software that has to be <em>small, lean, and never crash</em> — across radio protocols, Real-Time OS, bare-metal firmware, and the system architecture around them.
         </p>
         <p data-i18n="about.lede2">
-          These days I lead a team building IIoT products for hostile environments — cold stores, factory floors, remote sensors in the alps. I care about clear interfaces, durable systems, and engineers who own what they ship. Formally: B.Sc. Electrical Engineering, M.Sc. Computer Science. <a href="./cv.html" data-i18n="about.cvLink">( Full CV )</a>
+          These days I lead a team building IIoT products for hostile environments — railway infrastructure, trackside sensors, and remote monitoring systems. I care about clear interfaces, durable systems, and engineers who own what they ship. Formally: B.Sc. Electrical Engineering, M.Sc. Computer Science. <a href="./cv.html" data-i18n="about.cvLink">( Full CV )</a>
         </p>
         <p class="hand" style="font-size: 20px; margin-top: 20px;" data-i18n="about.quote">
-          "Constraints are a gift — they make the good solutions obvious."
+          "Every problem is just a decomposition away."
         </p>
       </div>
 
       <div>
         <div class="stack-card">
-          <h3 data-i18n="about.radioLabel">Radio &amp; Protocols</h3>
+          <h3 data-i18n="about.embeddedLabel">Embedded &amp; Low-Power IoT</h3>
           <div class="tags">
-            <span class="tag">BLE</span>
-            <span class="tag">LTE-M</span>
-            <span class="tag">NB-IoT</span>
-            <span class="tag">LoRa / LoRaWAN</span>
-            <span class="tag">Wi-Fi</span>
-            <span class="tag">Thread</span>
-            <span class="tag">MQTT</span>
-            <span class="tag">CoAP</span>
+            <span class="tag">Ultra-low power design</span>
+            <span class="tag">LPWAN</span>
+            <span class="tag">Cellular</span>
+            <span class="tag">RTOS (e.g. Zephyr)</span>
+            <span class="tag">Different SoC</span>
           </div>
-          <h3 data-i18n="about.systemsLabel">Systems &amp; Firmware</h3>
+          <h3 data-i18n="about.languagesLabel">Languages</h3>
           <div class="tags">
-            <span class="tag">Zephyr RTOS</span>
-            <span class="tag">FreeRTOS</span>
-            <span class="tag">Bare-metal C</span>
-            <span class="tag">C++17</span>
-            <span class="tag">Rust (no_std)</span>
-            <span class="tag">ARM Cortex-M</span>
-            <span class="tag">nRF52 / nRF91</span>
-            <span class="tag">STM32</span>
+            <span class="tag">C</span>
+            <span class="tag">C++</span>
+            <span class="tag">Python</span>
           </div>
-          <h3 data-i18n="about.practiceLabel">Practice</h3>
+          <h3 data-i18n="about.architectureLabel">Architecture</h3>
           <div class="tags">
-            <span class="tag second" data-i18n="about.tag.management">Eng. management</span>
-            <span class="tag second" data-i18n="about.tag.architecture">Architecture</span>
-            <span class="tag second" data-i18n="about.tag.agile">Agile / XP</span>
-            <span class="tag second" data-i18n="about.tag.review">Code review</span>
-            <span class="tag second" data-i18n="about.tag.hiring">Hiring</span>
+            <span class="tag">Distributed IoT systems</span>
+            <span class="tag">Event-driven design</span>
+            <span class="tag">HW/SW co-design</span>
+            <span class="tag">Protocol design</span>
+            <span class="tag">API design</span>
+          </div>
+          <h3 data-i18n="about.aiLabel">AI &amp; ML</h3>
+          <div class="tags">
+            <span class="tag">Edge AI / TinyML</span>
+            <span class="tag">LLM tooling</span>
+            <span class="tag">ML pipelines</span>
+            <span class="tag">Prompt engineering</span>
+          </div>
+          <h3 data-i18n="about.leadershipLabel">Leadership &amp; Product</h3>
+          <div class="tags">
+            <span class="tag second">Engineering management</span>
+            <span class="tag second">Technical leadership</span>
+            <span class="tag second">Roadmap</span>
+            <span class="tag second">Stakeholder alignment</span>
+            <span class="tag second">Product discovery</span>
           </div>
         </div>
       </div>
@@ -226,9 +248,9 @@
           <p class="hand" style="font-size: 18px;" data-i18n="outside.climb.quote">&mdash; "The mountain doesn't care if you're tired."</p>
         </div>
         <div class="route-meta" aria-label="Recent route">
-          <div class="m"><div class="k" data-i18n="outside.climb.meta.route">Route</div><div class="v">Alpspitze Ferrata</div></div>
-          <div class="m"><div class="k" data-i18n="outside.climb.meta.grade">Grade</div><div class="v"><b>D / 6a</b></div></div>
-          <div class="m"><div class="k" data-i18n="outside.meta.elev">Elev. gain</div><div class="v">+ 1,380 m</div></div>
+          <div class="m"><div class="k" data-i18n="outside.climb.meta.route">Route</div><div class="v">Ortler Normal Route</div></div>
+          <div class="m"><div class="k" data-i18n="outside.climb.meta.grade">Grade</div><div class="v"><b>F / PD</b></div></div>
+          <div class="m"><div class="k" data-i18n="outside.meta.elev">Elev. gain</div><div class="v">+ 1,800 m</div></div>
           <div class="m"><div class="k" data-i18n="outside.climb.meta.partner">Partner</div><div class="v">solo / 2p</div></div>
         </div>
         <svg class="elev" viewBox="0 0 1200 52" preserveAspectRatio="none" aria-hidden="true">
@@ -249,10 +271,10 @@
           <p><span data-i18n="outside.cycle.stravaLink">Follow along on</span> <a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava →</a></p>
         </div>
         <div class="route-meta">
-          <div class="m"><div class="k" data-i18n="outside.cycle.meta.lastRide">Last ride</div><div class="v">Sylvensteinsee</div></div>
-          <div class="m"><div class="k" data-i18n="outside.cycle.meta.distance">Distance</div><div class="v"><b>112 km</b></div></div>
-          <div class="m"><div class="k" data-i18n="outside.meta.elev">Elev. gain</div><div class="v">+ 1,240 m</div></div>
-          <div class="m"><div class="k" data-i18n="outside.cycle.meta.pace">Avg pace</div><div class="v">28.4 km/h</div></div>
+          <div class="m"><div class="k" data-i18n="outside.cycle.meta.lastRide">Longest ride</div><div class="v">Munich → Vienna</div></div>
+          <div class="m"><div class="k" data-i18n="outside.cycle.meta.distance">Distance</div><div class="v"><b>430 km</b></div></div>
+          <div class="m"><div class="k" data-i18n="outside.cycle.meta.pace">Moving time</div><div class="v">16h 17m</div></div>
+          <div class="m"><div class="k" data-i18n="outside.cycle.meta.power">Avg power</div><div class="v">119 W</div></div>
         </div>
       </article>
 
@@ -263,13 +285,13 @@
           <p data-i18n="outside.cook.text">
             I cook and bake mostly vegan — from everyday bowls to obsessive pizza dough and bread experiments. The ethics matter (fewer beings hurt, lighter footprint), but honestly plant cooking is also the more interesting constraint: flavours have to be built, textures have to be earned.
           </p>
-          <p><span data-i18n="outside.cook.cafeLink">Follow the happy bunny at</span> <a href="https://www.cafetobi.de" target="_blank" rel="noopener noreferrer">Café Tobi →</a></p>
+          <p><span data-i18n="outside.cook.cafeLink">Follow the happy bunny at</span> <a href="https://www-fallback.instagram.com/cafe.tobi.88/" target="_blank" rel="noopener noreferrer">Café Tobi →</a></p>
         </div>
         <div class="route-meta">
-          <div class="m"><div class="k" data-i18n="outside.cook.meta.bench">On the bench</div><div class="v">Focaccia</div></div>
-          <div class="m"><div class="k" data-i18n="outside.cook.meta.hydration">Hydration</div><div class="v"><b>82 %</b></div></div>
-          <div class="m"><div class="k" data-i18n="outside.cook.meta.starter">Starter age</div><div class="v">4 yrs</div></div>
-          <div class="m"><div class="k" data-i18n="outside.cook.meta.signature">Signature</div><div class="v">Olive · rosemary</div></div>
+          <div class="m"><div class="k" data-i18n="outside.cook.meta.bench">On the bench</div><div class="v">Mapo Tofu</div></div>
+          <div class="m"><div class="k" data-i18n="outside.cook.meta.style">Style</div><div class="v"><b>Sichuan</b></div></div>
+          <div class="m"><div class="k" data-i18n="outside.cook.meta.heat">Heat</div><div class="v">Mala 麻辣</div></div>
+          <div class="m"><div class="k" data-i18n="outside.cook.meta.signature">Signature</div><div class="v">Signature dish</div></div>
         </div>
       </article>
 
@@ -284,8 +306,8 @@
         <div class="route-meta">
           <div class="m"><div class="k" data-i18n="outside.photo.meta.body">Body</div><div class="v">Sony α7 IV</div></div>
           <div class="m"><div class="k" data-i18n="outside.photo.meta.lens">Favourite</div><div class="v"><b>35 mm prime</b></div></div>
-          <div class="m"><div class="k" data-i18n="outside.photo.meta.archive">Archive</div><div class="v">~ 14k frames</div></div>
-          <div class="m"><div class="k" data-i18n="outside.photo.meta.travels">Travels</div><div class="v">24 countries</div></div>
+          <div class="m"><div class="k" data-i18n="outside.photo.meta.archive">Archive</div><div class="v">132,876 frames</div></div>
+          <div class="m"><div class="k" data-i18n="outside.photo.meta.travels">Travels</div><div class="v">Around the world</div></div>
         </div>
       </article>
 
@@ -312,63 +334,63 @@
           <source type="image/webp" srcset="./pictures/p1.webp">
           <img src="./pictures/p1.webp" alt="Colorful parrot in natural habitat · Monteverde, Costa Rica 2024" loading="lazy" onclick="openLightbox(this)">
         </picture>
-        <span class="cap"><b>Parrot · Costa Rica</b>Monteverde · 2024</span>
+        <span class="cap"><b>Parrot · Peru</b></span>
       </div>
       <div class="ph" role="listitem">
         <picture>
           <source type="image/webp" srcset="./pictures/p2.webp">
           <img src="./pictures/p2.webp" alt="Monkey in the wild · Sigiriya, Sri Lanka 2023" loading="lazy" onclick="openLightbox(this)">
         </picture>
-        <span class="cap"><b>Monkey · Sri Lanka</b>Sigiriya · 2023</span>
+        <span class="cap"><b>Monkey · India</b></span>
       </div>
       <div class="ph" role="listitem">
         <picture>
           <source type="image/webp" srcset="./pictures/p3.webp">
           <img src="./pictures/p3.webp" alt="Mountain hut in Stubaital, Austria 2024" loading="lazy" onclick="openLightbox(this)">
         </picture>
-        <span class="cap"><b>Hut · Stubaital</b>AT · 2024</span>
+        <span class="cap"></span>
       </div>
       <div class="ph" role="listitem">
         <picture>
           <source type="image/webp" srcset="./pictures/p4.webp">
           <img src="./pictures/p4.webp" alt="Dolomites, Italy 2025" loading="lazy" onclick="openLightbox(this)">
         </picture>
-        <span class="cap"><b>Dolomites</b>IT · 2025</span>
+        <span class="cap"></span>
       </div>
       <div class="ph" role="listitem">
         <picture>
           <source type="image/webp" srcset="./pictures/p5.webp">
           <img src="./pictures/p5.webp" alt="Iceland landscape, Reykjanes 2024" loading="lazy" onclick="openLightbox(this)">
         </picture>
-        <span class="cap"><b>Iceland</b>Reykjanes · 2024</span>
+        <span class="cap"></span>
       </div>
       <div class="ph" role="listitem">
         <picture>
           <source type="image/webp" srcset="./pictures/p6.webp">
           <img src="./pictures/p6.webp" alt="Timmelsjoch mountain pass 2025" loading="lazy" onclick="openLightbox(this)">
         </picture>
-        <span class="cap"><b>Timmelsjoch</b>pass · 2025</span>
+        <span class="cap"></span>
       </div>
       <div class="ph" role="listitem">
         <picture>
           <source type="image/webp" srcset="./pictures/p7.webp">
           <img src="./pictures/p7.webp" alt="Lofoten islands, Norway 2023" loading="lazy" onclick="openLightbox(this)">
         </picture>
-        <span class="cap"><b>Lofoten</b>NO · 2023</span>
+        <span class="cap"></span>
       </div>
       <div class="ph" role="listitem">
         <picture>
           <source type="image/webp" srcset="./pictures/p8.webp">
           <img src="./pictures/p8.webp" alt="Atlas mountains, Morocco 2024" loading="lazy" onclick="openLightbox(this)">
         </picture>
-        <span class="cap"><b>Morocco</b>Atlas · 2024</span>
+        <span class="cap"></span>
       </div>
       <div class="ph" role="listitem">
         <picture>
           <source type="image/webp" srcset="./pictures/p9.webp">
           <img src="./pictures/p9.webp" alt="Glacier at Zugspitze 2025" loading="lazy" onclick="openLightbox(this)">
         </picture>
-        <span class="cap"><b>Glacier</b>Zugspitze · 2025</span>
+        <span class="cap"></span>
       </div>
       <div class="ph" role="listitem">
         <picture>
@@ -411,7 +433,7 @@
         <li><a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         <li><a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava</a></li>
         <li><a href="https://www.instagram.com/the_tobi_wan88/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-        <li><a href="https://www.cafetobi.de" target="_blank" rel="noopener noreferrer">Café Tobi</a></li>
+        <li><a href="https://www-fallback.instagram.com/cafe.tobi.88/" target="_blank" rel="noopener noreferrer">Café Tobi</a></li>
       </ul>
     </div>
 
@@ -454,6 +476,21 @@
 </div>
 
 <script>
+// -------- Theme toggle --------
+const themeToggle = document.getElementById('theme-toggle');
+function applyThemeIcon(theme) {
+  const icon = themeToggle.querySelector('i');
+  icon.className = theme === 'dark' ? 'fa fa-sun' : 'fa fa-moon';
+  themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+}
+applyThemeIcon(document.documentElement.getAttribute('data-theme'));
+themeToggle.addEventListener('click', () => {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  applyThemeIcon(next);
+});
+
 // -------- Hamburger menu --------
 const hamburger = document.getElementById('nav-hamburger');
 const navLinks  = document.getElementById('nav-links');

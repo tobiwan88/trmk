@@ -1,156 +1,7 @@
 /* ============================================================
-   SITE.CSS — Shared design system for all pages
-   trmk.de · Alpine / Embedded brand
+   SITE.CSS — Nav, footer, section scaffolding, print base
+   Requires branding.css to be loaded first.
    ============================================================ */
-
-/* -------- Design Tokens -------- */
-:root {
-  --deep-slate:   #1C2A38;
-  --slate-mid:    #2E4356;
-  --muted-steel:  #8CA3AF;
-  --alpine-teal:  #3AAFA9;
-  --teal-deep:    #2D8A85;
-  --warm-white:   #F0EDE8;
-  --bg-2:         #E8E4DD;
-  --trail-ember:  #D9552B;
-
-  /* Semantic — light mode */
-  --bg:       var(--warm-white);
-  --surface:  #FFFFFF;
-  --ink:      var(--deep-slate);
-  --ink-2:    var(--slate-mid);
-  --ink-3:    var(--muted-steel);
-  --rule:     #D8D2C7;
-  --accent:   var(--alpine-teal);
-  --accent-2: var(--teal-deep);
-  --accent-bg: color-mix(in oklab, var(--alpine-teal) 14%, transparent);
-
-  --font-display: 'DM Sans', system-ui, sans-serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
-  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
-  --font-hand:    'Caveat', cursive;
-
-  --density: 0.88; /* compact */
-  --max:     1240px;
-  --pad-x:   clamp(20px, 4vw, 56px);
-
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 32px;
-  --space-xl: 64px;
-
-  --radius:     2px;
-  --nav-height: calc(60px * var(--density));
-}
-
-/* -------- Dark mode -------- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:      #0F1923;
-    --bg-2:    #15222E;
-    --surface: var(--slate-mid);
-    --ink:     var(--warm-white);
-    --ink-2:   #CFD8DD;
-    --ink-3:   var(--muted-steel);
-    --rule:    #2A3C4C;
-  }
-}
-
-/* -------- Base reset -------- */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: calc(16px * var(--density));
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-a { color: var(--accent); text-decoration: none; }
-a:hover { color: var(--accent-2); }
-
-img { max-width: 100%; height: auto; display: block; }
-
-ul, ol { padding-left: 1.4em; }
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  margin-top: 0;
-}
-
-/* -------- Layout -------- */
-.wrap {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 var(--pad-x);
-}
-
-/* -------- Utility classes -------- */
-.mono {
-  font-family: var(--font-mono);
-  font-size: 0.78em;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
-.hand {
-  font-family: var(--font-hand);
-  font-weight: 500;
-  color: var(--accent);
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  padding: 4px 10px;
-  background: var(--accent-bg);
-  color: var(--accent-2);
-  border-radius: var(--radius);
-  letter-spacing: 0.02em;
-}
-
-@media (prefers-color-scheme: dark) {
-  .tag { color: var(--accent); }
-}
-
-.tag.second {
-  background: color-mix(in oklab, var(--trail-ember) 14%, transparent);
-  color: #A84520;
-}
-
-@media (prefers-color-scheme: dark) {
-  .tag.second { color: var(--trail-ember); }
-}
-
-/* -------- Skip link -------- */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--accent);
-  color: #fff;
-  padding: 8px 16px;
-  z-index: 1000;
-  font-size: 14px;
-  border-radius: 0 0 4px 0;
-  transition: top 0.2s;
-}
-.skip-link:focus { top: 0; }
 
 /* -------- Nav -------- */
 .site-nav {
@@ -233,6 +84,22 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 16px;
 }
+
+/* Theme toggle */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-3);
+  font-size: 14px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+  line-height: 1;
+}
+
+.theme-toggle:hover { color: var(--accent); }
 
 /* Language toggle */
 .lang-toggle {
@@ -349,9 +216,7 @@ section {
   margin-top: 40px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .site-footer { background: #0A1219; }
-}
+[data-theme="dark"] .site-footer { background: #0A1219; }
 
 .site-footer .wrap {
   display: grid;

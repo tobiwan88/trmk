@@ -3,7 +3,7 @@
    ============================================================ */
 
 .blog-wrap {
-  max-width: 760px;
+  max-width: 960px;
   margin: 0 auto;
   padding: clamp(32px, 5vw, 56px) var(--pad-x);
 }

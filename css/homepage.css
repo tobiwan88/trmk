@@ -22,8 +22,72 @@
   background-position: center;
 }
 
-@media (prefers-color-scheme: dark) {
-  .hero .topo { opacity: 0.22; }
+[data-theme="dark"] .hero .topo { opacity: 0.22; }
+
+/* Hero two-column layout */
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* Photo placeholder — replace with <img> when ready */
+.hero-photo {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.hero-photo img {
+  width: clamp(200px, 22vw, 340px);
+  height: auto;
+  aspect-ratio: 5 / 6;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.hero-photo-placeholder {
+  width: clamp(200px, 22vw, 340px);
+  aspect-ratio: 5 / 6;
+  border: 2px dashed var(--rule);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--ink-3);
+  background: var(--surface);
+}
+
+.hero-photo-placeholder svg {
+  width: 56px;
+  height: 56px;
+  opacity: 0.5;
+}
+
+.hero-photo-placeholder span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero-photo {
+    display: none;
+  }
 }
 
 /* Kicker pill */
@@ -56,7 +120,7 @@
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(40px, 7.2vw, 100px);
+  font-size: clamp(32px, 5vw, 72px);
   line-height: 0.96;
   margin: 24px 0 20px;
   letter-spacing: -0.025em;
@@ -68,8 +132,6 @@
 .hero h1 em {
   font-style: normal;
   color: var(--accent);
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 2px;
 }
 
 .hero .sub {

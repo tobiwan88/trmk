@@ -13,9 +13,7 @@
   display: flex;
   align-items: flex-start;
   gap: 28px;
-  margin-bottom: 40px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--rule);
+  margin-bottom: 24px;
 }
 
 @media (max-width: 600px) {
@@ -66,6 +64,7 @@
 /* -------- Section headings -------- */
 .cv-section {
   margin-bottom: 36px;
+  padding: 0;
 }
 
 .cv-section-title {
@@ -130,10 +129,8 @@
   color: var(--ink-3);
 }
 
-@media (prefers-color-scheme: dark) {
-  .skill-tag.advanced { color: var(--accent); }
-  .skill-tag.intermediate { color: var(--muted-steel); }
-}
+[data-theme="dark"] .skill-tag.advanced { color: var(--accent); }
+[data-theme="dark"] .skill-tag.intermediate { color: var(--muted-steel); }
 
 /* -------- Experience cards -------- */
 .experience-card {
@@ -199,39 +196,54 @@
   color: var(--accent-2);
 }
 
-@media (prefers-color-scheme: dark) {
-  .date-badge.current { color: var(--accent); }
-}
+[data-theme="dark"] .date-badge.current { color: var(--accent); }
 
 .experience-content p { color: var(--ink-2); margin: 0 0 10px; font-size: 14px; }
 .experience-content ul { color: var(--ink-2); font-size: 14px; padding-left: 1.2em; margin: 0 0 10px; }
 .experience-content li { margin-bottom: 6px; }
 .experience-content strong { color: var(--ink); }
 
-/* -------- Education -------- */
-.education-item {
-  padding: 18px 0;
-  border-bottom: 1px solid var(--rule);
+
+/* -------- Collapsible sections -------- */
+.cv-collapsible .cv-collapsible-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  opacity: 0;
 }
 
-.education-item:last-child { border-bottom: none; }
-
-.education-item h3 {
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0 0 8px;
+.cv-collapsible.open .cv-collapsible-body {
+  max-height: 2000px;
+  opacity: 1;
 }
 
-.education-item p {
-  color: var(--ink-2);
-  font-size: 14px;
-  margin: 0 0 6px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.cv-section-title[role="button"],
+.experience-header[role="button"] {
+  cursor: pointer;
+  user-select: none;
 }
 
-.education-item p i { color: var(--accent); font-size: 13px; }
+.cv-section-title[role="button"]:hover,
+.experience-header[role="button"]:hover {
+  color: var(--accent);
+}
+
+.collapse-chevron {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--ink-3);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.cv-collapsible.open .collapse-chevron {
+  transform: rotate(180deg);
+}
+
+/* Keep card compact when collapsed */
+.experience-card.cv-collapsible:not(.open) {
+  padding-bottom: 10px;
+}
 
 /* -------- CV print -------- */
 @media print {

@@ -32,6 +32,15 @@ class I18n {
       }
     });
 
+    // Handle HTML content (preserves markup like <em>)
+    document.querySelectorAll('[data-i18n-html]').forEach(element => {
+      const key = element.getAttribute('data-i18n-html');
+      const translation = this.getNestedTranslation(key);
+      if (translation) {
+        element.innerHTML = translation;
+      }
+    });
+
     // Handle placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
       const key = element.getAttribute('data-i18n-placeholder');
