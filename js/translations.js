@@ -59,33 +59,33 @@ const translations = {
     outside: {
       heading: "Outside",
       meta: { elev: "Elev. gain" },
-      climb: {
-        category: "Alpine · Climb",
-        title: "Rock, route-finding, risk.",
-        text: "The mountains give me what the terminal can't: weather, gravity, and an opinion that doesn't negotiate. I climb trad and sport, boulder when I can't, and plan longer alpine routes in the Wetterstein and Karwendel ranges.",
-        quote: "\"The mountain doesn't care if you're tired.\"",
-        meta: { route: "Route", grade: "Grade", partner: "Partner" }
-      },
-      cycle: {
-        category: "Road · Cycle",
-        title: "Long days in the saddle.",
-        text: "Road biking is how I think. Local loops along the Isar for maintenance, bigger passes for the real meditation — Timmelsjoch, Stelvio, Grossglockner.",
-        stravaLink: "Follow along on",
-        meta: { lastRide: "Last ride", distance: "Distance", pace: "Avg pace" }
-      },
-      cook: {
-        category: "Kitchen · Vegan",
-        title: "Plants, sourdough, and doing less harm.",
-        text: "I cook and bake mostly vegan — from everyday bowls to obsessive pizza dough and bread experiments. The ethics matter, but plant cooking is also the more interesting constraint.",
-        cafeLink: "Follow the happy bunny at",
-        meta: { bench: "On the bench", hydration: "Hydration", starter: "Starter age", signature: "Signature" }
-      },
-      photo: {
-        category: "Viewfinder",
-        title: "A camera as an excuse to stand still.",
-        text: "The photography is mostly a side effect of the other hobbies — wildlife on travel, mountain huts, rides at dawn. I shoot to remember, and occasionally to share.",
-        meta: { body: "Body", lens: "Favourite", archive: "Archive", travels: "Travels" }
-      }
+        climb: {
+          category: "Alpine · Climb",
+          title: "Rock, route-finding, risk.",
+          text: "The mountains give me what the terminal can't: weather, gravity, and an opinion that doesn't negotiate. I climb trad and sport, boulder when I can't, and plan longer alpine routes in the Wetterstein and Karwendel ranges. Route-reading is the same skill as debugging — you observe, you hypothesise, you commit.",
+          quote: "— \"The mountain doesn't care if you're tired.\"",
+          meta: { route: "Route", grade: "Grade", partner: "Partner" }
+        },
+        cycle: {
+          category: "Road · Cycle",
+          title: "Long days in the saddle.",
+          text: "Road biking is how I think. Local loops along the Isar for maintenance, bigger passes for the real meditation — Timmelsjoch, Stelvio, Grossglockner. Powered only by my own legs, navigating weather and terrain, pacing the effort: it turns out I can hold a problem in my head for eight hours if I'm pedalling through it.",
+          stravaLink: "Follow along on",
+          meta: { lastRide: "Longest ride", distance: "Distance", pace: "Moving time", power: "Avg power" }
+        },
+        cook: {
+          category: "Kitchen · Vegan",
+          title: "Plants, sourdough, and doing less harm.",
+          text: "I cook and bake mostly vegan — from everyday bowls to obsessive pizza dough and bread experiments. The ethics matter (fewer beings hurt, lighter footprint), but honestly plant cooking is also the more interesting constraint: flavours have to be built, textures have to be earned.",
+          cafeLink: "Follow the happy bunny at",
+          meta: { bench: "On the bench", style: "Style", heat: "Heat", signature: "Signature" }
+        },
+        photo: {
+          category: "Viewfinder",
+          title: "A camera as an excuse to stand still.",
+          text: "The photography is mostly a side effect of the other hobbies — wildlife on travel, mountain huts, rides at dawn. I shoot to remember, and occasionally to share. The archive lives below.",
+          meta: { body: "Body", lens: "Favourite", archive: "Archive", travels: "Travels" }
+        }
     },
     photography: {
       heading: "Photography",
@@ -106,7 +106,7 @@ const translations = {
       elsewhereHeading: "Elsewhere",
       basedHeading: "Based",
       timeLabel: "Time",
-      impressumToggle: "Impressum",
+      impressumToggle: "Impressum ↓",
       impressum: "Legal Disclosure",
       angaben: "Information according to § 5 TMG",
       kontakt: "Contact:",
@@ -124,6 +124,7 @@ const translations = {
     cv: {
       jobTitle: "Engineering Manager",
       location: "Munich, Germany",
+      backToSite: "Back to site",
       skills: "Technical Skills",
       programmingLanguages: "Programming Languages",
       embeddedSystems: "Embedded Systems",
@@ -134,8 +135,8 @@ const translations = {
       workExperience: "Work Experience",
       education: "Education"
     },
-    consulting: {
-      title: "Tobias Meyer - Engineering Consulting",
+      consulting: {
+        title: "Engineering Consulting",
       subtitle: "Your Gateway to Embedded Systems Excellence",
       services: "Services",
       servicesIntro: "Additionally to my main Job",
@@ -227,33 +228,33 @@ const translations = {
     outside: {
       heading: "Draußen",
       meta: { elev: "Höhenmeter" },
-      climb: {
-        category: "Alpin · Klettern",
-        title: "Fels, Routenfindung, Risiko.",
-        text: "Die Berge geben mir, was das Terminal nicht kann: Wetter, Schwerkraft und eine Meinung, die nicht verhandelt. Ich klettere Trad und Sport, bouldere wenn ich kann, und plane längere Alpinrouten im Wetterstein und Karwendel.",
-        quote: "\"Der Berg kümmert sich nicht, ob du müde bist.\"",
-        meta: { route: "Route", grade: "Schwierigkeitsgrad", partner: "Partner" }
-      },
-      cycle: {
-        category: "Straße · Radfahren",
-        title: "Lange Tage im Sattel.",
-        text: "Rennradfahren ist meine Art zu denken. Lokale Runden entlang der Isar zur Pflege, größere Pässe für die echte Meditation — Timmelsjoch, Stilfser Joch, Großglockner.",
-        stravaLink: "Folge mir auf",
-        meta: { lastRide: "Letzte Fahrt", distance: "Distanz", pace: "Ø Tempo" }
-      },
-      cook: {
-        category: "Küche · Vegan",
-        title: "Pflanzen, Sauerteig und weniger Schaden anrichten.",
-        text: "Ich koche und backe meistens vegan — von Alltagsschüsseln bis zu obsessivem Pizzateig und Brotexperimenten. Die Ethik zählt, aber pflanzliches Kochen ist auch die interessantere Einschränkung.",
-        cafeLink: "Folge dem glücklichen Häschen auf",
-        meta: { bench: "Aktuell auf der Bank", hydration: "Hydration", starter: "Starter-Alter", signature: "Signature" }
-      },
-      photo: {
-        category: "Sucher",
-        title: "Eine Kamera als Ausrede, stillzustehen.",
-        text: "Die Fotografie ist meistens ein Nebeneffekt der anderen Hobbys — Wildtiere auf Reisen, Berghütten, Fahrten im Morgengrauen. Ich fotografiere um zu erinnern, und gelegentlich um zu teilen.",
-        meta: { body: "Kamera", lens: "Lieblingsobjektiv", archive: "Archiv", travels: "Reisen" }
-      }
+        climb: {
+          category: "Alpin · Klettern",
+          title: "Fels, Routenfindung, Risiko.",
+          text: "Die Berge geben mir, was das Terminal nicht kann: Wetter, Schwerkraft und eine Meinung, die nicht verhandelt. Ich klettere Trad und Sport, bouldere wenn ich kann, und plane längere Alpinrouten im Wetterstein und Karwendel. Routenlesen ist die gleiche Fähigkeit wie Debuggen — man beobachtet, man hypothesiert, man commitet.",
+          quote: "— \"Der Berg kümmert sich nicht, ob du müde bist.\"",
+          meta: { route: "Route", grade: "Schwierigkeitsgrad", partner: "Partner" }
+        },
+        cycle: {
+          category: "Straße · Radfahren",
+          title: "Lange Tage im Sattel.",
+          text: "Rennradfahren ist meine Art zu denken. Lokale Runden entlang der Isar zur Pflege, größere Pässe für die echte Meditation — Timmelsjoch, Stilfser Joch, Großglockner. Nur durch die Kraft meiner eigenen Beine angetrieben, Wetter und Terrain navigierend, den Aufwand dosierend: Es zeigt sich, dass ich ein Problem acht Stunden lang im Kopf halten kann, wenn ich dabei in die Pedale trete.",
+          stravaLink: "Folge mir auf",
+          meta: { lastRide: "Längste Fahrt", distance: "Distanz", pace: "Fahrzeit", power: "Ø Leistung" }
+        },
+        cook: {
+          category: "Küche · Vegan",
+          title: "Pflanzen, Sauerteig und weniger Schaden anrichten.",
+          text: "Ich koche und backe meistens vegan — von Alltagsschüsseln bis zu obsessivem Pizzateig und Brotexperimenten. Die Ethik zählt (weniger verletzte Lebewesen, leichterer Fußabdruck), aber ehrlich gesagt ist pflanzliches Kochen auch die interessantere Einschränkung: Aromen müssen aufgebaut, Texturen verdient werden.",
+          cafeLink: "Folge dem glücklichen Häschen auf",
+          meta: { bench: "Aktuell auf der Bank", style: "Stil", heat: "Schärfe", signature: "Signature" }
+        },
+        photo: {
+          category: "Sucher",
+          title: "Eine Kamera als Ausrede, stillzustehen.",
+          text: "Die Fotografie ist meistens ein Nebeneffekt der anderen Hobbys — Wildtiere auf Reisen, Berghütten, Fahrten im Morgengrauen. Ich fotografiere um zu erinnern, und gelegentlich um zu teilen. Das Archiv lebt unten.",
+          meta: { body: "Kamera", lens: "Lieblingsobjektiv", archive: "Archiv", travels: "Reisen" }
+        }
     },
     photography: {
       heading: "Fotografie",
@@ -274,7 +275,7 @@ const translations = {
       elsewhereHeading: "Anderswo",
       basedHeading: "Standort",
       timeLabel: "Ortszeit",
-      impressumToggle: "Impressum",
+      impressumToggle: "Impressum ↓",
       impressum: "Impressum",
       angaben: "Angaben gemäß § 5 TMG",
       kontakt: "Kontakt:",
@@ -292,6 +293,7 @@ const translations = {
     cv: {
       jobTitle: "Engineering Manager",
       location: "München, Deutschland",
+      backToSite: "Zurück zur Seite",
       skills: "Technische Fähigkeiten",
       programmingLanguages: "Programmiersprachen",
       embeddedSystems: "Eingebettete Systeme",
@@ -302,8 +304,8 @@ const translations = {
       workExperience: "Berufserfahrung",
       education: "Ausbildung"
     },
-    consulting: {
-      title: "Tobias Meyer - Engineering-Beratung",
+      consulting: {
+        title: "Engineering-Beratung",
       subtitle: "Ihr Tor zur Exzellenz in eingebetteten Systemen",
       services: "Dienstleistungen",
       servicesIntro: "Zusätzlich zu meiner Haupttätigkeit",
