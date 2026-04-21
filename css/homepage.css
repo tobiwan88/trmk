@@ -84,9 +84,18 @@
 @media (max-width: 768px) {
   .hero-inner {
     grid-template-columns: 1fr;
+    text-align: center;
   }
   .hero-photo {
-    display: none;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-photo img {
+    width: clamp(180px, 50vw, 280px);
+  }
+  .route-card {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
