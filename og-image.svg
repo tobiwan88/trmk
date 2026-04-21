@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1C2A38"/>
+  <text x="600" y="280" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="#FFFFFF" text-anchor="middle">T.R.M.K. Meyer</text>
+  <text x="600" y="370" font-family="Arial, sans-serif" font-size="32" fill="#8899AA" text-anchor="middle">Embedded Systems · Firmware · IoT</text>
+  <line x1="500" y1="400" x2="700" y2="400" stroke="#4A5568" stroke-width="2"/>
+  <text x="600" y="450" font-family="Arial, sans-serif" font-size="24" fill="#6B7A8A" text-anchor="middle">trmk.de</text>
+</svg>

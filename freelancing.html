@@ -6,6 +6,7 @@
   <title data-i18n="meta.titleConsulting">Tobias Meyer - Engineering Consulting</title>
   <meta name="description" content="Professional engineering consulting services by Tobias R.M.K. Meyer - Embedded systems, firmware development, and software architecture." data-i18n-content="meta.descriptionConsulting">
   <meta name="robots" content="index,follow">
+  <meta name="author" content="Tobias R.M.K. Meyer">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -15,6 +16,7 @@
   <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:site_name" content="Tobias R.M.K. Meyer">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
@@ -53,6 +55,27 @@
 
   <!-- Theme: set before render to prevent flash -->
   <script>(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
+<!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Tobias R.M.K. Meyer - Engineering Consulting",
+    "description": "Engineering consulting services in embedded systems, firmware development, IoT architecture, and software engineering. Specializing in low-power connected devices, RTOS, and team leadership for industrial applications.",
+    "url": "https://www.trmk.de/freelancing.html",
+    "image": "https://www.trmk.de/avatar.jpg",
+    "provider": {
+      "@type": "Person",
+      "name": "Tobias R.M.K. Meyer",
+      "url": "https://www.trmk.de"
+    },
+    "areaServed": { "@type": "Country", "name": "DE" },
+    "serviceType": ["Embedded Systems Consulting", "Firmware Development", "IoT Architecture", "Team Leadership Advisory"],
+    "telephone": "+49-XXX-XXXX-XXXX",
+    "email": "tobias.meyer@trmk.de",
+    "address": { "@type": "PostalAddress", "addressLocality": "Munich", "addressCountry": "DE" }
+  }
+  </script>
 </head>
 <body>
 

@@ -7,6 +7,21 @@
     <p data-i18n="blog.checkBack">Check back later for new content.</p>
   </div>
 {% else %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Tobias R.M.K. Meyer - Blog",
+    "description": "{{ description }}",
+    "url": "{{ page_url }}",
+    "author": {
+      "@type": "Person",
+      "name": "Tobias R.M.K. Meyer",
+      "url": "https://www.trmk.de"
+    }
+  }
+  </script>
+
   <div class="blog-index-header">
     <h1 data-i18n="blog.latestPost">Latest Post</h1>
     <a href="archive.html" class="btn-teal">
@@ -15,18 +30,18 @@
     </a>
   </div>
 
-  <article class="blog-post">
+  <article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
     <header class="blog-post-header">
-      <h2>{{ post.title }}</h2>
+      <h2 itemprop="headline">{{ post.title }}</h2>
       <p class="blog-post-meta">
         <i class="fa fa-calendar" aria-hidden="true"></i>
-        <time datetime="{{ post.date }}">
+        <time datetime="{{ post.date }}" itemprop="datePublished">
           <span data-i18n="blog.publishedOn">Published on</span> {{ post.date }}
         </time>
       </p>
     </header>
 
-    <div class="blog-post-content">
+    <div class="blog-post-content" itemprop="articleBody">
       {{ post.content | safe }}
     </div>
 

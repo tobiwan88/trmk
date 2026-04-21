@@ -1,12 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<article class="blog-post">
+<article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
+  {% if is_post %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ post.title }}",
+    "description": "{{ post.description }}",
+    "datePublished": "{{ post.date }}",
+    "author": {
+      "@type": "Person",
+      "name": "Tobias R.M.K. Meyer",
+      "url": "https://www.trmk.de"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Tobias R.M.K. Meyer",
+      "url": "https://www.trmk.de"
+    },
+    "image": "https://www.trmk.de/avatar.jpg",
+    "url": "{{ page_url }}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ page_url }}"
+    }
+  }
+  </script>
+  {% endif %}
+
   <header class="blog-post-header">
-    <h1>{{ post.title }}</h1>
+    <h1 itemprop="headline">{{ post.title }}</h1>
     <p class="blog-post-meta">
       <i class="fa fa-calendar" aria-hidden="true"></i>
-      <time datetime="{{ post.date }}">
+      <time datetime="{{ post.date }}" itemprop="datePublished">
         <span data-i18n="blog.publishedOn">Published on</span> {{ post.date }}
       </time>
     </p>
@@ -22,7 +50,7 @@
     {% endif %}
   </header>
 
-  <div class="blog-post-content">
+  <div class="blog-post-content" itemprop="articleBody">
     {{ post.content | safe }}
   </div>
 

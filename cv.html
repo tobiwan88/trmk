@@ -6,7 +6,8 @@
   <title data-i18n="meta.titleCV">Tobias R.M.K. Meyer - CV</title>
   <meta name="description" content="CV of Tobias R.M.K. Meyer, Engineering Manager &amp; Senior Firmware Developer. Expertise in embedded systems, IoT, team leadership, and industrial sensor development for railway infrastructure." data-i18n-content="meta.descriptionCV">
   <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#1C2A38">
+  <meta name="author" content="Tobias R.M.K. Meyer">
+  <meta property="og:site_name" content="Tobias R.M.K. Meyer">
 
   <!-- Open Graph -->
   <meta property="og:type" content="profile">
@@ -16,6 +17,7 @@
   <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:site_name" content="Tobias R.M.K. Meyer">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
@@ -53,6 +55,37 @@
 
   <!-- Theme: set before render to prevent flash -->
   <script>(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
+<!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tobias Raphael Maria Karl Meyer",
+    "alternateName": "T.R.M.K. Meyer",
+    "url": "https://www.trmk.de/cv.html",
+    "image": "https://www.trmk.de/cv_avatar.webp",
+    "jobTitle": "Engineering Manager & Senior Firmware Developer",
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "Engineering Manager",
+      "description": "Managing embedded systems engineering teams and developing firmware for industrial IoT applications."
+    },
+    "worksFor": { "@type": "Organization", "name": "KONUX", "url": "https://www.konux.com" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Munich", "addressCountry": "DE" },
+    "email": "tobias.meyer@trmk.de",
+    "sameAs": [
+      "https://www.instagram.com/the_tobi_wan88/",
+      "https://github.com/tobiwan88",
+      "https://de.linkedin.com/in/tobias-meyer-07413656",
+      "https://www.strava.com/athletes/29812823"
+    ],
+    "knowsAbout": ["Embedded Systems","Firmware Development","IoT","C Programming","C++","Zephyr RTOS","LTE-M","BLE","Team Leadership","Agile","Project Management"],
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Technical University of Munich", "description": "M.Sc. Computer Science" },
+      { "@type": "CollegeOrUniversity", "name": "University of Applied Sciences", "description": "B.Sc. Electrical Engineering" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -101,7 +134,7 @@
     <header class="cv-header">
       <picture>
         <source type="image/webp" srcset="./cv_avatar.webp">
-        <img src="./cv_avatar.jpg" alt="Tobias R.M.K. Meyer" class="cv-photo" width="120" height="120" loading="eager">
+        <img src="./cv_avatar.webp" alt="Tobias R.M.K. Meyer" class="cv-photo" width="120" height="120" loading="eager">
       </picture>
       <div class="cv-intro">
         <h1>Tobias R.M.K. Meyer</h1>
