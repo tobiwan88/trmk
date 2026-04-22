@@ -245,6 +245,23 @@
   padding-bottom: 10px;
 }
 
+/* -------- Consulting CTA -------- */
+.consulting-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.consulting-cta:hover { background: var(--accent-2); color: #fff; }
+.consulting-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
 /* -------- CV print -------- */
 @media print {
   .cv-wrap { padding: 16px !important; }
@@ -254,4 +271,5 @@
   .cv-header { break-inside: avoid; }
   .cv-photo { width: 80px !important; height: 80px !important; }
   .experience-title h3 { font-size: 14pt !important; }
+  .consulting-cta { display: none; }
 }

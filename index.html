@@ -157,13 +157,15 @@
       </div>
 
       <div class="hero-photo">
-        <img src="./pictures/me/professional.webp" alt="Tobias Meyer" width="400" height="480" loading="eager">
+        <img src="./pictures/me/professional.webp" alt="Tobias Meyer" width="400" height="480" loading="eager" fetchpriority="high">
       </div>
     </div>
   </div>
 </header>
 
-</main><!-- ============== ABOUT ============== -->
+<main id="main-content">
+
+<!-- ============== ABOUT ============== -->
 <section id="about">
   <div class="wrap">
     <div class="sec-head">
@@ -251,10 +253,12 @@
         <div class="route-meta" aria-label="Recent route">
           <div class="m"><div class="k" data-i18n="outside.climb.meta.route">Route</div><div class="v">Ortler Normal Route</div></div>
           <div class="m"><div class="k" data-i18n="outside.climb.meta.grade">Grade</div><div class="v"><b>F / PD</b></div></div>
-          <div class="m"><div class="k" data-i18n="outside.meta.elev">Elev. gain</div><div class="v">+ 1,800 m</div></div>
-          <div class="m"><div class="k" data-i18n="outside.climb.meta.partner">Partner</div><div class="v">solo / 2p</div></div>
+          <div class="m"><div class="k" data-i18n="outside.meta.elev">Elev. </div><div class="v">+ 3,905 m</div></div>
+          <div class="m"><div class="k" data-i18n="outside.climb.meta.partner">weather</div><div class="v">Snow/Sun</div></div>
         </div>
-        <svg class="elev" viewBox="0 0 1200 52" preserveAspectRatio="none" aria-hidden="true">
+        <svg class="elev" viewBox="0 0 1200 52" preserveAspectRatio="none" role="img" aria-label="Elevation profile for Ortler Normal Route showing 3,905m altitude gain">
+          <title>Elevation Profile</title>
+          <desc>Graph showing the altitude profile of the Ortler Normal Route climbing from 0 to 3,905 meters</desc>
           <path d="M0 48 L80 44 L160 40 L240 34 L320 26 L400 18 L480 10 L560 4 L640 2 L720 8 L800 18 L880 28 L960 36 L1040 42 L1120 46 L1200 50"
                 fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4" style="color: var(--accent);" />
           <path d="M0 48 L80 44 L160 40 L240 34 L320 26 L400 18 L480 10 L560 4 L640 2 L720 8 L800 18 L880 28 L960 36 L1040 42 L1120 46 L1200 50 L1200 52 L0 52 Z"
@@ -330,91 +334,84 @@
     </div>
 
     <div class="photo-grid" role="list">
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p1.webp">
-          <img src="./pictures/p1.webp" alt="Colorful parrot in natural habitat · Monteverde, Costa Rica 2024" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p1.webp" alt="Colorful parrot in natural habitat · Monteverde, Costa Rica 2024" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
-        <span class="cap"><b>Parrot · Peru</b></span>
       </div>
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p2.webp">
-          <img src="./pictures/p2.webp" alt="Monkey in the wild · Sigiriya, Sri Lanka 2023" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p2.webp" alt="Monkey in the wild · Sigiriya, Sri Lanka 2023" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
-        <span class="cap"><b>Monkey · India</b></span>
       </div>
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p3.webp">
-          <img src="./pictures/p3.webp" alt="Mountain hut in Stubaital, Austria 2024" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p3.webp" alt="Mountain hut in Stubaital, Austria 2024" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
-        <span class="cap"></span>
       </div>
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p4.webp">
-          <img src="./pictures/p4.webp" alt="Dolomites, Italy 2025" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p4.webp" alt="Dolomites, Italy 2025" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
-        <span class="cap"></span>
       </div>
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p5.webp">
-          <img src="./pictures/p5.webp" alt="Iceland landscape, Reykjanes 2024" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p5.webp" alt="Iceland landscape, Reykjanes 2024" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
-        <span class="cap"></span>
       </div>
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p6.webp">
-          <img src="./pictures/p6.webp" alt="Timmelsjoch mountain pass 2025" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p6.webp" alt="Timmelsjoch mountain pass 2025" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
-        <span class="cap"></span>
       </div>
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p7.webp">
-          <img src="./pictures/p7.webp" alt="Lofoten islands, Norway 2023" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p7.webp" alt="Lofoten islands, Norway 2023" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
-        <span class="cap"></span>
       </div>
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p8.webp">
-          <img src="./pictures/p8.webp" alt="Atlas mountains, Morocco 2024" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p8.webp" alt="Atlas mountains, Morocco 2024" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
-        <span class="cap"></span>
       </div>
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p9.webp">
-          <img src="./pictures/p9.webp" alt="Glacier at Zugspitze 2025" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p9.webp" alt="Glacier at Zugspitze 2025" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
-        <span class="cap"></span>
       </div>
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p10.webp">
-          <img src="./pictures/p10.webp" alt="Travel photography" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p10.webp" alt="Travel photography" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
       </div>
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p11.webp">
-          <img src="./pictures/p11.webp" alt="Travel photography" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p11.webp" alt="Travel photography" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
       </div>
-      <div class="ph" role="listitem">
+      <div class="ph" role="listitem" tabindex="0">
         <picture>
           <source type="image/webp" srcset="./pictures/p12.webp">
-          <img src="./pictures/p12.webp" alt="Travel photography" loading="lazy" onclick="openLightbox(this)">
+          <img src="./pictures/p12.webp" alt="Travel photography" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
         </picture>
       </div>
     </div>
   </div>
 </section>
-</main><!-- ============== FOOTER / CONTACT ============== -->
+</main>
+
+<!-- ============== FOOTER / CONTACT ============== -->
 <footer class="site-footer" id="contact" role="contentinfo">
   <div class="wrap">
     <div>
@@ -441,7 +438,7 @@
       <h3 data-i18n="footer.basedHeading">Based</h3>
       <ul>
         <li><span class="lbl">City</span> Munich, DE</li>
-        <li><span class="lbl" data-i18n="footer.timeLabel">Time</span> <span id="localtime">—</span> CET</li>
+        <li><span class="lbl" data-i18n="footer.timeLabel">Time</span> <span id="localtime">—</span> <span id="timezone">CET</span></li>
         <li><span class="lbl">Lang</span> EN · DE</li>
       </ul>
       <div style="margin-top: 16px;">
@@ -471,9 +468,21 @@
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo lightbox">
+  <span id="lightbox-desc" class="sr-only"></span>
   <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous photo">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next photo">
+    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+  </button>
   <img id="lightbox-img" src="" alt="">
 </div>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+</button>
 
 <script>
 // -------- Theme toggle --------
@@ -508,6 +517,15 @@ navLinks.querySelectorAll('a').forEach(a => {
   });
 });
 
+// Close mobile nav on outside click
+document.addEventListener('click', e => {
+  const nav = document.querySelector('.site-nav');
+  if (nav && !nav.contains(e.target) && navLinks.classList.contains('open')) {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
+
 // -------- Smooth scroll --------
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
@@ -520,26 +538,108 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// -------- Lightbox --------
-function openLightbox(img) {
-  const lb  = document.getElementById('lightbox');
-  const lbi = document.getElementById('lightbox-img');
-  lbi.src = img.src;
-  lbi.alt = img.alt;
-  lb.classList.add('open');
-  document.getElementById('lightbox-close').focus();
+// -------- Scroll-to-top button --------
+const scrollTopBtn = document.getElementById('scroll-top');
+if (scrollTopBtn) {
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 
-document.getElementById('lightbox-close').addEventListener('click', () => {
-  document.getElementById('lightbox').classList.remove('open');
-});
+// -------- Scroll-spy for active nav --------
+const sections = document.querySelectorAll('#about, #life, #photo');
+const navItems = document.querySelectorAll('.nav-links a[href^="#"]');
+const observerOptions = { threshold: 0.3, rootMargin: '-60px 0px -40% 0px' };
+
+if (sections.length && navItems.length) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navItems.forEach(item => {
+          item.classList.toggle('active', item.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, observerOptions);
+  sections.forEach(section => sectionObserver.observe(section));
+}
+
+// -------- Lightbox --------
+let lightboxImages = [];
+let currentLightboxIndex = 0;
+let lastFocusedElement = null;
+
+function buildLightboxImageList() {
+  lightboxImages = Array.from(document.querySelectorAll('.photo-grid .ph img'));
+}
+buildLightboxImageList();
+
+function openLightbox(img) {
+  lastFocusedElement = document.activeElement;
+  const lb  = document.getElementById('lightbox');
+  const lbi = document.getElementById('lightbox-img');
+  const desc = document.getElementById('lightbox-desc');
+
+  currentLightboxIndex = lightboxImages.indexOf(img);
+  lbi.src = img.src;
+  lbi.alt = img.alt;
+  desc.textContent = img.alt || 'Photo';
+
+  lb.classList.add('open');
+  lb.setAttribute('aria-describedby', 'lightbox-desc');
+  document.getElementById('lightbox-close').focus();
+  trapFocus(lb);
+}
+
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('open');
+  lb.removeAttribute('aria-describedby');
+  releaseFocus();
+  if (lastFocusedElement) lastFocusedElement.focus();
+}
+
+function navigateLightbox(direction) {
+  currentLightboxIndex = (currentLightboxIndex + direction + lightboxImages.length) % lightboxImages.length;
+  const img = lightboxImages[currentLightboxIndex];
+  const lbi = document.getElementById('lightbox-img');
+  const desc = document.getElementById('lightbox-desc');
+  lbi.src = img.src;
+  lbi.alt = img.alt;
+  desc.textContent = img.alt || 'Photo';
+}
+
+function trapFocus(el) {
+  el.inert = false;
+  const focusable = el.querySelectorAll('button:not([disabled]), [tabindex="0"]');
+  if (focusable.length) {
+    focusable[0].focus();
+  }
+}
+
+function releaseFocus() {
+  const lb = document.getElementById('lightbox');
+  if (lb) lb.inert = false;
+}
+
+document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+document.getElementById('lightbox-prev').addEventListener('click', () => navigateLightbox(-1));
+document.getElementById('lightbox-next').addEventListener('click', () => navigateLightbox(1));
 
 document.getElementById('lightbox').addEventListener('click', e => {
-  if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
+  if (e.target === e.currentTarget) closeLightbox();
 });
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navigateLightbox(-1);
+  if (e.key === 'ArrowRight') navigateLightbox(1);
 });
 
 // -------- Impressum toggle --------
@@ -548,20 +648,24 @@ document.getElementById('impressum-toggle').addEventListener('click', function()
   const open = content.classList.toggle('open');
   this.setAttribute('aria-expanded', open);
   content.setAttribute('aria-hidden', !open);
+  const isGerman = document.documentElement.lang === 'de';
   this.textContent = open
-    ? (this.getAttribute('data-i18n') ? '▲' : 'Impressum ↑')
-    : (this.getAttribute('data-i18n') ? '▼' : 'Impressum ↓');
-  // Re-apply translation if i18n changes it
-  this.textContent = open ? 'Impressum ↑' : 'Impressum ↓';
+    ? (isGerman ? 'Impressum ▲' : 'Impressum ↑')
+    : (isGerman ? 'Impressum ▼' : 'Impressum ↓');
 });
 
-// -------- Local Munich time --------
+// -------- Local Munich time with timezone --------
 function updateTime() {
   const muc = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
   const h   = String(muc.getHours()).padStart(2, '0');
   const m   = String(muc.getMinutes()).padStart(2, '0');
   const el  = document.getElementById('localtime');
+  const tzEl = document.getElementById('timezone');
   if (el) el.textContent = `${h}:${m}`;
+  if (tzEl) {
+    const month = muc.getMonth();
+    tzEl.textContent = (month >= 3 && month <= 9) ? 'CEST' : 'CET';
+  }
 }
 updateTime();
 setInterval(updateTime, 30000);
