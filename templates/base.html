@@ -1,34 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ page_lang }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }} - Tobias R.M.K. Meyer</title>
-  <meta name="description" content="{{ description|default('Blog posts by Tobias R.M.K. Meyer about embedded systems, firmware development, and software engineering.') }}">
+  <meta name="description" content="{{ description }}">
   <meta name="robots" content="index,follow">
   <meta name="author" content="Tobias R.M.K. Meyer">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#1C2A38">
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://www.trmk.de/blog/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="{{ og_type }}">
+  <meta property="og:url" content="{{ page_url }}">
   <meta property="og:title" content="{{ title }} - Tobias R.M.K. Meyer">
-  <meta property="og:description" content="{{ description|default('Blog posts about embedded systems, firmware development, and software engineering.') }}">
-  <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:image" content="{{ og_image }}">
+  <meta property="og:image:width" content="{{ og_image_width }}">
+  <meta property="og:image:height" content="{{ og_image_height }}">
+  <meta property="og:site_name" content="{{ og_site_name }}">
+  <meta property="og:locale" content="{% if page_lang == 'de' %}de_DE{% else %}en_US{% endif %}">
+  <meta property="og:locale:alternate" content="{% if page_lang == 'de' %}en_US{% else %}de_DE{% endif %}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{{ title }} - Tobias R.M.K. Meyer">
-  <meta name="twitter:description" content="{{ description|default('Blog posts about embedded systems, firmware development, and software engineering.') }}">
-  <meta name="twitter:image" content="https://www.trmk.de/avatar.jpg">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ og_image }}">
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://www.trmk.de/blog/">
-
-  <!-- Color scheme support -->
+  <!-- Canonical & language -->
+  <link rel="canonical" href="{{ canonical_url }}">
   <meta name="color-scheme" content="light dark">
+  {% for entry in hreflang_entries %}
+  <link rel="alternate" hreflang="{{ entry.lang }}" href="{{ entry.url }}">
+  {% endfor %}
 
   <!-- Favicons & PWA -->
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
@@ -37,108 +41,130 @@
   <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <link rel="manifest" href="../manifest.webmanifest">
 
-  <!-- Language metadata -->
-  <link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/">
-  <link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/">
-  <link rel="alternate" hreflang="x-default" href="https://www.trmk.de/blog/">
-
-  <!-- Preload critical resources -->
-  <link rel="preload" href="../fonts/lato.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Preload primary font -->
+  <link rel="preload" href="../fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="../w3.css">
-  <link rel="stylesheet" href="../lato.css">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/branding.css">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/blog.css">
   <link rel="stylesheet" href="../css/all.css">
-  <link rel="stylesheet" href="../modern-enhancements.css">
 
-  <!-- i18n Scripts -->
+  <!-- i18n -->
   <script src="../js/translations.js" defer></script>
   <script src="../js/i18n.js" defer></script>
 
-  <style>
-    body {
-      font-family: "Lato", sans-serif;
-    }
-  </style>
+  <!-- Theme: set before render to prevent flash -->
+  <script>(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
 </head>
-
 <body>
-  <!-- Skip link for accessibility -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Navigation -->
-  <nav class="w3-top" role="navigation" aria-label="Main navigation">
-    <div class="w3-bar" id="myNavbar">
-      <button class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
-              onclick="toggleFunction()"
-              aria-label="Toggle Navigation Menu"
-              aria-expanded="false"
-              aria-controls="navDemo">
-        <i class="fa fa-bars" aria-hidden="true"></i>
+<!-- Skip link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ============== NAV ============== -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="led" aria-hidden="true"></span>
+      <span>T.R.M.K / MEYER</span>
+    </a>
+
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="../index.html#about" data-i18n="nav.about">About</a></li>
+      <li><a href="../index.html#life" data-i18n="nav.outside">Outside</a></li>
+      <li><a href="../index.html#photo" data-i18n="nav.photography">Photography</a></li>
+      <li><a href="../cv.html" data-i18n="nav.cv">CV</a></li>
+      <li><a href="../freelancing.html" data-i18n="nav.consulting">Consulting</a></li>
+      <li><a href="./index.html" class="active" data-i18n="nav.blog">Blog</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+        <span class="lang-opt active" id="lang-en">EN</span>
+        <span style="color: var(--rule);">/</span>
+        <span class="lang-opt" id="lang-de">DE</span>
       </button>
-      <a href="../index.html#about" class="w3-bar-item w3-button"><span data-i18n="nav.about">ABOUT</span></a>
-      <a href="../index.html#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
-      <a href="../freelancing.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-briefcase" aria-hidden="true"></i> <span data-i18n="nav.consulting">CONSULTING</span></a>
-      <a href="../cv.html" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-file-text" aria-hidden="true"></i> <span data-i18n="nav.cv">CV</span></a>
-      <a href="./index.html" class="w3-bar-item w3-button w3-hide-small w3-teal"><i class="fa-brands fa-wordpress" aria-hidden="true"></i> <span data-i18n="nav.blog">BLOG</span></a>
-      <a href="../index.html#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
-      <a href="../index.html#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope" aria-hidden="true"></i> <span data-i18n="nav.contact">CONTACT</span></a>
-      <select id="language-selector"
-              class="w3-select w3-bar-item"
-              style="width:auto; background:transparent; color:inherit; border:1px solid currentColor; padding:6px;"
-              aria-label="Select language">
-        <option value="en">EN</option>
-        <option value="de">DE</option>
-      </select>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+        <i class="fa fa-moon" aria-hidden="true"></i>
+      </button>
+      <button class="nav-hamburger" id="nav-hamburger"
+              aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </div>
+</nav>
 
-    <!-- Mobile navigation -->
-    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium" role="menu">
-      <a href="../index.html#about" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-user" aria-hidden="true"></i> <span data-i18n="nav.about">ABOUT</span></a>
-      <a href="../index.html#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-camera" aria-hidden="true"></i> <span data-i18n="nav.photography">PHOTOGRAPHY</span></a>
-      <a href="../index.html#contact" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-envelope" aria-hidden="true"></i> <span data-i18n="nav.contact">CONTACT</span></a>
-      <a href="../freelancing.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-briefcase" aria-hidden="true"></i> <span data-i18n="nav.consulting">CONSULTING</span></a>
-      <a href="../cv.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa fa-file-text" aria-hidden="true"></i> <span data-i18n="nav.cv">CV</span></a>
-      <a href="./index.html" class="w3-bar-item w3-button" onclick="toggleFunction()" role="menuitem"><i class="fa-brands fa-wordpress" aria-hidden="true"></i> <span data-i18n="nav.blog">BLOG</span></a>
-      <div class="w3-bar-item" style="padding: 8px 16px;">
-        <select id="language-selector-mobile"
-                class="w3-select"
-                style="width:100%; background:#f1f1f1; color:#000; border:1px solid #ccc; padding:8px;"
-                aria-label="Select language">
-          <option value="en">English</option>
-          <option value="de">Deutsch</option>
-        </select>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <div class="w3-content w3-padding-64" style="max-width:900px; margin-top:80px;">
-    <div id="main-content"></div>
+<!-- ============== MAIN CONTENT ============== -->
+<main id="main-content">
+  <div class="blog-wrap">
     {% block content %}{% endblock %}
   </div>
+</main>
 
-  <!-- Footer -->
-  <footer class="w3-container w3-teal w3-center w3-padding-32">
-    <p>&copy; 2026 Tobias R.M.K. Meyer. All rights reserved.</p>
-    <p><a href="../index.html" class="w3-hover-text-light-grey">Back to main site</a></p>
-  </footer>
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap">
+    <div>
+      <h3>T.R.M.K. Meyer</h3>
+      <h2 style="font-size: clamp(20px, 2.4vw, 30px);">Embedded systems &amp; field notes.</h2>
+      <p style="margin-top: 14px;"><a href="../index.html">← Back to main site</a></p>
+    </div>
+    <div>
+      <h3 data-i18n="footer.elsewhereHeading">Elsewhere</h3>
+      <ul>
+        <li><a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="../cv.html" data-i18n="nav.cv">CV</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 data-i18n="footer.basedHeading">Based</h3>
+      <ul>
+        <li><span class="lbl">City</span> Munich, DE</li>
+        <li><span class="lbl">Lang</span> EN · DE</li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TOBIAS R.M.K. MEYER</span>
+      <span><a href="./archive.html" data-i18n="blog.archive">Archive</a></span>
+    </div>
+  </div>
+</footer>
 
-  <!-- Mobile navigation toggle script -->
-  <script>
-    function toggleFunction() {
-      const navDemo = document.getElementById("navDemo");
-      const button = document.querySelector('[aria-controls="navDemo"]');
-      const isExpanded = navDemo.classList.contains("w3-show");
+<script>
+// -------- Theme toggle --------
+const themeToggle = document.getElementById('theme-toggle');
+function applyThemeIcon(theme) {
+  const icon = themeToggle.querySelector('i');
+  icon.className = theme === 'dark' ? 'fa fa-sun' : 'fa fa-moon';
+  themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+}
+applyThemeIcon(document.documentElement.getAttribute('data-theme'));
+themeToggle.addEventListener('click', () => {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  applyThemeIcon(next);
+});
 
-      if (isExpanded) {
-        navDemo.classList.remove("w3-show");
-        button.setAttribute('aria-expanded', 'false');
-      } else {
-        navDemo.classList.add("w3-show");
-        button.setAttribute('aria-expanded', 'true');
-      }
-    }
-  </script>
+const hamburger = document.getElementById('nav-hamburger');
+const navLinks  = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', open);
+});
+
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
+
 </body>
 </html>

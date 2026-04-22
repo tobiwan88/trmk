@@ -1,0 +1,275 @@
+/* ============================================================
+   CV.CSS — cv.html specific styles
+   ============================================================ */
+
+.cv-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: clamp(32px, 5vw, 64px) var(--pad-x);
+}
+
+/* -------- CV Header -------- */
+.cv-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .cv-header { flex-direction: column; align-items: center; text-align: center; }
+}
+
+.cv-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--rule);
+  flex-shrink: 0;
+}
+
+.cv-intro h1 {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 500;
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+
+.cv-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 14px;
+}
+
+.cv-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.cv-contact span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cv-contact a { color: var(--accent); }
+
+/* -------- Section headings -------- */
+.cv-section {
+  margin-bottom: 36px;
+  padding: 0;
+}
+
+.cv-section-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid var(--rule);
+  padding-top: 16px;
+}
+
+.cv-section-title i {
+  color: var(--accent);
+  font-size: 13px;
+}
+
+/* -------- Skill tags -------- */
+.skill-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.skill-category h3 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 10px;
+  font-weight: 400;
+}
+
+/* Remap existing skill-tag classes to new design */
+.skill-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  letter-spacing: 0.02em;
+  margin: 0 4px 4px 0;
+}
+
+.skill-tag.advanced {
+  background: var(--accent-bg);
+  color: var(--accent-2);
+}
+
+.skill-tag.intermediate {
+  background: color-mix(in oklab, var(--muted-steel) 16%, transparent);
+  color: var(--ink-2);
+}
+
+.skill-tag.beginner {
+  background: color-mix(in oklab, var(--rule) 60%, transparent);
+  color: var(--ink-3);
+}
+
+[data-theme="dark"] .skill-tag.advanced { color: var(--accent); }
+[data-theme="dark"] .skill-tag.intermediate { color: var(--muted-steel); }
+
+/* -------- Experience cards -------- */
+.experience-card {
+  border-left: 2px solid var(--accent);
+  padding: 0 0 28px 20px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.experience-card::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  position: absolute;
+  left: -5px;
+  top: 6px;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.experience-title h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+
+.experience-title .company {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.experience-title .company a { color: var(--ink-3); }
+.experience-title .company a:hover { color: var(--accent); }
+
+.date-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  background: color-mix(in oklab, var(--rule) 50%, transparent);
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.date-badge.current {
+  background: var(--accent-bg);
+  color: var(--accent-2);
+}
+
+[data-theme="dark"] .date-badge.current { color: var(--accent); }
+
+.experience-content p { color: var(--ink-2); margin: 0 0 10px; font-size: 14px; }
+.experience-content ul { color: var(--ink-2); font-size: 14px; padding-left: 1.2em; margin: 0 0 10px; }
+.experience-content li { margin-bottom: 6px; }
+.experience-content strong { color: var(--ink); }
+
+
+/* -------- Collapsible sections -------- */
+.cv-collapsible .cv-collapsible-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  opacity: 0;
+}
+
+.cv-collapsible.open .cv-collapsible-body {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.cv-section-title[role="button"],
+.experience-header[role="button"] {
+  cursor: pointer;
+  user-select: none;
+}
+
+.cv-section-title[role="button"]:hover,
+.experience-header[role="button"]:hover {
+  color: var(--accent);
+}
+
+.collapse-chevron {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--ink-3);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.cv-collapsible.open .collapse-chevron {
+  transform: rotate(180deg);
+}
+
+/* Keep card compact when collapsed */
+.experience-card.cv-collapsible:not(.open) {
+  padding-bottom: 10px;
+}
+
+/* -------- Consulting CTA -------- */
+.consulting-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.consulting-cta:hover { background: var(--accent-2); color: #fff; }
+.consulting-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* -------- CV print -------- */
+@media print {
+  .cv-wrap { padding: 16px !important; }
+  .experience-card { break-inside: avoid; }
+  .education-item { break-inside: avoid; }
+  .skill-categories { break-inside: avoid; }
+  .cv-header { break-inside: avoid; }
+  .cv-photo { width: 80px !important; height: 80px !important; }
+  .experience-title h3 { font-size: 14pt !important; }
+  .consulting-cta { display: none; }
+}

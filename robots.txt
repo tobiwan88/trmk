@@ -4,3 +4,6 @@ Sitemap: https://www.trmk.de/sitemap.xml
 
 Disallow: /.git/
 Disallow: /fastTest/
+Disallow: /blog_entries/
+Disallow: /templates/
+Disallow: /.crossnote/
