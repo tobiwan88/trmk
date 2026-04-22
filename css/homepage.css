@@ -17,12 +17,24 @@
   opacity: 0.5;
   background-image:
     radial-gradient(ellipse 80% 60% at 70% 40%, transparent 40%, var(--bg) 72%),
+    radial-gradient(ellipse 60% 80% at 25% 55%, color-mix(in oklab, var(--accent) 8%, transparent), transparent 65%),
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='900' viewBox='0 0 1200 900'><g fill='none' stroke='%238CA3AF' stroke-opacity='0.35' stroke-width='0.8'><path d='M -20 700 Q 200 560 420 600 T 860 560 T 1240 500'/><path d='M -20 640 Q 220 520 430 540 T 860 500 T 1240 450'/><path d='M -20 580 Q 200 480 440 480 T 860 440 T 1240 400'/><path d='M -20 520 Q 240 440 440 420 T 860 380 T 1240 350'/><path d='M -20 460 Q 220 400 450 360 T 860 320 T 1240 300'/><path d='M -20 400 Q 260 360 460 300 T 860 260 T 1240 250'/><path d='M -20 340 Q 240 320 470 240 T 860 200 T 1240 200'/><path d='M -20 280 Q 280 260 480 180 T 860 140 T 1240 150'/><path d='M -20 220 Q 260 200 490 120 T 860 80 T 1240 100'/></g></svg>");
   background-size: cover;
   background-position: center;
+  animation: topoDrift 90s linear infinite;
 }
 
-[data-theme="dark"] .hero .topo { opacity: 0.22; }
+@keyframes topoDrift {
+  0%   { background-position: center 0%, 25% 55%, center; }
+  50%  { background-position: center 2%, 22% 52%, center; }
+  100% { background-position: center 0%, 25% 55%, center; }
+}
+
+[data-theme="dark"] .hero .topo { opacity: 0.18; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .topo { animation: none; }
+}
 
 /* Hero two-column layout */
 .hero-inner {
@@ -196,6 +208,8 @@
 }
 
 /* -------- About -------- */
+#about { background: var(--surface); }
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
@@ -266,6 +280,12 @@
   padding: 32px clamp(20px, 3vw, 36px);
   background: var(--bg);
   align-items: start;
+  border-left: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.chapter:hover {
+  border-left-color: var(--accent);
 }
 
 @media (max-width: 960px) {
@@ -313,6 +333,13 @@
 .route-meta .m {
   background: var(--bg);
   padding: 11px 13px;
+  border: 1px solid transparent;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.route-meta .m:hover {
+  border-color: var(--accent);
+  background: color-mix(in oklab, var(--accent) 5%, var(--bg));
 }
 
 .route-meta .k {
@@ -328,6 +355,14 @@
   color: var(--ink);
 }
 
+.route-meta .m {
+  transition: border-color 0.15s;
+}
+
+.route-meta .m:hover {
+  border-color: var(--accent);
+}
+
 .route-meta .v b { color: var(--accent); font-weight: 500; }
 
 /* Elevation SVG line */
@@ -339,6 +374,8 @@
 }
 
 /* -------- Photography -------- */
+#photo { background: var(--surface); }
+
 .photo-head {
   display: flex;
   align-items: flex-end;
@@ -521,6 +558,21 @@
   outline: 2px solid var(--accent);
   outline-offset: 2px;
   z-index: 1;
+}
+
+.photo-grid .ph::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  border-radius: var(--radius);
+}
+
+.photo-grid .ph:hover::after {
+  opacity: 0.4;
 }
 
 /* -------- Homepage print -------- */

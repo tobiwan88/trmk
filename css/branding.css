@@ -40,7 +40,7 @@
   --space-lg: 32px;
   --space-xl: 64px;
 
-  --radius:     2px;
+  --radius:     4px;
   --nav-height: calc(60px * var(--density));
 }
 
@@ -55,12 +55,36 @@
   --rule:    #2A3C4C;
 }
 
+[data-theme="dark"] body {
+  background: linear-gradient(170deg,
+    var(--bg) 0%,
+    color-mix(in oklab, var(--bg-2) 40%, var(--bg) 100%) 100%);
+}
+
+/* -------- Subtle grain overlay -------- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+[data-theme="dark"] body::after {
+  opacity: 0.03;
+}
+
 /* -------- Base reset -------- */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 
 body {
-  background: var(--bg);
+  background: linear-gradient(170deg,
+    var(--bg) 0%,
+    color-mix(in oklab, var(--bg-2) 35%, var(--bg) 100%) 100%);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: calc(16px * var(--density));
@@ -103,7 +127,7 @@ h1, h2, h3, h4, h5, h6 {
 .hand {
   font-family: var(--font-hand);
   font-weight: 500;
-  color: var(--accent);
+  color: var(--trail-ember);
 }
 
 .tags {
@@ -120,6 +144,12 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--accent-2);
   border-radius: var(--radius);
   letter-spacing: 0.02em;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.tag:hover {
+  background: color-mix(in oklab, var(--accent) 22%, transparent);
+  color: var(--accent);
 }
 
 [data-theme="dark"] .tag { color: var(--accent); }
