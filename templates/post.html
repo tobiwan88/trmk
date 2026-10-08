@@ -1,82 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
-<article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
-  {% if is_post %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "{{ post.title }}",
-    "description": "{{ post.description }}",
-    "datePublished": "{{ post.date }}",
-    "author": {
-      "@type": "Person",
-      "name": "Tobias R.M.K. Meyer",
-      "url": "https://www.trmk.de"
-    },
-    "publisher": {
-      "@type": "Person",
-      "name": "Tobias R.M.K. Meyer",
-      "url": "https://www.trmk.de"
-    },
-    "image": "https://www.trmk.de/avatar.jpg",
-    "url": "{{ page_url }}",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "{{ page_url }}"
-    }
-  }
-  </script>
-  {% endif %}
-
-  <header class="blog-post-header">
-    <h1 itemprop="headline">{{ post.title }}</h1>
-    <p class="blog-post-meta">
-      <i class="fa fa-calendar" aria-hidden="true"></i>
-      <time datetime="{{ post.date }}" itemprop="datePublished">
-        <span data-i18n="blog.publishedOn">Published on</span> {{ post.date }}
-      </time>
+<article class="post" lang="{{ post.lang }}">
+  <header class="post-head wrap">
+    <p class="eyebrow">
+      <a href="index.html">Blog</a> <span class="d">·</span>
+      <time datetime="{{ post.date }}">TX {{ post.date }}</time> <span class="d">·</span>
+      {{ post.minutes }} {{ labels.min_read }}
     </p>
-
+    <h1>{{ post.title }}</h1>
     {% if post.translations %}
-    <div class="blog-language-switcher">
-      <i class="fa fa-language" aria-hidden="true"></i>
-      <span class="language-badge current">{{ post.lang.upper() }}</span>
+    <p class="post-langs">
+      <span class="lbl">{{ labels.translation }}</span>
       {% for lang, translation in post.translations.items() %}
-        <a href="{{ translation.slug }}.html" class="language-badge">{{ lang.upper() }}</a>
+      <a href="{{ translation.slug }}.html" hreflang="{{ lang }}" lang="{{ lang }}" class="lang-pill">{{ labels.lang_name[lang] }}</a>
       {% endfor %}
-    </div>
+    </p>
     {% endif %}
   </header>
 
-  <div class="blog-post-content" itemprop="articleBody">
-    {{ post.content | safe }}
+  <div class="wrap">
+    <div class="blog-post-content">
+      {{ post.content | safe }}
+    </div>
   </div>
 
-  <nav class="blog-post-nav" aria-label="Post navigation">
-    <div>
-      {% if post.previous_post %}
-        <a href="{{ post.previous_post.slug }}.html" class="blog-nav-link">
-          <i class="fa fa-arrow-left" aria-hidden="true"></i>
-          <span data-i18n="blog.olderPost">Older Post</span>
-        </a>
-      {% endif %}
-    </div>
-
-    <a href="index.html" class="blog-nav-home">
-      <i class="fa fa-home" aria-hidden="true"></i>
-      <span data-i18n="blog.home">Home</span>
+  <nav class="post-nav wrap" aria-label="Post navigation">
+    {% if post.previous_post %}
+    <a href="{{ post.previous_post.slug }}.html" class="post-nav-link prev" rel="prev">
+      <span class="dir">← {{ labels.older }}</span>
+      <span class="ttl">{{ post.previous_post.title }}</span>
     </a>
-
-    <div>
-      {% if post.next_post %}
-        <a href="{{ post.next_post.slug }}.html" class="blog-nav-link">
-          <span data-i18n="blog.newerPost">Newer Post</span>
-          <i class="fa fa-arrow-right" aria-hidden="true"></i>
-        </a>
-      {% endif %}
-    </div>
+    {% else %}<span></span>{% endif %}
+    {% if post.next_post %}
+    <a href="{{ post.next_post.slug }}.html" class="post-nav-link next" rel="next">
+      <span class="dir">{{ labels.newer }} →</span>
+      <span class="ttl">{{ post.next_post.title }}</span>
+    </a>
+    {% else %}<span></span>{% endif %}
   </nav>
+  <p class="wrap post-all"><a class="btn ghost sm" href="archive.html">{{ labels.all_posts }}</a></p>
 </article>
 {% endblock %}

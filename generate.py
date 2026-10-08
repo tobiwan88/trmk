@@ -7,6 +7,8 @@ import jinja2
 import markdown
 import yaml
 import html
+import json
+import math
 
 BLOG_ENTRIES_DIR = "blog_entries"
 TEMPLATES_DIR = "templates"
@@ -17,6 +19,14 @@ OG_IMAGE_WIDTH = "1200"
 OG_IMAGE_HEIGHT = "630"
 OG_IMAGE_URL = "https://www.trmk.de/og/blog.png"
 SITE_AUTHOR = "Tobias R.M.K. Meyer"
+WORDS_PER_MINUTE = 200
+# Labels rendered into a post in the post's own language (no client-side switch needed)
+POST_LABELS = {
+    "en": {"min_read": "min read", "older": "Older", "newer": "Newer", "all_posts": "All posts",
+           "translation": "Also in", "published": "Published", "lang_name": {"en": "English", "de": "Deutsch"}},
+    "de": {"min_read": "Min. Lesezeit", "older": "Älter", "newer": "Neuer", "all_posts": "Alle Beiträge",
+           "translation": "Auch auf", "published": "Veröffentlicht", "lang_name": {"en": "English", "de": "Deutsch"}},
+}
 FEED_INFO = {
     "en": {"file": "feed.xml", "title": "Tobias R.M.K. Meyer - Blog",
            "description": "Build logs about embedded systems, Zephyr, hardware and working with AI tools."},
@@ -24,6 +34,7 @@ FEED_INFO = {
            "description": "Bau-Logbücher über Embedded-Systeme, Zephyr, Hardware und das Arbeiten mit KI-Werkzeugen."},
 }
 SITE_URL = "https://www.trmk.de"
+PERSON_ID = f"{SITE_URL}/#person"
 
 def strip_html(content):
     return re.sub(r'<[^>]+>', '', content).strip()
@@ -44,6 +55,78 @@ def extract_description(content, max_len=155):
         desc = text
     return desc
 
+def _norm(text):
+    return re.sub(r'[^a-z0-9äöüß]+', '', html.unescape(text).lower())
+
+def drop_title_heading(html_content, title):
+    """Remove a leading <h1> that repeats the frontmatter title (it is already the page headline)."""
+    m = re.match(r'\s*<h1[^>]*>(.*?)</h1>\s*', html_content, re.S)
+    if m and _norm(strip_html(m.group(1))) == _norm(title):
+        return html_content[m.end():]
+    return html_content
+
+def reading_minutes(html_content):
+    words = len(strip_html(html_content).split())
+    return max(1, math.ceil(words / WORDS_PER_MINUTE))
+
+def json_ld(data):
+    """Serialise structured data safely for embedding in a <script> tag."""
+    return json.dumps(data, ensure_ascii=False, indent=2).replace('</', '<\\/')
+
+def post_json_ld(post, page_url):
+    return json_ld({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": html.unescape(post["title"]),
+        "description": html.unescape(post["description"]),
+        "datePublished": post["date"],
+        "inLanguage": post["lang"],
+        "wordCount": post["words"],
+        "timeRequired": f"PT{post['minutes']}M",
+        "url": page_url,
+        "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
+        "image": OG_IMAGE_URL,
+        "author": {"@type": "Person", "@id": PERSON_ID, "name": SITE_AUTHOR, "url": f"{SITE_URL}/"},
+        "publisher": {"@type": "Person", "@id": PERSON_ID, "name": SITE_AUTHOR, "url": f"{SITE_URL}/"},
+        "isPartOf": {"@type": "Blog", "@id": f"{SITE_URL}/blog/#blog"},
+    })
+
+def group_articles(posts):
+    """One entry per article (translations grouped), newest first; English is the primary version."""
+    by_slug = defaultdict(dict)
+    for post in posts:
+        by_slug[post["base_slug"]][post["lang"]] = post
+    articles = []
+    for base_slug, versions in by_slug.items():
+        primary = versions.get("en") or next(iter(versions.values()))
+        articles.append({
+            "base_slug": base_slug,
+            "date": primary["date"],
+            "primary": primary,
+            "versions": [versions[l] for l in SUPPORTED_LANGUAGES if l in versions],
+        })
+    articles.sort(key=lambda a: a["date"], reverse=True)
+    return articles
+
+def blog_json_ld(articles, description):
+    return json_ld({
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": f"{SITE_URL}/blog/#blog",
+        "name": f"{SITE_AUTHOR} - Blog",
+        "description": description,
+        "url": f"{SITE_URL}/blog/",
+        "inLanguage": SUPPORTED_LANGUAGES,
+        "author": {"@type": "Person", "@id": PERSON_ID, "name": SITE_AUTHOR, "url": f"{SITE_URL}/"},
+        "blogPost": [{
+            "@type": "BlogPosting",
+            "headline": html.unescape(v["title"]),
+            "url": f"{SITE_URL}/blog/{v['slug']}.html",
+            "datePublished": v["date"],
+            "inLanguage": v["lang"],
+        } for a in articles for v in a["versions"]],
+    })
+
 def demote_headings(html_content):
     def replace_heading(m):
         tag = m.group(1)
@@ -53,6 +136,26 @@ def demote_headings(html_content):
             new_level = 6
         return m.group(0).replace(f'<h{level}', f'<h{new_level}').replace(f'</h{level}>', f'</h{new_level}>')
     return re.sub(r'</?h(\d)[^>]*>', lambda m: replace_heading(m), html_content)
+
+def wrap_code_blocks(html_content):
+    """<pre><code class="language-x"> -> labelled code panel (styled in css/blog.css)."""
+    def repl(m):
+        attrs = m.group(1) or ''
+        lang = re.search(r'language-([\w+-]+)', attrs)
+        label = lang.group(1) if lang else 'code'
+        return (f'<div class="codehilite" data-lang="{html.escape(label)}">'
+                f'<pre class="blog-code-block"><code{attrs}>')
+    html_content = re.sub(r'<pre><code([^>]*)>', repl, html_content)
+    return html_content.replace('</code></pre>', '</code></pre></div>')
+
+def wrap_figures(html_content):
+    """A paragraph holding only an image becomes a figure; the alt text is the caption."""
+    def repl(m):
+        img = m.group(1)
+        alt = re.search(r'alt="([^"]*)"', img)
+        caption = f'<figcaption>{alt.group(1)}</figcaption>' if alt and alt.group(1) else ''
+        return f'<figure class="blog-image-figure">{img}{caption}</figure>'
+    return re.sub(r'<p>\s*(<img[^>]*>)\s*</p>', repl, html_content)
 
 def add_lazy_loading(html_content):
     return re.sub(r'<img(?![^>]*loading=)', '<img loading="lazy"', html_content)
@@ -177,6 +280,8 @@ def main():
     os.makedirs(OUTPUT_DIR)
 
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATES_DIR))
+    # Plain text for HTML attributes: normalise entities, then escape once (quotes included)
+    env.filters['attr'] = lambda v: html.escape(html.unescape(str(v)), quote=True)
     post_template = env.get_template("post.html")
     index_template = env.get_template("index.html")
     archive_template = env.get_template("archive.html")
@@ -219,11 +324,18 @@ def main():
             raw_desc = strip_html(html_content)
             description = frontmatter.get('description') or extract_description(html_content)
 
+            title = frontmatter.get("title", "Untitled")
+            html_content = drop_title_heading(html_content, title)
             html_content = demote_headings(html_content)
             html_content = add_lazy_loading(html_content)
+            html_content = wrap_figures(html_content)
+            html_content = wrap_code_blocks(html_content)
+            words = len(strip_html(html_content).split())
 
             post = {
-                "title": frontmatter.get("title", "Untitled"),
+                "title": title,
+                "words": words,
+                "minutes": reading_minutes(html_content),
                 "date": frontmatter.get("date", "No Date"),
                 "description": description,
                 "content": html_content,
@@ -265,10 +377,15 @@ def main():
             hreflang_entries=hreflang_entries
         )
         context['is_post'] = True
+        context['labels'] = POST_LABELS.get(post['lang'], POST_LABELS['en'])
+        context['ld_json'] = post_json_ld(post, post_url)
 
         post_output_path = os.path.join(OUTPUT_DIR, f"{post['slug']}.html")
         with open(post_output_path, "w", encoding="utf-8") as out_f:
             out_f.write(post_template.render(post=post, **context))
+
+    articles = group_articles(posts)
+    blog_description = FEED_INFO["en"]["description"]
 
     if posts:
         en_posts = posts_by_lang.get("en", [])
@@ -282,14 +399,16 @@ def main():
         ]
         context = build_page_context(
             post=newest_post,
-            title=newest_post['title'],
-            description=newest_post['description'],
+            title="Blog",
+            description=blog_description,
             template_type='index',
             page_url=f"{SITE_URL}/blog/",
             hreflang_entries=hreflang_entries
         )
         context['is_post'] = False
         context['latest_post'] = newest_post
+        context['articles'] = articles
+        context['ld_json'] = blog_json_ld(articles, blog_description)
 
         index_output_path = os.path.join(OUTPUT_DIR, "index.html")
         with open(index_output_path, "w", encoding="utf-8") as f:
@@ -319,10 +438,15 @@ def main():
     ]
     context = build_page_context(
         post=None, title="Archive",
-        description="All blog posts by Tobias R.M.K. Meyer, covering embedded systems, firmware development, and software engineering.",
+        description="All blog posts by Tobias R.M.K. Meyer: embedded systems, Zephyr, hardware and working with AI tools, in English and German.",
         template_type='archive', page_url=archive_url, hreflang_entries=hreflang_entries
     )
     context['is_post'] = False
+    years = defaultdict(list)
+    for article in articles:
+        years[str(article['date'])[:4]].append(article)
+    context['articles_by_year'] = sorted(years.items(), reverse=True)
+    context['article_count'] = len(articles)
     with open(archive_output_path, "w", encoding="utf-8") as f:
         f.write(archive_template.render(posts=posts, **context))
 

@@ -74,6 +74,8 @@ class I18n {
   }
 
   updateHtmlLang() {
+    // Pages whose content has a fixed language (blog posts) keep it; only the UI chrome switches
+    if (document.documentElement.dataset.contentLang) return;
     document.documentElement.lang = this.currentLang;
   }
 
