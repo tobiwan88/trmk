@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="meta.titleConsulting">Tobias Meyer - Technical Advisory</title>
-  <meta name="description" content="Technical advisory services for embedded systems, IoT product development, and firmware architecture. Helping startups and teams navigate the full device lifecycle." data-i18n-content="meta.descriptionConsulting">
+  <meta name="description" content="Technical advisory for embedded systems and IoT: radio choice, firmware architecture, certification and the full device lifecycle. Ask the right questions before you're locked in." data-i18n-content="meta.descriptionConsulting">
   <meta name="robots" content="index,follow">
   <meta name="author" content="Tobias R.M.K. Meyer">
+  <meta name="theme-color" content="#12111d">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.trmk.de/freelancing.html">
   <meta property="og:title" content="Tobias Meyer - Technical Advisory">
-  <meta property="og:description" content="Technical advisory for embedded systems and IoT. I help startups and teams navigate architecture decisions, regulatory challenges, and the full device lifecycle — before expensive mistakes happen.">
+  <meta property="og:description" content="Technical advisory for embedded systems and IoT. Radio choice, firmware architecture, certification and the full device lifecycle, before expensive mistakes happen.">
   <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="de_DE">
@@ -21,13 +22,11 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tobias Meyer - Technical Advisory">
-  <meta name="twitter:description" content="Technical advisory for embedded systems and IoT. I help startups and teams navigate architecture decisions, regulatory challenges, and the full device lifecycle — before expensive mistakes happen.">
+  <meta name="twitter:description" content="Technical advisory for embedded systems and IoT. Radio choice, firmware architecture, certification and the full device lifecycle, before expensive mistakes happen.">
   <meta name="twitter:image" content="https://www.trmk.de/avatar.jpg">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://www.trmk.de/freelancing.html">
-
-  <!-- Color scheme support -->
   <meta name="color-scheme" content="light dark">
 
   <!-- Favicons & PWA -->
@@ -42,26 +41,34 @@
   <link rel="alternate" hreflang="de" href="https://www.trmk.de/freelancing.html">
   <link rel="alternate" hreflang="x-default" href="https://www.trmk.de/freelancing.html">
 
-  <!-- Stylesheets -->
+  <!-- Preload primary fonts -->
+  <link rel="preload" href="./fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheets (homepage.css provides the shared "Live Scope" tokens + components) -->
   <link rel="stylesheet" href="./css/fonts.css">
   <link rel="stylesheet" href="./css/branding.css">
   <link rel="stylesheet" href="./css/site.css">
-  <link rel="stylesheet" href="./css/cv.css">
+  <link rel="stylesheet" href="./css/homepage.css">
+  <link rel="stylesheet" href="./css/consulting.css">
   <link rel="stylesheet" href="./css/all.css">
 
-  <!-- i18n -->
+  <!-- i18n + page script -->
   <script src="./js/translations.js" defer></script>
   <script src="./js/i18n.js" defer></script>
+  <script src="./js/chrome.js" defer></script>
+  <script src="./js/consulting.js" defer></script>
 
   <!-- Theme: set before render to prevent flash -->
   <script>(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
-<!-- Structured Data -->
+
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Tobias R.M.K. Meyer - Technical Advisory",
-    "description": "Technical advisory for embedded systems and IoT product development. Helping startups and companies navigate architecture decisions, regulatory challenges, and the full device lifecycle — from concept through production.",
+    "description": "Technical advisory for embedded systems and IoT product development: radio choice, firmware architecture, certification and the full device lifecycle, from concept through production.",
     "url": "https://www.trmk.de/freelancing.html",
     "image": "https://www.trmk.de/avatar.jpg",
     "provider": {
@@ -70,17 +77,16 @@
       "url": "https://www.trmk.de"
     },
     "areaServed": { "@type": "Country", "name": "DE" },
-    "serviceType": ["Technical Advisory", "IoT Architecture Consulting", "Firmware Architecture Review", "Regulatory Navigation", "Team Mentorship"],
-    "telephone": "+49-XXX-XXXX-XXXX",
+    "serviceType": ["Technical Advisory", "IoT Architecture Consulting", "Firmware Architecture Review", "Radio Technology Selection", "Regulatory Navigation", "Team Mentorship"],
     "email": "tobias.meyer@trmk.de",
     "address": { "@type": "PostalAddress", "addressLocality": "Munich", "addressCountry": "DE" }
   }
   </script>
 </head>
-<body>
+<body class="home consulting">
 
 <!-- Skip link -->
-<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#main-content" class="skip-link" data-i18n-aria="nav.skipToContent">Skip to main content</a>
 
 <!-- ============== NAV ============== -->
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
@@ -91,7 +97,7 @@
     </a>
 
     <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="./index.html#about" data-i18n="nav.about">About</a></li>
+      <li><a href="./index.html#about" data-i18n="nav.signals">Signals</a></li>
       <li><a href="./index.html#life" data-i18n="nav.outside">Outside</a></li>
       <li><a href="./index.html#photo" data-i18n="nav.photography">Photography</a></li>
       <li><a href="./cv.html" data-i18n="nav.cv">CV</a></li>
@@ -116,204 +122,194 @@
   </div>
 </nav>
 
-<!-- ============== MAIN ============== -->
 <main id="main-content">
-  <div class="cv-wrap">
 
-    <!-- Page header -->
-    <header style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--rule);">
-      <p class="mono" style="margin: 0 0 10px;">T.R.M.K / MEYER</p>
-      <h1 style="font-size: clamp(26px, 3.5vw, 42px); font-weight: 500; margin: 0 0 10px; letter-spacing: -0.02em;" data-i18n="consulting.title">Technical Advisory</h1>
-      <p style="color: var(--ink-2); margin: 0; font-size: 15px;" data-i18n="consulting.subtitle">Helping you ask the right questions before you're locked in.</p>
-    </header>
-
-    <!-- I Help With -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">
-        <i class="fa fa-comments" aria-hidden="true"></i>
-        <span data-i18n="consulting.helpWith">I Help With</span>
-      </h2>
-      <p style="color: var(--ink-2); font-size: 14px; margin: 0 0 16px;" data-i18n="consulting.helpWithText">Not every project needs a vendor — sometimes you need a sparring partner who has been through this before.</p>
-      <div class="tags" style="margin-top: 16px;">
-        <span class="tag" data-i18n="consulting.helpWith1">Startups building your first connected product</span>
-        <span class="tag" data-i18n="consulting.helpWith2">Companies expanding into IoT for the first time</span>
-        <span class="tag" data-i18n="consulting.helpWith3">Teams that have skills but need experienced guidance on architecture and tradeoffs</span>
-        <span class="tag" data-i18n="consulting.helpWith4">Engineering managers who need a sounding board before major decisions</span>
+<!-- ============== HERO: cost of a late change ============== -->
+<header class="adv-hero">
+  <div class="wrap split">
+    <div class="copy">
+      <p class="eyebrow"><span data-i18n="consulting.eyebrow">Technical advisory</span> <span class="d">·</span> <span data-i18n="consulting.eyebrowSide">alongside my role at Hula Earth</span></p>
+      <h1 data-i18n-html="consulting.title">Ask the right questions <em>before you're locked in</em>.</h1>
+      <p class="lede" data-i18n="consulting.subtitle">Most expensive device mistakes are cheap decisions made too late. I help teams make them early: which radio, which architecture, which certification path, and what to stop doing.</p>
+      <div class="controls">
+        <a class="btn" href="#contact" data-i18n="consulting.ctaTop">Tell me about your project</a>
+        <a class="btn ghost" href="#process" data-i18n="consulting.ctaHow">How I work</a>
       </div>
-    </section>
 
-    <!-- Advisory Services -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">
-        <i class="fa fa-briefcase" aria-hidden="true"></i>
-        <span data-i18n="consulting.services">Advisory Services</span>
-      </h2>
-      <p style="color: var(--ink-2); font-size: 14px; margin: 0 0 16px;">
-        <span data-i18n="consulting.servicesIntro">In addition to my main role</span>
-        (<a href="./cv.html" data-i18n="nav.cv">CV</a>)
-        <span data-i18n="consulting.servicesText">I offer advisory services to help you navigate the full device lifecycle — from concept through production and beyond. Whether you're building your first connected product or scaling an existing line, I help you ask the right questions before you're locked into expensive decisions.</span>
-      </p>
-      <p style="color: var(--ink-2); font-size: 14px; margin: 0 0 16px;" data-i18n="consulting.expertiseIntro">My core expertise lies in the intersection of hardware constraints, firmware architecture, and radio protocols — for devices that must survive in the real world without constant attention. I can support you in:</p>
-      <ul style="color: var(--ink-2); font-size: 14px; padding-left: 1.2em; margin: 0 0 16px;">
-        <li style="margin-bottom: 8px;" data-i18n="consulting.shortRange">Short range radio protocols: Zigbee, Thread, BLE or EnOcean</li>
-        <li style="margin-bottom: 8px;" data-i18n="consulting.longRange">Long range: LoRa</li>
-        <li style="margin-bottom: 8px;" data-i18n="consulting.cellular">Cellular: LTE-M / NB-IoT</li>
-        <li style="margin-bottom: 8px;" data-i18n="consulting.regulatory">Regulatory landscape (CE, FCC, and many more rules depending on your market)</li>
-      </ul>
-      <p style="color: var(--ink-2); font-size: 14px; margin: 0;" data-i18n="consulting.additionalSupport">Setting up data pipelines and on-device processing using Tiny-ML technologies.</p>
-    </section>
-
-    <!-- How I Work -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">
-        <i class="fa fa-cogs" aria-hidden="true"></i>
-        <span data-i18n="consulting.process">How I Work</span>
-      </h2>
-      <div style="display: grid; gap: 16px; margin-top: 16px;">
-        <div style="display: flex; gap: 16px; align-items: flex-start;">
-          <span style="font-family: var(--font-mono); font-size: 24px; color: var(--accent); font-weight: 500; line-height: 1;">01</span>
-          <div>
-            <h3 style="font-size: 15px; margin: 0 0 4px;" data-i18n="consulting.step1Title">Understand & Scope</h3>
-            <p style="font-size: 14px; color: var(--ink-2); margin: 0;" data-i18n="consulting.step1Text">We start with your problem. I ask questions, challenge assumptions, and define what success looks like before writing a single line of code.</p>
-          </div>
-        </div>
-        <div style="display: flex; gap: 16px; align-items: flex-start;">
-          <span style="font-family: var(--font-mono); font-size: 24px; color: var(--accent); font-weight: 500; line-height: 1;">02</span>
-          <div>
-            <h3 style="font-size: 15px; margin: 0 0 4px;" data-i18n="consulting.step2Title">Architecture & Plan</h3>
-            <p style="font-size: 14px; color: var(--ink-2); margin: 0;" data-i18n="consulting.step2Text">Clear architecture saves projects. I design systems that are maintainable, testable, and built to last — with documentation and clear interfaces.</p>
-          </div>
-        </div>
-        <div style="display: flex; gap: 16px; align-items: flex-start;">
-          <span style="font-family: var(--font-mono); font-size: 24px; color: var(--accent); font-weight: 500; line-height: 1;">03</span>
-          <div>
-            <h3 style="font-size: 15px; margin: 0 0 4px;" data-i18n="consulting.step3Title">Build & Deliver</h3>
-            <p style="font-size: 14px; color: var(--ink-2); margin: 0;" data-i18n="consulting.step3Text">Iterative development with regular check-ins. You'll always know where we stand and what's next. Code ships with tests and clear documentation.</p>
-          </div>
-        </div>
-        <div style="display: flex; gap: 16px; align-items: flex-start;">
-          <span style="font-family: var(--font-mono); font-size: 24px; color: var(--accent); font-weight: 500; line-height: 1;">04</span>
-          <div>
-            <h3 style="font-size: 15px; margin: 0 0 4px;" data-i18n="consulting.step4Title">Handoff & Support</h3>
-            <p style="font-size: 14px; color: var(--ink-2); margin: 0;" data-i18n="consulting.step4Text">Your team should be able to own what we build. I provide documentation, knowledge transfer, and am available for questions after delivery.</p>
-          </div>
-        </div>
+      <div class="sl cost-sl">
+        <label for="cost-pos"><span data-i18n="consulting.cost.label">When do you change your mind?</span> <output id="cost-phase">Certification</output></label>
+        <input type="range" id="cost-pos" min="0" max="500" step="1" value="300">
       </div>
-    </section>
-
-    <!-- Why Work With Me -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">
-        <i class="fa fa-star" aria-hidden="true"></i>
-        <span data-i18n="consulting.whyTitle">Why Work With Me</span>
-      </h2>
-      <div class="tags" style="margin-top: 16px;">
-        <span class="tag" data-i18n="consulting.why1">10+ years embedded systems</span>
-        <span class="tag" data-i18n="consulting.why2">From prototype to production</span>
-        <span class="tag" data-i18n="consulting.why3">Full device lifecycle experience</span>
-        <span class="tag" data-i18n="consulting.why4">Regulatory navigation (CE, FCC, railway standards)</span>
-        <span class="tag" data-i18n="consulting.why5">Team lead & mentoring experience</span>
-        <span class="tag" data-i18n="consulting.why6">I tell you what you don't want to hear</span>
+      <div class="readout">
+        <div class="big" id="cost-x" aria-live="polite">×63<small>cost</small></div>
+        <p class="stat" id="cost-note"></p>
       </div>
-      <p style="color: var(--ink-2); font-size: 14px; margin-top: 16px;" data-i18n="consulting.whyText">I've helped startups avoid expensive mistakes before they happened, guided teams through regulatory approvals, and built firmware that runs on train tracks in Siberia. I understand that embedded means constraints — and I thrive there.</p>
-    </section>
-
-    <!-- Contact -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">
-        <i class="fa fa-envelope" aria-hidden="true"></i>
-        <span data-i18n="consulting.contactHeading">Let's Talk</span>
-      </h2>
-      <p style="color: var(--ink-2); font-size: 14px; margin: 0 0 20px;" data-i18n="consulting.contactText">Ready to elevate your embedded systems? Tell me about your project and let's see how I can contribute to your success.</p>
-      <div style="margin-bottom: 20px;">
-        <a href="mailto:tobias.meyer@trmk.de" class="consulting-cta" data-i18n="consulting.ctaButton">
-          <i class="fa fa-envelope" aria-hidden="true"></i>
-          Get in Touch
-        </a>
-      </div>
-      <p style="font-size: 12px; color: var(--ink-3);" data-i18n="consulting.responseTime">I typically respond within 24–48 hours.</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 16px;">
-        <a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 6px; font-size: 14px;">
-          <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-        </a>
-        <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 6px; font-size: 14px;">
-          <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-        </a>
-      </div>
-    </section>
-
+    </div>
+    <div class="stage">
+      <canvas id="cv-cost" role="img" aria-label="Rule-of-thumb curve: the cost of changing a decision grows roughly a thousandfold from concept to devices in the field" data-i18n-aria="consulting.cost.aria">Rule-of-thumb curve: the cost of changing a decision grows roughly a thousandfold from concept to devices in the field</canvas>
+      <div class="hud" aria-hidden="true"><i></i><span data-i18n="consulting.cost.hud">Cost of a change · rule of thumb</span></div>
+    </div>
   </div>
+</header>
+
+<!-- ============== WHO IT'S FOR ============== -->
+<section id="who">
+  <div class="wrap">
+    <div class="sec-intro">
+      <p class="eyebrow" data-i18n="consulting.helpWith">Who I help</p>
+      <h2 data-i18n-html="consulting.helpWithTitle">A sparring partner, <em>not a vendor</em></h2>
+      <p class="lede" data-i18n="consulting.helpWithText">Not every project needs another supplier. Sometimes you need someone who has been through this before and has no stake in which chip you pick.</p>
+    </div>
+    <div class="who-grid">
+      <article class="who">
+        <p class="who-k" data-i18n="consulting.who1k">Startups</p>
+        <p data-i18n="consulting.helpWith1">Building your first connected product and want to avoid the classic traps.</p>
+      </article>
+      <article class="who">
+        <p class="who-k" data-i18n="consulting.who2k">New to IoT</p>
+        <p data-i18n="consulting.helpWith2">Companies adding connectivity to a product for the first time.</p>
+      </article>
+      <article class="who">
+        <p class="who-k" data-i18n="consulting.who3k">Teams</p>
+        <p data-i18n="consulting.helpWith3">Strong engineers who want experienced input on architecture and tradeoffs.</p>
+      </article>
+      <article class="who">
+        <p class="who-k" data-i18n="consulting.who4k">Managers</p>
+        <p data-i18n="consulting.helpWith4">Engineering managers who need a sounding board before a big decision.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== EXPERTISE: radio map ============== -->
+<section id="expertise">
+  <div class="wrap">
+    <div class="sec-intro">
+      <p class="eyebrow" data-i18n="consulting.services">Where I'm useful</p>
+      <h2 data-i18n-html="consulting.servicesTitle">Hardware limits, firmware, <em>radio</em></h2>
+      <p class="lede" data-i18n="consulting.expertiseIntro">My core is where hardware constraints, firmware architecture and radio protocols meet, for devices that have to survive in the real world without anyone looking after them. The first question is usually which radio. Pick one.</p>
+    </div>
+
+    <div class="split radio-split">
+      <div class="stage radio-stage">
+        <canvas id="cv-radio" role="img" aria-label="Typical range against data rate for common IoT radios, both on log scales" data-i18n-aria="consulting.radio.aria">Typical range against data rate for common IoT radios, both on log scales</canvas>
+        <div class="hud r" aria-hidden="true" data-i18n="consulting.radio.hud">Rules of thumb · your site decides</div>
+      </div>
+      <div class="copy">
+        <div class="tabs" role="group" aria-label="Radio technology">
+          <button class="btn ghost sm" type="button" data-radio="enocean" aria-pressed="false">EnOcean</button>
+          <button class="btn ghost sm" type="button" data-radio="ble" aria-pressed="true">BLE</button>
+          <button class="btn ghost sm" type="button" data-radio="zigbee" aria-pressed="false">Zigbee</button>
+          <button class="btn ghost sm" type="button" data-radio="thread" aria-pressed="false">Thread</button>
+          <button class="btn ghost sm" type="button" data-radio="lora" aria-pressed="false">LoRa</button>
+          <button class="btn ghost sm" type="button" data-radio="nbiot" aria-pressed="false">NB-IoT</button>
+          <button class="btn ghost sm" type="button" data-radio="ltem" aria-pressed="false">LTE-M</button>
+        </div>
+        <div class="radio-card" aria-live="polite">
+          <h3 id="r-name">BLE</h3>
+          <dl class="radio-facts">
+            <div><dt data-i18n="consulting.radio.range">Range</dt><dd id="r-range"></dd></div>
+            <div><dt data-i18n="consulting.radio.rate">Data rate</dt><dd id="r-rate"></dd></div>
+            <div><dt data-i18n="consulting.radio.power">Power</dt><dd id="r-power"></dd></div>
+          </dl>
+          <p class="radio-line"><b data-i18n="consulting.radio.good">Good for</b> <span id="r-good"></span></p>
+          <p class="radio-line"><b data-i18n="consulting.radio.watch">Watch out</b> <span id="r-watch"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="also">
+      <div>
+        <h3 data-i18n="consulting.regTitle">Certification</h3>
+        <p data-i18n="consulting.regulatory">CE / RED, FCC and whatever else your market asks for, plus railway standards. Plan the lab before the layout is frozen.</p>
+      </div>
+      <div>
+        <h3 data-i18n="consulting.archTitle">Firmware architecture</h3>
+        <p data-i18n="consulting.archText">Zephyr RTOS, low-power design, OTA updates, and a company module so the next product needs less code.</p>
+      </div>
+      <div>
+        <h3 data-i18n="consulting.mlTitle">Edge AI</h3>
+        <p data-i18n="consulting.additionalSupport">Data pipelines and on-device processing with TinyML, so the device sends answers instead of raw data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PROCESS ============== -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-intro">
+      <p class="eyebrow" data-i18n="consulting.process">How I work</p>
+      <h2 data-i18n-html="consulting.processTitle">Four steps, <em>no surprises</em></h2>
+    </div>
+    <ol class="path">
+      <li>
+        <span class="path-n">01</span>
+        <h3 data-i18n="consulting.step1Title">Understand & challenge</h3>
+        <p data-i18n="consulting.step1Text">We start with your problem. I ask questions, challenge assumptions and pin down what success looks like, not just what the spec says.</p>
+      </li>
+      <li>
+        <span class="path-n">02</span>
+        <h3 data-i18n="consulting.step2Title">Architecture & plan</h3>
+        <p data-i18n="consulting.step2Text">A clear architecture saves projects: maintainable, testable, with documented interfaces and a realistic path to certification.</p>
+      </li>
+      <li>
+        <span class="path-n">03</span>
+        <h3 data-i18n="consulting.step3Title">Build alongside</h3>
+        <p data-i18n="consulting.step3Text">Regular check-ins, reviews of designs and code, hands-on where it helps. You always know where we stand and what's next.</p>
+      </li>
+      <li>
+        <span class="path-n">04</span>
+        <h3 data-i18n="consulting.step4Title">Hand over</h3>
+        <p data-i18n="consulting.step4Text">Your team should own what we build. Documentation, knowledge transfer, and I'm still around for questions afterwards.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============== WHY ============== -->
+<section id="why">
+  <div class="wrap split why-split">
+    <div class="copy">
+      <p class="eyebrow" data-i18n="consulting.whyTitle">Why me</p>
+      <p class="why-quote" data-i18n="consulting.whyText">I've helped startups avoid expensive mistakes before they happened, guided teams through regulatory approvals, and built firmware that runs on railway tracks in Siberia. Embedded means constraints, and that's where I like to work.</p>
+    </div>
+    <div class="why-facts">
+      <div><b>10+</b><span data-i18n="consulting.why1">years of embedded systems</span></div>
+      <div><b>3</b><span data-i18n="consulting.why2">device worlds: buildings, railways, forests</span></div>
+      <div><b>0 → 1</b><span data-i18n="consulting.why3">from prototype to certified production</span></div>
+      <div><b>1:1</b><span data-i18n="consulting.why5">team lead and mentoring experience</span></div>
+      <p class="chip hot why-honest" data-i18n="consulting.why6">I tell you what you don't want to hear.</p>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<!-- ============== FOOTER ============== -->
-<footer class="site-footer" role="contentinfo">
+<!-- ============== CONTACT / FOOTER ============== -->
+<footer class="site-footer" id="contact" role="contentinfo">
   <div class="wrap">
-    <div>
-      <h3 data-i18n="footer.contactHeading">Get in touch</h3>
-      <h2 data-i18n="footer.contactTitle">Happy to talk embedded, alpine, or sourdough.</h2>
-      <p style="color: var(--muted-steel); max-width: 40ch; font-size: 14px;" data-i18n="footer.contactSub">Open to consulting, advisory, and speaking. Otherwise just say hi.</p>
-      <p style="margin-top: 18px;">
-        <a href="mailto:tobias.meyer@trmk.de" style="font-size: 18px;">tobias.meyer@trmk.de</a>
-      </p>
-    </div>
-
-    <div>
-      <h3 data-i18n="footer.elsewhereHeading">Elsewhere</h3>
-      <ul>
-        <li><a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        <li><a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li><a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava</a></li>
-        <li><a href="https://www.instagram.com/the_tobi_wan88/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <h3 data-i18n="footer.basedHeading">Based</h3>
-      <ul>
-        <li><span class="lbl">City</span> Munich, DE</li>
-        <li><span class="lbl">Lang</span> EN · DE</li>
-      </ul>
+    <div class="finale-row">
+      <div class="copy">
+        <h3 data-i18n="consulting.contactHeading">Let's talk</h3>
+        <h2 data-i18n-html="consulting.contactTitle">Tell me what you're <em>building</em>.</h2>
+        <p class="lede" data-i18n="consulting.contactText">A short email is enough: what the device does, where it lives, and what keeps you up at night. If I'm not the right person, I'll tell you and try to point you to someone who is.</p>
+        <p class="battery" data-i18n="consulting.responseTime">I usually reply within 24–48 hours.</p>
+      </div>
+      <div class="links">
+        <a href="mailto:tobias.meyer@trmk.de">tobias.meyer@trmk.de <span>E-Mail</span></a>
+        <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn <span>Work</span></a>
+        <a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub <span>Code</span></a>
+        <a href="./cv.html">CV <span>Background</span></a>
+      </div>
     </div>
 
     <div class="footer-bottom">
       <span>© 2026 TOBIAS R.M.K. MEYER</span>
-      <span><a href="./freelancing.html" data-i18n="nav.consulting">Consulting</a> · <a href="./cv.html" data-i18n="nav.cv">CV</a> · <a href="./blog/index.html" data-i18n="nav.blog">Blog</a></span>
+      <span><a href="./index.html">trmk.de</a> · <a href="./cv.html" data-i18n="nav.cv">CV</a> · <a href="./blog/index.html" data-i18n="nav.blog">Blog</a></span>
     </div>
   </div>
 </footer>
-
-<script>
-// -------- Theme toggle --------
-const themeToggle = document.getElementById('theme-toggle');
-function applyThemeIcon(theme) {
-  const icon = themeToggle.querySelector('i');
-  icon.className = theme === 'dark' ? 'fa fa-sun' : 'fa fa-moon';
-  themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-}
-applyThemeIcon(document.documentElement.getAttribute('data-theme'));
-themeToggle.addEventListener('click', () => {
-  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  applyThemeIcon(next);
-});
-
-// -------- Hamburger menu --------
-const hamburger = document.getElementById('nav-hamburger');
-const navLinks  = document.getElementById('nav-links');
-
-hamburger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', open);
-});
-
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  });
-});
-</script>
 
 </body>
 </html>
