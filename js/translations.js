@@ -5,7 +5,7 @@ const translations = {
       titleCV: "Tobias R.M.K. Meyer - CV",
       titleConsulting: "Tobias Meyer - Technical Advisory",
       description: "Tobias R.M.K. Meyer builds small devices that listen: energy-harvesting radios, railway sensors and now bioacoustic forest sensors. Embedded engineer in Munich, climber, cyclist and vegan cook.",
-      descriptionCV: "CV of Tobias R.M.K. Meyer, Engineering Manager & Senior Firmware Developer. Expertise in embedded systems, IoT, team leadership, and industrial sensor development for railway infrastructure.",
+      descriptionCV: "CV of Tobias R.M.K. Meyer, Senior Embedded AI Engineer at Hula Earth. Ten years of embedded firmware, radio and low-power IoT devices, including engineering management of a railway sensor device team.",
       descriptionConsulting: "Technical advisory for embedded systems and IoT: radio choice, firmware architecture, certification and the full device lifecycle. Ask the right questions before you're locked in."
     },
     nav: {
@@ -260,18 +260,32 @@ const translations = {
       impressumCredit: "Website Impressum created by"
     },
     cv: {
-      jobTitle: "Engineering Manager",
+      jobTitle: "Senior Embedded AI Engineer",
       location: "Munich, Germany",
+      lede: "A decade of firmware, radios and low-power devices: energy-harvesting switches, railway sensors and now bioacoustic forest sensors, with a stretch leading the device team in between.",
       backToSite: "Back to site",
+      timeline: "Timeline",
+      timelineHint: "Tap a bar to jump to the role.",
+      work: "Work",
+      study: "Study",
       skills: "Technical Skills",
+      lvlAdvanced: "Advanced",
+      lvlIntermediate: "Intermediate",
+      lvlBasic: "Basic",
       programmingLanguages: "Programming Languages",
       embeddedSystems: "Embedded Systems",
       engineeringAndDesign: "Engineering & Design",
       leadershipAndManagement: "Leadership & Management",
       aiAndData: "AI & Data",
       languages: "Languages",
+      german: "German (native)",
+      english: "English (fluent)",
       workExperience: "Work Experience",
-      education: "Education"
+      present: "Present",
+      education: "Education",
+      thesis: "Thesis",
+      contactTitle: "Happy to talk embedded systems or <em>firmware</em>.",
+      contactText: "Looking for advice on a device project? See <a href=\"./freelancing.html\">Consulting</a>."
     },
 consulting: {
         eyebrow: "Technical advisory",
@@ -382,7 +396,7 @@ consulting: {
       titleCV: "Tobias R.M.K. Meyer - Lebenslauf",
       titleConsulting: "Tobias Meyer - Technische Beratung",
       description: "Tobias R.M.K. Meyer baut kleine Geräte, die zuhören: Funkschalter ohne Batterie, Sensoren am Gleis und jetzt bioakustische Sensoren im Wald. Embedded Engineer in München, Kletterer, Radfahrer und veganer Koch.",
-      descriptionCV: "Lebenslauf von Tobias R.M.K. Meyer, Engineering Manager & Senior Firmware-Entwickler. Expertise in eingebetteten Systemen, IoT, Teamführung und industrieller Sensorentwicklung für Eisenbahninfrastruktur.",
+      descriptionCV: "Lebenslauf von Tobias R.M.K. Meyer, Senior Embedded AI Engineer bei Hula Earth. Zehn Jahre Embedded-Firmware, Funk und Low-Power-IoT-Geräte, inklusive Engineering Management eines Device-Teams für Bahnsensoren.",
       descriptionConsulting: "Technische Beratung für Embedded-Systeme und IoT: Funkwahl, Firmware-Architektur, Zertifizierung und der ganze Gerätelebenszyklus. Die richtigen Fragen stellen, bevor Sie festgelegt sind."
     },
     nav: {
@@ -637,18 +651,32 @@ consulting: {
       impressumCredit: "Website Impressum erstellt durch"
     },
     cv: {
-      jobTitle: "Engineering Manager",
+      jobTitle: "Senior Embedded AI Engineer",
       location: "München, Deutschland",
+      lede: "Ein Jahrzehnt Firmware, Funk und Low-Power-Geräte: Funkschalter ohne Batterie, Sensoren am Gleis und jetzt bioakustische Sensoren im Wald, dazwischen eine Zeit als Leiter des Device-Teams.",
       backToSite: "Zurück zur Seite",
+      timeline: "Zeitleiste",
+      timelineHint: "Tippe auf einen Balken, um zur Rolle zu springen.",
+      work: "Beruf",
+      study: "Studium",
       skills: "Technische Fähigkeiten",
+      lvlAdvanced: "Fortgeschritten",
+      lvlIntermediate: "Mittel",
+      lvlBasic: "Grundlagen",
       programmingLanguages: "Programmiersprachen",
       embeddedSystems: "Eingebettete Systeme",
       engineeringAndDesign: "Entwicklung & Design",
       leadershipAndManagement: "Führung & Management",
       aiAndData: "KI & Daten",
       languages: "Sprachen",
+      german: "Deutsch (Muttersprache)",
+      english: "Englisch (fließend)",
       workExperience: "Berufserfahrung",
-      education: "Ausbildung"
+      present: "heute",
+      education: "Ausbildung",
+      thesis: "Abschlussarbeit",
+      contactTitle: "Gerne spreche ich über Embedded-Systeme oder <em>Firmware</em>.",
+      contactText: "Sie suchen Rat für ein Geräteprojekt? Siehe <a href=\"./freelancing.html\">Beratung</a>."
     },
 consulting: {
         eyebrow: "Technische Beratung",

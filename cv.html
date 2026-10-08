@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12111d">
   <title data-i18n="meta.titleCV">Tobias R.M.K. Meyer - CV</title>
-  <meta name="description" content="CV of Tobias R.M.K. Meyer, Engineering Manager &amp; Senior Firmware Developer. Expertise in embedded systems, IoT, team leadership, and industrial sensor development for railway infrastructure." data-i18n-content="meta.descriptionCV">
+  <meta name="description" content="CV of Tobias R.M.K. Meyer, Senior Embedded AI Engineer at Hula Earth. Ten years of embedded firmware, radio and low-power IoT devices, including engineering management of a railway sensor device team." data-i18n-content="meta.descriptionCV">
   <meta name="robots" content="index,follow">
   <meta name="author" content="Tobias R.M.K. Meyer">
   <meta property="og:site_name" content="Tobias R.M.K. Meyer">
@@ -13,7 +14,7 @@
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://www.trmk.de/cv.html">
   <meta property="og:title" content="Tobias R.M.K. Meyer - CV">
-  <meta property="og:description" content="Engineering Manager &amp; Senior Firmware Developer with 10+ years of expertise in embedded systems, IoT, and team leadership.">
+  <meta property="og:description" content="Senior Embedded AI Engineer with 10+ years in embedded systems, IoT devices and team leadership.">
   <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="de_DE">
@@ -22,7 +23,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tobias R.M.K. Meyer - CV">
-  <meta name="twitter:description" content="Engineering Manager &amp; Senior Firmware Developer with 10+ years of expertise in embedded systems, IoT, and team leadership.">
+  <meta name="twitter:description" content="Senior Embedded AI Engineer with 10+ years in embedded systems, IoT devices and team leadership.">
   <meta name="twitter:image" content="https://www.trmk.de/avatar.jpg">
 
   <!-- Canonical & language -->
@@ -40,18 +41,22 @@
   <link rel="manifest" href="/manifest.webmanifest">
 
   <!-- Preload primary font -->
+  <link rel="preload" href="./fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="./fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./css/fonts.css">
   <link rel="stylesheet" href="./css/branding.css">
   <link rel="stylesheet" href="./css/site.css">
+  <link rel="stylesheet" href="./css/homepage.css">
   <link rel="stylesheet" href="./css/cv.css">
   <link rel="stylesheet" href="./css/all.css">
 
   <!-- i18n -->
   <script src="./js/translations.js" defer></script>
   <script src="./js/i18n.js" defer></script>
+  <script src="./js/chrome.js" defer></script>
+  <script src="./js/cv.js" defer></script>
 
   <!-- Theme: set before render to prevent flash -->
   <script>(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
@@ -64,13 +69,13 @@
     "alternateName": "T.R.M.K. Meyer",
     "url": "https://www.trmk.de/cv.html",
     "image": "https://www.trmk.de/cv_avatar.webp",
-    "jobTitle": "Engineering Manager & Senior Firmware Developer",
+    "jobTitle": "Senior Embedded AI Engineer",
     "hasOccupation": {
       "@type": "Occupation",
-      "name": "Engineering Manager",
-      "description": "Managing embedded systems engineering teams and developing firmware for industrial IoT applications."
+      "name": "Senior Embedded AI Engineer",
+      "description": "Owning the development of self-sufficient bioacoustic IoT devices: firmware, power, connectivity and certification."
     },
-    "worksFor": { "@type": "Organization", "name": "KONUX", "url": "https://www.konux.com" },
+    "worksFor": { "@type": "Organization", "name": "Hula Earth" },
     "address": { "@type": "PostalAddress", "addressLocality": "Munich", "addressCountry": "DE" },
     "email": "tobias.meyer@trmk.de",
     "sameAs": [
@@ -87,8 +92,7 @@
   }
   </script>
 </head>
-<body>
-
+<body class="home cv">
 <!-- Skip link -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -101,7 +105,7 @@
     </a>
 
     <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="./index.html#about" data-i18n="nav.about">About</a></li>
+      <li><a href="./index.html#about" data-i18n="nav.signals">Signals</a></li>
       <li><a href="./index.html#life" data-i18n="nav.outside">Outside</a></li>
       <li><a href="./index.html#photo" data-i18n="nav.photography">Photography</a></li>
       <li><a href="./cv.html" class="active" data-i18n="nav.cv">CV</a></li>
@@ -128,317 +132,240 @@
 
 <!-- ============== CV CONTENT ============== -->
 <main id="main-content">
-  <div class="cv-wrap">
 
-    <!-- CV Header -->
-    <header class="cv-header">
-      <picture>
-        <source type="image/webp" srcset="./cv_avatar.webp">
-        <img src="./cv_avatar.webp" alt="Tobias R.M.K. Meyer" class="cv-photo" width="120" height="120" loading="eager">
-      </picture>
-      <div class="cv-intro">
+  <!-- Header -->
+  <header class="cv-top">
+    <div class="wrap cv-top-inner">
+      <div class="copy">
+        <p class="eyebrow">CV <span class="d">·</span> <span data-i18n="cv.location">Munich, Germany</span></p>
         <h1>Tobias R.M.K. Meyer</h1>
-        <p class="cv-title" data-i18n="cv.jobTitle">Engineering Manager</p>
-        <div class="cv-contact">
-          <span><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:tobias.meyer@trmk.de">tobias.meyer@trmk.de</a></span>
-          <span><i class="fa fa-map-marker" aria-hidden="true"></i> <span data-i18n="cv.location">Munich, Germany</span></span>
-          <span><i class="fa-brands fa-linkedin" aria-hidden="true"></i> <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
-          <span><i class="fa-brands fa-github" aria-hidden="true"></i> <a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+        <p class="cv-role"><span data-i18n="cv.jobTitle">Senior Embedded AI Engineer</span> <span class="at">@ Hula Earth</span></p>
+        <p class="lede" data-i18n="cv.lede">A decade of firmware, radios and low-power devices: energy-harvesting switches, railway sensors and now bioacoustic forest sensors, with a stretch leading the device team in between.</p>
+        <div class="controls">
+          <a class="btn" href="mailto:tobias.meyer@trmk.de">tobias.meyer@trmk.de</a>
+          <a class="btn ghost" href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn ghost" href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
-    </header>
+      <img src="./cv_avatar.webp" alt="Tobias R.M.K. Meyer" class="cv-photo" width="160" height="160" loading="eager" onerror="this.remove()">
+    </div>
+  </header>
 
-    <!-- Skills -->
-    <section class="cv-section cv-collapsible">
-      <h2 class="cv-section-title" role="button" tabindex="0" aria-expanded="false">
-        <i class="fa fa-code" aria-hidden="true"></i>
-        <span data-i18n="cv.skills">Technical Skills</span>
-        <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
-      </h2>
-      <div class="skill-categories cv-collapsible-body">
-        <div class="skill-category">
+  <!-- Career timeline -->
+  <section class="cv-sec" id="timeline">
+    <div class="wrap">
+      <div class="cv-sec-head">
+        <h2 data-i18n="cv.timeline">Timeline</h2>
+        <p class="hint" data-i18n="cv.timelineHint">Tap a bar to jump to the role.</p>
+      </div>
+      <div class="tl" style="--from: 2010; --to: 2027;">
+        <div class="tl-row">
+          <span class="tl-k" data-i18n="cv.work">Work</span>
+          <div class="tl-track">
+            <a class="tl-seg enocean" href="#job-enocean-intern" style="--a: 2010.0; --b: 2015.25;" data-job="job-enocean-intern"><span>EnOcean · Intern</span></a>
+            <a class="tl-seg enocean" href="#job-enocean" style="--a: 2015.25; --b: 2020.67;" data-job="job-enocean"><span>EnOcean · Software Engineer</span></a>
+            <a class="tl-seg konux" href="#job-konux-fw" style="--a: 2020.67; --b: 2025.5;" data-job="job-konux-fw"><span>KONUX · Senior Firmware</span></a>
+            <a class="tl-seg konux" href="#job-konux-em" style="--a: 2025.5; --b: 2026.42;" data-job="job-konux-em" title="KONUX · Engineering Manager"><span>EM</span></a>
+            <a class="tl-seg hula" href="#job-hula" style="--a: 2026.42; --b: 2026.85;" data-job="job-hula" title="Hula Earth · Senior Embedded AI Engineer"><span class="sr-only">Hula Earth</span></a>
+          </div>
+        </div>
+        <div class="tl-row">
+          <span class="tl-k" data-i18n="cv.study">Study</span>
+          <div class="tl-track">
+            <a class="tl-seg edu" href="#edu-bsc" style="--a: 2010.0; --b: 2013.0;" data-job="edu-bsc"><span>B.Sc. EE</span></a>
+            <a class="tl-seg edu" href="#edu-msc" style="--a: 2013.0; --b: 2015.0;" data-job="edu-msc"><span>M.Sc. CS</span></a>
+          </div>
+        </div>
+        <div class="tl-axis" aria-hidden="true">
+          <span style="--a: 2010;">2010</span><span style="--a: 2012;">2012</span><span style="--a: 2014;">2014</span><span style="--a: 2016;">2016</span><span style="--a: 2018;">2018</span><span style="--a: 2020;">2020</span><span style="--a: 2022;">2022</span><span style="--a: 2024;">2024</span><span style="--a: 2026;">2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="cv-sec" id="skills">
+    <div class="wrap">
+      <div class="cv-sec-head">
+        <h2 data-i18n="cv.skills">Technical Skills</h2>
+        <p class="legend" aria-hidden="true">
+          <span class="chip lvl-3" data-i18n="cv.lvlAdvanced">Advanced</span>
+          <span class="chip lvl-2" data-i18n="cv.lvlIntermediate">Intermediate</span>
+          <span class="chip lvl-1" data-i18n="cv.lvlBasic">Basic</span>
+        </p>
+      </div>
+      <div class="skill-grid">
+        <div class="skill-cat">
           <h3 data-i18n="cv.programmingLanguages">Programming Languages</h3>
-          <div class="skill-tags">
-            <span class="skill-tag advanced">C</span>
-            <span class="skill-tag advanced">C++</span>
-            <span class="skill-tag intermediate">Python</span>
-          </div>
+          <div class="chips"><span class="chip lvl-3">C</span><span class="chip lvl-3">C++</span><span class="chip lvl-2">Python</span></div>
         </div>
-        <div class="skill-category">
+        <div class="skill-cat">
           <h3 data-i18n="cv.embeddedSystems">Embedded Systems</h3>
-          <div class="skill-tags">
-            <span class="skill-tag advanced">Zephyr RTOS</span>
-            <span class="skill-tag advanced">LTE-M</span>
-            <span class="skill-tag advanced">BLE</span>
-            <span class="skill-tag intermediate">Signal Processing</span>
-            <span class="skill-tag intermediate">Zigbee</span>
-            <span class="skill-tag intermediate">EnOcean</span>
-          </div>
+          <div class="chips"><span class="chip lvl-3">Zephyr RTOS</span><span class="chip lvl-3">LTE-M</span><span class="chip lvl-3">BLE</span><span class="chip lvl-2">Signal Processing</span><span class="chip lvl-2">Zigbee</span><span class="chip lvl-2">EnOcean</span></div>
         </div>
-        <div class="skill-category">
+        <div class="skill-cat">
           <h3 data-i18n="cv.engineeringAndDesign">Engineering &amp; Design</h3>
-          <div class="skill-tags">
-            <span class="skill-tag advanced">Firmware Architecture</span>
-            <span class="skill-tag advanced">System Design</span>
-            <span class="skill-tag intermediate">Hardware Review</span>
-            <span class="skill-tag intermediate">Electronics</span>
-            <span class="skill-tag intermediate">Standards &amp; Certification</span>
-          </div>
+          <div class="chips"><span class="chip lvl-3">Firmware Architecture</span><span class="chip lvl-3">System Design</span><span class="chip lvl-2">Hardware Review</span><span class="chip lvl-2">Electronics</span><span class="chip lvl-2">Standards &amp; Certification</span></div>
         </div>
-        <div class="skill-category">
+        <div class="skill-cat">
           <h3 data-i18n="cv.leadershipAndManagement">Leadership &amp; Management</h3>
-          <div class="skill-tags">
-            <span class="skill-tag advanced">Engineering Management</span>
-            <span class="skill-tag advanced">Team Leadership</span>
-            <span class="skill-tag advanced">Technical Leadership</span>
-            <span class="skill-tag advanced">OKR Planning</span>
-            <span class="skill-tag advanced">Interdisciplinary Alignment</span>
-          </div>
+          <div class="chips"><span class="chip lvl-3">Engineering Management</span><span class="chip lvl-3">Team Leadership</span><span class="chip lvl-3">Technical Leadership</span><span class="chip lvl-3">OKR Planning</span><span class="chip lvl-3">Interdisciplinary Alignment</span><span class="chip lvl-3">Supplier Coordination</span></div>
         </div>
-        <div class="skill-category">
+        <div class="skill-cat">
           <h3 data-i18n="cv.aiAndData">AI &amp; Data</h3>
-          <div class="skill-tags">
-            <span class="skill-tag intermediate">Edge AI</span>
-            <span class="skill-tag intermediate">Machine Learning</span>
-            <span class="skill-tag beginner">Statistics</span>
-            <span class="skill-tag beginner">Language Models</span>
-          </div>
+          <div class="chips"><span class="chip lvl-2">Edge AI</span><span class="chip lvl-2">Machine Learning</span><span class="chip lvl-1">Statistics</span><span class="chip lvl-1">Language Models</span></div>
         </div>
-        <div class="skill-category">
+        <div class="skill-cat">
           <h3 data-i18n="cv.languages">Languages</h3>
-          <div class="skill-tags">
-            <span class="skill-tag advanced">German (Native)</span>
-            <span class="skill-tag advanced">English (Fluent)</span>
-          </div>
+          <div class="chips"><span class="chip lvl-3" data-i18n="cv.german">German (native)</span><span class="chip lvl-3" data-i18n="cv.english">English (fluent)</span></div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Work Experience -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">
-        <i class="fa fa-suitcase" aria-hidden="true"></i>
-        <span data-i18n="cv.workExperience">Work Experience</span>
-      </h2>
+  <!-- Work experience -->
+  <section class="cv-sec" id="work">
+    <div class="wrap">
+      <div class="cv-sec-head"><h2 data-i18n="cv.workExperience">Work Experience</h2></div>
 
-      <article class="experience-card cv-collapsible">
-        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
-          <div class="experience-title">
-            <h3>Engineering Manager — Device Team</h3>
-            <p class="company"><a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a></p>
-          </div>
-          <div class="experience-date">
-            <span class="date-badge current">July 2025 – Present</span>
-            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
-          </div>
+      <article class="job current" id="job-hula">
+        <div class="job-meta">
+          <span class="when">Jun 2026 – <span data-i18n="cv.present">Present</span></span>
+          <span class="where">Hula Earth · Munich</span>
         </div>
-        <div class="experience-content cv-collapsible-body">
-          <p>As Engineering Manager of the Device Team at KONUX, I lead the development of embedded systems that power our industrial IoT solutions for the railway sector.</p>
+        <div class="job-body">
+          <h3>Senior Embedded AI Engineer</h3>
+          <p>Hula Earth builds self-sufficient bioacoustic sensors that record ecosystems, so AI can recognise species by their calls. Owning the BIoT development, coordinating supplier, product and the team. Getting stuff done, a full jack of all trades.</p>
           <ul>
-            <li><strong>Technical Leadership:</strong> Defining and delivering firmware architecture, setting technical roadmap for embedded systems</li>
-            <li><strong>Strategic Planning:</strong> Translating business objectives into executable technical plans through quarterly OKR planning</li>
-            <li><strong>People Management:</strong> Fostering collaborative, ownership-driven culture while empowering team growth and problem-solving</li>
-            <li><strong>End-to-End Delivery:</strong> Overseeing architecture, implementation, team processes, and budget planning</li>
-            <li><strong>Engineering Excellence:</strong> Ensuring alignment with security, maintainability, and best practices</li>
-            <li><strong>Cross-functional Collaboration:</strong> Working with stakeholders and engineering leaders to align product vision with daily execution</li>
+            <li><strong>BIoT device ownership:</strong> Firmware, power, connectivity and certification of the sensor</li>
+            <li><strong>Supplier coordination:</strong> Working with hardware and manufacturing partners</li>
+            <li><strong>Product &amp; team:</strong> Aligning product needs with what the device and the team can deliver</li>
           </ul>
         </div>
       </article>
 
-      <article class="experience-card cv-collapsible">
-        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
-          <div class="experience-title">
-            <h3>Senior Firmware Developer</h3>
-            <p class="company"><a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a></p>
-          </div>
-          <div class="experience-date">
-            <span class="date-badge">Sept 2020 – July 2025</span>
-            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
-          </div>
+      <article class="job" id="job-konux-em">
+        <div class="job-meta">
+          <span class="when">Jul 2025 – May 2026</span>
+          <span class="where"><a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a> · Munich</span>
         </div>
-        <div class="experience-content cv-collapsible-body">
-          <p>Developed rugged, intelligent sensor systems for predictive maintenance on rail infrastructure, bridging hardware, firmware, and connectivity.</p>
+        <div class="job-body">
+          <h3>Engineering Manager — Device Team</h3>
+          <p>Led the Device Team building the embedded systems behind KONUX's industrial IoT solutions for the railway sector.</p>
           <ul>
-            <li><strong>Bare-metal C++ IIoT sensor development:</strong> Engineered compact, battery-powered C++-based sensors running directly on microcontrollers for field deployment</li>
-            <li><strong>Zephyr RTOS architecture:</strong> Designed and launched multiple sensor generations leveraging Zephyr RTOS — building scalable, modular firmware for industrial IoT</li>
-            <li><strong>Cellular connectivity (LTE-M):</strong> Integrated energy-efficient LTE-M modems to reliably transmit sensor data from remote locations</li>
-            <li><strong>BLE research:</strong> Researched BLE for alternative communication protocols</li>
-            <li><strong>Edge-AI research &amp; prototyping:</strong> Developed on-device ML models for anomaly detection and predictive maintenance</li>
-            <li><strong>Diverse sensor and bus systems:</strong> Vibration, temperature, and pressure sensors via SPI, I²C, UART</li>
-            <li><strong>Standards &amp; certifications:</strong> Compliance research for the EU's Cyber Resilience Act, CE marking</li>
+            <li><strong>Technical Leadership:</strong> Defined and delivered the firmware architecture and the technical roadmap for embedded systems</li>
+            <li><strong>Strategic Planning:</strong> Turned business objectives into executable technical plans through quarterly OKR planning</li>
+            <li><strong>People Management:</strong> Built a collaborative, ownership-driven culture and helped people grow</li>
+            <li><strong>End-to-End Delivery:</strong> Architecture, implementation, team processes and budget planning</li>
+            <li><strong>Engineering Excellence:</strong> Security, maintainability and good engineering practice</li>
+            <li><strong>Cross-functional Collaboration:</strong> Aligned product vision with daily execution together with stakeholders and engineering leads</li>
           </ul>
         </div>
       </article>
 
-      <article class="experience-card cv-collapsible">
-        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
-          <div class="experience-title">
-            <h3>Software Engineer</h3>
-            <p class="company"><a href="https://www.enocean.com" target="_blank" rel="noopener noreferrer">EnOcean</a></p>
-          </div>
-          <div class="experience-date">
-            <span class="date-badge">April 2015 – Aug 2020</span>
-            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
-          </div>
+      <article class="job" id="job-konux-fw">
+        <div class="job-meta">
+          <span class="when">Sep 2020 – Jul 2025</span>
+          <span class="where"><a href="https://www.konux.com" target="_blank" rel="noopener noreferrer">KONUX</a> · Munich</span>
         </div>
-        <div class="experience-content cv-collapsible-body">
+        <div class="job-body">
+          <h3>Senior Firmware Developer</h3>
+          <p>Developed rugged, intelligent sensor systems for predictive maintenance on rail infrastructure, bridging hardware, firmware and connectivity.</p>
           <ul>
-            <li>Firmware development for energy harvesting devices and radio stacks (BLE / EnOcean / Zigbee) in C/C++</li>
+            <li><strong>Bare-metal C++ IIoT sensors:</strong> Compact, battery-powered sensors running directly on microcontrollers in the field</li>
+            <li><strong>Zephyr RTOS architecture:</strong> Designed and launched multiple sensor generations with scalable, modular firmware</li>
+            <li><strong>Cellular connectivity (LTE-M):</strong> Integrated energy-efficient LTE-M modems to get data out of remote locations reliably</li>
+            <li><strong>BLE research:</strong> Evaluated BLE as an alternative communication path</li>
+            <li><strong>Edge AI:</strong> Prototyped on-device ML models for anomaly detection and predictive maintenance</li>
+            <li><strong>Sensors and buses:</strong> Vibration, temperature and pressure sensors via SPI, I²C and UART</li>
+            <li><strong>Standards &amp; certification:</strong> CE marking and compliance research for the EU Cyber Resilience Act</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job" id="job-enocean">
+        <div class="job-meta">
+          <span class="when">Apr 2015 – Aug 2020</span>
+          <span class="where"><a href="https://www.enocean.com" target="_blank" rel="noopener noreferrer">EnOcean</a> · Munich</span>
+        </div>
+        <div class="job-body">
+          <h3>Software Engineer</h3>
+          <ul>
+            <li>Firmware for energy-harvesting devices and radio stacks (BLE / EnOcean / Zigbee) in C/C++</li>
             <li>Architecture and software design</li>
             <li>Specification of protocol stacks and work for the EnOcean Alliance</li>
-            <li>Continuous integration and testing systems based on pytest, Jenkins, and Raspberry Pis</li>
-            <li>Planning of projects and internal quality standards</li>
+            <li>Continuous integration and test systems with pytest, Jenkins and Raspberry Pis</li>
+            <li>Project planning and internal quality standards</li>
             <li>PC tools: DolphinView and EnOcean Link</li>
             <li>Supervising students</li>
           </ul>
         </div>
       </article>
 
-      <article class="experience-card cv-collapsible">
-        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
-          <div class="experience-title">
-            <h3>Intern — Software Department</h3>
-            <p class="company"><a href="https://www.enocean.com" target="_blank" rel="noopener noreferrer">EnOcean</a></p>
-          </div>
-          <div class="experience-date">
-            <span class="date-badge">Jan 2010 – March 2015</span>
-            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
-          </div>
+      <article class="job" id="job-enocean-intern">
+        <div class="job-meta">
+          <span class="when">Jan 2010 – Mar 2015</span>
+          <span class="where"><a href="https://www.enocean.com" target="_blank" rel="noopener noreferrer">EnOcean</a> · Munich</span>
         </div>
-        <div class="experience-content cv-collapsible-body">
+        <div class="job-body">
+          <h3>Intern — Software Department</h3>
           <ul>
-            <li>Internal webpages development (PHP)</li>
+            <li>Internal web pages (PHP)</li>
             <li>Statistics tool for production data (WPF/C#)</li>
-            <li>Automated testing for peripheral interfaces of the 8051-DolphinChip</li>
-            <li>Firmware for various µCs (MSP430 / PIC / DolphinChip) in assembly, C, and C++</li>
+            <li>Automated tests for the peripheral interfaces of the 8051 DolphinChip</li>
+            <li>Firmware for various µCs (MSP430 / PIC / DolphinChip) in assembly, C and C++</li>
             <li>Small PC tools in C#/.NET and C++</li>
           </ul>
         </div>
       </article>
-    </section>
+    </div>
+  </section>
 
-    <!-- Education -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">
-        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-        <span data-i18n="cv.education">Education</span>
-      </h2>
+  <!-- Education -->
+  <section class="cv-sec" id="education">
+    <div class="wrap">
+      <div class="cv-sec-head"><h2 data-i18n="cv.education">Education</h2></div>
+      <div class="edu-grid">
+        <article class="edu" id="edu-msc">
+          <span class="when">2013 – 2015</span>
+          <h3>Master of Science in Computer Science</h3>
+          <p class="where">University of Applied Science</p>
+          <p class="thesis"><b data-i18n="cv.thesis">Thesis</b> “Firmware over the air updates with EnOcean energy harvested protocol”</p>
+        </article>
+        <article class="edu" id="edu-bsc">
+          <span class="when">2010 – 2013</span>
+          <h3>Bachelor of Science in Electrical Engineering</h3>
+          <p class="where">University of Applied Science</p>
+          <p class="thesis"><b data-i18n="cv.thesis">Thesis</b> “An energy harvesting ZigBee Switch”</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-      <article class="experience-card cv-collapsible">
-        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
-          <div class="experience-title">
-            <h3>Master of Science in Computer Science</h3>
-            <p class="company">University of Applied Science</p>
-          </div>
-          <div class="experience-date">
-            <span class="date-badge">2013 – 2015</span>
-            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
-          </div>
-        </div>
-        <div class="experience-content cv-collapsible-body">
-          <p><i class="fa fa-book" aria-hidden="true" style="color:var(--accent);margin-right:6px;"></i><strong>Thesis:</strong> "Firmware over the air updates with EnOcean energy harvested protocol"</p>
-        </div>
-      </article>
-
-      <article class="experience-card cv-collapsible">
-        <div class="experience-header" role="button" tabindex="0" aria-expanded="false">
-          <div class="experience-title">
-            <h3>Bachelor of Science in Electrical Engineering</h3>
-            <p class="company">University of Applied Science</p>
-          </div>
-          <div class="experience-date">
-            <span class="date-badge">2010 – 2013</span>
-            <i class="fa fa-chevron-down collapse-chevron" aria-hidden="true"></i>
-          </div>
-        </div>
-        <div class="experience-content cv-collapsible-body">
-          <p><i class="fa fa-book" aria-hidden="true" style="color:var(--accent);margin-right:6px;"></i><strong>Thesis:</strong> "An energy harvesting ZigBee Switch"</p>
-        </div>
-      </article>
-    </section>
-
-  </div><!-- /cv-wrap -->
 </main>
 
 <!-- ============== FOOTER ============== -->
-<footer class="site-footer" role="contentinfo">
+<footer class="site-footer" id="contact" role="contentinfo">
   <div class="wrap">
-    <div>
-      <h3>Get in touch</h3>
-      <h2>Happy to talk embedded systems or firmware.</h2>
-      <p style="margin-top: 16px;"><a href="mailto:tobias.meyer@trmk.de" style="font-size: 18px;">tobias.meyer@trmk.de</a></p>
-    </div>
-    <div>
-      <h3 data-i18n="footer.elsewhereHeading">Elsewhere</h3>
-      <ul>
-        <li><a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        <li><a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li><a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava</a></li>
-        <li><a href="./index.html" data-i18n="cv.backToSite">Back to site</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3 data-i18n="footer.basedHeading">Based</h3>
-      <ul>
-        <li><span class="lbl">City</span> Munich, DE</li>
-        <li><span class="lbl">Lang</span> EN · DE</li>
-      </ul>
+    <div class="finale-row">
+      <div class="copy">
+        <h3 data-i18n="footer.contactHeading">Get in touch</h3>
+        <h2 data-i18n-html="cv.contactTitle">Happy to talk embedded systems or <em>firmware</em>.</h2>
+        <p class="lede" data-i18n-html="cv.contactText">Looking for advice on a device project? See <a href="./freelancing.html">Consulting</a>.</p>
+      </div>
+      <div class="links">
+        <a href="mailto:tobias.meyer@trmk.de">tobias.meyer@trmk.de <span>E-Mail</span></a>
+        <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn <span>Work</span></a>
+        <a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub <span>Code</span></a>
+        <a href="./index.html">trmk.de <span data-i18n="cv.backToSite">Back to site</span></a>
+      </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 TOBIAS R.M.K. MEYER</span>
-      <span><a href="./index.html">Home</a> · <a href="./blog/index.html" data-i18n="nav.blog">Blog</a></span>
+      <span><a href="./freelancing.html" data-i18n="nav.consulting">Consulting</a> · <a href="./blog/index.html" data-i18n="nav.blog">Blog</a></span>
     </div>
   </div>
 </footer>
-
-<script>
-const hamburger = document.getElementById('nav-hamburger');
-const navLinks  = document.getElementById('nav-links');
-
-hamburger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', open);
-});
-
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  });
-});
-
-// Theme toggle
-const themeToggle = document.getElementById('theme-toggle');
-function applyThemeIcon(theme) {
-  const icon = themeToggle.querySelector('i');
-  icon.className = theme === 'dark' ? 'fa fa-sun' : 'fa fa-moon';
-  themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-}
-applyThemeIcon(document.documentElement.getAttribute('data-theme'));
-themeToggle.addEventListener('click', () => {
-  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  applyThemeIcon(next);
-});
-
-// Collapsible sections
-document.querySelectorAll('.cv-collapsible').forEach(el => {
-  const trigger = el.querySelector('.cv-section-title[role="button"], .experience-header[role="button"]');
-  if (!trigger) return;
-
-  function toggle() {
-    const opening = !el.classList.contains('open');
-    el.classList.toggle('open', opening);
-    trigger.setAttribute('aria-expanded', opening);
-  }
-
-  trigger.addEventListener('click', toggle);
-  trigger.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-  });
-});
-</script>
 
 </body>
 </html>
