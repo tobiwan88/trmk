@@ -1,9 +1,12 @@
+# trmk.de: static personal site. Search engines and AI agents are welcome.
+# A plain-text summary for agents lives at https://www.trmk.de/llms.txt
+
 User-agent: *
 Allow: /
-Sitemap: https://www.trmk.de/sitemap.xml
-
 Disallow: /.git/
 Disallow: /fastTest/
 Disallow: /blog_entries/
 Disallow: /templates/
 Disallow: /.crossnote/
+
+Sitemap: https://www.trmk.de/sitemap.xml

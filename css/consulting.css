@@ -1,0 +1,145 @@
+/* ============================================================
+   CONSULTING.CSS — freelancing.html
+   Builds on the "Live Scope" tokens + components in homepage.css.
+   ============================================================ */
+
+/* -------- Hero -------- */
+.adv-hero { padding: clamp(48px, 8vw, 104px) 0; }
+.adv-hero .split { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
+.adv-hero h1 {
+  font-size: clamp(38px, 4.6vw, 70px);
+  line-height: .95;
+  font-weight: 720;
+  letter-spacing: -.03em;
+}
+.cost-sl { border-top: 1px solid var(--hair); padding-top: 18px; }
+.adv-hero .readout { border-top: 0; padding-top: 0; }
+.adv-hero .big { font-size: clamp(48px, 5.6vw, 84px); }
+
+/* -------- Who -------- */
+.who-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 20px);
+}
+.who {
+  border-top: 2px solid var(--phos);
+  padding-top: 14px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+.who p { margin: 0; color: var(--dim); font-size: 15.5px; }
+.who .who-k {
+  font-family: var(--display);
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 680;
+  letter-spacing: -.02em;
+  color: var(--paper);
+}
+
+/* -------- Radio map -------- */
+.radio-split { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.btn[aria-pressed="true"] { background: var(--phos); border-color: var(--phos); color: var(--night); }
+.radio-card {
+  border: 1px solid var(--hair);
+  border-radius: 4px;
+  padding: 18px 20px;
+  display: grid;
+  gap: 14px;
+  background: color-mix(in oklab, var(--panel) 55%, transparent);
+}
+.radio-card h3 { font-size: clamp(26px, 2.6vw, 36px); font-weight: 700; letter-spacing: -.02em; color: var(--phos); }
+.radio-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; }
+.radio-facts div { display: grid; gap: 4px; min-width: 0; }
+.radio-facts dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.radio-facts dd { margin: 0; font-family: var(--font-mono); font-size: 13px; color: var(--paper); font-variant-numeric: tabular-nums; }
+.radio-line { margin: 0; font-size: 15px; color: var(--dim); }
+.radio-line b { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--paper); font-weight: 500; margin-bottom: 2px; }
+
+.also {
+  margin-top: clamp(32px, 4vw, 48px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 40px;
+  border-top: 1px solid var(--hair);
+  padding-top: 24px;
+}
+.also h3 { font-size: 20px; font-weight: 650; letter-spacing: -.01em; margin-bottom: 6px; }
+.also p { margin: 0; color: var(--dim); font-size: 15px; }
+
+/* -------- Process: a signal path -------- */
+.path {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  position: relative;
+}
+.path::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 19px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--phos), color-mix(in oklab, var(--phos) 20%, transparent));
+}
+.path li { position: relative; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.path-n {
+  justify-self: start;
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--night);
+  background: var(--phos);
+  border-radius: 3px;
+  padding: 10px 12px;
+  line-height: 1;
+}
+.path h3 { font-size: clamp(20px, 1.8vw, 24px); font-weight: 680; letter-spacing: -.015em; }
+.path p { margin: 0; color: var(--dim); font-size: 15px; }
+
+/* -------- Why -------- */
+.why-split { align-items: start; }
+.why-quote {
+  font-family: var(--display);
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.15;
+  font-weight: 560;
+  letter-spacing: -.015em;
+  margin: 0;
+}
+.why-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.why-facts div { display: grid; gap: 4px; border-top: 1px solid var(--hair); padding-top: 12px; }
+.why-facts b {
+  font-family: var(--display);
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -.03em;
+  color: var(--moss);
+}
+.why-facts span { font-family: var(--font-mono); font-size: 12px; color: var(--dim); letter-spacing: .03em; }
+.why-honest { grid-column: 1 / -1; justify-self: start; margin: 0; font-size: 13px; padding: 8px 12px; }
+
+/* -------- Footer tweaks -------- */
+.consulting .site-footer .finale-row { align-items: start; }
+
+/* -------- Responsive -------- */
+@media (max-width: 1000px) {
+  .who-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .path { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; }
+  .path::before { display: none; }
+}
+@media (max-width: 900px) {
+  .radio-split { grid-template-columns: minmax(0, 1fr); }
+  .also { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .who-grid, .path { grid-template-columns: minmax(0, 1fr); }
+  .radio-facts { grid-template-columns: minmax(0, 1fr); }
+  .why-facts { grid-template-columns: minmax(0, 1fr); }
+}

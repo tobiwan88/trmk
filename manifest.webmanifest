@@ -1,11 +1,11 @@
 {
-  "name": "Tobias R.M.K. Meyer - Portfolio",
+  "name": "Tobias R.M.K. Meyer",
   "short_name": "T.R.M.K Meyer",
-  "description": "Professional portfolio of Tobias Meyer, Embedded Software Developer",
+  "description": "Embedded engineer in Munich: small devices that listen, technical advisory, CV and blog.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1C2A38",
-  "theme_color": "#1C2A38",
+  "background_color": "#12111d",
+  "theme_color": "#12111d",
   "lang": "en",
   "dir": "ltr",
   "icons": [

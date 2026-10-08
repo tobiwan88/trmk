@@ -162,6 +162,9 @@ class I18n {
     const mobileSelector = document.getElementById('language-selector-mobile');
     if (mobileSelector) mobileSelector.value = lang;
 
+    // Let page scripts (e.g. js/signals.js) re-render generated text
+    document.dispatchEvent(new CustomEvent('i18n:change', { detail: { lang } }));
+
     // Announce to screen readers
     const announcement = document.createElement('div');
     announcement.setAttribute('role', 'status');

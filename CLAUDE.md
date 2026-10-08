@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Technology Stack
 - **HTML5** - Semantic markup with ARIA accessibility
-- **W3.CSS** - Lightweight responsive framework
+- **Plain CSS** - Design tokens + components, no framework
 - **Vanilla JavaScript (ES6+)** - No frameworks
 - **Python 3** - Static blog generator (runs locally, not on server)
 - **Jinja2** - Blog templating
@@ -38,12 +38,21 @@ trmk/
 │   ├── index.html          # Blog home
 │   └── archive.html        # Post archive
 ├── js/
-│   ├── i18n.js             # Internationalization engine
-│   └── translations.js     # EN/DE translations
+│   ├── i18n.js             # Internationalization engine (emits `i18n:change`)
+│   ├── translations.js     # EN/DE translations
+│   ├── signals.js          # Homepage canvases (scope, devices, coin cell, toys)
+│   ├── home.js             # Homepage chrome (theme, menu, lightbox, clock)
+│   ├── chrome.js           # Shared nav chrome for cv.html + freelancing.html
+│   ├── consulting.js       # Consulting canvases (cost curve, radio map)
+│   └── cv.js               # CV timeline ↔ role card highlighting
 ├── css/
-│   ├── w3.css              # Framework
-│   ├── lato.css            # Font definitions
-│   └── modern-enhancements.css # Custom styles, CV, blog
+│   ├── fonts.css           # Self-hosted @font-face (DM Sans, JetBrains Mono, Caveat, Bricolage Grotesque)
+│   ├── branding.css        # Base tokens, reset, utilities (all pages)
+│   ├── site.css            # Nav, footer, section scaffolding (all pages)
+│   ├── homepage.css        # "Live Scope" tokens + components (index, cv, consulting)
+│   ├── consulting.css      # freelancing.html only
+│   ├── cv.css              # cv.html only
+│   └── blog.css            # Blog pages
 ├── pictures/               # Images
 ├── fonts/                  # Self-hosted Lato font
 ├── generate.py             # Blog generator script
@@ -53,28 +62,24 @@ trmk/
 
 ## CSS Architecture
 
-**Layered CSS:**
-1. `w3.css` - Grid, utilities, components
-2. `lato.css` - Font-face declarations with `font-display: swap`
-3. `css/all.css` - FontAwesome icons
-4. `modern-enhancements.css` - Custom features, CV styles, blog styles
+**Layered CSS:** `fonts.css` → `branding.css` → `site.css` → page CSS → `all.css` (FontAwesome).
 
-**Custom Properties (`:root`):**
+**"Live Scope" look** (index, cv, freelancing): pages set `<body class="home …">`, and `homepage.css`
+defines the tokens on `.home`, with a day theme (rust on paper) and a night theme (amber on
+instrument panel) under `[data-theme="dark"] .home`:
 ```css
---primary-color: #000
---secondary-color: #777
---accent-color: #333
---spacing-xs/sm/md/lg
---border-radius: 0.5rem
---box-shadow: 0 2px 10px rgba(0,0,0,0.1)
---transition: all 0.3s ease
+--night  ground        --panel  instrument panels   --hair  hairlines
+--paper  primary text  --dim    secondary text      --phos  the signal (accent)
+--moss   secondary signal   --glow  canvas glow strength (0 day, 1 night)
+--display 'Bricolage Grotesque'
 ```
+Canvas scripts read these tokens at runtime and redraw on theme change, so keep them as hex values.
+Shared components: `.eyebrow`, `.btn`/`.btn.ghost`, `.stage` + `.hud` (canvas panels), `.chip`,
+`.split`, `.sec-intro`, `.lede`, `.links`. Blog pages still use the older `branding.css` look.
 
-**Key Sections in modern-enhancements.css:**
-- Core utilities (skip links, focus states, accessibility)
-- Mobile navigation (lines ~38-153)
-- CV styles (lines ~422-695) - Single-column design
-- Blog styles (lines ~696+) - Post content, navigation, archive
+**Canvas pattern:** each interactive canvas is a "stage" that only animates while visible
+(IntersectionObserver), respects `prefers-reduced-motion`, and takes its labels from
+`translations.<lang>.home.live` / `.consulting`. Sound on the homepage is opt-in.
 
 ## Internationalization (i18n)
 
@@ -212,7 +217,7 @@ uv run python3 generate.py
 1. Create/edit `.md` files in `blog_entries/en/` and `blog_entries/de/`
 2. Run `uv run python3 generate.py`
 3. Preview at `http://localhost:8000/blog/`
-4. Commit and deploy `blog/` directory
+4. Commit and deploy `blog/` directory (`generate.py` also refreshes `sitemap.xml`, the RSS feeds and `llms.txt`)
 
 ### Making Changes
 
@@ -299,7 +304,8 @@ All pages have:
 
 **Required files:**
 - All `.html` files
-- `blog/` directory
+- `blog/` directory (includes RSS feeds `feed.xml` / `feed-de.xml`)
+- `og/` (social share cards, 1200×630), `llms.txt`, `sitemap.xml`, `robots.txt`
 - `css/`, `js/`, `pictures/`, `fonts/`
 - Favicon files, `manifest.webmanifest`
 

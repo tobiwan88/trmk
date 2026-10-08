@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.trmk.de/</loc>
     <changefreq>weekly</changefreq>
@@ -30,71 +30,95 @@
     <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/2026-04-17_station_updates-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/2026-04-17_station_updates-en.html"/>
   </url>
   <url>
     <loc>https://www.trmk.de/blog/2026-04-17_station_updates-de.html</loc>
     <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/2026-04-17_station_updates-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/2026-04-17_station_updates-en.html"/>
   </url>
   <url>
     <loc>https://www.trmk.de/blog/mtg_app-en.html</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/mtg_app-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/mtg_app-en.html"/>
   </url>
   <url>
     <loc>https://www.trmk.de/blog/mtg_app-de.html</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/mtg_app-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/mtg_app-en.html"/>
   </url>
   <url>
     <loc>https://www.trmk.de/blog/intermezzo_containers-en.html</loc>
     <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/intermezzo_containers-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/intermezzo_containers-en.html"/>
   </url>
   <url>
     <loc>https://www.trmk.de/blog/intermezzo_containers-de.html</loc>
     <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/intermezzo_containers-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/intermezzo_containers-en.html"/>
   </url>
   <url>
     <loc>https://www.trmk.de/blog/vibe_coding_weather_ux-en.html</loc>
     <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/vibe_coding_weather_ux-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/vibe_coding_weather_ux-en.html"/>
   </url>
   <url>
     <loc>https://www.trmk.de/blog/vibe_coding_weather_ux-de.html</loc>
     <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/vibe_coding_weather_ux-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/vibe_coding_weather_ux-en.html"/>
   </url>
   <url>
     <loc>https://www.trmk.de/blog/vibe_coding_weather-en.html</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/vibe_coding_weather-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/vibe_coding_weather-en.html"/>
   </url>
   <url>
     <loc>https://www.trmk.de/blog/vibe_coding_weather-de.html</loc>
     <lastmod>2026-02-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/vibe_coding_weather-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/vibe_coding_weather-en.html"/>
   </url>
   <url>
     <loc>https://www.trmk.de/blog/welcome-en.html</loc>
     <lastmod>2026-02-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/welcome-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/welcome-en.html"/>
   </url>
   <url>
     <loc>https://www.trmk.de/blog/welcome-de.html</loc>
     <lastmod>2026-02-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.trmk.de/blog/welcome-de.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.trmk.de/blog/welcome-en.html"/>
   </url>
 </urlset>
