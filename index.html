@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-i18n="meta.title">Tobias R.M.K. Meyer - Embedded Software Developer</title>
-  <meta name="description" content="Private page of Tobias R.M.K. Meyer, Embedded Firmware &amp; Software Developer. Posts about life as a developer and my climbing, cooking and other adventures." data-i18n-content="meta.description">
+  <title data-i18n="meta.title">Tobias R.M.K. Meyer - Embedded Engineer</title>
+  <meta name="description" content="Tobias R.M.K. Meyer builds small devices that listen: energy-harvesting radios, railway sensors and now bioacoustic forest sensors. Embedded engineer in Munich, climber, cyclist and vegan cook." data-i18n-content="meta.description">
   <meta name="robots" content="index,follow">
   <meta name="author" content="Tobias R.M.K. Meyer">
-  <meta name="theme-color" content="#1C2A38">
+  <meta name="theme-color" content="#12111d">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.trmk.de/">
-  <meta property="og:title" content="Tobias R.M.K. Meyer - Embedded Software Developer">
-  <meta property="og:description" content="Engineering Manager, embedded systems developer, alpinist, cyclist, and vegan cook based in Munich.">
+  <meta property="og:title" content="Tobias R.M.K. Meyer - Embedded Engineer">
+  <meta property="og:description" content="Small devices that listen: to radio, to railway tracks, and now to forests. Embedded engineer, climber, cyclist and vegan cook in Munich.">
   <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="de_DE">
@@ -21,8 +21,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tobias R.M.K. Meyer - Embedded Software Developer">
-  <meta name="twitter:description" content="Engineering Manager, embedded systems developer, alpinist, cyclist, and vegan cook based in Munich.">
+  <meta name="twitter:title" content="Tobias R.M.K. Meyer - Embedded Engineer">
+  <meta name="twitter:description" content="Small devices that listen: to radio, to railway tracks, and now to forests. Embedded engineer, climber, cyclist and vegan cook in Munich.">
   <meta name="twitter:image" content="https://www.trmk.de/avatar.jpg">
 
   <!-- Canonical & language -->
@@ -39,8 +39,9 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest">
 
-  <!-- Preload primary font -->
+  <!-- Preload primary fonts -->
   <link rel="preload" href="./fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./css/fonts.css">
@@ -49,9 +50,11 @@
   <link rel="stylesheet" href="./css/homepage.css">
   <link rel="stylesheet" href="./css/all.css">
 
-  <!-- i18n -->
+  <!-- i18n + interactive signals -->
   <script src="./js/translations.js" defer></script>
   <script src="./js/i18n.js" defer></script>
+  <script src="./js/signals.js" defer></script>
+  <script src="./js/home.js" defer></script>
 
   <!-- Theme: set before render to prevent flash -->
   <script>(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
@@ -65,8 +68,8 @@
     "alternateName": "T.R.M.K. Meyer",
     "url": "https://www.trmk.de",
     "image": "https://www.trmk.de/avatar.jpg",
-    "jobTitle": "Engineering Manager & Senior Firmware Developer",
-    "worksFor": { "@type": "Organization", "name": "KONUX", "url": "https://www.konux.com" },
+    "jobTitle": "Senior Embedded AI Engineer",
+    "worksFor": { "@type": "Organization", "name": "Hula Earth" },
     "address": { "@type": "PostalAddress", "addressLocality": "Munich", "addressCountry": "DE" },
     "email": "tobias.meyer@trmk.de",
     "sameAs": [
@@ -75,11 +78,11 @@
       "https://de.linkedin.com/in/tobias-meyer-07413656",
       "https://www.strava.com/athletes/29812823"
     ],
-    "knowsAbout": ["Embedded Systems","Firmware Development","IoT","C Programming","C++","Zephyr RTOS","LTE-M","BLE"]
+    "knowsAbout": ["Embedded Systems","Firmware Development","IoT","Bioacoustics","Edge AI","C Programming","C++","Zephyr RTOS","LTE-M","BLE"]
   }
   </script>
 </head>
-<body>
+<body class="home">
 
 <!-- Skip link -->
 <a href="#main-content" class="skip-link" data-i18n-aria="nav.skipToContent">Skip to main content</a>
@@ -93,7 +96,7 @@
     </a>
 
     <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#about" data-i18n="nav.signals">Signals</a></li>
       <li><a href="#life" data-i18n="nav.outside">Outside</a></li>
       <li><a href="#photo" data-i18n="nav.photography">Photography</a></li>
       <li><a href="./cv.html" data-i18n="nav.cv">CV</a></li>
@@ -102,6 +105,9 @@
     </ul>
 
     <div class="nav-controls">
+      <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false">
+        <i class="fa fa-volume-xmark" aria-hidden="true"></i><span class="lbl" data-i18n="home.sound">Sound</span>
+      </button>
       <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
         <span class="lang-opt active" id="lang-en">EN</span>
         <span style="color: var(--rule);">/</span>
@@ -116,332 +122,322 @@
       </button>
     </div>
   </div>
+  <div class="scope-progress" id="scope-progress" aria-hidden="true"></div>
 </nav>
 
-<!-- ============== HERO ============== -->
-<header class="hero" id="home">
-  <div class="topo" aria-hidden="true"></div>
+<!-- ============== 00 HERO: the scope ============== -->
+<header class="hero-scope" id="home">
+  <canvas id="cv-hero" aria-hidden="true"></canvas>
   <div class="wrap">
-    <div id="main-content"></div>
-    <div class="hero-inner">
-      <div class="hero-text">
-        <span class="hero-kicker">
-          <span class="dot" aria-hidden="true"></span>
-          <span data-i18n="hero.location">Munich · 48.1351° N, 11.5820° E</span>
-        </span>
+    <div class="hero-copy" id="main-content">
+      <p class="eyebrow">trmk.de <span class="d">·</span> <span data-i18n="home.hero.eyebrow">Munich · embedded engineer</span></p>
+      <h1>Tobias R.M.K.<br>Meyer</h1>
+      <p class="lede" data-i18n="home.hero.lede">For more than ten years I've built small devices that listen: to radio, to railway tracks, and now to forests. Each one hears a quieter signal than the last.</p>
 
-        <h1 data-i18n-html="hero.title">Debug the code, <em>read the rock</em>, fix the dish.</h1>
+      <p class="now">
+        <img src="./pictures/me/professional.webp" alt="" width="36" height="36" loading="eager" fetchpriority="high" onerror="this.remove()">
+        <span><span class="tag-now" data-i18n="home.hero.nowTag">● NOW</span>&nbsp; <b>Senior Embedded AI Engineer @ Hula Earth</b> · <span data-i18n="home.hero.nowText">owning the BIoT device, from supplier to firmware</span></span>
+      </p>
 
-        <p class="sub" data-i18n="hero.subtitle">
-          I build low-power, radio-connected things — firmware, protocols, architectures that have to survive without supervision. Off the keyboard I'm usually on rock, on a bike, or at the stove.
-        </p>
-
-        <div class="route-card" aria-label="Quick facts">
-          <div class="cell">
-            <div class="k" data-i18n="hero.roleLabel">Role</div>
-            <div class="v">Engineering Manager · <b>Embedded / IIoT</b></div>
-          </div>
-          <div class="cell">
-            <div class="k" data-i18n="hero.stackLabel">Stack</div>
-            <div class="v">Embedded · IIoT · AI</div>
-          </div>
-          <div class="cell">
-            <div class="k" data-i18n="hero.offGridLabel">Off-grid</div>
-            <div class="v">Rock · Road · Kitchen</div>
-          </div>
-          <div class="cell">
-            <div class="k" data-i18n="hero.basedLabel">Based</div>
-            <div class="v">Munich, DE</div>
-          </div>
-        </div>
+      <div class="controls">
+        <a class="btn" href="#about"><span data-i18n="home.hero.follow">Follow the signal</span> <i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+        <button class="btn ghost" id="hero-sound" type="button" data-i18n="home.hero.withSound">Turn the sound on</button>
       </div>
-
-      <div class="hero-photo">
-        <img src="./pictures/me/professional.webp" alt="Tobias Meyer" width="400" height="480" loading="eager" fetchpriority="high">
-      </div>
+      <p class="hint" data-i18n="home.hero.hint">Move your pointer to tune the trace.</p>
     </div>
   </div>
+  <div class="hud" id="hero-hud" aria-hidden="true">FREQ ×1.00 · AMP 40 PX</div>
+  <div class="hud r" aria-hidden="true">48.1351° N · 11.5820° E</div>
 </header>
 
-<main id="main-content">
+<main>
 
-<!-- ============== ABOUT ============== -->
+<!-- ============== 01 SIGNAL CHAIN ============== -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 data-i18n="about.heading">About</h2>
-      <span class="mono coord">§ 01 / Profile</span>
+    <div class="sec-intro">
+      <p class="eyebrow">§ 01 <span class="d">·</span> <span data-i18n="home.chain.eyebrow">Signal chain</span></p>
+      <h2 data-i18n-html="home.chain.title">Three devices, <em>each one quieter</em>.</h2>
+      <p class="lede" data-i18n-html="home.chain.lede">I like small, lean, battery-powered things that have to survive without anyone watching, and the teams that build them. On paper: B.Sc. Electrical Engineering, M.Sc. Computer Science. In practice: a decade of firmware, radios, RTOS and the system around them. <a href="./cv.html">Full CV</a></p>
     </div>
 
-    <div class="about-grid">
-      <div class="lede">
-        <p data-i18n="about.lede1">
-          I've spent a decade in the embedded world, designing software that has to be <em>small, lean, and never crash</em> — across radio protocols, Real-Time OS, bare-metal firmware, and the system architecture around them.
-        </p>
-        <p data-i18n="about.lede2">
-          These days I lead a team building IIoT products for hostile environments — railway infrastructure, trackside sensors, and remote monitoring systems. I care about clear interfaces, durable systems, and engineers who own what they ship. Formally: B.Sc. Electrical Engineering, M.Sc. Computer Science. <a href="./cv.html" data-i18n="about.cvLink">( Full CV )</a>
-        </p>
-        <p class="hand" style="font-size: 20px; margin-top: 20px;" data-i18n="about.quote">
-          "Every problem is just a decomposition away."
-        </p>
-      </div>
-
-      <div>
-        <div class="stack-card">
-          <h3 data-i18n="about.embeddedLabel">Embedded &amp; Low-Power IoT</h3>
-          <div class="tags">
-            <span class="tag">Ultra-low power design</span>
-            <span class="tag">LPWAN</span>
-            <span class="tag">Cellular</span>
-            <span class="tag">RTOS (e.g. Zephyr)</span>
-            <span class="tag">Different SoC</span>
-          </div>
-          <h3 data-i18n="about.languagesLabel">Languages</h3>
-          <div class="tags">
-            <span class="tag">C</span>
-            <span class="tag">C++</span>
-            <span class="tag">Python</span>
-          </div>
-          <h3 data-i18n="about.architectureLabel">Architecture</h3>
-          <div class="tags">
-            <span class="tag">Distributed IoT systems</span>
-            <span class="tag">Event-driven design</span>
-            <span class="tag">HW/SW co-design</span>
-            <span class="tag">Protocol design</span>
-            <span class="tag">API design</span>
-          </div>
-          <h3 data-i18n="about.aiLabel">AI &amp; ML</h3>
-          <div class="tags">
-            <span class="tag">Edge AI / TinyML</span>
-            <span class="tag">LLM tooling</span>
-            <span class="tag">ML pipelines</span>
-            <span class="tag">Prompt engineering</span>
-          </div>
-          <h3 data-i18n="about.leadershipLabel">Leadership &amp; Product</h3>
-          <div class="tags">
-            <span class="tag second">Engineering management</span>
-            <span class="tag second">Technical leadership</span>
-            <span class="tag second">Roadmap</span>
-            <span class="tag second">Stakeholder alignment</span>
-            <span class="tag second">Product discovery</span>
-          </div>
+    <div class="chain">
+      <!-- EnOcean -->
+      <article class="signal">
+        <div class="meta"><b>Signal 01</b><span>EnOcean · 2010–2020</span></div>
+        <div class="stage">
+          <canvas id="cv-enocean" role="img" aria-label="A wall switch sends radio rings across the room to light a lamp" data-i18n-aria="home.chain.enocean.aria">A wall switch sends radio rings across the room to light a lamp</canvas>
+          <div class="hud" aria-hidden="true"><i></i>RF · 868 MHz</div>
         </div>
+        <h3 data-i18n-html="home.chain.enocean.title">Power from a <em>single press</em></h3>
+        <p class="role" data-i18n="home.chain.enocean.role">Intern → Software Engineer</p>
+        <p class="txt" data-i18n="home.chain.enocean.text">Energy-harvesting radio switches that power themselves from the push of a finger and still get a message across the room. No battery. No wire.</p>
+        <div class="controls">
+          <button class="btn sm" id="e-press" type="button" data-i18n="home.chain.enocean.action">Press the switch</button>
+          <p class="stat" id="e-stat" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- KONUX -->
+      <article class="signal">
+        <div class="meta"><b>Signal 02</b><span>KONUX · 2020–2026</span></div>
+        <div class="stage">
+          <canvas id="cv-konux" role="img" aria-label="A train passes a trackside sensor and its axles show up as bursts in a vibration trace" data-i18n-aria="home.chain.konux.aria">A train passes a trackside sensor and its axles show up as bursts in a vibration trace</canvas>
+          <div class="hud" aria-hidden="true"><i></i>Vibration · trackside</div>
+        </div>
+        <h3 data-i18n-html="home.chain.konux.title">Listening to <em>the rails</em></h3>
+        <p class="role" data-i18n="home.chain.konux.role">Senior Firmware Developer → Engineering Manager</p>
+        <p class="txt" data-i18n="home.chain.konux.text">Rugged battery-powered sensors on railway infrastructure that feel every train go by. I started on the firmware and grew into leading the device team: hardware reviews, compliance, people.</p>
+        <div class="controls">
+          <button class="btn sm" id="k-send" type="button" data-i18n="home.chain.konux.action">Send a train</button>
+          <p class="stat" id="k-stat" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- Hula Earth -->
+      <article class="signal current">
+        <div class="meta"><b>Signal 03</b><span data-i18n="home.chain.hula.when">Hula Earth · since 2026</span></div>
+        <div class="stage">
+          <canvas id="cv-hula" role="img" aria-label="A scrolling spectrogram from 0 to 10 kilohertz where bird calls appear as bright traces" data-i18n-aria="home.chain.hula.aria">A scrolling spectrogram from 0 to 10 kilohertz where bird calls appear as bright traces</canvas>
+          <div class="hud r" aria-hidden="true"><i></i>Audio · 0–10 kHz</div>
+        </div>
+        <h3 data-i18n-html="home.chain.hula.title">Listening to <em>a forest</em></h3>
+        <p class="role">Senior Embedded AI Engineer</p>
+        <p class="txt" data-i18n="home.chain.hula.text">Self-sufficient bioacoustic sensors record ecosystems, and AI recognises species by their calls. I own the BIoT development and coordinate supplier, product and team. Getting stuff done, a full jack of all trades.</p>
+        <div class="controls">
+          <button class="btn sm" id="h-chorus" type="button" data-i18n="home.chain.hula.action">Play a dawn chorus</button>
+          <p class="stat" id="h-stat" aria-live="polite"></p>
+        </div>
+      </article>
+    </div>
+
+    <div class="toolbox">
+      <p class="quote" data-i18n="home.chain.quote">“Every problem is just a decomposition away.”</p>
+      <div class="chips" aria-label="Toolbox">
+        <span class="chip hot">Zephyr RTOS</span>
+        <span class="chip hot">Ultra-low power</span>
+        <span class="chip hot">Edge AI / TinyML</span>
+        <span class="chip">C</span>
+        <span class="chip">C++</span>
+        <span class="chip">Python</span>
+        <span class="chip">BLE</span>
+        <span class="chip">LTE-M</span>
+        <span class="chip">LPWAN</span>
+        <span class="chip">HW/SW co-design</span>
+        <span class="chip">Protocol design</span>
+        <span class="chip">Certification</span>
+        <span class="chip">Supplier management</span>
+        <span class="chip">Team lead</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============== OUTSIDE / HOBBIES ============== -->
+<!-- ============== 02 THE CONSTRAINT: coin cell ============== -->
+<section id="budget">
+  <div class="wrap split">
+    <div class="copy">
+      <p class="eyebrow">§ 02 <span class="d">·</span> <span data-i18n="home.budget.eyebrow">The constraint</span></p>
+      <h2 data-i18n-html="home.budget.title">A decade on a <em>coin cell</em></h2>
+      <p class="lede" data-i18n="home.budget.lede">Low-power firmware is a budget. Every microamp spent asleep and every millisecond of radio comes out of a battery the size of a coin. Tune it and watch the lifetime move.</p>
+      <div class="sliders">
+        <div class="sl"><label for="p-sleep"><span data-i18n="home.budget.sleep">Sleep current</span> <output id="o-sleep">1.5 µA</output></label><input type="range" id="p-sleep" min="0.5" max="30" step="0.5" value="1.5"></div>
+        <div class="sl"><label for="p-int"><span data-i18n="home.budget.interval">Send every</span> <output id="o-int">60 s</output></label><input type="range" id="p-int" min="1" max="600" step="1" value="60"></div>
+      </div>
+      <div class="readout">
+        <div class="big" id="p-years" aria-live="polite">12.6<small>years</small></div>
+        <p class="stat" id="p-note"></p>
+      </div>
+    </div>
+    <div class="stage">
+      <canvas id="cv-power" role="img" aria-label="Current draw over time on a log scale: a low sleep floor with short radio spikes" data-i18n-aria="home.budget.aria">Current draw over time on a log scale: a low sleep floor with short radio spikes</canvas>
+      <div class="hud" aria-hidden="true"><i></i>Supply · CR2032 · 225 mAh</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 03 OFF-GRID CHANNELS ============== -->
 <section id="life">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 data-i18n="outside.heading">Outside</h2>
-      <span class="mono coord">§ 02 / Field notes</span>
+    <div class="sec-intro">
+      <p class="eyebrow">§ 03 <span class="d">·</span> <span data-i18n="home.life.eyebrow">Off-grid channels</span></p>
+      <h2 data-i18n-html="home.life.title">Away from <em>the keyboard</em></h2>
+      <p class="lede" data-i18n="home.life.lede">Different hobbies, same habit: read the problem, respect the constraint, try again. Each channel has something to play with.</p>
     </div>
 
-    <div class="chapters">
-
-      <article class="chapter">
-        <div class="idx">Chapter<span class="n">01</span><span data-i18n="outside.climb.category">Alpine · Climb</span></div>
-        <div>
-          <h3 data-i18n="outside.climb.title">Rock, route-finding, risk.</h3>
-          <p data-i18n="outside.climb.text">
-            The mountains give me what the terminal can't: weather, gravity, and an opinion that doesn't negotiate. I climb trad and sport, boulder when I can't, and plan longer alpine routes in the Wetterstein and Karwendel ranges. Route-reading is the same skill as debugging — you observe, you hypothesise, you commit.
-          </p>
-          <p class="hand" style="font-size: 18px;" data-i18n="outside.climb.quote">&mdash; "The mountain doesn't care if you're tired."</p>
+    <div class="channels">
+      <!-- Rock -->
+      <article class="channel">
+        <div class="copy">
+          <p class="eyebrow" data-i18n="home.life.rock.tag">Rock · Alpine</p>
+          <h3 data-i18n-html="home.life.rock.title">Read the wall, <em>then move</em></h3>
+          <p class="txt" data-i18n="home.life.rock.text">Bouldering is debugging with your whole body: observe, hypothesise, commit. Up in the Wetterstein and Karwendel the same habit becomes careful risk assessment. Last big one: Ortler, 3,905 m.</p>
+          <p class="stat" id="c-stat" aria-live="polite"></p>
+          <div class="controls"><button class="btn ghost sm" id="c-reset" type="button" data-i18n="home.life.rock.reset">Reset the problem</button></div>
         </div>
-        <div class="route-meta" aria-label="Recent route">
-          <div class="m"><div class="k" data-i18n="outside.climb.meta.route">Route</div><div class="v">Ortler Normal Route</div></div>
-          <div class="m"><div class="k" data-i18n="outside.climb.meta.grade">Grade</div><div class="v"><b>F / PD</b></div></div>
-          <div class="m"><div class="k" data-i18n="outside.meta.elev">Elev. </div><div class="v">+ 3,905 m</div></div>
-          <div class="m"><div class="k" data-i18n="outside.climb.meta.partner">weather</div><div class="v">Snow/Sun</div></div>
-        </div>
-        <svg class="elev" viewBox="0 0 1200 52" preserveAspectRatio="none" role="img" aria-label="Elevation profile for Ortler Normal Route showing 3,905m altitude gain">
-          <title>Elevation Profile</title>
-          <desc>Graph showing the altitude profile of the Ortler Normal Route climbing from 0 to 3,905 meters</desc>
-          <path d="M0 48 L80 44 L160 40 L240 34 L320 26 L400 18 L480 10 L560 4 L640 2 L720 8 L800 18 L880 28 L960 36 L1040 42 L1120 46 L1200 50"
-                fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4" style="color: var(--accent);" />
-          <path d="M0 48 L80 44 L160 40 L240 34 L320 26 L400 18 L480 10 L560 4 L640 2 L720 8 L800 18 L880 28 L960 36 L1040 42 L1120 46 L1200 50 L1200 52 L0 52 Z"
-                fill="currentColor" opacity="0.08" style="color: var(--accent);" />
-        </svg>
-      </article>
-
-      <article class="chapter">
-        <div class="idx">Chapter<span class="n">02</span><span data-i18n="outside.cycle.category">Road · Cycle</span></div>
-        <div>
-          <h3 data-i18n="outside.cycle.title">Long days in the saddle.</h3>
-          <p data-i18n="outside.cycle.text">
-            Road biking is how I think. Local loops along the Isar for maintenance, bigger passes for the real meditation — Timmelsjoch, Stelvio, Grossglockner. Powered only by my own legs, navigating weather and terrain, pacing the effort: it turns out I can hold a problem in my head for eight hours if I'm pedalling through it.
-          </p>
-          <p><span data-i18n="outside.cycle.stravaLink">Follow along on</span> <a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava →</a></p>
-        </div>
-        <div class="route-meta">
-          <div class="m"><div class="k" data-i18n="outside.cycle.meta.lastRide">Longest ride</div><div class="v">Munich → Vienna</div></div>
-          <div class="m"><div class="k" data-i18n="outside.cycle.meta.distance">Distance</div><div class="v"><b>430 km</b></div></div>
-          <div class="m"><div class="k" data-i18n="outside.cycle.meta.pace">Moving time</div><div class="v">16h 17m</div></div>
-          <div class="m"><div class="k" data-i18n="outside.cycle.meta.power">Avg power</div><div class="v">119 W</div></div>
+        <div class="stage">
+          <canvas id="cv-climb" role="img" aria-label="A bouldering wall; tap holds within reach to climb from start to top" data-i18n-aria="home.life.rock.aria">A bouldering wall; tap holds within reach to climb from start to top</canvas>
+          <div class="hud" aria-hidden="true">Problem · V-tobi</div>
         </div>
       </article>
 
-      <article class="chapter">
-        <div class="idx">Chapter<span class="n">03</span><span data-i18n="outside.cook.category">Kitchen · Vegan</span></div>
-        <div>
-          <h3 data-i18n="outside.cook.title">Plants, sourdough, and doing less harm.</h3>
-          <p data-i18n="outside.cook.text">
-            I cook and bake mostly vegan — from everyday bowls to obsessive pizza dough and bread experiments. The ethics matter (fewer beings hurt, lighter footprint), but honestly plant cooking is also the more interesting constraint: flavours have to be built, textures have to be earned.
-          </p>
-          <p><span data-i18n="outside.cook.cafeLink">Follow the happy bunny at</span> <a href="https://www-fallback.instagram.com/cafe.tobi.88/" target="_blank" rel="noopener noreferrer">Café Tobi →</a></p>
+      <!-- Road -->
+      <article class="channel">
+        <div class="copy">
+          <p class="eyebrow" data-i18n="home.life.road.tag">Road · Cycle</p>
+          <h3 data-i18n-html="home.life.road.title">Every metre under <em>my own power</em></h3>
+          <p class="txt" data-i18n="home.life.road.text">Isar loops for maintenance, Timmelsjoch and Stelvio for the real meditation. Longest ride so far: Munich → Vienna, 430 km in 16 h 17 min of moving time.</p>
+          <div class="sl"><label for="b-pos"><span data-i18n="home.life.road.scrub">Ride the climb</span> <output id="o-pos">0.0 km</output></label><input type="range" id="b-pos" min="0" max="1000" step="1" value="0"></div>
+          <p class="stat" id="b-stat" aria-live="polite"></p>
+          <div class="controls">
+            <button class="btn sm" id="b-ride" type="button" data-i18n="home.life.road.ride">Ride it</button>
+            <a class="more" href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava →</a>
+          </div>
         </div>
-        <div class="route-meta">
-          <div class="m"><div class="k" data-i18n="outside.cook.meta.bench">On the bench</div><div class="v">Mapo Tofu</div></div>
-          <div class="m"><div class="k" data-i18n="outside.cook.meta.style">Style</div><div class="v"><b>Sichuan</b></div></div>
-          <div class="m"><div class="k" data-i18n="outside.cook.meta.heat">Heat</div><div class="v">Mala 麻辣</div></div>
-          <div class="m"><div class="k" data-i18n="outside.cook.meta.signature">Signature</div><div class="v">Signature dish</div></div>
-        </div>
-      </article>
-
-      <article class="chapter">
-        <div class="idx">Chapter<span class="n">04</span><span data-i18n="outside.photo.category">Viewfinder</span></div>
-        <div>
-          <h3 data-i18n="outside.photo.title">A camera as an excuse to stand still.</h3>
-          <p data-i18n="outside.photo.text">
-            The photography is mostly a side effect of the other hobbies — wildlife on travel, mountain huts, rides at dawn. I shoot to remember, and occasionally to share. The archive lives below.
-          </p>
-        </div>
-        <div class="route-meta">
-          <div class="m"><div class="k" data-i18n="outside.photo.meta.body">Body</div><div class="v">Sony α7 IV</div></div>
-          <div class="m"><div class="k" data-i18n="outside.photo.meta.lens">Favourite</div><div class="v"><b>35 mm prime</b></div></div>
-          <div class="m"><div class="k" data-i18n="outside.photo.meta.archive">Archive</div><div class="v">132,876 frames</div></div>
-          <div class="m"><div class="k" data-i18n="outside.photo.meta.travels">Travels</div><div class="v">Around the world</div></div>
+        <div class="stage">
+          <canvas id="cv-bike" role="img" aria-label="Elevation profile of a sample 14 kilometre climb with a rider marker" data-i18n-aria="home.life.road.aria">Elevation profile of a sample 14 kilometre climb with a rider marker</canvas>
+          <div class="hud" aria-hidden="true">Sample climb · 14 km</div>
         </div>
       </article>
 
+      <!-- Kitchen -->
+      <article class="channel">
+        <div class="copy">
+          <p class="eyebrow" data-i18n="home.life.cook.tag">Kitchen · Vegan</p>
+          <h3 data-i18n-html="home.life.cook.title">Mostly vegan, <em>always experimenting</em></h3>
+          <p class="txt" data-i18n="home.life.cook.text">Plant cooking is the more interesting constraint: flavour has to be built, texture has to be earned. Signature: Mapo Tofu. Obsession: pizza dough. Build one.</p>
+          <div class="controls">
+            <button class="btn ghost sm" type="button" data-top="cheese" data-i18n="home.life.cook.cheese">Vegan mozzarella</button>
+            <button class="btn ghost sm" type="button" data-top="tomato" data-i18n="home.life.cook.tomato">Tomato</button>
+            <button class="btn ghost sm" type="button" data-top="mushroom" data-i18n="home.life.cook.mushroom">Mushroom</button>
+            <button class="btn ghost sm" type="button" data-top="basil" data-i18n="home.life.cook.basil">Basil</button>
+          </div>
+          <div class="controls">
+            <button class="btn sm" id="z-bake" type="button" data-i18n="home.life.cook.bake">Bake</button>
+            <button class="btn ghost sm" id="z-clear" type="button" data-i18n="home.life.cook.clear">Start over</button>
+            <a class="more" href="https://www-fallback.instagram.com/cafe.tobi.88/" target="_blank" rel="noopener noreferrer">Café Tobi →</a>
+          </div>
+          <p class="stat" id="pz-stat" aria-live="polite"></p>
+        </div>
+        <div class="stage">
+          <canvas id="cv-pizza" role="img" aria-label="A pizza you can top and bake" data-i18n-aria="home.life.cook.aria">A pizza you can top and bake</canvas>
+          <div class="hud" aria-hidden="true">Oven · 250 °C</div>
+        </div>
+      </article>
+
+      <!-- Camera -->
+      <article class="channel">
+        <div class="copy">
+          <p class="eyebrow" data-i18n="home.life.photo.tag">Viewfinder</p>
+          <h3 data-i18n-html="home.life.photo.title">A camera as an excuse to <em>stand still</em></h3>
+          <p class="txt" data-i18n="home.life.photo.text">Mostly a side effect of the other hobbies: wildlife on travel, mountain huts, rides at dawn. Sony α7 IV, a 35 mm prime, and far too many frames.</p>
+          <div class="controls"><a class="btn ghost sm" href="#photo" data-i18n="home.life.photo.open">Open the archive</a></div>
+        </div>
+        <div class="stage finder" id="finder" role="button" tabindex="0">
+          <span class="sr-only" data-i18n="home.life.photo.aria">Open the current photo</span>
+          <div class="frame" aria-hidden="true"></div>
+          <div class="cap" id="finder-cap" aria-hidden="true"></div>
+          <div class="hud" aria-hidden="true"><i></i>35 mm · f/2.8 · ISO 100</div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ============== PHOTOGRAPHY ============== -->
+<!-- ============== 04 VIEWFINDER STRIP ============== -->
 <section id="photo">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 data-i18n="photography.heading">Photography</h2>
-      <span class="mono coord">§ 03 / Archive</span>
+    <div class="sec-intro strip-head">
+      <div style="display:grid;gap:20px;">
+        <p class="eyebrow">§ 04 <span class="d">·</span> <span data-i18n="home.photo.eyebrow">Archive</span></p>
+        <h2 data-i18n="photography.heading">Photography</h2>
+      </div>
+      <p class="lede" data-i18n="photography.lead">A small selection from travels — from the cloud forests of Costa Rica to the north ridge of the Zugspitze. Full sets by region on request.</p>
     </div>
 
-    <div class="photo-head">
-      <p class="lead" data-i18n="photography.lead">A small selection from travels — from the cloud forests of Costa Rica to the north ridge of the Zugspitze. Full sets by region on request.</p>
-      <span class="mono">12 frames</span>
+    <div class="strip photo-grid" role="list">
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p1.webp" alt="Colorful parrot in natural habitat · Monteverde, Costa Rica 2024" loading="lazy"></div>
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p2.webp" alt="Monkey in the wild · Sigiriya, Sri Lanka 2023" loading="lazy"></div>
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p3.webp" alt="Mountain hut in Stubaital, Austria 2024" loading="lazy"></div>
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p4.webp" alt="Dolomites, Italy 2025" loading="lazy"></div>
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p5.webp" alt="Iceland landscape, Reykjanes 2024" loading="lazy"></div>
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p6.webp" alt="Timmelsjoch mountain pass 2025" loading="lazy"></div>
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p7.webp" alt="Lofoten islands, Norway 2023" loading="lazy"></div>
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p8.webp" alt="Atlas mountains, Morocco 2024" loading="lazy"></div>
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p9.webp" alt="Glacier at Zugspitze 2025" loading="lazy"></div>
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p10.webp" alt="Travel photography" loading="lazy"></div>
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p11.webp" alt="Travel photography" loading="lazy"></div>
+      <div class="ph" role="listitem" tabindex="0"><img src="./pictures/p12.webp" alt="Travel photography" loading="lazy"></div>
     </div>
+  </div>
+</section>
 
-    <div class="photo-grid" role="list">
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p1.webp">
-          <img src="./pictures/p1.webp" alt="Colorful parrot in natural habitat · Monteverde, Costa Rica 2024" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p2.webp">
-          <img src="./pictures/p2.webp" alt="Monkey in the wild · Sigiriya, Sri Lanka 2023" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p3.webp">
-          <img src="./pictures/p3.webp" alt="Mountain hut in Stubaital, Austria 2024" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p4.webp">
-          <img src="./pictures/p4.webp" alt="Dolomites, Italy 2025" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p5.webp">
-          <img src="./pictures/p5.webp" alt="Iceland landscape, Reykjanes 2024" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p6.webp">
-          <img src="./pictures/p6.webp" alt="Timmelsjoch mountain pass 2025" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p7.webp">
-          <img src="./pictures/p7.webp" alt="Lofoten islands, Norway 2023" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p8.webp">
-          <img src="./pictures/p8.webp" alt="Atlas mountains, Morocco 2024" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p9.webp">
-          <img src="./pictures/p9.webp" alt="Glacier at Zugspitze 2025" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p10.webp">
-          <img src="./pictures/p10.webp" alt="Travel photography" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p11.webp">
-          <img src="./pictures/p11.webp" alt="Travel photography" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
-      <div class="ph" role="listitem" tabindex="0">
-        <picture>
-          <source type="image/webp" srcset="./pictures/p12.webp">
-          <img src="./pictures/p12.webp" alt="Travel photography" loading="lazy" onload="this.classList.add('loaded')" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter')openLightbox(this)">
-        </picture>
-      </div>
+<!-- ============== 05 LATEST TRANSMISSIONS ============== -->
+<section id="log">
+  <div class="wrap">
+    <div class="sec-intro">
+      <p class="eyebrow">§ 05 <span class="d">·</span> <span data-i18n="home.log.eyebrow">Latest transmissions</span></p>
+      <h2 data-i18n-html="home.log.title">From the <em>blog</em></h2>
+      <p class="lede" data-i18n="home.log.lede">Honest build logs, including the wrong turns. Mostly Zephyr, hardware and working with AI tools.</p>
     </div>
+    <ul class="tx-list">
+      <li><a href="./blog/2026-04-17_station_updates-en.html" data-post="2026-04-17_station_updates">
+        <span class="when">TX 2026-04-17</span><span class="ttl" data-i18n="home.log.p1">Station Updates — Four Weeks of Debugging</span><span class="go" data-i18n="home.log.read">Read →</span>
+      </a></li>
+      <li><a href="./blog/mtg_app-en.html" data-post="mtg_app">
+        <span class="when">TX 2026-04-05</span><span class="ttl" data-i18n="home.log.p2">Building an MTG Companion App with Remote Coding</span><span class="go" data-i18n="home.log.read">Read →</span>
+      </a></li>
+      <li><a href="./blog/vibe_coding_weather-en.html" data-post="vibe_coding_weather">
+        <span class="when">TX 2026-02-21</span><span class="ttl" data-i18n="home.log.p3">Let's vibe code a weather station - zephyr style</span><span class="go" data-i18n="home.log.read">Read →</span>
+      </a></li>
+    </ul>
+    <p class="tx-all"><a class="btn ghost sm" href="./blog/archive.html" data-i18n="home.log.all">All transmissions →</a></p>
   </div>
 </section>
 </main>
 
-<!-- ============== FOOTER / CONTACT ============== -->
+<!-- ============== 06 FINALE / CONTACT ============== -->
 <footer class="site-footer" id="contact" role="contentinfo">
   <div class="wrap">
-    <div>
-      <h3 data-i18n="footer.contactHeading">Get in touch</h3>
-      <h2 data-i18n="footer.contactTitle">Happy to talk embedded, alpine, or sourdough.</h2>
-      <p style="color: var(--muted-steel); max-width: 40ch; font-size: 14px;" data-i18n="footer.contactSub">Open to consulting, advisory, and speaking. Otherwise just say hi.</p>
-      <p style="margin-top: 18px;">
-        <a href="mailto:tobias.meyer@trmk.de" style="font-size: 18px;">tobias.meyer@trmk.de</a>
-      </p>
+    <div class="stage finale-stage">
+      <canvas id="cv-end" role="img" aria-label="Glowing particles that form the letters trmk and scatter around the pointer" data-i18n-aria="home.end.aria">Glowing particles that form the letters trmk and scatter around the pointer</canvas>
     </div>
 
-    <div>
-      <h3 data-i18n="footer.elsewhereHeading">Elsewhere</h3>
-      <ul>
-        <li><a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        <li><a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li><a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava</a></li>
-        <li><a href="https://www.instagram.com/the_tobi_wan88/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-        <li><a href="https://www-fallback.instagram.com/cafe.tobi.88/" target="_blank" rel="noopener noreferrer">Café Tobi</a></li>
-      </ul>
+    <div class="finale-row">
+      <div class="copy">
+        <h3 data-i18n="footer.contactHeading">Get in touch</h3>
+        <h2 data-i18n-html="home.end.title">Limits are where creative solutions <em>start</em>.</h2>
+        <p class="lede" data-i18n="home.end.lede">A few kilobytes of RAM. One wall and one body. A recipe without animal products. I like a good constraint. Happy to talk embedded systems, firmware, compliance, or the next climb.</p>
+        <p class="battery" id="battery" aria-live="off"></p>
+      </div>
+      <div class="links">
+        <a href="mailto:tobias.meyer@trmk.de">tobias.meyer@trmk.de <span>E-Mail</span></a>
+        <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn <span>Work</span></a>
+        <a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub <span>Code</span></a>
+        <a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava <span>Rides</span></a>
+        <a href="https://www.instagram.com/the_tobi_wan88/" target="_blank" rel="noopener noreferrer">Instagram <span>Photos</span></a>
+        <a href="https://www-fallback.instagram.com/cafe.tobi.88/" target="_blank" rel="noopener noreferrer">Café Tobi <span>Food</span></a>
+      </div>
     </div>
 
-    <div>
-      <h3 data-i18n="footer.basedHeading">Based</h3>
-      <ul>
-        <li><span class="lbl">City</span> Munich, DE</li>
-        <li><span class="lbl" data-i18n="footer.timeLabel">Time</span> <span id="localtime">—</span> <span id="timezone">CET</span></li>
-        <li><span class="lbl">Lang</span> EN · DE</li>
-      </ul>
-      <div style="margin-top: 16px;">
+    <div class="footer-meta">
+      <div>
+        <h3 data-i18n="footer.basedHeading">Based</h3>
+        <ul>
+          <li><span class="lbl">City</span> Munich, DE</li>
+          <li><span class="lbl" data-i18n="footer.timeLabel">Time</span> <span id="localtime">—</span> <span id="timezone">CET</span></li>
+          <li><span class="lbl">Lang</span> EN · DE</li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-i18n="footer.elsewhereHeading">Elsewhere</h3>
+        <ul>
+          <li><a href="./cv.html" data-i18n="nav.cv">CV</a></li>
+          <li><a href="./freelancing.html" data-i18n="nav.consulting">Consulting</a></li>
+          <li><a href="./blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        </ul>
+      </div>
+      <div>
         <button class="impressum-toggle" id="impressum-toggle" aria-expanded="false" aria-controls="impressum-content" data-i18n="footer.impressumToggle">
           Impressum ↓
         </button>
@@ -461,7 +457,7 @@
 
     <div class="footer-bottom">
       <span>© 2026 TOBIAS R.M.K. MEYER</span>
-      <span><a href="./freelancing.html" data-i18n="nav.consulting">Consulting</a> · <a href="./cv.html" data-i18n="nav.cv">CV</a> · <a href="./blog/index.html" data-i18n="nav.blog">Blog</a></span>
+      <span data-i18n="home.end.bottom">No cookies, no trackers, no build step.</span>
     </div>
   </div>
 </footer>
@@ -483,193 +479,6 @@
 <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
   <i class="fa fa-arrow-up" aria-hidden="true"></i>
 </button>
-
-<script>
-// -------- Theme toggle --------
-const themeToggle = document.getElementById('theme-toggle');
-function applyThemeIcon(theme) {
-  const icon = themeToggle.querySelector('i');
-  icon.className = theme === 'dark' ? 'fa fa-sun' : 'fa fa-moon';
-  themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-}
-applyThemeIcon(document.documentElement.getAttribute('data-theme'));
-themeToggle.addEventListener('click', () => {
-  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  applyThemeIcon(next);
-});
-
-// -------- Hamburger menu --------
-const hamburger = document.getElementById('nav-hamburger');
-const navLinks  = document.getElementById('nav-links');
-
-hamburger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', open);
-});
-
-// Close mobile nav on link click
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  });
-});
-
-// Close mobile nav on outside click
-document.addEventListener('click', e => {
-  const nav = document.querySelector('.site-nav');
-  if (nav && !nav.contains(e.target) && navLinks.classList.contains('open')) {
-    navLinks.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  }
-});
-
-// -------- Smooth scroll --------
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', e => {
-    const id = link.getAttribute('href');
-    const el = document.querySelector(id);
-    if (el && id !== '#') {
-      e.preventDefault();
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-
-// -------- Scroll-to-top button --------
-const scrollTopBtn = document.getElementById('scroll-top');
-if (scrollTopBtn) {
-  window.addEventListener('scroll', () => {
-    scrollTopBtn.classList.toggle('visible', window.scrollY > 600);
-  }, { passive: true });
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-// -------- Scroll-spy for active nav --------
-const sections = document.querySelectorAll('#about, #life, #photo');
-const navItems = document.querySelectorAll('.nav-links a[href^="#"]');
-const observerOptions = { threshold: 0.3, rootMargin: '-60px 0px -40% 0px' };
-
-if (sections.length && navItems.length) {
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navItems.forEach(item => {
-          item.classList.toggle('active', item.getAttribute('href') === `#${id}`);
-        });
-      }
-    });
-  }, observerOptions);
-  sections.forEach(section => sectionObserver.observe(section));
-}
-
-// -------- Lightbox --------
-let lightboxImages = [];
-let currentLightboxIndex = 0;
-let lastFocusedElement = null;
-
-function buildLightboxImageList() {
-  lightboxImages = Array.from(document.querySelectorAll('.photo-grid .ph img'));
-}
-buildLightboxImageList();
-
-function openLightbox(img) {
-  lastFocusedElement = document.activeElement;
-  const lb  = document.getElementById('lightbox');
-  const lbi = document.getElementById('lightbox-img');
-  const desc = document.getElementById('lightbox-desc');
-
-  currentLightboxIndex = lightboxImages.indexOf(img);
-  lbi.src = img.src;
-  lbi.alt = img.alt;
-  desc.textContent = img.alt || 'Photo';
-
-  lb.classList.add('open');
-  lb.setAttribute('aria-describedby', 'lightbox-desc');
-  document.getElementById('lightbox-close').focus();
-  trapFocus(lb);
-}
-
-function closeLightbox() {
-  const lb = document.getElementById('lightbox');
-  lb.classList.remove('open');
-  lb.removeAttribute('aria-describedby');
-  releaseFocus();
-  if (lastFocusedElement) lastFocusedElement.focus();
-}
-
-function navigateLightbox(direction) {
-  currentLightboxIndex = (currentLightboxIndex + direction + lightboxImages.length) % lightboxImages.length;
-  const img = lightboxImages[currentLightboxIndex];
-  const lbi = document.getElementById('lightbox-img');
-  const desc = document.getElementById('lightbox-desc');
-  lbi.src = img.src;
-  lbi.alt = img.alt;
-  desc.textContent = img.alt || 'Photo';
-}
-
-function trapFocus(el) {
-  el.inert = false;
-  const focusable = el.querySelectorAll('button:not([disabled]), [tabindex="0"]');
-  if (focusable.length) {
-    focusable[0].focus();
-  }
-}
-
-function releaseFocus() {
-  const lb = document.getElementById('lightbox');
-  if (lb) lb.inert = false;
-}
-
-document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-document.getElementById('lightbox-prev').addEventListener('click', () => navigateLightbox(-1));
-document.getElementById('lightbox-next').addEventListener('click', () => navigateLightbox(1));
-
-document.getElementById('lightbox').addEventListener('click', e => {
-  if (e.target === e.currentTarget) closeLightbox();
-});
-
-document.addEventListener('keydown', e => {
-  const lb = document.getElementById('lightbox');
-  if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') navigateLightbox(-1);
-  if (e.key === 'ArrowRight') navigateLightbox(1);
-});
-
-// -------- Impressum toggle --------
-document.getElementById('impressum-toggle').addEventListener('click', function() {
-  const content = document.getElementById('impressum-content');
-  const open = content.classList.toggle('open');
-  this.setAttribute('aria-expanded', open);
-  content.setAttribute('aria-hidden', !open);
-  const isGerman = document.documentElement.lang === 'de';
-  this.textContent = open
-    ? (isGerman ? 'Impressum ▲' : 'Impressum ↑')
-    : (isGerman ? 'Impressum ▼' : 'Impressum ↓');
-});
-
-// -------- Local Munich time with timezone --------
-function updateTime() {
-  const muc = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
-  const h   = String(muc.getHours()).padStart(2, '0');
-  const m   = String(muc.getMinutes()).padStart(2, '0');
-  const el  = document.getElementById('localtime');
-  const tzEl = document.getElementById('timezone');
-  if (el) el.textContent = `${h}:${m}`;
-  if (tzEl) {
-    const month = muc.getMonth();
-    tzEl.textContent = (month >= 3 && month <= 9) ? 'CEST' : 'CET';
-  }
-}
-updateTime();
-setInterval(updateTime, 30000);
-</script>
 
 </body>
 </html>

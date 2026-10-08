@@ -1,16 +1,17 @@
 const translations = {
   en: {
     meta: {
-      title: "Tobias R.M.K. Meyer - Embedded Software Developer",
+      title: "Tobias R.M.K. Meyer - Embedded Engineer",
       titleCV: "Tobias R.M.K. Meyer - CV",
       titleConsulting: "Tobias Meyer - Engineering Consulting",
-      description: "Private page of Tobias R.M.K. Meyer, Embedded Firmware & Software Developer. Posts about life as a developer and my climbing, cooking and other adventures.",
+      description: "Tobias R.M.K. Meyer builds small devices that listen: energy-harvesting radios, railway sensors and now bioacoustic forest sensors. Embedded engineer in Munich, climber, cyclist and vegan cook.",
       descriptionCV: "CV of Tobias R.M.K. Meyer, Engineering Manager & Senior Firmware Developer. Expertise in embedded systems, IoT, team leadership, and industrial sensor development for railway infrastructure.",
       descriptionConsulting: "Professional engineering consulting services by Tobias R.M.K. Meyer - Embedded systems, firmware development, and software architecture."
     },
     nav: {
       home: "HOME",
       about: "About",
+      signals: "Signals",
       consulting: "Consulting",
       cv: "CV",
       blog: "Blog",
@@ -90,6 +91,143 @@ const translations = {
     photography: {
       heading: "Photography",
       lead: "A small selection from travels — from the cloud forests of Costa Rica to the north ridge of the Zugspitze. Full sets by region on request."
+    },
+    home: {
+      sound: "Sound",
+      hero: {
+        eyebrow: "Munich · embedded engineer",
+        lede: "For more than ten years I've built small devices that listen: to radio, to railway tracks, and now to forests. Each one hears a quieter signal than the last.",
+        nowTag: "● NOW",
+        nowText: "owning the BIoT device, from supplier to firmware",
+        follow: "Follow the signal",
+        withSound: "Turn the sound on",
+        withoutSound: "Turn the sound off",
+        hint: "Move your pointer to tune the trace."
+      },
+      chain: {
+        eyebrow: "Signal chain",
+        title: "Three devices, <em>each one quieter</em>.",
+        lede: "I like small, lean, battery-powered things that have to survive without anyone watching, and the teams that build them. On paper: B.Sc. Electrical Engineering, M.Sc. Computer Science. In practice: a decade of firmware, radios, RTOS and the system around them. <a href=\"./cv.html\">Full CV</a>",
+        quote: "“Every problem is just a decomposition away.”",
+        enocean: {
+          aria: "A wall switch sends radio rings across the room to light a lamp",
+          title: "Power from a <em>single press</em>",
+          role: "Intern → Software Engineer",
+          text: "Energy-harvesting radio switches that power themselves from the push of a finger and still get a message across the room. No battery. No wire.",
+          action: "Press the switch"
+        },
+        konux: {
+          aria: "A train passes a trackside sensor and its axles show up as bursts in a vibration trace",
+          title: "Listening to <em>the rails</em>",
+          role: "Senior Firmware Developer → Engineering Manager",
+          text: "Rugged battery-powered sensors on railway infrastructure that feel every train go by. I started on the firmware and grew into leading the device team: hardware reviews, compliance, people.",
+          action: "Send a train"
+        },
+        hula: {
+          when: "Hula Earth · since 2026",
+          aria: "A scrolling spectrogram from 0 to 10 kilohertz where bird calls appear as bright traces",
+          title: "Listening to <em>a forest</em>",
+          text: "Self-sufficient bioacoustic sensors record ecosystems, and AI recognises species by their calls. I own the BIoT development and coordinate supplier, product and team. Getting stuff done, a full jack of all trades.",
+          action: "Play a dawn chorus"
+        }
+      },
+      budget: {
+        eyebrow: "The constraint",
+        title: "A decade on a <em>coin cell</em>",
+        lede: "Low-power firmware is a budget. Every microamp spent asleep and every millisecond of radio comes out of a battery the size of a coin. Tune it and watch the lifetime move.",
+        sleep: "Sleep current",
+        interval: "Send every",
+        aria: "Current draw over time on a log scale: a low sleep floor with short radio spikes"
+      },
+      life: {
+        eyebrow: "Off-grid channels",
+        title: "Away from <em>the keyboard</em>",
+        lede: "Different hobbies, same habit: read the problem, respect the constraint, try again. Each channel has something to play with.",
+        rock: {
+          tag: "Rock · Alpine",
+          title: "Read the wall, <em>then move</em>",
+          text: "Bouldering is debugging with your whole body: observe, hypothesise, commit. Up in the Wetterstein and Karwendel the same habit becomes careful risk assessment. Last big one: Ortler, 3,905 m.",
+          reset: "Reset the problem",
+          aria: "A bouldering wall; tap holds within reach to climb from start to top"
+        },
+        road: {
+          tag: "Road · Cycle",
+          title: "Every metre under <em>my own power</em>",
+          text: "Isar loops for maintenance, Timmelsjoch and Stelvio for the real meditation. Longest ride so far: Munich → Vienna, 430 km in 16 h 17 min of moving time.",
+          scrub: "Ride the climb",
+          ride: "Ride it",
+          aria: "Elevation profile of a sample 14 kilometre climb with a rider marker"
+        },
+        cook: {
+          tag: "Kitchen · Vegan",
+          title: "Mostly vegan, <em>always experimenting</em>",
+          text: "Plant cooking is the more interesting constraint: flavour has to be built, texture has to be earned. Signature: Mapo Tofu. Obsession: pizza dough. Build one.",
+          cheese: "Vegan mozzarella",
+          tomato: "Tomato",
+          mushroom: "Mushroom",
+          basil: "Basil",
+          bake: "Bake",
+          clear: "Start over",
+          aria: "A pizza you can top and bake"
+        },
+        photo: {
+          tag: "Viewfinder",
+          title: "A camera as an excuse to <em>stand still</em>",
+          text: "Mostly a side effect of the other hobbies: wildlife on travel, mountain huts, rides at dawn. Sony α7 IV, a 35 mm prime, and far too many frames.",
+          open: "Open the archive",
+          aria: "Open the current photo"
+        }
+      },
+      photo: { eyebrow: "Archive" },
+      log: {
+        eyebrow: "Latest transmissions",
+        title: "From the <em>blog</em>",
+        lede: "Honest build logs, including the wrong turns. Mostly Zephyr, hardware and working with AI tools.",
+        p1: "Station Updates — Four Weeks of Debugging",
+        p2: "Building an MTG Companion App with Remote Coding",
+        p3: "Let's vibe code a weather station - zephyr style",
+        read: "Read →",
+        all: "All transmissions →"
+      },
+      end: {
+        aria: "Glowing particles that form the letters trmk and scatter around the pointer",
+        title: "Limits are where creative solutions <em>start</em>.",
+        lede: "A few kilobytes of RAM. One wall and one body. A recipe without animal products. I like a good constraint. Happy to talk embedded systems, firmware, compliance, or the next climb.",
+        bottom: "No cookies, no trackers, no build step."
+      },
+      // Strings used by js/signals.js (canvas labels + live readouts). {x} = placeholder.
+      live: {
+        enStat: "Messages <b>{n}</b> · Batteries <b>0</b>",
+        kStat: "Axles <b>{a}</b> · Trains <b>{t}</b>",
+        hStat: "Calls detected <b>{n}</b>",
+        years: "years",
+        days: "days",
+        budgetNote: "Average draw <b>{avg}</b> from 225 mAh, with 4 ms radio bursts at 8 mA. Ideal math: real cells self-discharge, so about a decade is the practical ceiling.",
+        climbStart: "Tap the <b>START</b> hold, then climb hold by hold to the <b>TOP</b>.",
+        climbNotStart: "Every problem begins on the <b>START</b> hold at the bottom.",
+        climbOn: "On the wall. The dashed circle shows what you can reach.",
+        climbFar: "Out of reach from there. Look for a closer hold.",
+        climbBack: "Stepped back down. Try another sequence.",
+        climbMove: "Move <b>{n}</b>. Tap your last hold to step back.",
+        climbTop: "Topped out in <b>{n}</b> moves. Fewer are possible.",
+        bikeStat: "Elevation <b>{e} m</b> · Gradient <b>{g} %</b>",
+        pizzaStat: "Toppings <b>{n}</b> · Animal products <b>0</b>",
+        battery: "While you've been on this page, a sensor running the budget above used <b>{uah} µAh</b>. Its coin cell is still <b>{pct} %</b> full.",
+        cSwitch: "switch · battery: none",
+        cReceiver: "receiver",
+        cSensor: "sensor",
+        cVibration: "vibration",
+        cTime: "time →",
+        cAverage: "average",
+        cRadio: "radio",
+        cSleep: "sleep",
+        cSpike: "time →  (spike width exaggerated)",
+        cCall: "call",
+        cPizzaEmpty: "add toppings, then bake",
+        cPizzaReady: "ready · buon appetito",
+        cSummit: "summit ~1,500 m",
+        cFinale: "move through the letters"
+      }
     },
     portfolio: {
       heading: "Photography & Travel",
@@ -195,16 +333,17 @@ consulting: {
   },
   de: {
     meta: {
-      title: "Tobias R.M.K. Meyer - Embedded Software-Entwickler",
+      title: "Tobias R.M.K. Meyer - Embedded Engineer",
       titleCV: "Tobias R.M.K. Meyer - Lebenslauf",
       titleConsulting: "Tobias Meyer - Engineering-Beratung",
-      description: "Private Seite von Tobias R.M.K. Meyer, Embedded Firmware & Software-Entwickler. Beiträge über das Leben als Entwickler und meine Kletter-, Koch- und anderen Abenteuer.",
+      description: "Tobias R.M.K. Meyer baut kleine Geräte, die zuhören: Funkschalter ohne Batterie, Sensoren am Gleis und jetzt bioakustische Sensoren im Wald. Embedded Engineer in München, Kletterer, Radfahrer und veganer Koch.",
       descriptionCV: "Lebenslauf von Tobias R.M.K. Meyer, Engineering Manager & Senior Firmware-Entwickler. Expertise in eingebetteten Systemen, IoT, Teamführung und industrieller Sensorentwicklung für Eisenbahninfrastruktur.",
       descriptionConsulting: "Professionelle Engineering-Beratungsdienste von Tobias R.M.K. Meyer - Eingebettete Systeme, Firmware-Entwicklung und Software-Architektur."
     },
     nav: {
       home: "STARTSEITE",
       about: "Über mich",
+      signals: "Signale",
       consulting: "Beratung",
       cv: "Lebenslauf",
       blog: "Blog",
@@ -285,6 +424,142 @@ consulting: {
     photography: {
       heading: "Fotografie",
       lead: "Eine kleine Auswahl von Reisen — von den Nebelwäldern Costa Ricas bis zum Nordgrat der Zugspitze. Vollständige Sets nach Region auf Anfrage."
+    },
+    home: {
+      sound: "Ton",
+      hero: {
+        eyebrow: "München · Embedded Engineer",
+        lede: "Seit über zehn Jahren baue ich kleine Geräte, die zuhören: dem Funk, den Gleisen und jetzt dem Wald. Jedes hört ein leiseres Signal als das davor.",
+        nowTag: "● JETZT",
+        nowText: "verantwortlich für das BIoT-Gerät, vom Lieferanten bis zur Firmware",
+        follow: "Dem Signal folgen",
+        withSound: "Ton einschalten",
+        withoutSound: "Ton ausschalten",
+        hint: "Bewege den Zeiger, um die Kurve zu stimmen."
+      },
+      chain: {
+        eyebrow: "Signalkette",
+        title: "Drei Geräte, <em>jedes leiser</em>.",
+        lede: "Ich mag kleine, schlanke, batteriebetriebene Dinge, die ohne Aufsicht überleben müssen, und die Teams, die sie bauen. Auf dem Papier: B.Sc. Elektrotechnik, M.Sc. Informatik. In der Praxis: ein Jahrzehnt Firmware, Funk, RTOS und das System drumherum. <a href=\"./cv.html\">Ganzer Lebenslauf</a>",
+        quote: "„Jedes Problem ist nur eine Zerlegung entfernt.“",
+        enocean: {
+          aria: "Ein Wandschalter schickt Funkringe durch den Raum und schaltet eine Lampe ein",
+          title: "Strom aus einem <em>Tastendruck</em>",
+          role: "Praktikant → Software Engineer",
+          text: "Energy-Harvesting-Funkschalter, die sich aus dem Druck eines Fingers versorgen und trotzdem eine Nachricht durch den Raum schicken. Keine Batterie. Kein Kabel.",
+          action: "Schalter drücken"
+        },
+        konux: {
+          aria: "Ein Zug fährt an einem Sensor am Gleis vorbei, seine Achsen erscheinen als Ausschläge im Vibrationssignal",
+          title: "Den <em>Gleisen</em> zuhören",
+          role: "Senior Firmware Developer → Engineering Manager",
+          text: "Robuste batteriebetriebene Sensoren an der Bahninfrastruktur, die jeden vorbeifahrenden Zug spüren. Angefangen habe ich bei der Firmware, später habe ich das Device-Team geleitet: Hardware-Reviews, Compliance, Menschen.",
+          action: "Zug schicken"
+        },
+        hula: {
+          when: "Hula Earth · seit 2026",
+          aria: "Ein laufendes Spektrogramm von 0 bis 10 Kilohertz, in dem Vogelrufe als helle Spuren erscheinen",
+          title: "Dem <em>Wald</em> zuhören",
+          text: "Autarke bioakustische Sensoren nehmen Ökosysteme auf, und KI erkennt Arten an ihren Rufen. Ich verantworte die BIoT-Entwicklung und koordiniere Lieferanten, Produkt und Team. Dinge erledigen, ein echter Hans Dampf in allen Gassen.",
+          action: "Morgenkonzert abspielen"
+        }
+      },
+      budget: {
+        eyebrow: "Die Einschränkung",
+        title: "Ein Jahrzehnt mit einer <em>Knopfzelle</em>",
+        lede: "Low-Power-Firmware ist ein Budget. Jedes Mikroampere im Schlaf und jede Millisekunde Funk geht von einer Batterie in Münzgröße ab. Dreh an den Reglern und sieh, wie sich die Laufzeit bewegt.",
+        sleep: "Schlafstrom",
+        interval: "Senden alle",
+        aria: "Stromverbrauch über die Zeit auf logarithmischer Skala: niedriger Schlafstrom mit kurzen Funkspitzen"
+      },
+      life: {
+        eyebrow: "Off-Grid-Kanäle",
+        title: "Weg von <em>der Tastatur</em>",
+        lede: "Verschiedene Hobbys, dieselbe Gewohnheit: das Problem lesen, die Grenze respektieren, nochmal versuchen. Jeder Kanal hat etwas zum Spielen.",
+        rock: {
+          tag: "Fels · Alpin",
+          title: "Die Wand lesen, <em>dann bewegen</em>",
+          text: "Bouldern ist Debugging mit dem ganzen Körper: beobachten, Hypothese aufstellen, durchziehen. Im Wetterstein und Karwendel wird daraus sorgfältige Risikoabwägung. Zuletzt groß: Ortler, 3.905 m.",
+          reset: "Problem zurücksetzen",
+          aria: "Eine Boulderwand; tippe erreichbare Griffe an, um vom Start nach oben zu klettern"
+        },
+        road: {
+          tag: "Straße · Rad",
+          title: "Jeder Meter aus <em>eigener Kraft</em>",
+          text: "Isar-Runden zur Wartung, Timmelsjoch und Stilfser Joch für die echte Meditation. Längste Fahrt bisher: München → Wien, 430 km in 16 h 17 min Fahrzeit.",
+          scrub: "Den Anstieg fahren",
+          ride: "Losfahren",
+          aria: "Höhenprofil eines beispielhaften 14-Kilometer-Anstiegs mit Fahrer-Markierung"
+        },
+        cook: {
+          tag: "Küche · Vegan",
+          title: "Meistens vegan, <em>immer am Experimentieren</em>",
+          text: "Pflanzliche Küche ist die spannendere Einschränkung: Geschmack muss aufgebaut, Textur verdient werden. Signature: Mapo Tofu. Obsession: Pizzateig. Bau dir eine.",
+          cheese: "Vegane Mozzarella",
+          tomato: "Tomate",
+          mushroom: "Pilz",
+          basil: "Basilikum",
+          bake: "Backen",
+          clear: "Neu anfangen",
+          aria: "Eine Pizza zum Belegen und Backen"
+        },
+        photo: {
+          tag: "Sucher",
+          title: "Eine Kamera als Ausrede, <em>stillzustehen</em>",
+          text: "Meist ein Nebeneffekt der anderen Hobbys: Wildtiere auf Reisen, Berghütten, Fahrten im Morgengrauen. Sony α7 IV, eine 35-mm-Festbrennweite und viel zu viele Bilder.",
+          open: "Zum Archiv",
+          aria: "Aktuelles Foto öffnen"
+        }
+      },
+      photo: { eyebrow: "Archiv" },
+      log: {
+        eyebrow: "Letzte Übertragungen",
+        title: "Aus dem <em>Blog</em>",
+        lede: "Ehrliche Bau-Logbücher, inklusive der Irrwege. Meist Zephyr, Hardware und Arbeiten mit KI-Werkzeugen.",
+        p1: "Station Updates — Vier Wochen Debugging",
+        p2: "Eine MTG-Begleit-App mit Remote Coding bauen",
+        p3: "Vibe Coding einer Wetterstation – Zephyr-Style",
+        read: "Lesen →",
+        all: "Alle Übertragungen →"
+      },
+      end: {
+        aria: "Leuchtende Partikel, die die Buchstaben trmk bilden und vor dem Zeiger ausweichen",
+        title: "Grenzen sind der Anfang kreativer <em>Lösungen</em>.",
+        lede: "Ein paar Kilobyte RAM. Eine Wand und ein Körper. Ein Rezept ohne tierische Produkte. Ich mag eine gute Einschränkung. Gerne spreche ich über Embedded-Systeme, Firmware, Compliance oder die nächste Tour.",
+        bottom: "Keine Cookies, keine Tracker, kein Build-Schritt."
+      },
+      live: {
+        enStat: "Nachrichten <b>{n}</b> · Batterien <b>0</b>",
+        kStat: "Achsen <b>{a}</b> · Züge <b>{t}</b>",
+        hStat: "Erkannte Rufe <b>{n}</b>",
+        years: "Jahre",
+        days: "Tage",
+        budgetNote: "Durchschnitt <b>{avg}</b> aus 225 mAh, mit 4 ms Funk bei 8 mA. Ideale Rechnung: echte Zellen entladen sich selbst, ein Jahrzehnt ist also die praktische Obergrenze.",
+        climbStart: "Tippe den <b>START</b>-Griff an und klettere Griff für Griff zum <b>TOP</b>.",
+        climbNotStart: "Jedes Problem beginnt am <b>START</b>-Griff unten.",
+        climbOn: "In der Wand. Der gestrichelte Kreis zeigt deine Reichweite.",
+        climbFar: "Von hier nicht erreichbar. Such dir einen näheren Griff.",
+        climbBack: "Einen Zug zurück. Probier eine andere Sequenz.",
+        climbMove: "Zug <b>{n}</b>. Tippe deinen letzten Griff an, um zurückzugehen.",
+        climbTop: "Getoppt in <b>{n}</b> Zügen. Es geht auch mit weniger.",
+        bikeStat: "Höhe <b>{e} m</b> · Steigung <b>{g} %</b>",
+        pizzaStat: "Beläge <b>{n}</b> · Tierische Produkte <b>0</b>",
+        battery: "Seit du auf dieser Seite bist, hat ein Sensor mit dem Budget oben <b>{uah} µAh</b> verbraucht. Seine Knopfzelle ist noch zu <b>{pct} %</b> voll.",
+        cSwitch: "Schalter · Batterie: keine",
+        cReceiver: "Empfänger",
+        cSensor: "Sensor",
+        cVibration: "Vibration",
+        cTime: "Zeit →",
+        cAverage: "Durchschnitt",
+        cRadio: "Funk",
+        cSleep: "Schlaf",
+        cSpike: "Zeit →  (Spitzen breiter dargestellt)",
+        cCall: "Ruf",
+        cPizzaEmpty: "belegen, dann backen",
+        cPizzaReady: "fertig · guten Appetit",
+        cSummit: "Gipfel ~1.500 m",
+        cFinale: "fahr mit dem Zeiger durch die Buchstaben"
+      }
     },
     portfolio: {
       heading: "Fotografie & Reisen",
