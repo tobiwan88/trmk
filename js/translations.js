@@ -387,7 +387,14 @@ consulting: {
       archiveTitle: "Post Archive",
       archiveSubtitle: "All blog posts in chronological order",
       noPosts: "No posts yet!",
-      checkBack: "Check back later for new content."
+      checkBack: "Check back later for new content.",
+      eyebrow: "Latest transmissions",
+      title: "Honest <em>build logs</em>",
+      lede: "Mostly Zephyr, hardware and working with AI tools, including the wrong turns. Posts are in English and German.",
+      read: "Read",
+      earlier: "Earlier transmissions",
+      footerTitle: "Building something similar? <em>Say hi</em>.",
+      footerText: "Questions, corrections and war stories about embedded devices are always welcome."
     }
   },
   de: {
@@ -778,7 +785,14 @@ consulting: {
       archiveTitle: "Beitrags-Archiv",
       archiveSubtitle: "Alle Blog-Beiträge in chronologischer Reihenfolge",
       noPosts: "Noch keine Beiträge!",
-      checkBack: "Schauen Sie später wieder vorbei für neue Inhalte."
+      checkBack: "Schauen Sie später wieder vorbei für neue Inhalte.",
+      eyebrow: "Letzte Übertragungen",
+      title: "Ehrliche <em>Bau-Logbücher</em>",
+      lede: "Meist Zephyr, Hardware und Arbeiten mit KI-Werkzeugen, inklusive der Irrwege. Beiträge auf Englisch und Deutsch.",
+      read: "Lesen",
+      earlier: "Frühere Übertragungen",
+      footerTitle: "Bauen Sie etwas Ähnliches? <em>Sagen Sie hallo</em>.",
+      footerText: "Fragen, Korrekturen und Erfahrungsberichte zu Embedded-Geräten sind immer willkommen."
     }
   }
 };

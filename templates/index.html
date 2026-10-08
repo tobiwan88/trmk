@@ -1,72 +1,56 @@
 {% extends "base.html" %}
 
+{% macro langs(article) -%}
+<span class="langs">{% for v in article.versions %}<a href="{{ v.slug }}.html" hreflang="{{ v.lang }}" class="lang-pill sm">{{ v.lang.upper() }}</a>{% endfor %}</span>
+{%- endmacro %}
+
+{% macro swap(article) -%}
+{% for v in article.versions %} data-title-{{ v.lang }}="{{ v.title | attr }}" data-href-{{ v.lang }}="{{ v.slug }}.html"{% if v.lang == 'de' %} data-desc-de="{{ v.description | attr }}"{% else %} data-desc-en="{{ v.description | attr }}"{% endif %}{% endfor %}
+{%- endmacro %}
+
 {% block content %}
 {% if no_posts %}
-  <div class="blog-empty">
-    <h2 data-i18n="blog.noPosts">No posts yet!</h2>
-    <p data-i18n="blog.checkBack">Check back later for new content.</p>
-  </div>
+  <section class="blog-top wrap">
+    <h1 data-i18n="blog.noPosts">No posts yet!</h1>
+    <p class="lede" data-i18n="blog.checkBack">Check back later for new content.</p>
+  </section>
 {% else %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Tobias R.M.K. Meyer - Blog",
-    "description": "{{ description }}",
-    "url": "{{ page_url }}",
-    "author": {
-      "@type": "Person",
-      "name": "Tobias R.M.K. Meyer",
-      "url": "https://www.trmk.de"
-    }
-  }
-  </script>
+  <header class="blog-top wrap">
+    <p class="eyebrow"><span data-i18n="blog.eyebrow">Latest transmissions</span> <span class="d">·</span> <a href="./feed.xml">RSS</a></p>
+    <h1 data-i18n-html="blog.title">Honest <em>build logs</em></h1>
+    <p class="lede" data-i18n="blog.lede">Mostly Zephyr, hardware and working with AI tools, including the wrong turns. Posts are in English and German.</p>
+  </header>
 
-  <div class="blog-index-header">
-    <h1 data-i18n="blog.latestPost">Latest Post</h1>
-    <a href="archive.html" class="btn-teal">
-      <i class="fa fa-archive" aria-hidden="true"></i>
-      <span data-i18n="blog.viewArchive">View Archive</span>
-    </a>
-  </div>
+  {% set first = articles[0] %}
+  <section class="wrap">
+    <article class="feature" data-swap{{ swap(first) }}>
+      <p class="eyebrow"><time datetime="{{ first.date }}">TX {{ first.date }}</time> <span class="d">·</span> {{ first.primary.minutes }} min</p>
+      <h2><a class="swap-link" href="{{ first.primary.slug }}.html"><span class="swap-title">{{ first.primary.title }}</span></a></h2>
+      <p class="lede swap-desc">{{ first.primary.description }}</p>
+      <div class="controls">
+        <a class="btn swap-link" href="{{ first.primary.slug }}.html"><span data-i18n="blog.read">Read</span> →</a>
+        {{ langs(first) }}
+      </div>
+    </article>
+  </section>
 
-  <article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
-    <header class="blog-post-header">
-      <h2 itemprop="headline">{{ post.title }}</h2>
-      <p class="blog-post-meta">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-        <time datetime="{{ post.date }}" itemprop="datePublished">
-          <span data-i18n="blog.publishedOn">Published on</span> {{ post.date }}
-        </time>
-      </p>
-    </header>
-
-    <div class="blog-post-content" itemprop="articleBody">
-      {{ post.content | safe }}
-    </div>
-
-    <div style="margin-top: 20px;">
-      <a href="{{ post.slug }}.html" class="btn-teal">
-        <span data-i18n="blog.readMore">Read More</span>
-        <i class="fa fa-arrow-right" aria-hidden="true"></i>
-      </a>
-    </div>
-  </article>
-
-  <nav class="blog-post-nav" aria-label="Post navigation" style="margin-top: 40px;">
-    <div>
-      {% if post.previous_post %}
-        <a href="{{ post.previous_post.slug }}.html" class="blog-nav-link">
-          <i class="fa fa-arrow-left" aria-hidden="true"></i>
-          <span data-i18n="blog.olderPost">Older Post</span>
+  {% if articles | length > 1 %}
+  <section class="wrap">
+    <h2 class="list-head" data-i18n="blog.earlier">Earlier transmissions</h2>
+    <ul class="tx-list">
+      {% for article in articles[1:] %}
+      <li data-swap{{ swap(article) }}>
+        <a class="swap-link" href="{{ article.primary.slug }}.html">
+          <span class="when">TX {{ article.date }}</span>
+          <span class="ttl swap-title">{{ article.primary.title }}</span>
+          <span class="go">{{ article.primary.minutes }} min →</span>
         </a>
-      {% endif %}
-    </div>
-    <a href="archive.html" class="blog-nav-home">
-      <i class="fa fa-archive" aria-hidden="true"></i>
-      <span data-i18n="blog.viewAllPosts">View All Posts</span>
-    </a>
-    <div></div>
-  </nav>
+        {{ langs(article) }}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="tx-all"><a class="btn ghost sm" href="archive.html" data-i18n="blog.viewAllPosts">View All Posts</a></p>
+  </section>
+  {% endif %}
 {% endif %}
 {% endblock %}

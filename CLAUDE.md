@@ -44,15 +44,16 @@ trmk/
 │   ├── home.js             # Homepage chrome (theme, menu, lightbox, clock)
 │   ├── chrome.js           # Shared nav chrome for cv.html + freelancing.html
 │   ├── consulting.js       # Consulting canvases (cost curve, radio map)
-│   └── cv.js               # CV timeline ↔ role card highlighting
+│   ├── cv.js               # CV timeline ↔ role card highlighting
+│   └── blog.js             # Blog: reading progress, language-aware post lists
 ├── css/
 │   ├── fonts.css           # Self-hosted @font-face (DM Sans, JetBrains Mono, Caveat, Bricolage Grotesque)
 │   ├── branding.css        # Base tokens, reset, utilities (all pages)
 │   ├── site.css            # Nav, footer, section scaffolding (all pages)
-│   ├── homepage.css        # "Live Scope" tokens + components (index, cv, consulting)
+│   ├── homepage.css        # "Live Scope" tokens + components (all pages incl. blog)
 │   ├── consulting.css      # freelancing.html only
 │   ├── cv.css              # cv.html only
-│   └── blog.css            # Blog pages
+│   └── blog.css            # Blog templates (post body, code panels, figures, lists)
 ├── pictures/               # Images
 ├── fonts/                  # Self-hosted Lato font
 ├── generate.py             # Blog generator script
@@ -64,7 +65,7 @@ trmk/
 
 **Layered CSS:** `fonts.css` → `branding.css` → `site.css` → page CSS → `all.css` (FontAwesome).
 
-**"Live Scope" look** (index, cv, freelancing): pages set `<body class="home …">`, and `homepage.css`
+**"Live Scope" look** (index, cv, freelancing, blog): pages set `<body class="home …">`, and `homepage.css`
 defines the tokens on `.home`, with a day theme (rust on paper) and a night theme (amber on
 instrument panel) under `[data-theme="dark"] .home`:
 ```css
@@ -75,7 +76,7 @@ instrument panel) under `[data-theme="dark"] .home`:
 ```
 Canvas scripts read these tokens at runtime and redraw on theme change, so keep them as hex values.
 Shared components: `.eyebrow`, `.btn`/`.btn.ghost`, `.stage` + `.hud` (canvas panels), `.chip`,
-`.split`, `.sec-intro`, `.lede`, `.links`. Blog pages still use the older `branding.css` look.
+`.split`, `.sec-intro`, `.lede`, `.links`, `.tx-list`.
 
 **Canvas pattern:** each interactive canvas is a "stage" that only animates while visible
 (IntersectionObserver), respects `prefers-reduced-motion`, and takes its labels from
@@ -154,7 +155,15 @@ uv run python3 generate.py
 **Output:**
 - `blog/*.html` - Individual posts
 - `blog/index.html` - Newest post
-- `blog/archive.html` - All posts with language badges
+- `blog/archive.html` - All articles grouped by year, with EN/DE badges
+- `blog/feed.xml`, `blog/feed-de.xml` - RSS per language
+
+**Post processing:** a leading `# Title` that repeats the frontmatter title is dropped; images alone in a
+paragraph become `<figure>` with the alt text as caption; code blocks get a labelled panel
+(`.codehilite[data-lang]` > `pre.blog-code-block`); reading time at 200 words/min. Post labels
+(min read, older/newer) are rendered in the post's language (`POST_LABELS`), and post pages set
+`data-content-lang` so `i18n.js` never changes their `<html lang>`. Structured data is built with
+`json.dumps` (`post_json_ld`, `blog_json_ld`).
 
 ### Blog Features
 - ✅ Multilingual (EN/DE with auto-linking)

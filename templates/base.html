@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="{{ page_lang }}">
+<html lang="{{ page_lang }}"{% if is_post %} data-content-lang="{{ page_lang }}"{% endif %}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ title }} - Tobias R.M.K. Meyer</title>
-  <meta name="description" content="{{ description }}">
+  <title>{{ title | attr }} - Tobias R.M.K. Meyer</title>
+  <meta name="description" content="{{ description | attr }}">
   <meta name="robots" content="index,follow">
   <meta name="author" content="Tobias R.M.K. Meyer">
-  <meta name="theme-color" content="#1C2A38">
+  <meta name="theme-color" content="#12111d">
 
   <!-- Open Graph -->
   <meta property="og:type" content="{{ og_type }}">
   <meta property="og:url" content="{{ page_url }}">
-  <meta property="og:title" content="{{ title }} - Tobias R.M.K. Meyer">
-  <meta property="og:description" content="{{ description }}">
+  <meta property="og:title" content="{{ title | attr }} - Tobias R.M.K. Meyer">
+  <meta property="og:description" content="{{ description | attr }}">
   <meta property="og:image" content="{{ og_image }}">
   <meta property="og:image:width" content="{{ og_image_width }}">
   <meta property="og:image:height" content="{{ og_image_height }}">
@@ -24,8 +24,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ title }} - Tobias R.M.K. Meyer">
-  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:title" content="{{ title | attr }} - Tobias R.M.K. Meyer">
+  <meta name="twitter:description" content="{{ description | attr }}">
   <meta name="twitter:image" content="{{ og_image }}">
 
   <!-- Canonical & language -->
@@ -46,27 +46,36 @@
   <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <link rel="manifest" href="../manifest.webmanifest">
 
-  <!-- Preload primary font -->
+  <!-- Preload primary fonts -->
   <link rel="preload" href="../fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- Stylesheets -->
+  <!-- Stylesheets (homepage.css provides the shared "Live Scope" tokens + components) -->
   <link rel="stylesheet" href="../css/fonts.css">
   <link rel="stylesheet" href="../css/branding.css">
   <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/homepage.css">
   <link rel="stylesheet" href="../css/blog.css">
   <link rel="stylesheet" href="../css/all.css">
 
-  <!-- i18n -->
+  <!-- i18n + page chrome -->
   <script src="../js/translations.js" defer></script>
   <script src="../js/i18n.js" defer></script>
+  <script src="../js/chrome.js" defer></script>
+  <script src="../js/blog.js" defer></script>
 
   <!-- Theme: set before render to prevent flash -->
-  <script>(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
+  <script>(function(){var s=null;try{s=localStorage.getItem('theme')}catch(e){}var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
+{% if ld_json %}
+  <script type="application/ld+json">
+{{ ld_json | safe }}
+  </script>
+{% endif %}
 </head>
-<body>
+<body class="home blog {{ template_type }}">
 
 <!-- Skip link -->
-<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#main-content" class="skip-link" data-i18n-aria="nav.skipToContent">Skip to main content</a>
 
 <!-- ============== NAV ============== -->
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
@@ -77,12 +86,12 @@
     </a>
 
     <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="../index.html#about" data-i18n="nav.about">About</a></li>
+      <li><a href="../index.html#about" data-i18n="nav.signals">Signals</a></li>
       <li><a href="../index.html#life" data-i18n="nav.outside">Outside</a></li>
       <li><a href="../index.html#photo" data-i18n="nav.photography">Photography</a></li>
       <li><a href="../cv.html" data-i18n="nav.cv">CV</a></li>
       <li><a href="../freelancing.html" data-i18n="nav.consulting">Consulting</a></li>
-      <li><a href="./index.html" class="active" data-i18n="nav.blog">Blog</a></li>
+      <li><a href="./index.html" class="active" aria-current="page" data-i18n="nav.blog">Blog</a></li>
     </ul>
 
     <div class="nav-controls">
@@ -100,76 +109,36 @@
       </button>
     </div>
   </div>
+  {% if is_post %}<div class="scope-progress" id="read-progress" aria-hidden="true"></div>{% endif %}
 </nav>
 
 <!-- ============== MAIN CONTENT ============== -->
 <main id="main-content">
-  <div class="blog-wrap">
-    {% block content %}{% endblock %}
-  </div>
+  {% block content %}{% endblock %}
 </main>
 
 <!-- ============== FOOTER ============== -->
-<footer class="site-footer" role="contentinfo">
+<footer class="site-footer" id="contact" role="contentinfo">
   <div class="wrap">
-    <div>
-      <h3>T.R.M.K. Meyer</h3>
-      <h2 style="font-size: clamp(20px, 2.4vw, 30px);">Embedded systems &amp; field notes.</h2>
-      <p style="margin-top: 14px;"><a href="../index.html">← Back to main site</a></p>
-    </div>
-    <div>
-      <h3 data-i18n="footer.elsewhereHeading">Elsewhere</h3>
-      <ul>
-        <li><a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        <li><a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li><a href="../cv.html" data-i18n="nav.cv">CV</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3 data-i18n="footer.basedHeading">Based</h3>
-      <ul>
-        <li><span class="lbl">City</span> Munich, DE</li>
-        <li><span class="lbl">Lang</span> EN · DE</li>
-      </ul>
+    <div class="finale-row">
+      <div class="copy">
+        <h3 data-i18n="footer.contactHeading">Get in touch</h3>
+        <h2 data-i18n-html="blog.footerTitle">Building something similar? <em>Say hi</em>.</h2>
+        <p class="lede" data-i18n="blog.footerText">Questions, corrections and war stories about embedded devices are always welcome.</p>
+      </div>
+      <div class="links">
+        <a href="mailto:tobias.meyer@trmk.de">tobias.meyer@trmk.de <span>E-Mail</span></a>
+        <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="me noopener noreferrer">LinkedIn <span>Work</span></a>
+        <a href="https://github.com/tobiwan88" target="_blank" rel="me noopener noreferrer">GitHub <span>Code</span></a>
+        <a href="./feed.xml">RSS <span>Feed</span></a>
+      </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 TOBIAS R.M.K. MEYER</span>
-      <span><a href="./archive.html" data-i18n="blog.archive">Archive</a></span>
+      <span><a href="../index.html">trmk.de</a> · <a href="./archive.html" data-i18n="blog.archive">Archive</a> · <a href="../cv.html" data-i18n="nav.cv">CV</a></span>
     </div>
   </div>
 </footer>
-
-<script>
-// -------- Theme toggle --------
-const themeToggle = document.getElementById('theme-toggle');
-function applyThemeIcon(theme) {
-  const icon = themeToggle.querySelector('i');
-  icon.className = theme === 'dark' ? 'fa fa-sun' : 'fa fa-moon';
-  themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-}
-applyThemeIcon(document.documentElement.getAttribute('data-theme'));
-themeToggle.addEventListener('click', () => {
-  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  applyThemeIcon(next);
-});
-
-const hamburger = document.getElementById('nav-hamburger');
-const navLinks  = document.getElementById('nav-links');
-
-hamburger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', open);
-});
-
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  });
-});
-</script>
 
 </body>
 </html>
