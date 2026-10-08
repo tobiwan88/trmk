@@ -15,16 +15,19 @@
   <meta property="og:url" content="https://www.trmk.de/cv.html">
   <meta property="og:title" content="Tobias R.M.K. Meyer - CV">
   <meta property="og:description" content="Senior Embedded AI Engineer with 10+ years in embedded systems, IoT devices and team leadership.">
-  <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
+  <meta property="og:image" content="https://www.trmk.de/og/cv.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CV of Tobias R.M.K. Meyer, Senior Embedded AI Engineer">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="de_DE">
   <meta property="og:site_name" content="Tobias R.M.K. Meyer">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tobias R.M.K. Meyer - CV">
   <meta name="twitter:description" content="Senior Embedded AI Engineer with 10+ years in embedded systems, IoT devices and team leadership.">
-  <meta name="twitter:image" content="https://www.trmk.de/avatar.jpg">
+  <meta name="twitter:image" content="https://www.trmk.de/og/cv.png">
 
   <!-- Canonical & language -->
   <link rel="canonical" href="https://www.trmk.de/cv.html">
@@ -32,6 +35,10 @@
   <link rel="alternate" hreflang="en" href="https://www.trmk.de/cv.html">
   <link rel="alternate" hreflang="de" href="https://www.trmk.de/cv.html">
   <link rel="alternate" hreflang="x-default" href="https://www.trmk.de/cv.html">
+
+  <!-- Feeds -->
+  <link rel="alternate" type="application/rss+xml" title="Blog (English)" href="https://www.trmk.de/blog/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Blog (Deutsch)" href="https://www.trmk.de/blog/feed-de.xml">
 
   <!-- Favicons & PWA -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -62,34 +69,103 @@
   <script>(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));})();</script>
 <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "https://www.trmk.de/cv.html",
+  "name": "Tobias R.M.K. Meyer - CV",
+  "dateModified": "2026-10-08",
+  "mainEntity": {
     "@type": "Person",
+    "@id": "https://www.trmk.de/#person",
     "name": "Tobias Raphael Maria Karl Meyer",
-    "alternateName": "T.R.M.K. Meyer",
-    "url": "https://www.trmk.de/cv.html",
-    "image": "https://www.trmk.de/cv_avatar.webp",
+    "alternateName": [
+      "T.R.M.K. Meyer",
+      "Tobias Meyer"
+    ],
+    "url": "https://www.trmk.de/",
+    "image": "https://www.trmk.de/avatar.jpg",
+    "email": "mailto:tobias.meyer@trmk.de",
     "jobTitle": "Senior Embedded AI Engineer",
+    "description": "Embedded engineer in Munich building low-power, radio-connected devices: energy-harvesting switches at EnOcean, railway sensors at KONUX, and bioacoustic forest sensors at Hula Earth.",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Hula Earth"
+    },
     "hasOccupation": {
       "@type": "Occupation",
       "name": "Senior Embedded AI Engineer",
-      "description": "Owning the development of self-sufficient bioacoustic IoT devices: firmware, power, connectivity and certification."
+      "occupationLocation": {
+        "@type": "City",
+        "name": "Munich"
+      },
+      "skills": "Embedded firmware, Zephyr RTOS, ultra-low-power design, BLE, LTE-M, LoRa, certification, Edge AI, engineering management"
     },
-    "worksFor": { "@type": "Organization", "name": "Hula Earth" },
-    "address": { "@type": "PostalAddress", "addressLocality": "Munich", "addressCountry": "DE" },
-    "email": "tobias.meyer@trmk.de",
-    "sameAs": [
-      "https://www.instagram.com/the_tobi_wan88/",
-      "https://github.com/tobiwan88",
-      "https://de.linkedin.com/in/tobias-meyer-07413656",
-      "https://www.strava.com/athletes/29812823"
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Munich",
+      "addressCountry": "DE"
+    },
+    "knowsLanguage": [
+      "de",
+      "en"
     ],
-    "knowsAbout": ["Embedded Systems","Firmware Development","IoT","C Programming","C++","Zephyr RTOS","LTE-M","BLE","Team Leadership","Agile","Project Management"],
+    "knowsAbout": [
+      "Embedded Systems",
+      "Firmware Development",
+      "Internet of Things",
+      "Bioacoustics",
+      "Edge AI",
+      "TinyML",
+      "Zephyr RTOS",
+      "Ultra-low-power design",
+      "BLE",
+      "LTE-M",
+      "NB-IoT",
+      "LoRa",
+      "Zigbee",
+      "Thread",
+      "EnOcean",
+      "C",
+      "C++",
+      "Python",
+      "CE / RED certification",
+      "Engineering Management"
+    ],
+    "sameAs": [
+      "https://de.linkedin.com/in/tobias-meyer-07413656",
+      "https://github.com/tobiwan88",
+      "https://www.strava.com/athletes/29812823",
+      "https://www.instagram.com/the_tobi_wan88/"
+    ],
     "alumniOf": [
-      { "@type": "CollegeOrUniversity", "name": "Technical University of Munich", "description": "M.Sc. Computer Science" },
-      { "@type": "CollegeOrUniversity", "name": "University of Applied Sciences", "description": "B.Sc. Electrical Engineering" }
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Technical University of Munich",
+        "description": "M.Sc. Computer Science"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Applied Sciences",
+        "description": "B.Sc. Electrical Engineering"
+      }
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "degree",
+        "name": "Master of Science in Computer Science",
+        "about": "Thesis: Firmware over the air updates with EnOcean energy harvested protocol"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "degree",
+        "name": "Bachelor of Science in Electrical Engineering",
+        "about": "Thesis: An energy harvesting ZigBee Switch"
+      }
     ]
   }
+}
   </script>
 </head>
 <body class="home cv">

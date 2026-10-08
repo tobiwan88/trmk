@@ -14,7 +14,10 @@
   <meta property="og:url" content="https://www.trmk.de/">
   <meta property="og:title" content="Tobias R.M.K. Meyer - Embedded Engineer">
   <meta property="og:description" content="Small devices that listen: to radio, to railway tracks, and now to forests. Embedded engineer, climber, cyclist and vegan cook in Munich.">
-  <meta property="og:image" content="https://www.trmk.de/avatar.jpg">
+  <meta property="og:image" content="https://www.trmk.de/og/home.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Tobias R.M.K. Meyer · Small devices that listen">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="de_DE">
   <meta property="og:site_name" content="Tobias R.M.K. Meyer">
@@ -23,7 +26,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tobias R.M.K. Meyer - Embedded Engineer">
   <meta name="twitter:description" content="Small devices that listen: to radio, to railway tracks, and now to forests. Embedded engineer, climber, cyclist and vegan cook in Munich.">
-  <meta name="twitter:image" content="https://www.trmk.de/avatar.jpg">
+  <meta name="twitter:image" content="https://www.trmk.de/og/home.png">
 
   <!-- Canonical & language -->
   <link rel="canonical" href="https://www.trmk.de/">
@@ -31,6 +34,10 @@
   <link rel="alternate" hreflang="en" href="https://www.trmk.de/index.html">
   <link rel="alternate" hreflang="de" href="https://www.trmk.de/index.html">
   <link rel="alternate" hreflang="x-default" href="https://www.trmk.de/index.html">
+
+  <!-- Feeds -->
+  <link rel="alternate" type="application/rss+xml" title="Blog (English)" href="https://www.trmk.de/blog/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Blog (Deutsch)" href="https://www.trmk.de/blog/feed-de.xml">
 
   <!-- Favicons & PWA -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -61,25 +68,101 @@
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Tobias Raphael Maria Karl Meyer",
-    "alternateName": "T.R.M.K. Meyer",
-    "url": "https://www.trmk.de",
-    "image": "https://www.trmk.de/avatar.jpg",
-    "jobTitle": "Senior Embedded AI Engineer",
-    "worksFor": { "@type": "Organization", "name": "Hula Earth" },
-    "address": { "@type": "PostalAddress", "addressLocality": "Munich", "addressCountry": "DE" },
-    "email": "tobias.meyer@trmk.de",
-    "sameAs": [
-      "https://www.instagram.com/the_tobi_wan88/",
-      "https://github.com/tobiwan88",
-      "https://de.linkedin.com/in/tobias-meyer-07413656",
-      "https://www.strava.com/athletes/29812823"
-    ],
-    "knowsAbout": ["Embedded Systems","Firmware Development","IoT","Bioacoustics","Edge AI","C Programming","C++","Zephyr RTOS","LTE-M","BLE"]
-  }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.trmk.de/#website",
+      "url": "https://www.trmk.de/",
+      "name": "Tobias R.M.K. Meyer",
+      "inLanguage": [
+        "en",
+        "de"
+      ],
+      "publisher": {
+        "@id": "https://www.trmk.de/#person"
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://www.trmk.de/#profile",
+      "url": "https://www.trmk.de/",
+      "name": "Tobias R.M.K. Meyer - Embedded Engineer",
+      "isPartOf": {
+        "@id": "https://www.trmk.de/#website"
+      },
+      "mainEntity": {
+        "@id": "https://www.trmk.de/#person"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.trmk.de/#person",
+      "name": "Tobias Raphael Maria Karl Meyer",
+      "alternateName": [
+        "T.R.M.K. Meyer",
+        "Tobias Meyer"
+      ],
+      "url": "https://www.trmk.de/",
+      "image": "https://www.trmk.de/avatar.jpg",
+      "email": "mailto:tobias.meyer@trmk.de",
+      "jobTitle": "Senior Embedded AI Engineer",
+      "description": "Embedded engineer in Munich building low-power, radio-connected devices: energy-harvesting switches at EnOcean, railway sensors at KONUX, and bioacoustic forest sensors at Hula Earth.",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Hula Earth"
+      },
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Senior Embedded AI Engineer",
+        "occupationLocation": {
+          "@type": "City",
+          "name": "Munich"
+        },
+        "skills": "Embedded firmware, Zephyr RTOS, ultra-low-power design, BLE, LTE-M, LoRa, certification, Edge AI, engineering management"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Munich",
+        "addressCountry": "DE"
+      },
+      "knowsLanguage": [
+        "de",
+        "en"
+      ],
+      "knowsAbout": [
+        "Embedded Systems",
+        "Firmware Development",
+        "Internet of Things",
+        "Bioacoustics",
+        "Edge AI",
+        "TinyML",
+        "Zephyr RTOS",
+        "Ultra-low-power design",
+        "BLE",
+        "LTE-M",
+        "NB-IoT",
+        "LoRa",
+        "Zigbee",
+        "Thread",
+        "EnOcean",
+        "C",
+        "C++",
+        "Python",
+        "CE / RED certification",
+        "Engineering Management"
+      ],
+      "sameAs": [
+        "https://de.linkedin.com/in/tobias-meyer-07413656",
+        "https://github.com/tobiwan88",
+        "https://www.strava.com/athletes/29812823",
+        "https://www.instagram.com/the_tobi_wan88/"
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body class="home">
@@ -412,11 +495,11 @@
       </div>
       <div class="links">
         <a href="mailto:tobias.meyer@trmk.de">tobias.meyer@trmk.de <span>E-Mail</span></a>
-        <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="noopener noreferrer">LinkedIn <span>Work</span></a>
-        <a href="https://github.com/tobiwan88" target="_blank" rel="noopener noreferrer">GitHub <span>Code</span></a>
-        <a href="https://www.strava.com/athletes/29812823" target="_blank" rel="noopener noreferrer">Strava <span>Rides</span></a>
-        <a href="https://www.instagram.com/the_tobi_wan88/" target="_blank" rel="noopener noreferrer">Instagram <span>Photos</span></a>
-        <a href="https://www-fallback.instagram.com/cafe.tobi.88/" target="_blank" rel="noopener noreferrer">Café Tobi <span>Food</span></a>
+        <a href="https://de.linkedin.com/in/tobias-meyer-07413656" target="_blank" rel="me noopener noreferrer">LinkedIn <span>Work</span></a>
+        <a href="https://github.com/tobiwan88" target="_blank" rel="me noopener noreferrer">GitHub <span>Code</span></a>
+        <a href="https://www.strava.com/athletes/29812823" target="_blank" rel="me noopener noreferrer">Strava <span>Rides</span></a>
+        <a href="https://www.instagram.com/the_tobi_wan88/" target="_blank" rel="me noopener noreferrer">Instagram <span>Photos</span></a>
+        <a href="https://www-fallback.instagram.com/cafe.tobi.88/" target="_blank" rel="me noopener noreferrer">Café Tobi <span>Food</span></a>
       </div>
     </div>
 

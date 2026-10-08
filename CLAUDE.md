@@ -217,7 +217,7 @@ uv run python3 generate.py
 1. Create/edit `.md` files in `blog_entries/en/` and `blog_entries/de/`
 2. Run `uv run python3 generate.py`
 3. Preview at `http://localhost:8000/blog/`
-4. Commit and deploy `blog/` directory
+4. Commit and deploy `blog/` directory (`generate.py` also refreshes `sitemap.xml`, the RSS feeds and `llms.txt`)
 
 ### Making Changes
 
@@ -304,7 +304,8 @@ All pages have:
 
 **Required files:**
 - All `.html` files
-- `blog/` directory
+- `blog/` directory (includes RSS feeds `feed.xml` / `feed-de.xml`)
+- `og/` (social share cards, 1200×630), `llms.txt`, `sitemap.xml`, `robots.txt`
 - `css/`, `js/`, `pictures/`, `fonts/`
 - Favicon files, `manifest.webmanifest`
 

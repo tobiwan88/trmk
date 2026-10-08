@@ -15,14 +15,25 @@ STATIC_DIR = "static"
 SUPPORTED_LANGUAGES = ["en", "de"]
 OG_IMAGE_WIDTH = "1200"
 OG_IMAGE_HEIGHT = "630"
-OG_IMAGE_URL = "https://www.trmk.de/og-image.png"
+OG_IMAGE_URL = "https://www.trmk.de/og/blog.png"
+SITE_AUTHOR = "Tobias R.M.K. Meyer"
+FEED_INFO = {
+    "en": {"file": "feed.xml", "title": "Tobias R.M.K. Meyer - Blog",
+           "description": "Build logs about embedded systems, Zephyr, hardware and working with AI tools."},
+    "de": {"file": "feed-de.xml", "title": "Tobias R.M.K. Meyer - Blog (Deutsch)",
+           "description": "Bau-Logbücher über Embedded-Systeme, Zephyr, Hardware und das Arbeiten mit KI-Werkzeugen."},
+}
 SITE_URL = "https://www.trmk.de"
 
 def strip_html(content):
     return re.sub(r'<[^>]+>', '', content).strip()
 
 def extract_description(content, max_len=155):
-    text = strip_html(content)
+    # Headings repeat the title or are section labels; describe the post from its prose only.
+    # Entities from the Markdown HTML (e.g. &amp;) are kept, since templates insert this as-is.
+    body = re.sub(r'<h[1-6][^>]*>.*?</h[1-6]>', ' ', content, flags=re.S)
+    body = re.sub(r'<pre[^>]*>.*?</pre>', ' ', body, flags=re.S)
+    text = re.sub(r'\s+', ' ', strip_html(body)).strip()
     if len(text) > max_len:
         desc = text[:max_len]
         last_space = desc.rfind(' ')
@@ -73,6 +84,7 @@ def build_page_context(post, title, description, template_type, page_url, hrefla
         'og_image_height': OG_IMAGE_HEIGHT,
         'hreflang_entries': hreflang_entries,
         'template_type': template_type,
+        'site_url': SITE_URL,
     }
 
 def generate_sitemap(posts):
@@ -90,10 +102,16 @@ def generate_sitemap(posts):
         post_url = f'{SITE_URL}/blog/{post["slug"]}.html'
         date_obj = datetime.strptime(post['date'], '%Y-%m-%d')
         lastmod = date_obj.strftime('%Y-%m-%d')
-        post_pages.append({'loc': post_url, 'lastmod': lastmod, 'priority': '0.7', 'changefreq': 'monthly'})
+        # language alternates: the post itself plus its translations
+        alternates = {post['lang']: post_url}
+        for other_lang, other_post in post.get('translations', {}).items():
+            alternates[other_lang] = f'{SITE_URL}/blog/{other_post["slug"]}.html'
+        post_pages.append({'loc': post_url, 'lastmod': lastmod, 'priority': '0.7', 'changefreq': 'monthly',
+                           'alternates': alternates if len(alternates) > 1 else {}})
 
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
-             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+             'xmlns:xhtml="http://www.w3.org/1999/xhtml">']
 
     for page in static_pages:
         lines.append('  <url>')
@@ -115,10 +133,43 @@ def generate_sitemap(posts):
         lines.append(f'    <lastmod>{page["lastmod"]}</lastmod>')
         lines.append(f'    <changefreq>{page["changefreq"]}</changefreq>')
         lines.append(f'    <priority>{page["priority"]}</priority>')
+        for alt_lang, alt_url in sorted(page['alternates'].items()):
+            lines.append(f'    <xhtml:link rel="alternate" hreflang="{alt_lang}" href="{alt_url}"/>')
         lines.append('  </url>')
 
     lines.append('</urlset>')
     return '\n'.join(lines)
+
+def rfc822(date_str):
+    return datetime.strptime(date_str, '%Y-%m-%d').strftime('%a, %d %b %Y 00:00:00 +0000')
+
+def generate_feed(lang, lang_posts):
+    """RSS 2.0 feed for one language (newest first, as sorted by main())."""
+    info = FEED_INFO[lang]
+    feed_url = f'{SITE_URL}/blog/{info["file"]}'
+    esc = html.escape
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+             '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
+             '<channel>',
+             f'  <title>{esc(info["title"])}</title>',
+             f'  <link>{SITE_URL}/blog/</link>',
+             f'  <description>{esc(info["description"])}</description>',
+             f'  <language>{lang}</language>',
+             f'  <atom:link href="{feed_url}" rel="self" type="application/rss+xml"/>']
+    if lang_posts:
+        lines.append(f'  <lastBuildDate>{rfc822(lang_posts[0]["date"])}</lastBuildDate>')
+    for post in lang_posts:
+        url = f'{SITE_URL}/blog/{post["slug"]}.html'
+        lines += ['  <item>',
+                  f'    <title>{esc(html.unescape(post["title"]))}</title>',
+                  f'    <link>{url}</link>',
+                  f'    <guid isPermaLink="true">{url}</guid>',
+                  f'    <pubDate>{rfc822(post["date"])}</pubDate>',
+                  f'    <author>tobias.meyer@trmk.de ({esc(SITE_AUTHOR)})</author>',
+                  f'    <description>{esc(html.unescape(post["description"]))}</description>',
+                  '  </item>']
+    lines += ['</channel>', '</rss>']
+    return '\n'.join(lines) + '\n'
 
 def main():
     if os.path.exists(OUTPUT_DIR):
@@ -252,7 +303,7 @@ def main():
                                           description="No blog posts yet.",
                                           og_type='website', og_site_name='Tobias R.M.K. Meyer',
                                           og_image=OG_IMAGE_URL, og_image_width=OG_IMAGE_WIDTH,
-                                          og_image_height=OG_IMAGE_HEIGHT,
+                                          og_image_height=OG_IMAGE_HEIGHT, site_url=SITE_URL,
                                           hreflang_entries=[
                                               {'lang': 'en', 'url': f"{SITE_URL}/blog/"},
                                               {'lang': 'de', 'url': f"{SITE_URL}/blog/"},
@@ -276,9 +327,21 @@ def main():
         f.write(archive_template.render(posts=posts, **context))
 
     sitemap_content = generate_sitemap(posts)
-    sitemap_path = os.path.join(os.path.dirname(__file__), "sitemap.xml")
+    sitemap_path = "sitemap.xml"
     with open(sitemap_path, "w", encoding="utf-8") as f:
         f.write(sitemap_content)
+
+    for lang in SUPPORTED_LANGUAGES:
+        with open(os.path.join(OUTPUT_DIR, FEED_INFO[lang]["file"]), "w", encoding="utf-8") as f:
+            f.write(generate_feed(lang, posts_by_lang.get(lang, [])))
+
+    # llms.txt: plain-text site summary for AI agents (skipped if the template is absent)
+    llms_written = False
+    if os.path.exists(os.path.join(TEMPLATES_DIR, "llms.txt")):
+        llms = env.get_template("llms.txt").render(posts=posts_by_lang.get("en", []), site_url=SITE_URL)
+        with open("llms.txt", "w", encoding="utf-8") as f:
+            f.write(llms)
+        llms_written = True
 
     if os.path.exists(STATIC_DIR):
         shutil.copytree(STATIC_DIR, os.path.join(OUTPUT_DIR, STATIC_DIR))
@@ -288,7 +351,9 @@ def main():
     for lang in SUPPORTED_LANGUAGES:
         count = len(posts_by_lang.get(lang, []))
         print(f"   - {lang.upper()}: {count} posts")
-    print("   sitemap.xml updated")
+    print("   sitemap.xml + RSS feeds updated")
+    if llms_written:
+        print("   llms.txt updated")
 
 
 if __name__ == "__main__":

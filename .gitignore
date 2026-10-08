@@ -7,3 +7,7 @@ svg/*.svg
 *.jpeg
 *.png
 .DS_Store
+
+# Social share cards (generated, committed on purpose)
+!og/*.png
+__pycache__/
